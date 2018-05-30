@@ -7,8 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit;
 
-use Generated\Shared\Transfer\ComputopEasyCreditStatusTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\AbstractPrePlaceMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\PrePlaceMapperInterface;
@@ -16,30 +15,29 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\PrePlaceMapperInterface;
 class StatusEasyCreditMapper extends AbstractPrePlaceMapper implements PrePlaceMapperInterface
 {
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(TransferInterface $computopPaymentTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
     {
-        /** @var \Generated\Shared\Transfer\ComputopEasyCreditPaymentTransfer $computopPaymentTransfer */
-        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopPaymentTransfer->getPayId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopPaymentTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopPaymentTransfer->getReqId();
-        $dataSubArray[ComputopApiConfig::REF_NR] = $computopPaymentTransfer->getRefNr();
-        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopPaymentTransfer->getAmount();
-        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopPaymentTransfer->getCurrency();
-        $dataSubArray[ComputopApiConfig::MAC] = $computopPaymentTransfer->getMac();
+        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
+        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
+        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopApiRequestTransfer->getReqId();
+        $dataSubArray[ComputopApiConfig::REF_NR] = $computopApiRequestTransfer->getRefNr();
+        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopApiRequestTransfer->getAmount();
+        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopApiRequestTransfer->getCurrency();
+        $dataSubArray[ComputopApiConfig::MAC] = $computopApiRequestTransfer->getMac();
         $dataSubArray[ComputopApiConfig::EVENT_TOKEN] = ComputopApiConfig::EVENT_TOKEN_GET;
 
         return $dataSubArray;
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ComputopEasyCreditStatusTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     protected function createPaymentTransfer()
     {
-        return new ComputopEasyCreditStatusTransfer();
+        return new ComputopApiRequestTransfer();
     }
 }

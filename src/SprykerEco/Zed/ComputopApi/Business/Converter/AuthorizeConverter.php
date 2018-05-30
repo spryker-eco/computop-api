@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
-use Generated\Shared\Transfer\ComputopAuthorizeResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class AuthorizeConverter extends AbstractConverter implements ConverterInterface
@@ -15,18 +15,18 @@ class AuthorizeConverter extends AbstractConverter implements ConverterInterface
     /**
      * @param array $decryptedArray
      *
-     * @return \Generated\Shared\Transfer\ComputopAuthorizeResponseTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer
      */
     protected function getResponseTransfer(array $decryptedArray)
     {
-        $computopResponseTransfer = new ComputopAuthorizeResponseTransfer();
-        $computopResponseTransfer->fromArray($decryptedArray, true);
-        $computopResponseTransfer->setHeader(
+        $computopApiResponseTransfer = new ComputopApiAuthorizeResponseTransfer();
+        $computopApiResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->setHeader(
             $this->computopService->extractHeader($decryptedArray, $this->config->getAuthorizeMethodName())
         );
         //optional field
-        $computopResponseTransfer->setRefNr($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setRefNr($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
 
-        return $computopResponseTransfer;
+        return $computopApiResponseTransfer;
     }
 }

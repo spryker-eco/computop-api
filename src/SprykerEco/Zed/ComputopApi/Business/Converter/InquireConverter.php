@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
-use Generated\Shared\Transfer\ComputopInquireResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class InquireConverter extends AbstractConverter implements ConverterInterface
@@ -17,60 +17,60 @@ class InquireConverter extends AbstractConverter implements ConverterInterface
     /**
      * @param array $decryptedArray
      *
-     * @return \Generated\Shared\Transfer\ComputopInquireResponseTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer
      */
     protected function getResponseTransfer(array $decryptedArray)
     {
-        $responseTransfer = new ComputopInquireResponseTransfer();
-        $responseTransfer->fromArray($decryptedArray, true);
-        $responseTransfer->setHeader(
+        $computopApiResponseTransfer = new ComputopApiInquireResponseTransfer();
+        $computopApiResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->setHeader(
             $this->computopService->extractHeader($decryptedArray, $this->config->getInquireMethodName())
         );
-        $responseTransfer->setAmountAuth($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_AUTH));
-        $responseTransfer->setAmountCap($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CAP));
-        $responseTransfer->setAmountCred($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CRED));
-        $responseTransfer->setLastStatus($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::LAST_STATUS));
+        $computopApiResponseTransfer->setAmountAuth($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_AUTH));
+        $computopApiResponseTransfer->setAmountCap($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CAP));
+        $computopApiResponseTransfer->setAmountCred($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CRED));
+        $computopApiResponseTransfer->setLastStatus($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::LAST_STATUS));
         //set custom options
-        $responseTransfer->setIsAuthLast($this->isAuthLast($responseTransfer));
-        $responseTransfer->setIsCapLast($this->isCapLast($responseTransfer));
-        $responseTransfer->setIsCredLast($this->isCredLast($responseTransfer));
+        $computopApiResponseTransfer->setIsAuthLast($this->isAuthLast($computopApiResponseTransfer));
+        $computopApiResponseTransfer->setIsCapLast($this->isCapLast($computopApiResponseTransfer));
+        $computopApiResponseTransfer->setIsCredLast($this->isCredLast($computopApiResponseTransfer));
 
-        return $responseTransfer;
+        return $computopApiResponseTransfer;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ComputopInquireResponseTransfer $responseTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer $computopApiResponseTransfer
      *
      * @return bool
      */
-    protected function isAuthLast($responseTransfer)
+    protected function isAuthLast(ComputopApiInquireResponseTransfer $computopApiResponseTransfer)
     {
-        return $responseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCap() === self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCred() === self::EMPTY_AMOUNT;
+        return $computopApiResponseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCap() === self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCred() === self::EMPTY_AMOUNT;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ComputopInquireResponseTransfer $responseTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer $computopApiResponseTransfer
      *
      * @return bool
      */
-    protected function isCapLast($responseTransfer)
+    protected function isCapLast(ComputopApiInquireResponseTransfer $computopApiResponseTransfer)
     {
-        return $responseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCap() !== self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCred() === self::EMPTY_AMOUNT;
+        return $computopApiResponseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCap() !== self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCred() === self::EMPTY_AMOUNT;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ComputopInquireResponseTransfer $responseTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer $computopApiResponseTransfer
      *
      * @return bool
      */
-    protected function isCredLast($responseTransfer)
+    protected function isCredLast(ComputopApiInquireResponseTransfer $computopApiResponseTransfer)
     {
-        return $responseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCap() !== self::EMPTY_AMOUNT &&
-            $responseTransfer->getAmountCred() !== self::EMPTY_AMOUNT;
+        return $computopApiResponseTransfer->getAmountAuth() !== self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCap() !== self::EMPTY_AMOUNT &&
+            $computopApiResponseTransfer->getAmountCred() !== self::EMPTY_AMOUNT;
     }
 }

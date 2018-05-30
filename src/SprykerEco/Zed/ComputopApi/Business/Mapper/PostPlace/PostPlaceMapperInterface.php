@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace;
 
-use Generated\Shared\Transfer\ComputopHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface;
 
@@ -20,9 +20,9 @@ interface PostPlaceMapperInterface extends MapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return array
      */
-    public function buildRequest(OrderTransfer $orderTransfer, ComputopHeaderPaymentTransfer $computopHeaderPayment);
+    public function buildRequest(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment);
 }

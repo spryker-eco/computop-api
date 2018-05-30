@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow;
 
-use Generated\Shared\Transfer\ComputopPayNowPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\AbstractPostPlaceMapper;
@@ -25,10 +25,10 @@ abstract class AbstractPayNowMapper extends AbstractPostPlaceMapper
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return \Generated\Shared\Transfer\ComputopPayNowPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     protected function createPaymentTransfer(OrderTransfer $orderTransfer)
     {
-        return new ComputopPayNowPaymentTransfer();
+        return new ComputopApiRequestTransfer();
     }
 }

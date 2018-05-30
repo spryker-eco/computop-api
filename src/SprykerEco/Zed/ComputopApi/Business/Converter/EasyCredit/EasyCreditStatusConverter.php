@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Converter\EasyCredit;
 
-use Generated\Shared\Transfer\ComputopEasyCreditStatusResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use SprykerEco\Zed\ComputopApi\Business\Converter\AbstractConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 
@@ -18,21 +18,21 @@ class EasyCreditStatusConverter extends AbstractConverter implements ConverterIn
     /**
      * @param array $decryptedArray
      *
-     * @return \Generated\Shared\Transfer\ComputopEasyCreditStatusResponseTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer
      */
     protected function getResponseTransfer(array $decryptedArray)
     {
-        $computopResponseTransfer = new ComputopEasyCreditStatusResponseTransfer();
-        $computopResponseTransfer->setHeader(
+        $computopApiResponseTransfer = new ComputopApiEasyCreditStatusResponseTransfer();
+        $computopApiResponseTransfer->setHeader(
             $this->computopService->extractHeader($decryptedArray, $this->config->getReverseMethodName())
         );
-        $computopResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->fromArray($decryptedArray, true);
 
         //easy credit index mistake will be fixed in future
         if (isset($decryptedArray[static::DECISION_INDEX])) {
-            $computopResponseTransfer->setDecision($decryptedArray[static::DECISION_INDEX]);
+            $computopApiResponseTransfer->setDecision($decryptedArray[static::DECISION_INDEX]);
         }
 
-        return $computopResponseTransfer;
+        return $computopApiResponseTransfer;
     }
 }

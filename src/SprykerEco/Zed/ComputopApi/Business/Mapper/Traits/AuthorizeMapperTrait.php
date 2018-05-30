@@ -7,29 +7,29 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\Traits;
 
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 trait AuthorizeMapperTrait
 {
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(TransferInterface $computopPaymentTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
     {
-        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopPaymentTransfer->getPayId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopPaymentTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopPaymentTransfer->getReqId();
-        $dataSubArray[ComputopApiConfig::REF_NR] = $computopPaymentTransfer->getRefNr();
-        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopPaymentTransfer->getAmount();
-        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopPaymentTransfer->getCurrency();
-        $dataSubArray[ComputopApiConfig::CAPTURE] = $computopPaymentTransfer->getCapture();
-        $dataSubArray[ComputopApiConfig::MAC] = $computopPaymentTransfer->getMac();
-        $dataSubArray[ComputopApiConfig::ORDER_DESC] = $computopPaymentTransfer->getOrderDesc();
+        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
+        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
+        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopApiRequestTransfer->getReqId();
+        $dataSubArray[ComputopApiConfig::REF_NR] = $computopApiRequestTransfer->getRefNr();
+        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopApiRequestTransfer->getAmount();
+        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopApiRequestTransfer->getCurrency();
+        $dataSubArray[ComputopApiConfig::CAPTURE] = $computopApiRequestTransfer->getCapture();
+        $dataSubArray[ComputopApiConfig::MAC] = $computopApiRequestTransfer->getMac();
+        $dataSubArray[ComputopApiConfig::ORDER_DESC] = $computopApiRequestTransfer->getOrderDesc();
 
         return $dataSubArray;
     }

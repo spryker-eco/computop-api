@@ -18,14 +18,14 @@ class AuthorizeCreditCardMapper extends AbstractCreditCardMapper
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return \Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     protected function createPaymentTransfer(OrderTransfer $orderTransfer)
     {
-        $computopPaymentTransfer = parent::createPaymentTransfer($orderTransfer);
-        $computopPaymentTransfer->setCapture(ComputopApiConfig::CAPTURE_MANUAL_TYPE);
-        $computopPaymentTransfer->setOrderDesc($this->getOrderDesc($this->computopApiService, $orderTransfer));
+        $computopApiRequestTransfer = parent::createPaymentTransfer($orderTransfer);
+        $computopApiRequestTransfer->setCapture(ComputopApiConfig::CAPTURE_MANUAL_TYPE);
+        $computopApiRequestTransfer->setOrderDesc($this->getOrderDesc($this->computopApiService, $orderTransfer));
 
-        return $computopPaymentTransfer;
+        return $computopApiRequestTransfer;
     }
 }

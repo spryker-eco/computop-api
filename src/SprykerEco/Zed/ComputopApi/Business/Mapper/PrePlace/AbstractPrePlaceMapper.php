@@ -7,9 +7,10 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace;
 
+use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopHeaderPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
@@ -39,14 +40,14 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
     protected $queryContainer;
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    abstract public function getDataSubArray(TransferInterface $computopPaymentTransfer);
+    abstract public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer);
 
     /**
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     abstract protected function createPaymentTransfer();
 
@@ -70,13 +71,13 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return array
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopHeaderPayment)
+    public function buildRequest(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
     {
-        $encryptedArray = $this->getEncryptedArray($quoteTransfer, $computopHeaderPayment);
+        $encryptedArray = $this->getEncryptedArray($quoteTransfer, $computopApiHeaderPayment);
 
         $data = $encryptedArray[ComputopApiConstants::DATA];
         $length = $encryptedArray[ComputopApiConstants::LENGTH];
@@ -87,16 +88,16 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return array
      */
-    protected function getEncryptedArray(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopHeaderPayment)
+    protected function getEncryptedArray(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopApiHeaderPayment)
     {
-        $computopPaymentTransfer = $this->getComputopPaymentTransfer($quoteTransfer, $computopHeaderPayment);
+        $computopApiPaymentTransfer = $this->getComputopPaymentTransfer($quoteTransfer, $computopApiHeaderPayment);
 
         $encryptedArray = $this->computopApiService->getEncryptedArray(
-            $this->getDataSubArray($computopPaymentTransfer),
+            $this->getDataSubArray($computopApiPaymentTransfer),
             $this->config->getBlowfishPass()
         );
 
@@ -123,26 +124,26 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopApiHeaderPayment
      *
-     * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function getComputopPaymentTransfer(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopHeaderPayment)
+    protected function getComputopPaymentTransfer(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopApiHeaderPayment)
     {
-        $computopPaymentTransfer = $this->createPaymentTransfer();
-        $computopPaymentTransfer->fromArray($computopHeaderPayment->toArray(), true);
-        $computopPaymentTransfer->setMerchantId($this->config->getMerchantId());
-        $computopPaymentTransfer->setCurrency($this->store->getCurrencyIsoCode());
+        $computopApiPaymentTransfer = $this->createPaymentTransfer();
+        $computopApiPaymentTransfer->fromArray($computopApiHeaderPayment->toArray(), true);
+        $computopApiPaymentTransfer->setMerchantId($this->config->getMerchantId());
+        $computopApiPaymentTransfer->setCurrency($this->store->getCurrencyIsoCode());
 
-        $computopPaymentTransfer->setMac(
-            $this->computopApiService->getMacEncryptedValue($computopPaymentTransfer)
+        $computopApiPaymentTransfer->setMac(
+            $this->computopApiService->getMacEncryptedValue($computopApiPaymentTransfer)
         );
 
-        $paymentEntity = $this->getPaymentEntity($computopHeaderPayment->getTransId());
-        $computopPaymentTransfer->setReqId($paymentEntity->getReqId());
-        $computopPaymentTransfer->setRefNr($paymentEntity->getReference());
+        $paymentEntity = $this->getPaymentEntity($computopApiHeaderPayment->getTransId());
+        $computopApiPaymentTransfer->setReqId($paymentEntity->getReqId());
+        $computopApiPaymentTransfer->setRefNr($paymentEntity->getReference());
 
-        return $computopPaymentTransfer;
+        return $computopApiPaymentTransfer;
     }
 
     /**

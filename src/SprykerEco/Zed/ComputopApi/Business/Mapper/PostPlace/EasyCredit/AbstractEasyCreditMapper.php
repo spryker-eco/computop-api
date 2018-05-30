@@ -8,9 +8,8 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit;
 
 use DateTime;
-use Generated\Shared\Transfer\ComputopEasyCreditPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\AbstractPostPlaceMapper;
@@ -30,32 +29,31 @@ abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return \Generated\Shared\Transfer\ComputopEasyCreditPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     protected function createPaymentTransfer(OrderTransfer $orderTransfer)
     {
-        $computopEasyCreditTransfer = new ComputopEasyCreditPaymentTransfer();
+        $computopApiRequestTransfer = new ComputopApiRequestTransfer();
         $dateTime = new DateTime($orderTransfer->getCreatedAt());
-        $computopEasyCreditTransfer->setDate($dateTime->format(self::DATE_TIME_FORMAT));
+        $computopApiRequestTransfer->setDate($dateTime->format(self::DATE_TIME_FORMAT));
 
-        return $computopEasyCreditTransfer;
+        return $computopApiRequestTransfer;
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(TransferInterface $computopPaymentTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
     {
-        /** @var \Generated\Shared\Transfer\ComputopEasyCreditPaymentTransfer $computopPaymentTransfer */
-        $dataSubArray[ComputopApiConstants::PAY_ID] = $computopPaymentTransfer->getPayId();
-        $dataSubArray[ComputopApiConstants::TRANS_ID] = $computopPaymentTransfer->getTransId();
-        $dataSubArray[ComputopApiConstants::REQ_ID] = $computopPaymentTransfer->getReqId();
-        $dataSubArray[ComputopApiConstants::REF_NR] = $computopPaymentTransfer->getRefNr();
-        $dataSubArray[ComputopApiConstants::AMOUNT] = $computopPaymentTransfer->getAmount();
-        $dataSubArray[ComputopApiConstants::CURRENCY] = $computopPaymentTransfer->getCurrency();
-        $dataSubArray[ComputopApiConstants::MAC] = $computopPaymentTransfer->getMac();
+        $dataSubArray[ComputopApiConstants::PAY_ID] = $computopApiRequestTransfer->getPayId();
+        $dataSubArray[ComputopApiConstants::TRANS_ID] = $computopApiRequestTransfer->getTransId();
+        $dataSubArray[ComputopApiConstants::REQ_ID] = $computopApiRequestTransfer->getReqId();
+        $dataSubArray[ComputopApiConstants::REF_NR] = $computopApiRequestTransfer->getRefNr();
+        $dataSubArray[ComputopApiConstants::AMOUNT] = $computopApiRequestTransfer->getAmount();
+        $dataSubArray[ComputopApiConstants::CURRENCY] = $computopApiRequestTransfer->getCurrency();
+        $dataSubArray[ComputopApiConstants::MAC] = $computopApiRequestTransfer->getMac();
 
         return $dataSubArray;
     }

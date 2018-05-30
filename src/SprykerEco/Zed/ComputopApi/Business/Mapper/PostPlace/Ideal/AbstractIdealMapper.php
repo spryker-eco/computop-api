@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Ideal;
 
-use Generated\Shared\Transfer\ComputopIdealPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\AbstractPostPlaceMapper;
@@ -25,10 +25,10 @@ abstract class AbstractIdealMapper extends AbstractPostPlaceMapper
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
-     * @return \Generated\Shared\Transfer\ComputopIdealPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
     protected function createPaymentTransfer(OrderTransfer $orderTransfer)
     {
-        return new ComputopIdealPaymentTransfer();
+        return new ComputopApiRequestTransfer();
     }
 }

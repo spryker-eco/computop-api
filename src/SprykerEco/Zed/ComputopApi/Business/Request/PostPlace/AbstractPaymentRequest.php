@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Request\PostPlace;
 
-use Generated\Shared\Transfer\ComputopHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface;
@@ -52,15 +52,15 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(OrderTransfer $orderTransfer, ComputopHeaderPaymentTransfer $computopHeaderPayment)
+    public function request(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
     {
         $requestData = $this
             ->getMethodMapper($this->getPaymentMethodFromOrder($orderTransfer))
-            ->buildRequest($orderTransfer, $computopHeaderPayment);
+            ->buildRequest($orderTransfer, $computopApiHeaderPayment);
 
         return $this->sendRequest($requestData);
     }

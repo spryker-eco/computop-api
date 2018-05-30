@@ -7,21 +7,20 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit;
 
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class CaptureEasyCreditMapper extends AbstractEasyCreditMapper
 {
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(TransferInterface $computopPaymentTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
     {
-        /** @var \Generated\Shared\Transfer\ComputopEasyCreditPaymentTransfer $computopPaymentTransfer */
-        $dataSubArray = parent::getDataSubArray($computopPaymentTransfer);
-        $dataSubArray[ComputopApiConfig::DATE] = $computopPaymentTransfer->getDate();
+        $dataSubArray = parent::getDataSubArray($computopApiRequestTransfer);
+        $dataSubArray[ComputopApiConfig::DATE] = $computopApiRequestTransfer->getDate();
 
         return $dataSubArray;
     }

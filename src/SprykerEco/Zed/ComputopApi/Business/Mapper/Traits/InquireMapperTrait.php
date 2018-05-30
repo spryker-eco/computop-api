@@ -7,23 +7,23 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\Traits;
 
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 trait InquireMapperTrait
 {
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $computopPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(TransferInterface $computopPaymentTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
     {
-        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopPaymentTransfer->getPayId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopPaymentTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopPaymentTransfer->getReqId();
-        $dataSubArray[ComputopApiConfig::REF_NR] = $computopPaymentTransfer->getRefNr();
-        $dataSubArray[ComputopApiConfig::MAC] = $computopPaymentTransfer->getMac();
+        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
+        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
+        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopApiRequestTransfer->getReqId();
+        $dataSubArray[ComputopApiConfig::REF_NR] = $computopApiRequestTransfer->getRefNr();
+        $dataSubArray[ComputopApiConfig::MAC] = $computopApiRequestTransfer->getMac();
 
         return $dataSubArray;
     }

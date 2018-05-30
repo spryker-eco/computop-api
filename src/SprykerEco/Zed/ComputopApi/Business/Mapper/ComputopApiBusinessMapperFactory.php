@@ -32,7 +32,6 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\RefundPayPalMapp
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\ReversePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Sofort\RefundSofortMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit\StatusEasyCreditMapper;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\Init\PayNow\InitPayNowMapper;
 use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
 
 /**
@@ -359,19 +358,6 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     public function createStatusEasyCreditMapper()
     {
         return new StatusEasyCreditMapper(
-            $this->getComputopApiService(),
-            $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
-        );
-    }
-
-    /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\Init\PayNow\InitPayNowMapper
-     */
-    public function createInitPayNowMapper()
-    {
-        return new InitPayNowMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
             $this->getStore(),

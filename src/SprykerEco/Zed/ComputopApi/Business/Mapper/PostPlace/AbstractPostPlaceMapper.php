@@ -137,7 +137,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
         $computopPaymentTransfer->setCurrency($this->store->getCurrencyIsoCode());
 
         $computopPaymentTransfer->setMac(
-            $this->computopService->getMacEncryptedValue($computopPaymentTransfer)
+            $this->computopApiService->getMacEncryptedValue($computopPaymentTransfer)
         );
         $paymentEntity = $this->queryContainer
             ->queryPaymentByTransactionId($computopHeaderPayment->getTransId())

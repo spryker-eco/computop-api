@@ -35,14 +35,14 @@ trait AuthorizeMapperTrait
     }
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopService
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return string
      */
-    protected function getOrderDesc(ComputopApiServiceInterface $computopService, OrderTransfer $orderTransfer)
+    protected function getOrderDesc(ComputopApiServiceInterface $computopApiService, OrderTransfer $orderTransfer)
     {
-        return $computopService->getDescriptionValue(
+        return $computopApiService->getDescriptionValue(
             $orderTransfer->getItems()->getArrayCopy()
         );
     }

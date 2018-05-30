@@ -13,18 +13,15 @@ use SprykerEco\Zed\ComputopApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditAuthorizeAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditStatusAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\InquireAdapter;
-use SprykerEco\Zed\ComputopApi\Business\Adapter\PayNow\PayNowInitAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\RefundAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\ReverseAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\AuthorizeConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\CaptureConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\EasyCredit\EasyCreditStatusConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\InquireConverter;
-use SprykerEco\Zed\ComputopApi\Business\Converter\PayNow\PayNowInitConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\RefundConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ReverseConverter;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ComputopApiBusinessMapperFactory;
-use SprykerEco\Zed\ComputopApi\Business\Request\Init\PayNowInitRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\CaptureRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest;
@@ -171,18 +168,6 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\Init\InitRequestInterface
-     */
-    public function createPayNowInitRequest()
-    {
-        return new PayNowInitRequest(
-            $this->createPayNowInitApiAdapter(),
-            $this->createPayNowInitConverter(),
-            $this->createMapperFactory()->createInitPayNowMapper()
-        );
-    }
-
-    /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createEasyCreditAuthorizeRequest()
@@ -248,14 +233,6 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
-     */
-    public function createPayNowInitConverter()
-    {
-        return new PayNowInitConverter($this->getComputopApiService(), $this->getConfig());
-    }
-
-    /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
     protected function createAuthorizeAdapter()
@@ -309,13 +286,5 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     protected function createEasyCreditAuthorizeAdapter()
     {
         return new EasyCreditAuthorizeAdapter($this->getConfig());
-    }
-
-    /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
-     */
-    protected function createPayNowInitApiAdapter()
-    {
-        return new PayNowInitAdapter($this->getConfig());
     }
 }

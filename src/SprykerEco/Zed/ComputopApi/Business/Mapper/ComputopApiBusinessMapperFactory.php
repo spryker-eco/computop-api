@@ -36,7 +36,6 @@ use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
 
 /**
  * @method \SprykerEco\Zed\ComputopApi\ComputopApiConfig getConfig()
- * @method \SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface getQueryContainer()
  */
 class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implements ComputopApiBusinessMapperFactoryInterface
 {
@@ -48,8 +47,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new AuthorizeCreditCardMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -61,8 +59,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new ReverseCreditCardMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -74,8 +71,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new InquireCreditCardMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -87,8 +83,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CaptureCreditCardMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -100,8 +95,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundCreditCardMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -113,8 +107,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new AuthorizePayPalMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -126,8 +119,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new ReversePayPalMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -139,8 +131,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new InquirePayPalMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -152,8 +143,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CapturePayPalMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -165,8 +155,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundPayPalMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -178,8 +167,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new ReverseDirectDebitMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -191,8 +179,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new InquireDirectDebitMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -204,8 +191,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CaptureDirectDebitMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -217,8 +203,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundDirectDebitMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -230,8 +215,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundSofortMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -243,8 +227,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new ReversePaydirektMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -256,8 +239,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new InquirePaydirektMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -269,8 +251,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CapturePaydirektMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -282,8 +263,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundPaydirektMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -295,8 +275,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new AuthorizeEasyCreditMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -308,8 +287,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CaptureEasyCreditMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -321,8 +299,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundEasyCreditMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -334,8 +311,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CaptureIdealMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -347,8 +323,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new RefundIdealMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 
@@ -360,8 +335,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new StatusEasyCreditMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
-            $this->getStore(),
-            $this->getQueryContainer()
+            $this->getStore()
         );
     }
 }

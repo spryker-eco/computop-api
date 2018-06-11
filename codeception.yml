@@ -1,8 +1,8 @@
 namespace: Computop
 
 include:
-    - tests/SprykerEcoTest/Service/Computop
-    - tests/SprykerEcoTest/Zed/Computop
+    - tests/SprykerEcoTest/Service/ComputopApi
+    - tests/SprykerEcoTest/Zed/ComputopApi
 
 paths:
     tests: tests

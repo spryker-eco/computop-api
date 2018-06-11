@@ -35,7 +35,10 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
         $header->setMac($this->getResponseValue($decryptedArray, ComputopApiConstants::MAC));
         $header->setXId($this->getResponseValue($decryptedArray, ComputopApiConstants::X_ID));
 
-        $header->setIsSuccess($header->getStatus() === ComputopApiConfig::SUCCESS_STATUS);
+        $header->setIsSuccess(
+            $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
+            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS
+        );
         $header->setMethod($method);
 
         return $header;

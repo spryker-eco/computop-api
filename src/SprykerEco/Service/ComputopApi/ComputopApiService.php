@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Service\ComputopApi;
 
+use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\Kernel\AbstractService;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
@@ -29,6 +30,20 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     public function getDescriptionValue(array $items)
     {
         return $this->getFactory()->createComputopApiMapper()->getDescriptionValue($items);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param array $items
+     *
+     * @return string
+     */
+    public function getTestModeDescriptionValue(array $items)
+    {
+        return $this->getFactory()->createComputopApiMapper()->getTestModeDescriptionValue($items);
     }
 
     /**
@@ -196,5 +211,33 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     public function getBlowfishDecryptedValue($cipher, $length, $password)
     {
         return $this->getFactory()->createBlowfishHasher()->getBlowfishDecryptedValue($cipher, $length, $password);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer|\Spryker\Shared\Kernel\Transfer\TransferInterface $transfer
+     *
+     * @return string
+     */
+    public function generateReqId(TransferInterface $transfer)
+    {
+        return $this->getFactory()->createComputopApiMapper()->generateReqId($transfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return string
+     */
+    public function generateTransId(QuoteTransfer $quoteTransfer)
+    {
+        return $this->getFactory()->createComputopApiMapper()->generateTransId($quoteTransfer);
     }
 }

@@ -14,7 +14,6 @@ use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface;
-use SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface;
 
 abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
 {
@@ -34,11 +33,6 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
     protected $store;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface
-     */
-    protected $queryContainer;
-
-    /**
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
@@ -56,18 +50,15 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
      * @param \SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface $store
-     * @param \SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface $queryContainer
      */
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $config,
-        ComputopApiToStoreInterface $store,
-        ComputopApiQueryContainerInterface $queryContainer
+        ComputopApiToStoreInterface $store
     ) {
         $this->computopApiService = $computopApiService;
         $this->config = $config;
         $this->store = $store;
-        $this->queryContainer = $queryContainer;
     }
 
     /**
@@ -139,11 +130,8 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
         $computopApiRequestTransfer->setMac(
             $this->computopApiService->getMacEncryptedValue($computopApiRequestTransfer)
         );
-        $paymentEntity = $this->queryContainer
-            ->queryPaymentByTransactionId($computopApiHeaderPayment->getTransId())
-            ->findOne();
-        $computopApiRequestTransfer->setReqId($paymentEntity->getReqId());
-        $computopApiRequestTransfer->setRefNr($paymentEntity->getReference());
+        $computopApiRequestTransfer->setReqId($this->computopApiService->generateReqId($orderTransfer));
+        $computopApiRequestTransfer->setRefNr($orderTransfer->getOrderReference());
 
         return $computopApiRequestTransfer;
     }

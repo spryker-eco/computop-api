@@ -8,6 +8,7 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Spryker\Service\Kernel\AbstractServiceFactory;
+use Spryker\Service\UtilText\UtilTextService;
 use SprykerEco\Service\ComputopApi\Model\BlowfishHasher;
 use SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverter;
 use SprykerEco\Service\ComputopApi\Model\HmacHasher;
@@ -36,7 +37,18 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
      */
     public function createComputopApiMapper()
     {
-        return new ComputopApiMapper($this->getConfig());
+        return new ComputopApiMapper(
+            $this->getConfig(),
+            $this->createTextService()
+        );
+    }
+
+    /**
+     * @return \Spryker\Service\UtilText\UtilTextServiceInterface
+     */
+    public function createTextService()
+    {
+        return new UtilTextService();
     }
 
     /**

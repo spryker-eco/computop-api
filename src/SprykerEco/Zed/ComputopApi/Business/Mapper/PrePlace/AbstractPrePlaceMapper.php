@@ -9,13 +9,11 @@ namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
-use Generated\Shared\Transfer\ComputopHeaderPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface;
-use SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface;
 
 abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 {
@@ -35,11 +33,6 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
     protected $store;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface
-     */
-    protected $queryContainer;
-
-    /**
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
@@ -55,18 +48,15 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
      * @param \SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface $store
-     * @param \SprykerEco\Zed\ComputopApi\Persistence\ComputopApiQueryContainerInterface $queryContainer
      */
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $config,
-        ComputopApiToStoreInterface $store,
-        ComputopApiQueryContainerInterface $queryContainer
+        ComputopApiToStoreInterface $store
     ) {
         $this->computopApiService = $computopApiService;
         $this->config = $config;
         $this->store = $store;
-        $this->queryContainer = $queryContainer;
     }
 
     /**
@@ -88,11 +78,11 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopApiHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return array
      */
-    protected function getEncryptedArray(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopApiHeaderPayment)
+    protected function getEncryptedArray(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
     {
         $computopApiPaymentTransfer = $this->getComputopPaymentTransfer($quoteTransfer, $computopApiHeaderPayment);
 
@@ -124,11 +114,11 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer $computopApiHeaderPayment
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function getComputopPaymentTransfer(QuoteTransfer $quoteTransfer, ComputopHeaderPaymentTransfer $computopApiHeaderPayment)
+    protected function getComputopPaymentTransfer(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
     {
         $computopApiPaymentTransfer = $this->createPaymentTransfer();
         $computopApiPaymentTransfer->fromArray($computopApiHeaderPayment->toArray(), true);
@@ -139,20 +129,9 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
             $this->computopApiService->getMacEncryptedValue($computopApiPaymentTransfer)
         );
 
-        $paymentEntity = $this->getPaymentEntity($computopApiHeaderPayment->getTransId());
-        $computopApiPaymentTransfer->setReqId($paymentEntity->getReqId());
-        $computopApiPaymentTransfer->setRefNr($paymentEntity->getReference());
+        $computopApiPaymentTransfer->setReqId($this->computopApiService->generateReqId($quoteTransfer));
+        $computopApiPaymentTransfer->setRefNr($quoteTransfer->getOrderReference());
 
         return $computopApiPaymentTransfer;
-    }
-
-    /**
-     * @param $transactionId
-     *
-     * @return \Orm\Zed\Computop\Persistence\SpyPaymentComputop
-     */
-    protected function getPaymentEntity($transactionId)
-    {
-        return $this->queryContainer->queryPaymentByTransactionId($transactionId)->findOne();
     }
 }

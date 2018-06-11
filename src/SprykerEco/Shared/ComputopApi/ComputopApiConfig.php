@@ -22,5 +22,6 @@ class ComputopApiConfig extends AbstractBundleConfig
 
     //Computop provider constants
     const CAPTURE_MANUAL_TYPE = 'MANUAL';
-    const SUCCESS_STATUS = 'OK';
+    const SUCCESS_STATUS = 'success';
+    const SUCCESS_OK_STATUS = 'OK';
 }

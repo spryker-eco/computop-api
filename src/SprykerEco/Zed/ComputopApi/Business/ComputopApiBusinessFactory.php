@@ -177,9 +177,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
             $this->createAuthorizeConverter()
         );
 
-        $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeCreditCardMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeEasyCreditMapper());
-        $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizePayPalMapper());
 
         return $paymentRequest;
     }

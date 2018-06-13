@@ -57,7 +57,7 @@ interface ComputopApiServiceInterface
      * @param array $decryptedArray
      * @param string $method
      *
-     * @return \Generated\Shared\Transfer\ComputopResponseHeaderTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
     public function extractHeader(array $decryptedArray, $method);
 

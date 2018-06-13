@@ -69,11 +69,10 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      * @param array $decryptedArray
      * @param string $method
      *
-     * @return \Generated\Shared\Transfer\ComputopResponseHeaderTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
     public function extractHeader(array $decryptedArray, $method)
     {
-        /** @var \Generated\Shared\Transfer\ComputopResponseHeaderTransfer $header */
         $header = $this->getFactory()->createComputopApiConverter()->extractHeader($decryptedArray, $method);
 
         $expectedMac = $this->getHashValue(

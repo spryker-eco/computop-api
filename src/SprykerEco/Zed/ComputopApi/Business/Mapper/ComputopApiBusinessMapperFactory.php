@@ -25,6 +25,11 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\CapturePaydir
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\InquirePaydirektMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\RefundPaydirektMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\ReversePaydirektMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\AuthorizePayNowMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\CapturePayNowMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\InquirePayNowMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\RefundPayNowMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\ReversePayNowMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\AuthorizePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\CapturePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\InquirePayPalMapper;
@@ -93,6 +98,66 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     public function createRefundCreditCardMapper()
     {
         return new RefundCreditCardMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createAuthorizePayNowMapper()
+    {
+        return new AuthorizePayNowMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createReversePayNowMapper()
+    {
+        return new ReversePayNowMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createInquirePayNowMapper()
+    {
+        return new InquirePayNowMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createCapturePayNowMapper()
+    {
+        return new CapturePayNowMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStore()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createRefundPayNowMapper()
+    {
+        return new RefundPayNowMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
             $this->getStore()

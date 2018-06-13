@@ -37,6 +37,31 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
+    public function createAuthorizePayNowMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createReversePayNowMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createInquirePayNowMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createCapturePayNowMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createRefundPayNowMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
     public function createAuthorizePayPalMapper();
 
     /**

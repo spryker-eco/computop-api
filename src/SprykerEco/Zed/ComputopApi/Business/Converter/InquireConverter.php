@@ -24,12 +24,12 @@ class InquireConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiInquireResponseTransfer();
         $computopApiResponseTransfer->fromArray($decryptedArray, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopService->extractHeader($decryptedArray, $this->config->getInquireMethodName())
+            $this->computopApiService->extractHeader($decryptedArray, $this->config->getInquireMethodName())
         );
-        $computopApiResponseTransfer->setAmountAuth($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_AUTH));
-        $computopApiResponseTransfer->setAmountCap($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CAP));
-        $computopApiResponseTransfer->setAmountCred($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CRED));
-        $computopApiResponseTransfer->setLastStatus($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::LAST_STATUS));
+        $computopApiResponseTransfer->setAmountAuth($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_AUTH));
+        $computopApiResponseTransfer->setAmountCap($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CAP));
+        $computopApiResponseTransfer->setAmountCred($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT_CRED));
+        $computopApiResponseTransfer->setLastStatus($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::LAST_STATUS));
         //set custom options
         $computopApiResponseTransfer->setIsAuthLast($this->isAuthLast($computopApiResponseTransfer));
         $computopApiResponseTransfer->setIsCapLast($this->isCapLast($computopApiResponseTransfer));

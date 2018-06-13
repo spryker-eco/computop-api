@@ -42,7 +42,7 @@ trait AuthorizeMapperTrait
      */
     protected function getOrderDesc(ComputopApiServiceInterface $computopApiService, OrderTransfer $orderTransfer)
     {
-        return $computopApiService->getDescriptionValue(
+        return $computopApiService->getTestModeDescriptionValue(
             $orderTransfer->getItems()->getArrayCopy()
         );
     }

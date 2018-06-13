@@ -72,6 +72,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeCreditCardMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeEasyCreditMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizePayPalMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizePayNowMapper());
 
         return $paymentRequest;
     }
@@ -90,6 +91,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePayPalMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquireDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePaydirektMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePayNowMapper());
 
         return $paymentRequest;
     }
@@ -108,6 +110,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayPalMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReverseDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePaydirektMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayNowMapper());
 
         return $paymentRequest;
     }
@@ -128,6 +131,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureEasyCreditMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureIdealMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePayNowMapper());
 
         return $paymentRequest;
     }
@@ -149,6 +153,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundEasyCreditMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundIdealMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPayNowMapper());
 
         return $paymentRequest;
     }

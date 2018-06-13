@@ -16,7 +16,7 @@ abstract class AbstractConverter implements ConverterInterface
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface
      */
-    protected $computopService;
+    protected $computopApiService;
 
     /**
      * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
@@ -31,12 +31,12 @@ abstract class AbstractConverter implements ConverterInterface
     abstract protected function getResponseTransfer(array $decryptedArray);
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopService
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
      */
-    public function __construct(ComputopApiServiceInterface $computopService, ComputopApiConfig $config)
+    public function __construct(ComputopApiServiceInterface $computopApiService, ComputopApiConfig $config)
     {
-        $this->computopService = $computopService;
+        $this->computopApiService = $computopApiService;
         $this->config = $config;
     }
 
@@ -62,7 +62,7 @@ abstract class AbstractConverter implements ConverterInterface
         parse_str($response->getContents(), $responseArray);
 
         $decryptedArray = $this
-            ->computopService
+            ->computopApiService
             ->getDecryptedArray($responseArray, $this->config->getBlowfishPass());
 
         return $decryptedArray;

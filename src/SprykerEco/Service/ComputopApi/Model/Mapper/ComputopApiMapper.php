@@ -7,8 +7,9 @@
 
 namespace SprykerEco\Service\ComputopApi\Model\Mapper;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Service\UtilText\Model\Hash;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiConfigInterface;
@@ -60,11 +61,11 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ComputopResponseHeaderTransfer $header
+     * @param \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header
      *
      * @return string
      */
-    public function getMacResponseEncryptedValue(ComputopResponseHeaderTransfer $header)
+    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header)
     {
         $macDataArray = [
             $header->requirePayId()->getPayId(),

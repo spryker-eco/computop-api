@@ -21,14 +21,14 @@ class ReverseConverter extends AbstractConverter implements ConverterInterface
     {
         $computopApiResponseTransfer = new ComputopApiReverseResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopService->extractHeader($decryptedArray, $this->config->getReverseMethodName())
+            $this->computopApiService->extractHeader($decryptedArray, $this->config->getReverseMethodName())
         );
         //optional fields
-        $computopApiResponseTransfer->setAId($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
-        $computopApiResponseTransfer->setTransactionId($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
-        $computopApiResponseTransfer->setCodeExt($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
-        $computopApiResponseTransfer->setErrorText($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
-        $computopApiResponseTransfer->setRefNr($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
+        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
+        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
+        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

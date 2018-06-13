@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Service\ComputopApi\Model\Converter;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
 use SprykerEco\Service\ComputopApi\Model\AbstractComputopApi;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
@@ -19,14 +19,14 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      * @param array $decryptedArray
      * @param string $method
      *
-     * @return \Generated\Shared\Transfer\ComputopResponseHeaderTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
     public function extractHeader(array $decryptedArray, $method)
     {
         $decryptedArray = $this->formatResponseArray($decryptedArray);
         $this->checkDecryptedResponse($decryptedArray);
 
-        $header = new ComputopResponseHeaderTransfer();
+        $header = new ComputopApiResponseHeaderTransfer();
         $header->fromArray($decryptedArray, true);
         $header->setMId($this->getResponseValue($decryptedArray, ComputopApiConstants::MERCHANT_ID_SHORT));
         $header->setTransId($this->getResponseValue($decryptedArray, ComputopApiConstants::TRANS_ID));

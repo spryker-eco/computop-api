@@ -7,7 +7,7 @@
 
 namespace SprykerEco\Service\ComputopApi\Model\Mapper;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -21,11 +21,11 @@ interface ComputopApiMapperInterface
     public function getMacEncryptedValue(TransferInterface $cardPaymentTransfer);
 
     /**
-     * @param \Generated\Shared\Transfer\ComputopResponseHeaderTransfer $header
+     * @param \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header
      *
      * @return string
      */
-    public function getMacResponseEncryptedValue(ComputopResponseHeaderTransfer $header);
+    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header);
 
     /**
      * @param array $dataSubArray

@@ -22,10 +22,10 @@ class AuthorizeConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiAuthorizeResponseTransfer();
         $computopApiResponseTransfer->fromArray($decryptedArray, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopService->extractHeader($decryptedArray, $this->config->getAuthorizeMethodName())
+            $this->computopApiService->extractHeader($decryptedArray, $this->config->getAuthorizeMethodName())
         );
         //optional field
-        $computopApiResponseTransfer->setRefNr($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

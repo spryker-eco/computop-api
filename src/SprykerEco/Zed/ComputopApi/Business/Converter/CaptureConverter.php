@@ -22,15 +22,15 @@ class CaptureConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiCaptureResponseTransfer();
         $computopApiResponseTransfer->fromArray($decryptedArray, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopService->extractHeader($decryptedArray, $this->config->getCaptureMethodName())
+            $this->computopApiService->extractHeader($decryptedArray, $this->config->getCaptureMethodName())
         );
         //optional fields
-        $computopApiResponseTransfer->setAId($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
-        $computopApiResponseTransfer->setTransactionId($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
-        $computopApiResponseTransfer->setAmount($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT));
-        $computopApiResponseTransfer->setCodeExt($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
-        $computopApiResponseTransfer->setErrorText($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
-        $computopApiResponseTransfer->setRefNr($this->computopService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
+        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
+        $computopApiResponseTransfer->setAmount($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT));
+        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
+        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

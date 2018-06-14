@@ -15,10 +15,10 @@ coverage:
 suites:
     Zed:
         path: .
-        class_name: ComputopZedTester
+        class_name: ComputopApiZedTester
         modules:
             enabled:
                 - Asserts
-                - \SprykerEcoTest\Zed\Computop\Module\EnvironmentModule
-                - \SprykerEcoTest\Zed\Computop\Module\FunctionalModule
+                - \SprykerEcoTest\Zed\ComputopApi\Module\EnvironmentModule
+                - \SprykerEcoTest\Zed\ComputopApi\Module\FunctionalModule
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper

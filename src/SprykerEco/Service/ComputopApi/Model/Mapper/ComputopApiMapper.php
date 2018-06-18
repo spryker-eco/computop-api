@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Service\ComputopApi\Model\Mapper;
 
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
@@ -43,18 +44,18 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
     }
 
     /**
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $cardPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $requestTransfer
      *
      * @return string
      */
-    public function getMacEncryptedValue(TransferInterface $cardPaymentTransfer)
+    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer)
     {
         $macDataArray = [
-            $cardPaymentTransfer->getPayId(),
-            $cardPaymentTransfer->requireTransId()->getTransId(),
-            $cardPaymentTransfer->requireMerchantId()->getMerchantId(),
-            $cardPaymentTransfer->requireAmount()->getAmount(),
-            $cardPaymentTransfer->requireCurrency()->getCurrency(),
+            $requestTransfer->getPayId(),
+            $requestTransfer->requireTransId()->getTransId(),
+            $requestTransfer->requireMerchantId()->getMerchantId(),
+            $requestTransfer->requireAmount()->getAmount(),
+            $requestTransfer->requireCurrency()->getCurrency(),
         ];
 
         return implode(self::MAC_SEPARATOR, $macDataArray);

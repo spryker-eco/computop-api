@@ -8,6 +8,7 @@
 namespace SprykerEcoTest\Service\ComputopApi\Mapper;
 
 use Codeception\TestCase\Test;
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer;
 
@@ -23,11 +24,11 @@ use Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer;
 class ComputopApiMapperTestHelper extends Test
 {
     /**
-     * @return \Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    public function createComputopPaymentTransfer()
+    public function createComputopApiRequestTransfer()
     {
-        $cardPaymentTransfer = new ComputopCreditCardPaymentTransfer();
+        $cardPaymentTransfer = new ComputopApiRequestTransfer();
 
         $cardPaymentTransfer
             ->setPayId(ComputopApiMapperTestConstants::PAY_ID_VALUE)

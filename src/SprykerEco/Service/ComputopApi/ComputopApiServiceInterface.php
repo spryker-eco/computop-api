@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Service\ComputopApi;
 
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -42,11 +43,11 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $cardPaymentTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $requestTransfer
      *
      * @return string
      */
-    public function getMacEncryptedValue(TransferInterface $cardPaymentTransfer);
+    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer);
 
     /**
      * Specification:

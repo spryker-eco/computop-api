@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
-
 interface MapperInterface
 {
 }

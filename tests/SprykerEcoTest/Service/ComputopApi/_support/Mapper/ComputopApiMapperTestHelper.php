@@ -8,8 +8,8 @@
 namespace SprykerEcoTest\Service\ComputopApi\Mapper;
 
 use Codeception\TestCase\Test;
-use Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\ComputopCreditCardPaymentTransfer;
 
 /**
  * @group Unit

@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
+use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\AuthorizeCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\CaptureCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\InquireCreditCardMapper;
@@ -37,7 +38,6 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\RefundPayPalMapp
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\ReversePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Sofort\RefundSofortMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit\StatusEasyCreditMapper;
-use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
 
 /**
  * @method \SprykerEco\Zed\ComputopApi\ComputopApiConfig getConfig()

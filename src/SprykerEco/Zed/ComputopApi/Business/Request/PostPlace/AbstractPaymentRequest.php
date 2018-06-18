@@ -12,9 +12,9 @@ use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 use SprykerEco\Zed\ComputopApi\Business\Exception\ComputopApiMethodMapperException;
 use SprykerEco\Zed\ComputopApi\Business\Exception\PaymentMethodNotSetException;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
 {

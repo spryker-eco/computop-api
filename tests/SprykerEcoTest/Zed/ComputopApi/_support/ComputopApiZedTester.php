@@ -25,7 +25,7 @@ use Codeception\Scenario;
  *
  * @SuppressWarnings(PHPMD)
  */
-class ComputopZedTester extends Actor
+class ComputopApiZedTester extends Actor
 {
     use _generated\ComputopApiZedTesterActions;
 

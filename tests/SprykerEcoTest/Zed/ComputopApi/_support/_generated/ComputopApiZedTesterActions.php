@@ -6,8 +6,8 @@ namespace SprykerEcoTest\Zed\ComputopApi\_generated;
 // @codingStandardsIgnoreFile
 
 use Codeception\Module\Asserts;
-use SprykerEcoTest\Zed\Computop\Module\EnvironmentModule;
-use SprykerEcoTest\Zed\Computop\Module\FunctionalModule;
+use SprykerEcoTest\Zed\ComputopApi\Module\EnvironmentModule;
+use SprykerEcoTest\Zed\ComputopApi\Module\FunctionalModule;
 use SprykerTest\Shared\Testify\Helper\ConfigHelper;
 
 trait ComputopApiZedTesterActions

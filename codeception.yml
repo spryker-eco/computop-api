@@ -2,6 +2,7 @@ namespace: ComputopApi
 
 include:
     - tests/SprykerEcoTest/Service/ComputopApi
+    - tests/SprykerEcoTest/Zed/ComputopApi
 
 paths:
     tests: tests

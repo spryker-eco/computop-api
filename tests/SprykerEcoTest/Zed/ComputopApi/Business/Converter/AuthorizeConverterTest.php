@@ -5,17 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
-use SprykerEco\Zed\Computop\Business\Api\Converter\AuthorizeConverter;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\Business\Converter\AuthorizeConverter;
 
 /**
  * @group Unit
  * @group SprykerEco
  * @group Zed
- * @group Computop
+ * @group ComputopApi
  * @group Api
  * @group Converter
  * @group AuthorizeConverterTest
@@ -30,20 +30,20 @@ class AuthorizeConverterTest extends AbstractConverterTest
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
 
-        /** @var \Generated\Shared\Transfer\ComputopAuthorizeResponseTransfer $responseTransfer */
+        /** @var \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer $responseTransfer */
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
-        $this->assertInstanceOf(ComputopResponseHeaderTransfer::class, $responseTransfer->getHeader());
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
         $this->assertEquals(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
     }
 
     /**
-     * @return \SprykerEco\Zed\Computop\Business\Api\Converter\AuthorizeConverter
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\AuthorizeConverter
      */
     protected function createConverter()
     {
-        $computopServiceMock = $this->helper->createComputopServiceMock($this->getDecryptedArray());
-        $configMock = $this->helper->createComputopConfigMock();
+        $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
+        $configMock = $this->helper->createComputopApiConfigMock();
 
         $converter = new AuthorizeConverter($computopServiceMock, $configMock);
 

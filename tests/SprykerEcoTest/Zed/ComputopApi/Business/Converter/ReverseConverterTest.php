@@ -5,17 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
-use SprykerEco\Zed\Computop\Business\Api\Converter\RefundConverter;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\Business\Converter\RefundConverter;
 
 /**
  * @group Unit
  * @group SprykerEco
  * @group Zed
- * @group Computop
+ * @group ComputopApi
  * @group Api
  * @group Converter
  * @group ReverseConverterTest
@@ -30,10 +30,10 @@ class ReverseConverterTest extends AbstractConverterTest
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
 
-        /** @var \Generated\Shared\Transfer\ComputopReverseResponseTransfer $responseTransfer */
+        /** @var \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer $responseTransfer */
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
-        $this->assertInstanceOf(ComputopResponseHeaderTransfer::class, $responseTransfer->getHeader());
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
         $this->assertEquals(ConverterTestConstants::A_ID_VALUE, $responseTransfer->getAId());
         $this->assertEquals(ConverterTestConstants::TRANSACTION_ID_VALUE, $responseTransfer->getTransactionId());
         $this->assertEquals(ConverterTestConstants::CODE_EXT_VALUE, $responseTransfer->getCodeExt());
@@ -42,12 +42,12 @@ class ReverseConverterTest extends AbstractConverterTest
     }
 
     /**
-     * @return \SprykerEco\Zed\Computop\Business\Api\Converter\RefundConverter
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\RefundConverter
      */
     protected function createConverter()
     {
-        $computopServiceMock = $this->helper->createComputopServiceMock($this->getDecryptedArray());
-        $configMock = $this->helper->createComputopConfigMock();
+        $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
+        $configMock = $this->helper->createComputopApiConfigMock();
 
         $converter = new RefundConverter($computopServiceMock, $configMock);
 

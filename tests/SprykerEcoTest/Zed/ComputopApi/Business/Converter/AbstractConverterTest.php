@@ -5,19 +5,19 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 
 use Codeception\TestCase\Test;
 
 abstract class AbstractConverterTest extends Test
 {
     /**
-     * @var \SprykerEcoTest\Zed\Computop\Business\Api\Converter\ConverterTestHelper
+     * @var \SprykerEcoTest\Zed\ComputopApi\Business\Converter\ConverterTestHelper
      */
     protected $helper;
 
     /**
-     * @param \SprykerEcoTest\Zed\Computop\Business\Api\Converter\ConverterTestHelper $helper
+     * @param \SprykerEcoTest\Zed\ComputopApi\Business\Converter\ConverterTestHelper $helper
      *
      * @return void
      */

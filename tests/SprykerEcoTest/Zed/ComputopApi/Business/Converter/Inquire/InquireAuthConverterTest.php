@@ -5,17 +5,17 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter\Inquire;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter\Inquire;
 
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
-use SprykerEcoTest\Zed\Computop\Business\Api\Converter\ConverterTestConstants;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEcoTest\Zed\ComputopApi\Business\Converter\ConverterTestConstants;
 
 /**
  * @group Unit
  * @group SprykerEco
  * @group Zed
- * @group Computop
+ * @group ComputopApi
  * @group Api
  * @group Converter
  * @group InquireAuthConverterTest
@@ -30,10 +30,10 @@ class InquireAuthConverterTest extends AbstractInquireConverterTest
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
 
-        /** @var \Generated\Shared\Transfer\ComputopInquireResponseTransfer $responseTransfer */
+        /** @var \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer $responseTransfer */
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
-        $this->assertInstanceOf(ComputopResponseHeaderTransfer::class, $responseTransfer->getHeader());
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
 //        $this->assertTrue($responseTransfer->getIsAuthLast());//ToDo:add if need
     }
 

@@ -5,15 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Mapper\CreditCard;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard;
 
-use SprykerEco\Zed\Computop\Business\Api\Mapper\PostPlace\CreditCard\InquireCreditCardMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\InquireCreditCardMapper;
 
 /**
  * @group Unit
  * @group SprykerEco
  * @group Zed
- * @group Computop
+ * @group ComputopApi
  * @group Api
  * @group Mapper
  * @group InquireCreditCardMapperTest
@@ -21,15 +21,14 @@ use SprykerEco\Zed\Computop\Business\Api\Mapper\PostPlace\CreditCard\InquireCred
 class InquireCreditCardMapperTest extends AbstractCreditCardMapperTest
 {
     /**
-     * @return \SprykerEco\Zed\Computop\Business\Api\Mapper\PostPlace\ApiPostPlaceMapperInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
     protected function createMapper()
     {
         return new InquireCreditCardMapper(
-            $this->helper->createComputopServiceMock(),
-            $this->helper->createComputopConfigMock(),
-            $this->helper->createStoreMock(),
-            $this->helper->createQueryContainerMock()
+            $this->helper->createComputopApiServiceMock(),
+            $this->helper->createComputopApiConfigMock(),
+            $this->helper->createStoreMock()
         );
     }
 }

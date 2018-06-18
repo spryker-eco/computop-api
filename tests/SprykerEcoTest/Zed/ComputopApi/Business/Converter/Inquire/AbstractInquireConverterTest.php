@@ -5,10 +5,10 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter\Inquire;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter\Inquire;
 
-use SprykerEco\Zed\Computop\Business\Api\Converter\InquireConverter;
-use SprykerEcoTest\Zed\Computop\Business\Api\Converter\AbstractConverterTest;
+use SprykerEco\Zed\ComputopApi\Business\Converter\InquireConverter;
+use SprykerEcoTest\Zed\ComputopApi\Business\Converter\AbstractConverterTest;
 
 abstract class AbstractInquireConverterTest extends AbstractConverterTest
 {
@@ -18,12 +18,12 @@ abstract class AbstractInquireConverterTest extends AbstractConverterTest
     abstract protected function getDecryptedArray();
 
     /**
-     * @return \SprykerEco\Zed\Computop\Business\Api\Converter\InquireConverter
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\InquireConverter
      */
     protected function createConverter()
     {
-        $computopServiceMock = $this->helper->createComputopServiceMock($this->getDecryptedArray());
-        $configMock = $this->helper->createComputopConfigMock();
+        $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
+        $configMock = $this->helper->createComputopApiConfigMock();
 
         $converter = new InquireConverter($computopServiceMock, $configMock);
 

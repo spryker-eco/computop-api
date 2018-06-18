@@ -5,25 +5,25 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Mapper\CreditCard;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard;
 
 use Codeception\TestCase\Test;
-use Generated\Shared\Transfer\ComputopHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use Orm\Zed\Computop\Persistence\SpyPaymentComputop;
 use Orm\Zed\Computop\Persistence\SpyPaymentComputopQuery;
-use SprykerEco\Service\Computop\ComputopService;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
-use SprykerEco\Zed\Computop\ComputopConfig;
-use SprykerEco\Zed\Computop\Dependency\ComputopToStoreBridge;
+use SprykerEco\Service\ComputopApi\ComputopApiService;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
+use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge;
 use SprykerEco\Zed\Computop\Persistence\ComputopQueryContainer;
 
 class CreditCardMapperTestHelper extends Test
 {
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\Generated\Shared\Transfer\OrderTransfer
      */
     public function createOrderTransferMock()
     {
@@ -58,12 +58,12 @@ class CreditCardMapperTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    public function createComputopConfigMock()
+    public function createComputopApiConfigMock()
     {
         $configMock = $this->createPartialMock(
-            ComputopConfig::class,
+            ComputopApiConfig::class,
             ['getBlowfishPass']
         );
 
@@ -71,17 +71,17 @@ class CreditCardMapperTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    public function createComputopServiceMock()
+    public function createComputopApiServiceMock()
     {
         $encryptedArray = [
-            ComputopApiConfig::LENGTH => CreditCardMapperTestConstants::LENGTH_VALUE,
-            ComputopApiConfig::DATA => CreditCardMapperTestConstants::DATA_VALUE,
+            ComputopApiSharedConfig::LENGTH => CreditCardMapperTestConstants::LENGTH_VALUE,
+            ComputopApiSharedConfig::DATA => CreditCardMapperTestConstants::DATA_VALUE,
         ];
 
         $computopServiceMock = $this->createPartialMock(
-            ComputopService::class,
+            ComputopApiService::class,
             [
                 'getMacEncryptedValue',
                 'getEncryptedArray',
@@ -114,11 +114,11 @@ class CreditCardMapperTestHelper extends Test
      * @param string $payId
      * @param string $transId
      *
-     * @return \Generated\Shared\Transfer\ComputopHeaderPaymentTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopHeaderPaymentTransfer($payId = '', $transId = '')
+    public function createComputopApiHeaderPaymentTransfer($payId = '', $transId = '')
     {
-        $headerPayment = new ComputopHeaderPaymentTransfer();
+        $headerPayment = new ComputopApiHeaderPaymentTransfer();
         $headerPayment->setAmount(100);
         $headerPayment->setPayId($payId);
         $headerPayment->setTransId($transId);
@@ -127,12 +127,12 @@ class CreditCardMapperTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge
      */
     public function createStoreMock()
     {
         $storeMock = $this->createPartialMock(
-            ComputopToStoreBridge::class,
+            ComputopApiToStoreBridge::class,
             ['getCurrencyIsoCode']
         );
 
@@ -140,33 +140,5 @@ class CreditCardMapperTestHelper extends Test
             ->willReturn('EUR');
 
         return $storeMock;
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    public function createQueryContainerMock()
-    {
-        $entity = new SpyPaymentComputop();
-        $entity->setReqId('d3rf4iuhi2hiuhiufhiauhfiuaghfig23');
-        $entity->setReference('DE--1');
-
-        $queryMock = $this->createPartialMock(
-            SpyPaymentComputopQuery::class,
-            ['findOne']
-        );
-
-        $queryMock->method('findOne')
-            ->willReturn($entity);
-
-        $queryContainerMock = $this->createPartialMock(
-            ComputopQueryContainer::class,
-            ['queryPaymentByTransactionId']
-        );
-
-        $queryContainerMock->method('queryPaymentByTransactionId')
-            ->willReturn($queryMock);
-
-        return $queryContainerMock;
     }
 }

@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop;
+namespace SprykerEcoTest\Zed\ComputopApi;
 
 use Codeception\Actor;
 use Codeception\Scenario;
@@ -27,7 +27,7 @@ use Codeception\Scenario;
  */
 class ComputopZedTester extends Actor
 {
-    use _generated\ComputopZedTesterActions;
+    use _generated\ComputopApiZedTesterActions;
 
     /**
      * @param \Codeception\Scenario $scenario

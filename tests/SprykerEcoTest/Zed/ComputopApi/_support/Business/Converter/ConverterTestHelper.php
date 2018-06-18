@@ -5,15 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Zed\Computop\Business\Api\Converter;
+namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 
 use Codeception\TestCase\Test;
-use Generated\Shared\Transfer\ComputopResponseHeaderTransfer;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
-use SprykerEco\Service\Computop\ComputopService;
-use SprykerEco\Shared\Computop\ComputopConfig as ComputopSharedConfig;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
-use SprykerEco\Zed\Computop\ComputopConfig;
+use SprykerEco\Service\ComputopApi\ComputopApiService;
+use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\ComputopApiConfig as ComputopApiZedConfig;
 
 class ConverterTestHelper extends Test
 {
@@ -31,12 +31,12 @@ class ConverterTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    public function createComputopConfigMock()
+    public function createComputopApiConfigMock()
     {
         $configMock = $this->createPartialMock(
-            ComputopConfig::class,
+            ComputopApiZedConfig::class,
             ['getBlowfishPass']
         );
 
@@ -64,12 +64,12 @@ class ConverterTestHelper extends Test
     /**
      * @param array $decryptedArray
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    public function createComputopServiceMock(array $decryptedArray)
+    public function createComputopApiServiceMock(array $decryptedArray)
     {
         $computopServiceMock = $this->createPartialMock(
-            ComputopService::class,
+            ComputopApiService::class,
             ['getDecryptedArray', 'extractHeader', 'getResponseValue']
         );
         $computopServiceMock->method('getDecryptedArray')
@@ -87,20 +87,20 @@ class ConverterTestHelper extends Test
     /**
      * @param array $decryptedArray
      *
-     * @return \Generated\Shared\Transfer\ComputopResponseHeaderTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
     protected function getHeaderResponseTransfer(array $decryptedArray)
     {
         $method = self::AUTHORIZE_METHOD;
 
-        $header = new ComputopResponseHeaderTransfer();
+        $header = new ComputopApiResponseHeaderTransfer();
         $header->fromArray($decryptedArray, true);
 
         //different naming style
         $header->setMId($decryptedArray[ComputopApiConfig::MERCHANT_ID_SHORT]);
         $header->setTransId($decryptedArray[ComputopApiConfig::TRANS_ID]);
         $header->setPayId($decryptedArray[ComputopApiConfig::PAY_ID]);
-        $header->setIsSuccess($header->getStatus() === ComputopSharedConfig::SUCCESS_STATUS);
+        $header->setIsSuccess($header->getStatus() === ComputopApiSharedConfig::SUCCESS_STATUS);
         $header->setMethod($method);
         $header->setXId($decryptedArray[ComputopApiConfig::X_ID]);
 

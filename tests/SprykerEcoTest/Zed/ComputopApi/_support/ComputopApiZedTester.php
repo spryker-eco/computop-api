@@ -45,9 +45,9 @@ class ComputopApiZedTester extends Actor
      */
     public function setUpConfig()
     {
-        $this->setConfig('COMPUTOP_API:MERCHANT_ID', 'COMPUTOP_API:MERCHANT_ID');
-        $this->setConfig('COMPUTOP_API:HMAC_PASSWORD', 'COMPUTOP_API:HMAC_PASSWORD');
-        $this->setConfig('COMPUTOP_API:BLOWFISH_PASSWORD', 'COMPUTOP_API:BLOWFISH_PASSWORD');
-        $this->setConfig('COMPUTOP_API:RESPONSE_MAC_REQUIRED', ['INIT']);
+        $this->setConfig('COMPUTOPAPI:MERCHANT_ID', 'COMPUTOPAPI:MERCHANT_ID');
+        $this->setConfig('COMPUTOPAPI:HMAC_PASSWORD', 'COMPUTOPAPI:HMAC_PASSWORD');
+        $this->setConfig('COMPUTOPAPI:BLOWFISH_PASSWORD', 'COMPUTOPAPI:BLOWFISH_PASSWORD');
+        $this->setConfig('COMPUTOPAPI:RESPONSE_MAC_REQUIRED', ['INIT']);
     }
 }

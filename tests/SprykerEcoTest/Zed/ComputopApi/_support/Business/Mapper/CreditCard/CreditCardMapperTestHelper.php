@@ -12,13 +12,10 @@ use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Orm\Zed\Computop\Persistence\SpyPaymentComputop;
-use Orm\Zed\Computop\Persistence\SpyPaymentComputopQuery;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge;
-use SprykerEco\Zed\Computop\Persistence\ComputopQueryContainer;
 
 class CreditCardMapperTestHelper extends Test
 {

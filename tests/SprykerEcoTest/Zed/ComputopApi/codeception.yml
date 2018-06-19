@@ -1,4 +1,4 @@
-namespace: SprykerEcoTest\Zed\Computop
+namespace: SprykerEcoTest\Zed\ComputopApi
 
 paths:
     tests: .

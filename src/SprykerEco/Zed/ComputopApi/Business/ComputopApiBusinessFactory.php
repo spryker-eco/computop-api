@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\ComputopApi\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AuthorizeAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditAuthorizeAdapter;
@@ -36,11 +37,11 @@ use SprykerEco\Zed\ComputopApi\ComputopApiDependencyProvider;
 class ComputopApiBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface
+     * @return \SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeInterface
      */
-    public function getStore()
+    public function getStoreFacade()
     {
-        return $this->getProvidedDependency(ComputopApiDependencyProvider::STORE);
+        return $this->getProvidedDependency(ComputopApiDependencyProvider::FACADE_STORE);
     }
 
     /**

@@ -13,7 +13,7 @@ use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
-use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface;
+use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeInterface;
 
 abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
 {
@@ -28,9 +28,9 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
     protected $config;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface
+     * @var \SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeInterface
      */
-    protected $store;
+    protected $storeFacade;
 
     /**
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
@@ -49,16 +49,16 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
-     * @param \SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreInterface $store
+     * @param \SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeInterface $storeFacade
      */
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $config,
-        ComputopApiToStoreInterface $store
+        ComputopApiToStoreFacadeInterface $storeFacade
     ) {
         $this->computopApiService = $computopApiService;
         $this->config = $config;
-        $this->store = $store;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
@@ -125,7 +125,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
         $computopApiRequestTransfer = $this->createPaymentTransfer($orderTransfer);
         $computopApiRequestTransfer->fromArray($computopApiHeaderPayment->toArray(), true);
         $computopApiRequestTransfer->setMerchantId($this->config->getMerchantId());
-        $computopApiRequestTransfer->setCurrency($this->store->getCurrencyIsoCode());
+        $computopApiRequestTransfer->setCurrency($this->storeFacade->getCurrentStore()->getSelectedCurrencyIsoCode());
 
         $computopApiRequestTransfer->setMac(
             $this->computopApiService->getMacEncryptedValue($computopApiRequestTransfer)

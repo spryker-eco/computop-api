@@ -12,18 +12,16 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
-    const ETI_ID = '0.0.1';
-
-    const AUTHORIZE_METHOD = 'AUTHORIZE';
-    const CAPTURE_METHOD = 'CAPTURE';
-    const REVERSE_METHOD = 'REVERSE';
-    const INQUIRE_METHOD = 'INQUIRE';
-    const REFUND_METHOD = 'REFUND';
+    protected const AUTHORIZE_METHOD = 'AUTHORIZE';
+    protected const CAPTURE_METHOD = 'CAPTURE';
+    protected const REVERSE_METHOD = 'REVERSE';
+    protected const INQUIRE_METHOD = 'INQUIRE';
+    protected const REFUND_METHOD = 'REFUND';
 
     /**
      * @return string
      */
-    public function getMerchantId()
+    public function getMerchantId(): string
     {
         return $this->get(ComputopApiConstants::MERCHANT_ID);
     }
@@ -31,7 +29,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getBlowfishPass()
+    public function getBlowfishPass(): string
     {
         return $this->get(ComputopApiConstants::BLOWFISH_PASSWORD);
     }
@@ -39,7 +37,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getAuthorizeAction()
+    public function getAuthorizeAction(): string
     {
         return $this->get(ComputopApiConstants::AUTHORIZE_ACTION);
     }
@@ -47,7 +45,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getCaptureAction()
+    public function getCaptureAction(): string
     {
         return $this->get(ComputopApiConstants::CAPTURE_ACTION);
     }
@@ -55,7 +53,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getRefundAction()
+    public function getRefundAction(): string
     {
         return $this->get(ComputopApiConstants::REFUND_ACTION);
     }
@@ -63,7 +61,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getInquireAction()
+    public function getInquireAction(): string
     {
         return $this->get(ComputopApiConstants::INQUIRE_ACTION);
     }
@@ -71,7 +69,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getReverseAction()
+    public function getReverseAction(): string
     {
         return $this->get(ComputopApiConstants::REVERSE_ACTION);
     }
@@ -79,7 +77,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getEasyCreditStatusUrl()
+    public function getEasyCreditStatusUrl(): string
     {
         return $this->get(ComputopApiConstants::EASY_CREDIT_STATUS_ACTION);
     }
@@ -87,7 +85,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getEasyCreditAuthorizeUrl()
+    public function getEasyCreditAuthorizeUrl(): string
     {
         return $this->get(ComputopApiConstants::EASY_CREDIT_AUTHORIZE_ACTION);
     }
@@ -95,40 +93,40 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getAuthorizeMethodName()
+    public function getAuthorizeMethodName(): string
     {
-        return self::AUTHORIZE_METHOD;
+        return static::AUTHORIZE_METHOD;
     }
 
     /**
      * @return string
      */
-    public function getCaptureMethodName()
+    public function getCaptureMethodName(): string
     {
-        return self::CAPTURE_METHOD;
+        return static::CAPTURE_METHOD;
     }
 
     /**
      * @return string
      */
-    public function getRefundMethodName()
+    public function getRefundMethodName(): string
     {
-        return self::REFUND_METHOD;
+        return static::REFUND_METHOD;
     }
 
     /**
      * @return string
      */
-    public function getReverseMethodName()
+    public function getReverseMethodName(): string
     {
-        return self::REVERSE_METHOD;
+        return static::REVERSE_METHOD;
     }
 
     /**
      * @return string
      */
-    public function getInquireMethodName()
+    public function getInquireMethodName(): string
     {
-        return self::INQUIRE_METHOD;
+        return static::INQUIRE_METHOD;
     }
 }

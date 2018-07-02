@@ -11,9 +11,9 @@ use SprykerEco\Service\ComputopApi\ComputopApiConfigInterface;
 
 abstract class AbstractComputopApi
 {
-    const MAC_SEPARATOR = '*';
-    const DATA_SEPARATOR = '&';
-    const DATA_SUB_SEPARATOR = '=';
+    protected const MAC_SEPARATOR = '*';
+    protected const DATA_SEPARATOR = '&';
+    protected const DATA_SUB_SEPARATOR = '=';
 
     /**
      * @var \Spryker\Service\Kernel\AbstractBundleConfig

@@ -8,6 +8,7 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -19,7 +20,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param array $items
+     * @param ItemTransfer[] $items
      *
      * @return string
      */
@@ -31,7 +32,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param array $items
+     * @param ItemTransfer[] $items
      *
      * @return string
      */
@@ -68,7 +69,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param array $responseArray
+     * @param string[] $responseArray
      * @param string $key
      *
      * @return null|string

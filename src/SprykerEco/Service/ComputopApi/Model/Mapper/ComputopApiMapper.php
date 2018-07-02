@@ -9,6 +9,7 @@ namespace SprykerEco\Service\ComputopApi\Model\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
@@ -18,12 +19,12 @@ use SprykerEco\Service\ComputopApi\Model\AbstractComputopApi;
 
 class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapperInterface
 {
-    const ITEMS_SEPARATOR = '|';
-    const ATTRIBUTES_SEPARATOR = '-';
-    const REQ_ID_LENGTH = 32;
+    protected const ITEMS_SEPARATOR = '|';
+    protected const ATTRIBUTES_SEPARATOR = '-';
+    protected const REQ_ID_LENGTH = 32;
 
-    const ORDER_DESC_SUCCESS = 'Test:0000';
-    const ORDER_DESC_ERROR = 'Test:0305';
+    protected const ORDER_DESC_SUCCESS = 'Test:0000';
+    protected const ORDER_DESC_ERROR = 'Test:0305';
 
     /**
      * @var \Spryker\Service\UtilText\UtilTextServiceInterface
@@ -48,7 +49,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
      *
      * @return string
      */
-    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer)
+    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer): string
     {
         $macDataArray = [
             $requestTransfer->getPayId(),
@@ -58,7 +59,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
             $requestTransfer->requireCurrency()->getCurrency(),
         ];
 
-        return implode(self::MAC_SEPARATOR, $macDataArray);
+        return implode(static::MAC_SEPARATOR, $macDataArray);
     }
 
     /**
@@ -66,7 +67,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
      *
      * @return string
      */
-    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header)
+    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header): string
     {
         $macDataArray = [
             $header->requirePayId()->getPayId(),
@@ -76,7 +77,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
             $header->requireCode()->getCode(),
         ];
 
-        return implode(self::MAC_SEPARATOR, $macDataArray);
+        return implode(static::MAC_SEPARATOR, $macDataArray);
     }
 
     /**
@@ -84,47 +85,47 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
      *
      * @return string
      */
-    public function getDataPlainText(array $dataSubArray)
+    public function getDataPlainText(array $dataSubArray): string
     {
         $dataArray = [];
         foreach ($dataSubArray as $key => $value) {
-            $dataArray[] = implode(self::DATA_SUB_SEPARATOR, [$key, $value]);
+            $dataArray[] = implode(static::DATA_SUB_SEPARATOR, [$key, $value]);
         }
 
-        return implode(self::DATA_SEPARATOR, $dataArray);
+        return implode(static::DATA_SEPARATOR, $dataArray);
     }
 
     /**
-     * @param array $items
+     * @param ItemTransfer[] $items
      *
      * @return string
      */
-    public function getDescriptionValue(array $items)
+    public function getDescriptionValue(array $items): string
     {
         $description = '';
 
         foreach ($items as $item) {
             $description .= 'Name:' . $item->getName();
-            $description .= self::ATTRIBUTES_SEPARATOR . 'Sku:' . $item->getSku();
-            $description .= self::ATTRIBUTES_SEPARATOR . 'Quantity:' . $item->getQuantity();
-            $description .= self::ITEMS_SEPARATOR;
+            $description .= static::ATTRIBUTES_SEPARATOR . 'Sku:' . $item->getSku();
+            $description .= static::ATTRIBUTES_SEPARATOR . 'Quantity:' . $item->getQuantity();
+            $description .= static::ITEMS_SEPARATOR;
         }
 
         return $description;
     }
 
     /**
-     * @param array $items
+     * @param ItemTransfer[] $items
      *
      * @return string
      */
-    public function getTestModeDescriptionValue(array $items)
+    public function getTestModeDescriptionValue(array $items): string
     {
         $description = '';
 
         if ($this->config->isTestMode()) {
-            $description = self::ORDER_DESC_SUCCESS;
-            $description .= self::ITEMS_SEPARATOR;
+            $description = static::ORDER_DESC_SUCCESS;
+            $description .= static::ITEMS_SEPARATOR;
         }
 
         $description .= $this->getDescriptionValue($items);
@@ -137,16 +138,16 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
      *
      * @return string
      */
-    public function generateReqId(TransferInterface $transfer)
+    public function generateReqId(TransferInterface $transfer): string
     {
         $parameters = [
             $this->createUniqueSalt(),
             $transfer->getTotals()->getHash(),
             $transfer->getCustomer()->getCustomerReference(),
         ];
-        $string = $this->textService->hashValue(implode(self::ATTRIBUTES_SEPARATOR, $parameters), Hash::SHA256);
+        $string = $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::SHA256);
 
-        return substr($string, 0, self::REQ_ID_LENGTH);
+        return substr($string, 0, static::REQ_ID_LENGTH);
     }
 
     /**
@@ -154,26 +155,26 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
      *
      * @return string
      */
-    public function generateTransId(QuoteTransfer $quoteTransfer)
+    public function generateTransId(QuoteTransfer $quoteTransfer): string
     {
         $parameters = [
             $this->createUniqueSalt(),
             $quoteTransfer->getCustomer()->getCustomerReference(),
         ];
 
-        return $this->textService->hashValue(implode(self::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);
+        return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);
     }
 
     /**
      * @return string
      */
-    protected function createUniqueSalt()
+    protected function createUniqueSalt(): string
     {
         $params = [
             time(),
             rand(100, 1000),
         ];
 
-        return implode(self::ATTRIBUTES_SEPARATOR, $params);
+        return implode(static::ATTRIBUTES_SEPARATOR, $params);
     }
 }

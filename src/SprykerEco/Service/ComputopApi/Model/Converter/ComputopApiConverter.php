@@ -21,7 +21,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractHeader(array $decryptedArray, $method)
+    public function extractHeader(array $decryptedArray, $method): ComputopApiResponseHeaderTransfer
     {
         $decryptedArray = $this->formatResponseArray($decryptedArray);
         $this->checkDecryptedResponse($decryptedArray);
@@ -50,7 +50,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return null|string
      */
-    public function getResponseValue(array $responseArray, $key)
+    public function getResponseValue(array $responseArray, $key): ?string
     {
         if (isset($responseArray[$this->formatKey($key)])) {
             return $responseArray[$this->formatKey($key)];
@@ -64,12 +64,12 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return array
      */
-    public function getResponseDecryptedArray($decryptedString)
+    public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
-        $decryptedSubArray = explode(self::DATA_SEPARATOR, $decryptedString);
+        $decryptedSubArray = explode(static::DATA_SEPARATOR, $decryptedString);
         foreach ($decryptedSubArray as $value) {
-            $data = explode(self::DATA_SUB_SEPARATOR, $value);
+            $data = explode(static::DATA_SUB_SEPARATOR, $value);
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 
@@ -83,7 +83,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return void
      */
-    public function checkEncryptedResponse(array $responseArray)
+    public function checkEncryptedResponse(array $responseArray): void
     {
         $keys = [
             ComputopApiConstants::DATA,
@@ -106,7 +106,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return void
      */
-    public function checkMacResponse($responseMac, $expectedMac, $method)
+    public function checkMacResponse($responseMac, $expectedMac, $method): void
     {
         if ($this->config->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
@@ -120,7 +120,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return void
      */
-    protected function checkDecryptedResponse(array $decryptedArray)
+    protected function checkDecryptedResponse(array $decryptedArray): void
     {
         $keys = [
             ComputopApiConstants::MERCHANT_ID_SHORT,
@@ -141,7 +141,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return bool
      */
-    protected function existArrayKeys(array $keys, array $arraySearch)
+    protected function existArrayKeys(array $keys, array $arraySearch): bool
     {
         $arraySearch = $this->formatResponseArray($arraySearch);
 
@@ -162,7 +162,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return array
      */
-    protected function formatResponseArray(array $decryptedArray)
+    protected function formatResponseArray(array $decryptedArray): array
     {
         $formattedArray = [];
 
@@ -178,7 +178,7 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
      *
      * @return string
      */
-    protected function formatKey($key)
+    protected function formatKey($key): string
     {
         return mb_strtolower($key);
     }

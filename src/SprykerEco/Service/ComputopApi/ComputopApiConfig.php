@@ -16,14 +16,14 @@ class ComputopApiConfig extends AbstractBundleConfig implements ComputopApiConfi
      * Test mode enabled
      * It changes description for API calls
      */
-    const COMPUTOP_TEST_MODE_ENABLED = true;
+    protected const COMPUTOP_TEST_MODE_ENABLED = true;
 
     /**
      * @param string $method
      *
      * @return bool
      */
-    public function isMacRequired($method)
+    public function isMacRequired($method): bool
     {
         return in_array($method, (array)$this->get(ComputopApiConstants::RESPONSE_MAC_REQUIRED, []));
     }
@@ -31,7 +31,7 @@ class ComputopApiConfig extends AbstractBundleConfig implements ComputopApiConfi
     /**
      * @return string
      */
-    public function getHmacPassword()
+    public function getHmacPassword(): string
     {
         return $this->get(ComputopApiConstants::HMAC_PASSWORD);
     }
@@ -39,8 +39,8 @@ class ComputopApiConfig extends AbstractBundleConfig implements ComputopApiConfi
     /**
      * @return bool
      */
-    public function isTestMode()
+    public function isTestMode(): bool
     {
-        return self::COMPUTOP_TEST_MODE_ENABLED;
+        return static::COMPUTOP_TEST_MODE_ENABLED;
     }
 }

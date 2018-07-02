@@ -7,11 +7,11 @@
 
 namespace SprykerEco\Service\ComputopApi\Model;
 
-use Spryker\Service\Kernel\AbstractBundleConfig;
+use SprykerEco\Service\ComputopApi\ComputopApiConfigInterface;
 
 class HmacHasher implements HmacHasherInterface
 {
-    const HASH_TYPE = 'sha256';
+    protected const HASH_TYPE = 'sha256';
 
     /**
      * @var \Spryker\Service\Kernel\AbstractBundleConfig
@@ -19,9 +19,9 @@ class HmacHasher implements HmacHasherInterface
     protected $config;
 
     /**
-     * @param \Spryker\Service\Kernel\AbstractBundleConfig $config
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfigInterface $config
      */
-    public function __construct(AbstractBundleConfig $config)
+    public function __construct(ComputopApiConfigInterface $config)
     {
         $this->config = $config;
     }
@@ -31,10 +31,10 @@ class HmacHasher implements HmacHasherInterface
      *
      * @return string
      */
-    public function getEncryptedValue($value)
+    public function getEncryptedValue($value): string
     {
         return strtoupper(
-            hash_hmac(self::HASH_TYPE, $value, $this->config->getHmacPassword())
+            hash_hmac(static::HASH_TYPE, $value, $this->config->getHmacPassword())
         );
     }
 }

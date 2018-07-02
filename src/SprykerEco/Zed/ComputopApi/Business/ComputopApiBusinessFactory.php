@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\ComputopApi\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AuthorizeAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditAuthorizeAdapter;

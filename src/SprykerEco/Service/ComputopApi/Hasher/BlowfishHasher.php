@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model;
+namespace SprykerEco\Service\ComputopApi\Hasher;
 
 use SprykerEco\Service\ComputopApi\Exception\BlowfishException;
 
@@ -56,7 +56,7 @@ class BlowfishHasher implements BlowfishHasherInterface
     }
 
     /**
-     * @param string $cipher
+     * @param string $cipherText
      * @param int $length
      * @param string $password
      *
@@ -64,18 +64,18 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue($cipher, $length, $password): string
+    public function getBlowfishDecryptedValue($cipherText, $length, $password): string
     {
         if (mb_strlen($password) <= 0) {
             $password = ' ';
         }
 
-        $cipher = pack('H' . strlen($cipher), $cipher);
-        if ($length > strlen($cipher)) {
+        $cipherText = pack('H' . strlen($cipherText), $cipherText);
+        if ($length > strlen($cipherText)) {
             throw new BlowfishException('Length mismatch. The parameter len is too large.');
         }
         $this->bfSetKey($password);
-        return mb_substr($this->decrypt($cipher), 0, $length);
+        return mb_substr($this->decrypt($cipherText), 0, $length);
     }
 
     /**

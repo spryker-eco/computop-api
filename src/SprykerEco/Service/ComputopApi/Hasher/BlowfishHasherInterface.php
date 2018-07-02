@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model;
+namespace SprykerEco\Service\ComputopApi\Hasher;
 
 interface BlowfishHasherInterface
 {
@@ -21,7 +21,7 @@ interface BlowfishHasherInterface
     public function getBlowfishEncryptedValue($plaintext, $length, $password);
 
     /**
-     * @param string $cipher
+     * @param string $cipherText
      * @param int $length
      * @param string $password
      *
@@ -29,5 +29,5 @@ interface BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue($cipher, $length, $password);
+    public function getBlowfishDecryptedValue($cipherText, $length, $password);
 }

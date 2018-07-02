@@ -205,15 +205,15 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param string $cipher
+     * @param string $cipherText
      * @param int $length
      * @param string $password
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue($cipher, $length, $password): string
+    public function getBlowfishDecryptedValue($cipherText, $length, $password): string
     {
-        return $this->getFactory()->createBlowfishHasher()->getBlowfishDecryptedValue($cipher, $length, $password);
+        return $this->getFactory()->createBlowfishHasher()->getBlowfishDecryptedValue($cipherText, $length, $password);
     }
 
     /**

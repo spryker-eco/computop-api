@@ -78,7 +78,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate decrypted response array
+     * - Decrypt response header
      *
      * @api
      *
@@ -93,7 +93,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate encrypted array for response
+     * - Encrypt response header
      *
      * @api
      *
@@ -118,7 +118,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate blowfish encrypted value
+     * - Encyrpt value using blowfish algorithm
      *
      * @api
      *
@@ -132,17 +132,17 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate blowfish decrypted value
+     * - Decrypt value using blowfish algorithm
      *
      * @api
      *
-     * @param string $cipher
+     * @param string $cipherText
      * @param int $length
      * @param string $password
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue($cipher, $length, $password);
+    public function getBlowfishDecryptedValue($cipherText, $length, $password);
 
     /**
      * Specification:

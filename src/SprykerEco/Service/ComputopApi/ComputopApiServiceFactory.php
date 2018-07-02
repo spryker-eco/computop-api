@@ -10,14 +10,14 @@ namespace SprykerEco\Service\ComputopApi;
 use Spryker\Service\Kernel\AbstractServiceFactory;
 use Spryker\Service\UtilText\UtilTextService;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
-use SprykerEco\Service\ComputopApi\Model\BlowfishHasher;
-use SprykerEco\Service\ComputopApi\Model\BlowfishHasherInterface;
-use SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverter;
-use SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverterInterface;
-use SprykerEco\Service\ComputopApi\Model\HmacHasher;
-use SprykerEco\Service\ComputopApi\Model\HmacHasherInterface;
-use SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapper;
-use SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapperInterface;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
+use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
+use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface;
+use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
+use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface;
 
 /**
  * @method \SprykerEco\Service\ComputopApi\ComputopApiConfig getConfig()
@@ -25,7 +25,7 @@ use SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapperInterface;
 class ComputopApiServiceFactory extends AbstractServiceFactory
 {
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\BlowfishHasherInterface
+     * @return \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
      */
     public function createBlowfishHasher(): BlowfishHasherInterface
     {
@@ -33,7 +33,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverterInterface
+     * @return \SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface
      */
     public function createComputopApiConverter(): ComputopApiConverterInterface
     {
@@ -41,7 +41,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapperInterface
+     * @return \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
     public function createComputopApiMapper(): ComputopApiMapperInterface
     {
@@ -60,7 +60,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\HmacHasherInterface
+     * @return \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
      */
     public function createHmacHasher(): HmacHasherInterface
     {

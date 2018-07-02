@@ -5,23 +5,23 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model;
+namespace SprykerEco\Service\ComputopApi\Hasher;
 
-use SprykerEco\Service\ComputopApi\ComputopApiConfigInterface;
+use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 
 class HmacHasher implements HmacHasherInterface
 {
     protected const HASH_TYPE = 'sha256';
 
     /**
-     * @var \Spryker\Service\Kernel\AbstractBundleConfig
+     * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
     protected $config;
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfigInterface $config
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
      */
-    public function __construct(ComputopApiConfigInterface $config)
+    public function __construct(ComputopApiConfig $config)
     {
         $this->config = $config;
     }

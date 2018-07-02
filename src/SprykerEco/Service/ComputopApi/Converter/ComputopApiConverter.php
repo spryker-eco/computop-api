@@ -5,16 +5,28 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model\Converter;
+namespace SprykerEco\Service\ComputopApi\Converter;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
-use SprykerEco\Service\ComputopApi\Model\AbstractComputopApi;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 
-class ComputopApiConverter extends AbstractComputopApi implements ComputopApiConverterInterface
+class ComputopApiConverter implements ComputopApiConverterInterface
 {
+    /**
+     * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
+     */
+    protected $config;
+
+    /**
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
+     */
+    public function __construct(ComputopApiConfig $config)
+    {
+        $this->config = $config;
+    }
+
     /**
      * @param array $decryptedArray
      * @param string $method
@@ -67,9 +79,9 @@ class ComputopApiConverter extends AbstractComputopApi implements ComputopApiCon
     public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
-        $decryptedSubArray = explode(static::DATA_SEPARATOR, $decryptedString);
+        $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString);
         foreach ($decryptedSubArray as $value) {
-            $data = explode(static::DATA_SUB_SEPARATOR, $value);
+            $data = explode($this->config->getDataSubSeparator(), $value);
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 

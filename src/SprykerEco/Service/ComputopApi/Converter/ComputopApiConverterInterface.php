@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model\Converter;
+namespace SprykerEco\Service\ComputopApi\Converter;
 
 interface ComputopApiConverterInterface
 {

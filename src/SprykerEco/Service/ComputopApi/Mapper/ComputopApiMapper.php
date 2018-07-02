@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEco\Service\ComputopApi\Model\Mapper;
+namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
@@ -14,10 +14,9 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
-use SprykerEco\Service\ComputopApi\ComputopApiConfigInterface;
-use SprykerEco\Service\ComputopApi\Model\AbstractComputopApi;
+use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 
-class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapperInterface
+class ComputopApiMapper implements ComputopApiMapperInterface
 {
     protected const ITEMS_SEPARATOR = '|';
     protected const ATTRIBUTES_SEPARATOR = '-';
@@ -27,20 +26,24 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
     protected const ORDER_DESC_ERROR = 'Test:0305';
 
     /**
+     * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
+     */
+    protected $config;
+
+    /**
      * @var \Spryker\Service\UtilText\UtilTextServiceInterface
      */
     protected $textService;
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfigInterface $config
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
      * @param \Spryker\Service\UtilText\UtilTextServiceInterface $textService
      */
     public function __construct(
-        ComputopApiConfigInterface $config,
+        ComputopApiConfig $config,
         UtilTextServiceInterface $textService
     ) {
-        parent::__construct($config);
-
+        $this->config = $config;
         $this->textService = $textService;
     }
 
@@ -59,7 +62,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
             $requestTransfer->requireCurrency()->getCurrency(),
         ];
 
-        return implode(static::MAC_SEPARATOR, $macDataArray);
+        return implode($this->config->getMacSeparator(), $macDataArray);
     }
 
     /**
@@ -77,7 +80,7 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
             $header->requireCode()->getCode(),
         ];
 
-        return implode(static::MAC_SEPARATOR, $macDataArray);
+        return implode($this->config->getMacSeparator(), $macDataArray);
     }
 
     /**
@@ -89,10 +92,10 @@ class ComputopApiMapper extends AbstractComputopApi implements ComputopApiMapper
     {
         $dataArray = [];
         foreach ($dataSubArray as $key => $value) {
-            $dataArray[] = implode(static::DATA_SUB_SEPARATOR, [$key, $value]);
+            $dataArray[] = implode($this->config->getDataSubSeparator(), [$key, $value]);
         }
 
-        return implode(static::DATA_SEPARATOR, $dataArray);
+        return implode($this->config->getDataSeparator(), $dataArray);
     }
 
     /**

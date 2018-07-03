@@ -51,7 +51,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      *
      * @return string
      */
-    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer): string
+    public function getPlaintextMac(ComputopApiRequestTransfer $requestTransfer): string
     {
         $macDataArray = [
             $requestTransfer->getPayId(),

@@ -19,7 +19,7 @@ interface ComputopApiMapperInterface
      *
      * @return string
      */
-    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer);
+    public function getPlaintextMac(ComputopApiRequestTransfer $requestTransfer);
 
     /**
      * @param \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header

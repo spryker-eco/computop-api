@@ -47,7 +47,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer);
+    public function generateEncryptedMac(ComputopApiRequestTransfer $requestTransfer);
 
     /**
      * Specification:

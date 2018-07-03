@@ -56,9 +56,9 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @return string
      */
-    public function getMacEncryptedValue(ComputopApiRequestTransfer $requestTransfer): string
+    public function generateEncryptedMac(ComputopApiRequestTransfer $requestTransfer): string
     {
-        $value = $this->getFactory()->createComputopApiMapper()->getMacEncryptedValue($requestTransfer);
+        $value = $this->getFactory()->createComputopApiMapper()->getPlaintextMac($requestTransfer);
 
         return $this->getHashValue($value);
     }

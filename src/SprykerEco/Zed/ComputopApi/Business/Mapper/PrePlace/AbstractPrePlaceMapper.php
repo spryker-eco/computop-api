@@ -131,7 +131,7 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
         $computopApiPaymentTransfer->setCurrency($this->storeFacade->getCurrentStore()->getSelectedCurrencyIsoCode());
 
         $computopApiPaymentTransfer->setMac(
-            $this->computopApiService->getMacEncryptedValue($computopApiPaymentTransfer)
+            $this->computopApiService->generateEncryptedMac($computopApiPaymentTransfer)
         );
 
         $computopApiPaymentTransfer->setReqId($this->computopApiService->generateReqId($quoteTransfer));

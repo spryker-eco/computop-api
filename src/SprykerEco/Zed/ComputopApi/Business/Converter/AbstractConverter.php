@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
-use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\StreamInterface;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;

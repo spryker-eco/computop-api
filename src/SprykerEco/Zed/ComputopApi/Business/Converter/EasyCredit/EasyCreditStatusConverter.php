@@ -13,18 +13,18 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 
 class EasyCreditStatusConverter extends AbstractConverter implements ConverterInterface
 {
-    const DECISION_INDEX = 'desicion';
+    protected const DECISION_INDEX = 'desicion';
 
     /**
      * @param array $decryptedArray
      *
      * @return \Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray)
+    protected function getResponseTransfer(array $decryptedArray): ComputopApiEasyCreditStatusResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiEasyCreditStatusResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractHeader($decryptedArray, $this->config->getReverseMethodName())
+            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getReverseMethodName())
         );
         $computopApiResponseTransfer->fromArray($decryptedArray, true);
 

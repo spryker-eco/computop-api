@@ -17,7 +17,7 @@ trait InquireMapperTrait
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
         $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();

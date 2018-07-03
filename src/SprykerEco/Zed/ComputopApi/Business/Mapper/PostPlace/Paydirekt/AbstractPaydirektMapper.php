@@ -17,7 +17,7 @@ abstract class AbstractPaydirektMapper extends AbstractPostPlaceMapper
     /**
      * @return string
      */
-    public function getMethodName()
+    public function getMethodName(): string
     {
         return ComputopApiConfig::PAYMENT_METHOD_PAYDIREKT;
     }
@@ -27,7 +27,7 @@ abstract class AbstractPaydirektMapper extends AbstractPostPlaceMapper
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function createPaymentTransfer(OrderTransfer $orderTransfer)
+    protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         return new ComputopApiRequestTransfer();
     }

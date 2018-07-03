@@ -13,19 +13,19 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 class AuthorizeConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedArray
+     * @param array $response
      *
      * @return \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray)
+    protected function getResponseTransfer(array $response): ComputopApiAuthorizeResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiAuthorizeResponseTransfer();
-        $computopApiResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->fromArray($response, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractHeader($decryptedArray, $this->config->getAuthorizeMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getAuthorizeMethodName())
         );
         //optional field
-        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($response, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

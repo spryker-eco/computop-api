@@ -19,7 +19,7 @@ trait AuthorizeMapperTrait
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
         $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
@@ -40,8 +40,10 @@ trait AuthorizeMapperTrait
      *
      * @return string
      */
-    protected function getOrderDesc(ComputopApiServiceInterface $computopApiService, OrderTransfer $orderTransfer)
-    {
+    protected function getOrderDesc(
+        ComputopApiServiceInterface $computopApiService,
+        OrderTransfer $orderTransfer
+    ): string {
         return $computopApiService->getTestModeDescriptionValue(
             $orderTransfer->getItems()->getArrayCopy()
         );

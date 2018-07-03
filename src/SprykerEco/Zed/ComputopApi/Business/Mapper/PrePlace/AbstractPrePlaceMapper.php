@@ -42,7 +42,10 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
     /**
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    abstract protected function createPaymentTransfer();
+    protected function createPaymentTransfer(): ComputopApiRequestTransfer
+    {
+        return new ComputopApiRequestTransfer();
+    }
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
@@ -65,12 +68,14 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      *
      * @return array
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
-        $encryptedArray = $this->getEncryptedArray($quoteTransfer, $computopApiHeaderPayment);
+    public function buildRequest(
+        QuoteTransfer $quoteTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): array {
+        $encryptedRequestData = $this->encryptRequestData($quoteTransfer, $computopApiHeaderPayment);
 
-        $data = $encryptedArray[ComputopApiConstants::DATA];
-        $length = $encryptedArray[ComputopApiConstants::LENGTH];
+        $data = $encryptedRequestData[ComputopApiConstants::DATA];
+        $length = $encryptedRequestData[ComputopApiConstants::LENGTH];
         $merchantId = $this->config->getMerchantId();
 
         return $this->buildRequestData($data, $length, $merchantId);
@@ -82,16 +87,16 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      *
      * @return array
      */
-    protected function getEncryptedArray(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
+    protected function encryptRequestData(
+        QuoteTransfer $quoteTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): array {
         $computopApiPaymentTransfer = $this->getComputopPaymentTransfer($quoteTransfer, $computopApiHeaderPayment);
 
-        $encryptedArray = $this->computopApiService->getEncryptedArray(
+        return $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($computopApiPaymentTransfer),
             $this->config->getBlowfishPass()
         );
-
-        return $encryptedArray;
     }
 
     /**

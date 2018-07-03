@@ -11,17 +11,17 @@ use Spryker\Shared\Kernel\AbstractBundleConfig;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
-    const PAYMENT_METHOD_PAY_NOW = 'computopPayNow';
-    const PAYMENT_METHOD_CREDIT_CARD = 'computopCreditCard';
-    const PAYMENT_METHOD_DIRECT_DEBIT = 'computopDirectDebit';
-    const PAYMENT_METHOD_IDEAL = 'computopIdeal';
-    const PAYMENT_METHOD_PAYDIREKT = 'computopPaydirekt';
-    const PAYMENT_METHOD_PAY_PAL = 'computopPayPal';
-    const PAYMENT_METHOD_SOFORT = 'computopSofort';
-    const PAYMENT_METHOD_EASY_CREDIT = 'computopEasyCredit';
+    public const PAYMENT_METHOD_PAY_NOW = 'computopPayNow';
+    public const PAYMENT_METHOD_CREDIT_CARD = 'computopCreditCard';
+    public const PAYMENT_METHOD_DIRECT_DEBIT = 'computopDirectDebit';
+    public const PAYMENT_METHOD_IDEAL = 'computopIdeal';
+    public const PAYMENT_METHOD_PAYDIREKT = 'computopPaydirekt';
+    public const PAYMENT_METHOD_PAY_PAL = 'computopPayPal';
+    public const PAYMENT_METHOD_SOFORT = 'computopSofort';
+    public const PAYMENT_METHOD_EASY_CREDIT = 'computopEasyCredit';
 
     //Computop provider constants
-    const CAPTURE_MANUAL_TYPE = 'MANUAL';
-    const SUCCESS_STATUS = 'success';
-    const SUCCESS_OK_STATUS = 'OK';
+    public const CAPTURE_MANUAL_TYPE = 'MANUAL';
+    public const SUCCESS_STATUS = 'success';
+    public const SUCCESS_OK_STATUS = 'OK';
 }

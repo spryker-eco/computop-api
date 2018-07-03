@@ -10,10 +10,12 @@ namespace SprykerEco\Zed\ComputopApi\Business\Request\PostPlace;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Exception\ComputopApiMethodMapperException;
 use SprykerEco\Zed\ComputopApi\Business\Exception\PaymentMethodNotSetException;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
@@ -56,8 +58,10 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
+    public function request(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): TransferInterface {
         $requestData = $this
             ->getMethodMapper($this->getPaymentMethodFromOrder($orderTransfer))
             ->buildRequest($orderTransfer, $computopApiHeaderPayment);
@@ -70,7 +74,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return void
      */
-    public function registerMapper(PostPlaceMapperInterface $paymentMethod)
+    public function registerMapper(PostPlaceMapperInterface $paymentMethod): void
     {
         $this->methodMappers[$paymentMethod->getMethodName()] = $paymentMethod;
     }
@@ -80,19 +84,11 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    protected function sendRequest(array $requestData)
+    protected function sendRequest(array $requestData): TransferInterface
     {
-        $requestData = $this
-            ->adapter
-            ->sendRequest($requestData);
+        $response = $this->adapter->sendRequest($requestData);
 
-        $responseTransfer = $this
-            ->converter
-            ->toTransactionResponseTransfer(
-                $requestData
-            );
-
-        return $responseTransfer;
+        return $this->converter->toTransactionResponseTransfer($response);
     }
 
     /**
@@ -102,7 +98,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface
      */
-    protected function getMethodMapper($methodName)
+    protected function getMethodMapper($methodName): MapperInterface
     {
         if (isset($this->methodMappers[$methodName]) === false) {
             throw new ComputopApiMethodMapperException('The method mapper is not registered.');
@@ -118,7 +114,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return string
      */
-    protected function getPaymentMethodFromOrder(OrderTransfer $orderTransfer)
+    protected function getPaymentMethodFromOrder(OrderTransfer $orderTransfer): string
     {
         $paymentsArray = $orderTransfer->getPayments()->getArrayCopy();
 
@@ -134,7 +130,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return string
      */
-    protected function getPaymentMethodFromPayment(PaymentTransfer $paymentTransfer)
+    protected function getPaymentMethodFromPayment(PaymentTransfer $paymentTransfer): string
     {
         return $paymentTransfer->getPaymentMethod();
     }

@@ -8,6 +8,8 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
 use GuzzleHttp\Psr7\Stream;
+use Psr\Http\Message\StreamInterface;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
@@ -24,11 +26,11 @@ abstract class AbstractConverter implements ConverterInterface
     protected $config;
 
     /**
-     * @param array $decryptedArray
+     * @param array $response
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    abstract protected function getResponseTransfer(array $decryptedArray);
+    abstract protected function getResponseTransfer(array $response);
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
@@ -41,30 +43,30 @@ abstract class AbstractConverter implements ConverterInterface
     }
 
     /**
-     * @param \GuzzleHttp\Psr7\Stream $response
+     * @param \Psr\Http\Message\StreamInterface $response
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function toTransactionResponseTransfer(Stream $response)
+    public function toTransactionResponseTransfer(StreamInterface $response): TransferInterface
     {
-        $decryptedArray = $this->getDecryptedArray($response);
+        $decryptedResponse = $this->decryptResponse($response);
 
-        return $this->getResponseTransfer($decryptedArray);
+        return $this->getResponseTransfer($decryptedResponse);
     }
 
     /**
-     * @param \GuzzleHttp\Psr7\Stream $response
+     * @param \Psr\Http\Message\StreamInterface $response
      *
      * @return array
      */
-    protected function getDecryptedArray(Stream $response)
+    protected function decryptResponse(StreamInterface $response): array
     {
-        parse_str($response->getContents(), $responseArray);
+        parse_str($response->getContents(), $responseHeader);
 
-        $decryptedArray = $this
+        $decryptedResponseHeader = $this
             ->computopApiService
-            ->getDecryptedArray($responseArray, $this->config->getBlowfishPass());
+            ->decryptResponseHeader($responseHeader, $this->config->getBlowfishPass());
 
-        return $decryptedArray;
+        return $decryptedResponseHeader;
     }
 }

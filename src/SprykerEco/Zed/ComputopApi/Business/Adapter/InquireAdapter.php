@@ -12,7 +12,7 @@ class InquireAdapter extends AbstractAdapter
     /**
      * @return string
      */
-    protected function getUrl()
+    protected function getUrl(): string
     {
         return $this->config->getInquireAction();
     }

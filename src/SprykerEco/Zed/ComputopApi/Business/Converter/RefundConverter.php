@@ -13,24 +13,24 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 class RefundConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedArray
+     * @param array $response
      *
      * @return \Generated\Shared\Transfer\ComputopApiRefundResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray)
+    protected function getResponseTransfer(array $response): ComputopApiRefundResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiRefundResponseTransfer();
-        $computopApiResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->fromArray($response, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractHeader($decryptedArray, $this->config->getRefundMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getRefundMethodName())
         );
         //optional fields
-        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
-        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
-        $computopApiResponseTransfer->setAmount($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::AMOUNT));
-        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
-        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
-        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));
+        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($response, ComputopApiConfig::TRANSACTION_ID));
+        $computopApiResponseTransfer->setAmount($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT));
+        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($response, ComputopApiConfig::CODE_EXT));
+        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($response, ComputopApiConfig::ERROR_TEXT));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($response, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

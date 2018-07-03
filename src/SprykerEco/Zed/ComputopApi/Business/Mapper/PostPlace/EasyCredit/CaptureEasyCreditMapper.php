@@ -17,7 +17,7 @@ class CaptureEasyCreditMapper extends AbstractEasyCreditMapper
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray = parent::getDataSubArray($computopApiRequestTransfer);
         $dataSubArray[ComputopApiConfig::DATE] = $computopApiRequestTransfer->getDate();

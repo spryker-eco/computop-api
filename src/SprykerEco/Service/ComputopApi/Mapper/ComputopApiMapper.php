@@ -9,7 +9,6 @@ namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
@@ -99,7 +98,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
@@ -118,7 +117,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */

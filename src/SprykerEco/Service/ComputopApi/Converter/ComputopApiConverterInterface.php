@@ -10,12 +10,12 @@ namespace SprykerEco\Service\ComputopApi\Converter;
 interface ComputopApiConverterInterface
 {
     /**
-     * @param array $decryptedArray
+     * @param array $plaintextResponseHeader
      * @param string $method
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractHeader(array $decryptedArray, $method);
+    public function extractResponseHeader(array $plaintextResponseHeader, $method);
 
     /**
      * @param array $responseArray

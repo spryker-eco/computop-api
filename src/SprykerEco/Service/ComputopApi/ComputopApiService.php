@@ -9,11 +9,9 @@ namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\Kernel\AbstractService;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
-use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 /**
@@ -26,7 +24,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
@@ -40,7 +38,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
@@ -70,14 +68,14 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param array $decryptedArray
+     * @param array $plaintextResponseHeader
      * @param string $method
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractHeader(array $decryptedArray, $method): ComputopApiResponseHeaderTransfer
+    public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
     {
-        $header = $this->getFactory()->createComputopApiConverter()->extractHeader($decryptedArray, $method);
+        $header = $this->getFactory()->createComputopApiConverter()->extractHeader($plaintextResponseHeader, $method);
 
         $expectedMac = $this->getHashValue(
             $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header)
@@ -110,29 +108,20 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param array $responseArray
+     * @param array $responseHeader
      * @param string $password
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
      * @return array
      */
-    public function getDecryptedArray(array $responseArray, $password): array
+    public function decryptResponseHeader(array $responseHeader, $password): array
     {
-        try {
-            $this
-                ->getFactory()
-                ->createComputopApiConverter()
-                ->checkEncryptedResponse($responseArray);
-        } catch (ComputopApiConverterException $exception) {
-            //TODO: remove this temporary unencrypted response when it is fixed on easyCredit api side
-
-            return $responseArray;
-        }
+        $this->getFactory()->createComputopApiConverter()->checkEncryptedResponse($responseHeader);
 
         $responseDecryptedString = $this->getBlowfishDecryptedValue(
-            $responseArray[ComputopApiConfig::DATA],
-            $responseArray[ComputopApiConfig::LENGTH],
+            $responseHeader[ComputopApiConfig::DATA],
+            $responseHeader[ComputopApiConfig::LENGTH],
             $password
         );
 

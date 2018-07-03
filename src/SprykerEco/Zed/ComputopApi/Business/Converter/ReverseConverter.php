@@ -13,22 +13,22 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 class ReverseConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedArray
+     * @param array $response
      *
      * @return \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray)
+    protected function getResponseTransfer(array $response): ComputopApiReverseResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiReverseResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractHeader($decryptedArray, $this->config->getReverseMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getReverseMethodName())
         );
         //optional fields
-        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::A_ID));
-        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::TRANSACTION_ID));
-        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::CODE_EXT));
-        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::ERROR_TEXT));
-        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedArray, ComputopApiConfig::REF_NR));
+        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));
+        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($response, ComputopApiConfig::TRANSACTION_ID));
+        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($response, ComputopApiConfig::CODE_EXT));
+        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($response, ComputopApiConfig::ERROR_TEXT));
+        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($response, ComputopApiConfig::REF_NR));
 
         return $computopApiResponseTransfer;
     }

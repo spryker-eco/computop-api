@@ -67,9 +67,11 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return array
      */
-    public function buildRequest(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
-        $encryptedArray = $this->getEncryptedArray($orderTransfer, $computopApiHeaderPayment);
+    public function buildRequest(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): array {
+        $encryptedArray = $this->encryptRequestData($orderTransfer, $computopApiHeaderPayment);
 
         $data = $encryptedArray[ComputopApiConstants::DATA];
         $length = $encryptedArray[ComputopApiConstants::LENGTH];
@@ -84,16 +86,16 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return array
      */
-    protected function getEncryptedArray(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
+    protected function encryptRequestData(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): array {
         $computopApiRequestTransfer = $this->getComputopPaymentTransfer($orderTransfer, $computopApiHeaderPayment);
 
-        $encryptedArray = $this->computopApiService->getEncryptedArray(
+        return $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($computopApiRequestTransfer),
             $this->config->getBlowfishPass()
         );
-
-        return $encryptedArray;
     }
 
     /**
@@ -103,7 +105,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return array
      */
-    protected function buildRequestData($data, $length, $merchantId)
+    protected function buildRequestData($data, $length, $merchantId): array
     {
         $requestData = [
             ComputopApiConstants::DATA => $data,
@@ -120,8 +122,10 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function getComputopPaymentTransfer(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
+    protected function getComputopPaymentTransfer(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): ComputopApiRequestTransfer {
         $computopApiRequestTransfer = $this->createPaymentTransfer($orderTransfer);
         $computopApiRequestTransfer->fromArray($computopApiHeaderPayment->toArray(), true);
         $computopApiRequestTransfer->setMerchantId($this->config->getMerchantId());

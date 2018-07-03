@@ -19,7 +19,7 @@ class StatusEasyCreditMapper extends AbstractPrePlaceMapper implements PrePlaceM
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
         $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
@@ -31,13 +31,5 @@ class StatusEasyCreditMapper extends AbstractPrePlaceMapper implements PrePlaceM
         $dataSubArray[ComputopApiConfig::EVENT_TOKEN] = ComputopApiConfig::EVENT_TOKEN_GET;
 
         return $dataSubArray;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
-     */
-    protected function createPaymentTransfer()
-    {
-        return new ComputopApiRequestTransfer();
     }
 }

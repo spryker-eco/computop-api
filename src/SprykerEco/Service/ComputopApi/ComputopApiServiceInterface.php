@@ -8,7 +8,6 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -20,7 +19,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
@@ -32,7 +31,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
@@ -56,12 +55,12 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param array $decryptedArray
+     * @param array $plaintextResponseHeader
      * @param string $method
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractHeader(array $decryptedArray, $method);
+    public function extractResponseHeader(array $plaintextResponseHeader, $method);
 
     /**
      * Specification:
@@ -82,14 +81,14 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param array $responseArray
+     * @param array $responseHeader
      * @param string $password
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
      * @return array
      */
-    public function getDecryptedArray(array $responseArray, $password);
+    public function decryptResponseHeader(array $responseHeader, $password);
 
     /**
      * Specification:

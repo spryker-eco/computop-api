@@ -12,7 +12,7 @@ class ReverseAdapter extends AbstractAdapter
     /**
      * @return string
      */
-    protected function getUrl()
+    protected function getUrl(): string
     {
         return $this->config->getReverseAction();
     }

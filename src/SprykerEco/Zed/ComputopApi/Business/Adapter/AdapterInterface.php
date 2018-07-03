@@ -12,7 +12,7 @@ interface AdapterInterface
     /**
      * @param array $data
      *
-     * @return \GuzzleHttp\Psr7\Stream
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function sendRequest(array $data);
 }

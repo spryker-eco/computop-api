@@ -7,6 +7,7 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow;
 
+use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\Traits\AuthorizeMapperTrait;
@@ -20,7 +21,7 @@ class AuthorizePayNowMapper extends AbstractPayNowMapper
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function createPaymentTransfer(OrderTransfer $orderTransfer)
+    protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         $computopApiRequestTransfer = parent::createPaymentTransfer($orderTransfer);
         $computopApiRequestTransfer->setCapture(ComputopApiConfig::CAPTURE_MANUAL_TYPE);

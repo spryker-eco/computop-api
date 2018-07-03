@@ -12,14 +12,12 @@ use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
 
 class RefundEasyCreditMapper extends AbstractEasyCreditMapper
 {
-    const DATE_TIME_FORMAT = 'YYYY-mm-dd';
-
     /**
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $computopApiRequestTransfer
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray = parent::getDataSubArray($computopApiRequestTransfer);
         $dataSubArray[ComputopApiConfig::DATE] = $computopApiRequestTransfer->getDate();

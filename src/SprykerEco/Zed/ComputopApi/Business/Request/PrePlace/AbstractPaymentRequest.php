@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\ComputopApi\Business\Request\PrePlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\PrePlaceMapperInterface;
@@ -51,8 +52,10 @@ abstract class AbstractPaymentRequest implements PrePlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
-    {
+    public function request(
+        QuoteTransfer $quoteTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): TransferInterface {
         $requestData = $this
             ->mapper
             ->buildRequest($quoteTransfer, $computopApiHeaderPayment);
@@ -65,18 +68,10 @@ abstract class AbstractPaymentRequest implements PrePlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    protected function sendRequest(array $requestData)
+    protected function sendRequest(array $requestData): TransferInterface
     {
-        $requestData = $this
-            ->adapter
-            ->sendRequest($requestData);
+        $response = $this->adapter->sendRequest($requestData);
 
-        $responseTransfer = $this
-            ->converter
-            ->toTransactionResponseTransfer(
-                $requestData
-            );
-
-        return $responseTransfer;
+        return $this->converter->toTransactionResponseTransfer($response);
     }
 }

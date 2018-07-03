@@ -10,12 +10,13 @@ namespace SprykerEco\Zed\ComputopApi\Business\Adapter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\StreamInterface;
 use SprykerEco\Zed\ComputopApi\Business\Exception\ComputopApiHttpRequestException;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
 abstract class AbstractAdapter implements AdapterInterface
 {
-    const DEFAULT_TIMEOUT = 45;
+    protected const DEFAULT_TIMEOUT = 45;
 
     /**
      * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
@@ -38,7 +39,7 @@ abstract class AbstractAdapter implements AdapterInterface
     public function __construct(ComputopApiConfig $config)
     {
         $this->client = new Client([
-            RequestOptions::TIMEOUT => self::DEFAULT_TIMEOUT,
+            RequestOptions::TIMEOUT => static::DEFAULT_TIMEOUT,
         ]);
 
         $this->config = $config;
@@ -47,9 +48,9 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * @param array $data
      *
-     * @return string
+     * @return \Psr\Http\Message\StreamInterface
      */
-    public function sendRequest(array $data)
+    public function sendRequest(array $data): StreamInterface
     {
         $options[RequestOptions::FORM_PARAMS] = $data;
 
@@ -63,7 +64,7 @@ abstract class AbstractAdapter implements AdapterInterface
      *
      * @return \Psr\Http\Message\StreamInterface
      */
-    protected function send(array $options = [])
+    protected function send(array $options = []): StreamInterface
     {
         try {
             $response = $this->client->post(

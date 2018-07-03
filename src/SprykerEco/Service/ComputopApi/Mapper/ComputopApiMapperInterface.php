@@ -9,7 +9,6 @@ namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
-use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -37,14 +36,14 @@ interface ComputopApiMapperInterface
     public function getDataPlainText(array $dataSubArray);
 
     /**
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
     public function getDescriptionValue(array $items);
 
     /**
-     * @param ItemTransfer[] $items
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */

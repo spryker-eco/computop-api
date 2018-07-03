@@ -28,24 +28,24 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param array $decryptedArray
+     * @param array $plaintextResponseHeader
      * @param string $method
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractHeader(array $decryptedArray, $method): ComputopApiResponseHeaderTransfer
+    public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
     {
-        $decryptedArray = $this->formatResponseArray($decryptedArray);
-        $this->checkDecryptedResponse($decryptedArray);
+        $plaintextResponseHeader = $this->formatResponseArray($plaintextResponseHeader);
+        $this->checkDecryptedResponse($plaintextResponseHeader);
 
         $header = new ComputopApiResponseHeaderTransfer();
-        $header->fromArray($decryptedArray, true);
-        $header->setMId($this->getResponseValue($decryptedArray, ComputopApiConstants::MERCHANT_ID_SHORT));
-        $header->setTransId($this->getResponseValue($decryptedArray, ComputopApiConstants::TRANS_ID));
-        $header->setPayId($this->getResponseValue($decryptedArray, ComputopApiConstants::PAY_ID));
+        $header->fromArray($plaintextResponseHeader, true);
+        $header->setMId($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::MERCHANT_ID_SHORT));
+        $header->setTransId($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::TRANS_ID));
+        $header->setPayId($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::PAY_ID));
         //optional
-        $header->setMac($this->getResponseValue($decryptedArray, ComputopApiConstants::MAC));
-        $header->setXId($this->getResponseValue($decryptedArray, ComputopApiConstants::X_ID));
+        $header->setMac($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::MAC));
+        $header->setXId($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::X_ID));
 
         $header->setIsSuccess(
             $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
@@ -57,15 +57,15 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param array $responseArray
+     * @param array $plaintextResponseHeader
      * @param string $key
      *
      * @return null|string
      */
-    public function getResponseValue(array $responseArray, $key): ?string
+    public function getResponseValue(array $plaintextResponseHeader, $key): ?string
     {
-        if (isset($responseArray[$this->formatKey($key)])) {
-            return $responseArray[$this->formatKey($key)];
+        if (isset($plaintextResponseHeader[$this->formatKey($key)])) {
+            return $plaintextResponseHeader[$this->formatKey($key)];
         }
 
         return null;
@@ -126,13 +126,13 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param array $decryptedArray
+     * @param array $plaintextResponseHeader
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
      * @return void
      */
-    protected function checkDecryptedResponse(array $decryptedArray): void
+    protected function checkDecryptedResponse(array $plaintextResponseHeader): void
     {
         $keys = [
             ComputopApiConstants::MERCHANT_ID_SHORT,
@@ -140,7 +140,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
             ComputopApiConstants::PAY_ID,
         ];
 
-        if (!$this->existArrayKeys($keys, $decryptedArray)) {
+        if (!$this->existArrayKeys($keys, $plaintextResponseHeader)) {
             throw new ComputopApiConverterException(
                 'Response does not have expected values. Please check Computop documentation.'
             );

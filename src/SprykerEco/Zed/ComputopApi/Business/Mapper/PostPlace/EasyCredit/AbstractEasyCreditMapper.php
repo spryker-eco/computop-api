@@ -16,12 +16,12 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\AbstractPostPlaceMapper
 
 abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
 {
-    const DATE_TIME_FORMAT = 'Y-m-d';
+    protected const DATE_TIME_FORMAT = 'Y-m-d';
 
     /**
      * @return string
      */
-    public function getMethodName()
+    public function getMethodName(): string
     {
         return ComputopApiConfig::PAYMENT_METHOD_EASY_CREDIT;
     }
@@ -31,11 +31,11 @@ abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function createPaymentTransfer(OrderTransfer $orderTransfer)
+    protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         $computopApiRequestTransfer = new ComputopApiRequestTransfer();
         $dateTime = new DateTime($orderTransfer->getCreatedAt());
-        $computopApiRequestTransfer->setDate($dateTime->format(self::DATE_TIME_FORMAT));
+        $computopApiRequestTransfer->setDate($dateTime->format(static::DATE_TIME_FORMAT));
 
         return $computopApiRequestTransfer;
     }
@@ -45,7 +45,7 @@ abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
      *
      * @return array
      */
-    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer)
+    public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
         $dataSubArray[ComputopApiConstants::PAY_ID] = $computopApiRequestTransfer->getPayId();
         $dataSubArray[ComputopApiConstants::TRANS_ID] = $computopApiRequestTransfer->getTransId();

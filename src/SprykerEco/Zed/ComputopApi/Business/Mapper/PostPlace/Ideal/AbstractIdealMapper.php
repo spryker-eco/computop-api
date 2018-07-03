@@ -17,7 +17,7 @@ abstract class AbstractIdealMapper extends AbstractPostPlaceMapper
     /**
      * @return string
      */
-    public function getMethodName()
+    public function getMethodName(): string
     {
         return ComputopApiConfig::PAYMENT_METHOD_IDEAL;
     }
@@ -27,7 +27,7 @@ abstract class AbstractIdealMapper extends AbstractPostPlaceMapper
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function createPaymentTransfer(OrderTransfer $orderTransfer)
+    protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         return new ComputopApiRequestTransfer();
     }

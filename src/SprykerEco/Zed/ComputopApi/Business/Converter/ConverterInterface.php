@@ -7,14 +7,14 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
-use GuzzleHttp\Psr7\Stream;
+use Psr\Http\Message\StreamInterface;
 
 interface ConverterInterface
 {
     /**
-     * @param \GuzzleHttp\Psr7\Stream $response
+     * @param \Psr\Http\Message\StreamInterface $response
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function toTransactionResponseTransfer(Stream $response);
+    public function toTransactionResponseTransfer(StreamInterface $response);
 }

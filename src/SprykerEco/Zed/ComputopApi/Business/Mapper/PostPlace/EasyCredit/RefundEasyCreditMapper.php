@@ -8,7 +8,7 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class RefundEasyCreditMapper extends AbstractEasyCreditMapper
 {

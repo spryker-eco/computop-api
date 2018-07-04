@@ -31,7 +31,7 @@ use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\RefundRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\ReverseRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\EasyCreditStatusRequest;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
-use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge;
+use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 
 class FacadeTestHelper extends Test
 {
@@ -44,7 +44,7 @@ class FacadeTestHelper extends Test
         $builder->setMethods(
             [
                 'getComputopApiService',
-                'getStore',
+                'getStoreFacade',
                 'getConfig',
                 'createEasyCreditStatusRequest',
                 'createAuthorizationPaymentRequest',
@@ -58,8 +58,8 @@ class FacadeTestHelper extends Test
         $stub = $builder->getMock();
         $stub->method('getComputopApiService')
             ->willReturn($this->createComputopApiService());
-        $stub->method('getStore')
-            ->willReturn($this->createStore());
+        $stub->method('getStoreFacade')
+            ->willReturn($this->createStoreFacade());
         $stub->method('getConfig')
             ->willReturn($this->createConfig());
         $stub->method('createEasyCreditStatusRequest')
@@ -87,11 +87,11 @@ class FacadeTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge
      */
-    protected function createStore()
+    protected function createStoreFacade()
     {
-        return $this->createMock(ComputopApiToStoreBridge::class);
+        return $this->createMock(ComputopApiToStoreFacadeBridge::class);
     }
 
     /**

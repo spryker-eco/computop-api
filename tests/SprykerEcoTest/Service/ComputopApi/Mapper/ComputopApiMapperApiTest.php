@@ -27,7 +27,7 @@ class ComputopApiMapperApiTest extends AbstractComputopApiTest
     {
         $mapper = $this->helper->createMapper();
         $requestTransfer = $this->mapperHelper->createComputopApiRequestTransfer();
-        $macValue = $mapper->getMacEncryptedValue($requestTransfer);
+        $macValue = $mapper->getPlaintextMac($requestTransfer);
 
         $this->assertSame(ComputopApiMapperTestConstants::EXPECTED_MAC, $macValue);
     }

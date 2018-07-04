@@ -7,7 +7,12 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business;
 
+use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiRefundResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiReverseResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -31,7 +36,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     public function performEasyCreditStatusRequest(
         QuoteTransfer $quoteTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiHeaderPaymentTransfer {
+    ): ComputopApiEasyCreditStatusResponseTransfer {
         return $this
             ->getFactory()
             ->createEasyCreditStatusRequest()
@@ -51,7 +56,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     public function performAuthorizationRequest(
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiHeaderPaymentTransfer {
+    ): ComputopApiAuthorizeResponseTransfer {
         return $this
             ->getFactory()
             ->createAuthorizationPaymentRequest()
@@ -71,7 +76,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     public function performCaptureRequest(
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiHeaderPaymentTransfer {
+    ): ComputopApiCaptureResponseTransfer {
         return $this
             ->getFactory()
             ->createCapturePaymentRequest()
@@ -91,7 +96,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     public function performInquireRequest(
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiHeaderPaymentTransfer {
+    ): ComputopApiInquireResponseTransfer {
         return $this
             ->getFactory()
             ->createInquirePaymentRequest()
@@ -111,7 +116,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     public function performRefundRequest(
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiHeaderPaymentTransfer {
+    ): ComputopApiRefundResponseTransfer {
         return $this
             ->getFactory()
             ->createRefundPaymentRequest()

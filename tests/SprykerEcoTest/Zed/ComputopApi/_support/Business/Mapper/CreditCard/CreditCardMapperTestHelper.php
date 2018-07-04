@@ -11,11 +11,13 @@ use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
+use SprykerEco\Service\ComputopApi\ComputopApiServiceFactory;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
-use SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge;
+use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 
 class CreditCardMapperTestHelper extends Test
 {
@@ -86,6 +88,7 @@ class CreditCardMapperTestHelper extends Test
                 'getTestModeDescriptionValue',
                 'generateReqId',
                 'generateTransId',
+                'getFactory',
             ]
         );
 
@@ -103,6 +106,9 @@ class CreditCardMapperTestHelper extends Test
 
         $computopServiceMock->method('generateTransId')
             ->willReturn('');
+
+        $computopServiceMock->method('getFactory')
+            ->willReturn(new ComputopApiServiceFactory());
 
         return $computopServiceMock;
     }
@@ -124,17 +130,20 @@ class CreditCardMapperTestHelper extends Test
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\Dependency\ComputopApiToStoreBridge
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeInterface
      */
     public function createStoreMock()
     {
+        $store = (new StoreTransfer())
+            ->setSelectedCurrencyIsoCode('EUR');
+
         $storeMock = $this->createPartialMock(
-            ComputopApiToStoreBridge::class,
-            ['getCurrencyIsoCode']
+            ComputopApiToStoreFacadeBridge::class,
+            ['getCurrentStore']
         );
 
-        $storeMock->method('getCurrencyIsoCode')
-            ->willReturn('EUR');
+        $storeMock->method('getCurrentStore')
+            ->willReturn($store);
 
         return $storeMock;
     }

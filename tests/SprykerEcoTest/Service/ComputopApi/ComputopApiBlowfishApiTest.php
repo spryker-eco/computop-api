@@ -8,7 +8,7 @@
 namespace SprykerEcoTest\Service\ComputopApi;
 
 use SprykerEco\Service\ComputopApi\Exception\BlowfishException;
-use SprykerEco\Service\ComputopApi\Model\BlowfishHasher;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
 
 /**
  * @group Unit
@@ -88,7 +88,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\BlowfishHasherInterface
+     * @return \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
      */
     public function createService()
     {

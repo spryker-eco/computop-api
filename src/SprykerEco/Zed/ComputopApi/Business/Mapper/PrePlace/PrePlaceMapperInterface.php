@@ -9,9 +9,8 @@ namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface;
 
-interface PrePlaceMapperInterface extends MapperInterface
+interface PrePlaceMapperInterface
 {
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

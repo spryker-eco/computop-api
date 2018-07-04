@@ -10,15 +10,15 @@ namespace SprykerEcoTest\Service\ComputopApi;
 use Codeception\TestCase\Test;
 use Spryker\Service\UtilText\UtilTextService;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
-use SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverter;
-use SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapper;
+use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
+use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
 
 class ComputopApiServiceTestHelper extends Test
 {
     const PASSWORD = 'password';
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
     public function createComputopConfigMock()
     {
@@ -34,7 +34,7 @@ class ComputopApiServiceTestHelper extends Test
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\Mapper\ComputopApiMapperInterface
+     * @return \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
     public function createMapper()
     {
@@ -45,7 +45,7 @@ class ComputopApiServiceTestHelper extends Test
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\Converter\ComputopApiConverterInterface
+     * @return \SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface
      */
     public function createConverter()
     {

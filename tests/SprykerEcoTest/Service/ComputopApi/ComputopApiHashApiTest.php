@@ -7,7 +7,7 @@
 
 namespace SprykerEcoTest\Service\ComputopApi;
 
-use SprykerEco\Service\ComputopApi\Model\HmacHasher;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;
 
 /**
  * @group Unit
@@ -34,7 +34,7 @@ class ComputopApiHashApiTest extends AbstractComputopApiTest
     }
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\Model\HmacHasherInterface
+     * @return \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
      */
     public function createService()
     {

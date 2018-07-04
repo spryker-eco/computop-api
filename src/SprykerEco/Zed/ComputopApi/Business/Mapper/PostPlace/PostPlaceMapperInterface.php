@@ -9,9 +9,8 @@ namespace SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface;
 
-interface PostPlaceMapperInterface extends MapperInterface
+interface PostPlaceMapperInterface
 {
     /**
      * @return string

@@ -8,6 +8,7 @@
 namespace SprykerEco\Service\ComputopApi\Converter;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Spryker\Service\Kernel\AbstractBundleConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
@@ -20,9 +21,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected $config;
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
+     * @param \Spryker\Service\Kernel\AbstractBundleConfig $config
      */
-    public function __construct(ComputopApiConfig $config)
+    public function __construct(AbstractBundleConfig $config)
     {
         $this->config = $config;
     }

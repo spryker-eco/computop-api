@@ -70,12 +70,12 @@ class ConverterTestHelper extends Test
     {
         $computopServiceMock = $this->createPartialMock(
             ComputopApiService::class,
-            ['getDecryptedArray', 'extractHeader', 'getResponseValue']
+            ['decryptResponseHeader', 'extractResponseHeader', 'getResponseValue']
         );
-        $computopServiceMock->method('getDecryptedArray')
+        $computopServiceMock->method('decryptResponseHeader')
             ->willReturn($decryptedArray);
 
-        $computopServiceMock->method('extractHeader')
+        $computopServiceMock->method('extractResponseHeader')
             ->willReturn($this->getHeaderResponseTransfer($decryptedArray));
 
         $computopServiceMock->method('getResponseValue')

@@ -37,7 +37,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return array
      */
-    abstract public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer);
+    abstract public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array;
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer

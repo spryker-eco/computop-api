@@ -42,12 +42,11 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
         $decryptedArray = $this->getDecryptedArray(ComputopApiConfig::SUCCESS_STATUS);
 
         /** @var \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header */
-        $header = $converter->extractHeader($decryptedArray, self::METHOD);
+        $header = $converter->extractResponseHeader($decryptedArray, static::METHOD);
 
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $header);
         $this->assertTrue($header->getIsSuccess());
 
-        //todo:update test
         $this->assertSame(ApiConfig::MERCHANT_ID_SHORT, $header->getMId());
         $this->assertSame(ApiConfig::TRANS_ID, $header->getTransId());
         $this->assertSame(ApiConfig::PAY_ID, $header->getPayId());
@@ -65,7 +64,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
         $decryptedArray = $this->getDecryptedArray(self::STATUS_ERROR_VALUE);
 
         /** @var \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header */
-        $header = $converter->extractHeader($decryptedArray, self::METHOD);
+        $header = $converter->extractResponseHeader($decryptedArray, self::METHOD);
 
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $header);
         $this->assertFalse($header->getIsSuccess());
@@ -73,7 +72,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
         $this->assertSame(ApiConfig::MERCHANT_ID_SHORT, $header->getMId());
         $this->assertSame(ApiConfig::TRANS_ID, $header->getTransId());
         $this->assertSame(ApiConfig::PAY_ID, $header->getPayId());
-        $this->assertSame(self::STATUS_ERROR_VALUE, $header->getStatus());
+        $this->assertSame(static::STATUS_ERROR_VALUE, $header->getStatus());
         $this->assertSame(ApiConfig::CODE, $header->getCode());
         $this->assertSame(ApiConfig::X_ID, $header->getXId());
     }

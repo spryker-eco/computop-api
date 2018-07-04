@@ -15,7 +15,6 @@ use SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Exception\ComputopApiMethodMapperException;
 use SprykerEco\Zed\ComputopApi\Business\Exception\PaymentMethodNotSetException;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
@@ -36,7 +35,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
     protected $paymentMethod;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface[]
+     * @var \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface[]
      */
     protected $methodMappers = [];
 
@@ -96,9 +95,9 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @throws \SprykerEco\Zed\ComputopApi\Business\Exception\ComputopApiMethodMapperException
      *
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\MapperInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    protected function getMethodMapper($methodName): MapperInterface
+    protected function getMethodMapper($methodName): PostPlaceMapperInterface
     {
         if (isset($this->methodMappers[$methodName]) === false) {
             throw new ComputopApiMethodMapperException('The method mapper is not registered.');

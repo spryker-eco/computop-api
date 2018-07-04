@@ -10,7 +10,6 @@ namespace SprykerEco\Service\ComputopApi;
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface ComputopApiServiceInterface
 {

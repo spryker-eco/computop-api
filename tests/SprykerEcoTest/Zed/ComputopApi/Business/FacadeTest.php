@@ -1,0 +1,146 @@
+<?php
+
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace SprykerEcoTest\Zed\ComputopApi\Business;
+
+use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiRefundResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiReverseResponseTransfer;
+use SprykerEco\Zed\ComputopApi\Business\ComputopApiFacade;
+
+/**
+ * @group Functional
+ * @group SprykerEco
+ * @group Zed
+ * @group ComputopApi
+ * @group Business
+ */
+class FacadeTest extends AbstractSetUpTest
+{
+    /**
+     * @return void
+     */
+    public function testPerformEasyCreditStatusRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performEasyCreditStatusRequest(
+            $this->helper->getQuoteTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiEasyCreditStatusResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformAuthorizationRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performAuthorizationRequest(
+            $this->helper->getOrderTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiAuthorizeResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformCaptureRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performCaptureRequest(
+            $this->helper->getOrderTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiCaptureResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformInquireRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performInquireRequest(
+            $this->helper->getOrderTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiInquireResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformRefundRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performRefundRequest(
+            $this->helper->getOrderTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiRefundResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformReverseRequest()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performReverseRequest(
+            $this->helper->getOrderTrasfer(),
+            $this->helper->createComputopApiHeaderPaymentTransfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiReverseResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+}

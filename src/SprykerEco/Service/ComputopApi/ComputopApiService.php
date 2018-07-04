@@ -9,9 +9,9 @@ namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\Kernel\AbstractService;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 /**
@@ -210,13 +210,27 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer|\Spryker\Shared\Kernel\Transfer\TransferInterface $transfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
-    public function generateReqId(TransferInterface $transfer): string
+    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
-        return $this->getFactory()->createComputopApiMapper()->generateReqId($transfer);
+        return $this->getFactory()->createComputopApiMapper()->generateReqIdFromQuoteTransfer($quoteTransfer);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
+    {
+        return $this->getFactory()->createComputopApiMapper()->generateReqIdFromOrderTransfer($orderTransfer);
     }
 
     /**

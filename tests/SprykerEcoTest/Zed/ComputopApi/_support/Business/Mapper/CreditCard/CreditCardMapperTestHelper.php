@@ -86,7 +86,7 @@ class CreditCardMapperTestHelper extends Test
                 'getEncryptedArray',
                 'getDescriptionValue',
                 'getTestModeDescriptionValue',
-                'generateReqId',
+                'generateReqIdFromOrderTransfer',
                 'generateTransId',
                 'getFactory',
             ]
@@ -101,7 +101,7 @@ class CreditCardMapperTestHelper extends Test
         $computopServiceMock->method('getTestModeDescriptionValue')
             ->willReturn('');
 
-        $computopServiceMock->method('generateReqId')
+        $computopServiceMock->method('generateReqIdFromOrderTransfer')
             ->willReturn('');
 
         $computopServiceMock->method('generateTransId')

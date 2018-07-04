@@ -134,7 +134,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
         $computopApiRequestTransfer->setMac(
             $this->computopApiService->generateEncryptedMac($computopApiRequestTransfer)
         );
-        $computopApiRequestTransfer->setReqId($this->computopApiService->generateReqId($orderTransfer));
+        $computopApiRequestTransfer->setReqId($this->computopApiService->generateReqIdFromOrderTransfer($orderTransfer));
         $computopApiRequestTransfer->setRefNr($orderTransfer->getOrderReference());
 
         return $computopApiRequestTransfer;

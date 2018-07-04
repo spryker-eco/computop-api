@@ -9,6 +9,7 @@ namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use Spryker\Service\UtilText\UtilTextServiceInterface;
@@ -136,20 +137,29 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer|\Spryker\Shared\Kernel\Transfer\TransferInterface $transfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
-    public function generateReqId(TransferInterface $transfer): string
+    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
-        $parameters = [
-            $this->createUniqueSalt(),
-            $transfer->getTotals()->getHash(),
-            $transfer->getCustomer()->getCustomerReference(),
-        ];
-        $string = $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::SHA256);
+        return $this->generateReqId(
+            $quoteTransfer->getTotals()->getHash(),
+            $quoteTransfer->getCustomer()->getCustomerReference()
+        );
+    }
 
-        return substr($string, 0, static::REQ_ID_LENGTH);
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
+    {
+        return $this->generateReqId(
+            $orderTransfer->getTotals()->getHash(),
+            $orderTransfer->getCustomer()->getCustomerReference()
+        );
     }
 
     /**
@@ -165,6 +175,24 @@ class ComputopApiMapper implements ComputopApiMapperInterface
         ];
 
         return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);
+    }
+
+    /**
+     * @param string $hash
+     * @param string $customerReference
+     *
+     * @return string
+     */
+    protected function generateReqId(string $hash, string $customerReference): string
+    {
+        $parameters = [
+            $this->createUniqueSalt(),
+            $hash,
+            $customerReference,
+        ];
+        $string = $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::SHA256);
+
+        return substr($string, 0, static::REQ_ID_LENGTH);
     }
 
     /**

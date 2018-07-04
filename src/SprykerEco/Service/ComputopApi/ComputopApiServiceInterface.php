@@ -8,6 +8,7 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
@@ -145,16 +146,27 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate ReqId for Computop calls
-     * - OrderTransfer or QuoteTransfer uses
+     * - Generate ReqId from QuoteTransfer for Computop calls
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\OrderTransfer|\Generated\Shared\Transfer\QuoteTransfer|\Spryker\Shared\Kernel\Transfer\TransferInterface $transfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
-    public function generateReqId(TransferInterface $transfer);
+    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer);
+
+    /**
+     * Specification:
+     * - Generate ReqId from OrderTransfer for Computop calls
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return string
+     */
+    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer);
 
     /**
      * Specification:

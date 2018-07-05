@@ -139,4 +139,16 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
 
         return $computopApiRequestTransfer;
     }
+
+    /**
+     * @param string $method
+     *
+     * @return string
+     */
+    protected function getCaptureType(string $method): string
+    {
+        $paymentMethodsCaptureTypes = $this->config->getPaymentMethodsCaptureTypes();
+
+        return $paymentMethodsCaptureTypes[$method] ?? '';
+    }
 }

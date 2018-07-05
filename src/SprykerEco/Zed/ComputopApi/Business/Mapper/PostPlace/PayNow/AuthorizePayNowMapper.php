@@ -24,7 +24,9 @@ class AuthorizePayNowMapper extends AbstractPayNowMapper
     protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         $computopApiRequestTransfer = parent::createPaymentTransfer($orderTransfer);
-        $computopApiRequestTransfer->setCapture(ComputopApiConfig::CAPTURE_MANUAL_TYPE);
+        $computopApiRequestTransfer->setCapture(
+            $this->getCaptureType(ComputopApiConfig::PAYMENT_METHOD_PAY_NOW)
+        );
         $computopApiRequestTransfer->setOrderDesc($this->getOrderDesc($this->computopApiService, $orderTransfer));
 
         return $computopApiRequestTransfer;

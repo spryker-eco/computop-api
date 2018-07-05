@@ -129,4 +129,12 @@ class ComputopApiConfig extends AbstractBundleConfig
     {
         return static::INQUIRE_METHOD;
     }
+
+    /**
+     * @return string[]
+     */
+    public function getPaymentMethodsCaptureTypes(): array
+    {
+        return $this->get(ComputopApiConstants::PAYMENT_METHODS_CAPTURE_TYPES);
+    }
 }

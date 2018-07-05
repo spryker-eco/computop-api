@@ -49,5 +49,6 @@ class ComputopApiZedTester extends Actor
         $this->setConfig('COMPUTOPAPI:HMAC_PASSWORD', 'COMPUTOPAPI:HMAC_PASSWORD');
         $this->setConfig('COMPUTOPAPI:BLOWFISH_PASSWORD', 'COMPUTOPAPI:BLOWFISH_PASSWORD');
         $this->setConfig('COMPUTOPAPI:RESPONSE_MAC_REQUIRED', ['INIT']);
+        $this->setConfig('COMPUTOPAPI:RESPONSE_MAC_REQUIRED', ['computopCreditCard' => 'MANUAL']);
     }
 }

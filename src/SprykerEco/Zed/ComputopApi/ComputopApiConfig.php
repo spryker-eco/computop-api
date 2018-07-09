@@ -93,6 +93,14 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
+    public function getCrifActionUrl(): string
+    {
+        return $this->get(ComputopApiConstants::CRIF_ACTION);
+    }
+
+    /**
+     * @return string
+     */
     public function getAuthorizeMethodName(): string
     {
         return static::AUTHORIZE_METHOD;

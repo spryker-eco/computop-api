@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\ComputopApi\Business;
 
 use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiCrifResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
@@ -141,5 +142,22 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
             ->getFactory()
             ->createReversePaymentRequest()
             ->request($orderTransfer, $computopApiHeaderPayment);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer
+     */
+    public function performCrifApiCall(QuoteTransfer $quoteTransfer): ComputopApiCrifResponseTransfer
+    {
+        return $this
+            ->getFactory()
+            ->createCrifRequest()
+            ->request($quoteTransfer);
     }
 }

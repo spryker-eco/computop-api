@@ -40,6 +40,8 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterfac
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Sofort\RefundSofortMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit\StatusEasyCreditMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\PrePlaceMapperInterface;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\CrifMapper;
 
 /**
  * @method \SprykerEco\Zed\ComputopApi\ComputopApiConfig getConfig()
@@ -403,6 +405,17 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
             $this->getComputopApiService(),
             $this->getConfig(),
             $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
+     */
+    public function createCrifMapper(): ApiRiskCheckMapperInterface
+    {
+        return new CrifMapper(
+            $this->getComputopApiService(),
+            $this->getConfig()
         );
     }
 }

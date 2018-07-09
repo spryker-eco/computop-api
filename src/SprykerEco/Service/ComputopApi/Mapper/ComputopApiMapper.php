@@ -177,6 +177,17 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $limit
+     *
+     * @return string
+     */
+    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit): string
+    {
+        return substr($this->generateTransId($quoteTransfer), 0, $limit);
+    }
+
+    /**
      * @param string $hash
      * @param string $customerReference
      *

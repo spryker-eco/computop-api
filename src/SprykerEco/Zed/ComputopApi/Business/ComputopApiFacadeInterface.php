@@ -108,4 +108,16 @@ interface ComputopApiFacadeInterface
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
     );
+
+    /**
+     * Specification:
+     * - Perform CRIF risk check call to Computop
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer
+     */
+    public function performCrifApiCall(QuoteTransfer $quoteTransfer);
 }

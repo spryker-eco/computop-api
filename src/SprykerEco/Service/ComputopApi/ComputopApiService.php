@@ -246,4 +246,19 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     {
         return $this->getFactory()->createComputopApiMapper()->generateTransId($quoteTransfer);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $limit
+     *
+     * @return string
+     */
+    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit): string
+    {
+        return $this->getFactory()->createComputopApiMapper()->generateLimitedTransId($quoteTransfer, $limit);
+    }
 }

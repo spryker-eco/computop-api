@@ -145,4 +145,20 @@ class ComputopApiConfig extends AbstractBundleConfig
     {
         return $this->get(ComputopApiConstants::PAYMENT_METHODS_CAPTURE_TYPES);
     }
+
+    /**
+     * @return string
+     */
+    public function getCrifProductName(): string
+    {
+        return $this->get(ComputopApiConstants::CRIF_PRODUCT_NAME);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrifLegalForm(): string
+    {
+        return $this->get(ComputopApiConstants::CRIF_LEGAL_FORM);
+    }
 }

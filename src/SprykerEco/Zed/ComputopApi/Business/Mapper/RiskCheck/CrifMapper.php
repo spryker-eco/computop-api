@@ -27,9 +27,9 @@ class CrifMapper extends AbstractRiskCheckMapper implements ApiRiskCheckMapperIn
         $dataSubArray[ComputopApiConfig::AMOUNT] = $requestTransfer->getAmount();
         $dataSubArray[ComputopApiConfig::CURRENCY] = $requestTransfer->getCurrency();
         $dataSubArray[ComputopApiConfig::MAC] = $this->computopApiService->generateEncryptedMac($requestTransfer);
-        $dataSubArray[ComputopApiConfig::PRODUCT_NAME] = 'IdentCheckConsumer';
+        $dataSubArray[ComputopApiConfig::PRODUCT_NAME] = $this->config->getCrifProductName();
         $dataSubArray[ComputopApiConfig::CUSTOMER_ID] = $quoteTransfer->getCustomer()->getCustomerReference();
-        $dataSubArray[ComputopApiConfig::LEGAL_FORM] = 'PERSON';
+        $dataSubArray[ComputopApiConfig::LEGAL_FORM] = $this->config->getCrifLegalForm();
         $dataSubArray[ComputopApiConfig::FIRST_NAME] = $quoteTransfer->getShippingAddress()->getFirstName();
         $dataSubArray[ComputopApiConfig::LAST_NAME] = $quoteTransfer->getShippingAddress()->getLastName();
         $dataSubArray[ComputopApiConfig::ADDRESS_STREET] = $quoteTransfer->getShippingAddress()->getAddress1();

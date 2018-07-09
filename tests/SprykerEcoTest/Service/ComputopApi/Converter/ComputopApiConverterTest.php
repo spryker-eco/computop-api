@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerEcoTest\Service\Computop\Converter;
+namespace SprykerEcoTest\Service\ComputopApi\Converter;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;

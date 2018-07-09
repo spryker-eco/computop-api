@@ -9,6 +9,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business;
 
 use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiCrifResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiRefundResponseTransfer;
@@ -142,5 +143,28 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
         $this->assertNotEmpty($response->getHeader()->getTransId());
         $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    /**
+     * @return void
+     */
+    public function testPerformCrifApiCall()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $response = $facade->performCrifApiCall(
+            $this->helper->getQuoteTrasfer()
+        );
+
+        $this->assertInstanceOf(ComputopApiCrifResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+        $this->assertSame(FacadeTestConstants::CRIF_GREEN_RESULT, $response->getResult());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getCode());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getStatus());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE_SUCCESS, $response->getDescription());
     }
 }

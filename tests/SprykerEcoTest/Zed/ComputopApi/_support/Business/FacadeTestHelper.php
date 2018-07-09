@@ -10,6 +10,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiCrifResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
@@ -30,6 +31,7 @@ use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\RefundRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\ReverseRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\EasyCreditStatusRequest;
+use SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck\CrifRequest;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 
@@ -52,6 +54,7 @@ class FacadeTestHelper extends Test
                 'createReversePaymentRequest',
                 'createCapturePaymentRequest',
                 'createRefundPaymentRequest',
+                'createCrifRequest',
             ]
         );
 
@@ -74,6 +77,8 @@ class FacadeTestHelper extends Test
             ->willReturn($this->createCapturePaymentRequest());
         $stub->method('createRefundPaymentRequest')
             ->willReturn($this->createRefundPaymentRequest());
+        $stub->method('createCrifRequest')
+            ->willReturn($this->createCrifRequest());
 
         return $stub;
     }
@@ -269,6 +274,25 @@ class FacadeTestHelper extends Test
             ->setHeader($this->createComputopApiResponseHeaderTransfer());
 
         $stub = $this->createMock(RefundRequest::class);
+        $stub->method('request')
+            ->willReturn($response);
+
+        return $stub;
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck\CrifRequest
+     */
+    protected function createCrifRequest()
+    {
+        $response = (new ComputopApiCrifResponseTransfer())
+            ->setHeader($this->createComputopApiResponseHeaderTransfer())
+            ->setCode(FacadeTestConstants::CODE_VALUE)
+            ->setResult(FacadeTestConstants::CRIF_GREEN_RESULT)
+            ->setStatus(FacadeTestConstants::STATUS_VALUE)
+            ->setDescription(FacadeTestConstants::STATUS_VALUE_SUCCESS);
+
+        $stub = $this->createMock(CrifRequest::class);
         $stub->method('request')
             ->willReturn($response);
 

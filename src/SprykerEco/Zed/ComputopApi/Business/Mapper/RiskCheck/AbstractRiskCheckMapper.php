@@ -10,7 +10,7 @@ namespace SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck;
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
-use SprykerEco\Shared\Computop\Config\ComputopApiConfig as SharedComputopApiConfig;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as SharedComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
 abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
@@ -23,7 +23,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
     protected $computopApiService;
 
     /**
-     * @var \SprykerEco\Zed\Computop\ComputopConfig
+     * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
     protected $config;
 

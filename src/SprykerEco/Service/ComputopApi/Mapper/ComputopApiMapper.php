@@ -24,6 +24,8 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected const ORDER_DESC_SUCCESS = 'Test:0000';
     protected const ORDER_DESC_ERROR = 'Test:0305';
 
+    protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
+
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
@@ -144,7 +146,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         return $this->generateReqId(
             $quoteTransfer->getTotals()->getHash(),
-            $quoteTransfer->getCustomer()->getCustomerReference()
+            $quoteTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
         );
     }
 
@@ -157,7 +159,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         return $this->generateReqId(
             $orderTransfer->getTotals()->getHash(),
-            $orderTransfer->getCustomer()->getCustomerReference()
+            $orderTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
         );
     }
 

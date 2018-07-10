@@ -70,8 +70,12 @@ interface ComputopApiConfig
     public const BILLING_ADDRESS_ZIP = 'BillingAddrZIP';
     public const BILLING_ADDRESS_COUNTRY_CODE = 'BillingAddrCountryCode';
     public const ADDRESS_STREET = 'AddrStreet';
+    public const ADDRESS_STREET_NR = 'AddrStreetNr';
     public const ADDRESS_STREET2 = 'AddrStreet2';
+    public const ADDRESS_ADDITIONAL = 'AddrAddition';
     public const ADDRESS_CITY = 'AddrCity';
+    public const ADDR_ZIP = 'AddrZip';
+    public const ADDR_EMAIL = 'Email';
     public const ADDRESS_STATE = 'AddrState';
     public const ADDRESS_ZIP = 'AddrZIP';
     public const ADDRESS_COUNTRY_CODE = 'AddrCountryCode';
@@ -127,4 +131,7 @@ interface ComputopApiConfig
     public const REASON_PART_CANCELL_GUARANTEE = 'MINDERUNG_GARANTIE_GEWAEHRLEISTUNG';
     public const PAYDIRECT_TRANS_ID_LENGTH = 20;
     public const REQ_ID_LENGTH = 32;
+    public const PRODUCT_NAME = 'ProductName';
+    public const CUSTOMER_ID = 'CustomerID';
+    public const LEGAL_FORM = 'LegalForm';
 }

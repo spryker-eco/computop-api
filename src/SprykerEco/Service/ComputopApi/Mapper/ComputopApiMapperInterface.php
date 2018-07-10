@@ -69,4 +69,12 @@ interface ComputopApiMapperInterface
      * @return string
      */
     public function generateTransId(QuoteTransfer $quoteTransfer);
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param int $limit
+     *
+     * @return string
+     */
+    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit);
 }

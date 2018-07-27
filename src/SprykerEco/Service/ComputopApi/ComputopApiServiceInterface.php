@@ -27,18 +27,6 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate description based on items and enabled test mode
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
-     *
-     * @return string
-     */
-    public function getTestModeDescriptionValue(array $items);
-
-    /**
-     * Specification:
      * - Generate encrypted "Mac" value
      *
      * @api

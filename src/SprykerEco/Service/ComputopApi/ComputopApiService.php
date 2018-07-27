@@ -38,20 +38,6 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
-     *
-     * @return string
-     */
-    public function getTestModeDescriptionValue(array $items): string
-    {
-        return $this->getFactory()->createComputopApiMapper()->getTestModeDescriptionValue($items);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @api
-     *
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $requestTransfer
      *
      * @return string

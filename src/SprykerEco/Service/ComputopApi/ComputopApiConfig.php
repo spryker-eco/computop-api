@@ -12,12 +12,6 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
-    /**
-     * Test mode enabled
-     * It changes description for API calls
-     */
-    protected const COMPUTOP_TEST_MODE_ENABLED = true;
-
     protected const MAC_SEPARATOR = '*';
     protected const DATA_SEPARATOR = '&';
     protected const DATA_SUB_SEPARATOR = '=';
@@ -38,14 +32,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     public function getHmacPassword(): string
     {
         return $this->get(ComputopApiConstants::HMAC_PASSWORD);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isTestMode(): bool
-    {
-        return static::COMPUTOP_TEST_MODE_ENABLED;
     }
 
     /**

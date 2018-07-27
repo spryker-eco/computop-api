@@ -21,9 +21,6 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected const ATTRIBUTES_SEPARATOR = '-';
     protected const REQ_ID_LENGTH = 32;
 
-    protected const ORDER_DESC_SUCCESS = 'Test:0000';
-    protected const ORDER_DESC_ERROR = 'Test:0305';
-
     protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
 
     /**
@@ -114,25 +111,6 @@ class ComputopApiMapper implements ComputopApiMapperInterface
             $description .= static::ATTRIBUTES_SEPARATOR . 'Quantity:' . $item->getQuantity();
             $description .= static::ITEMS_SEPARATOR;
         }
-
-        return $description;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
-     *
-     * @return string
-     */
-    public function getTestModeDescriptionValue(array $items): string
-    {
-        $description = '';
-
-        if ($this->config->isTestMode()) {
-            $description = static::ORDER_DESC_SUCCESS;
-            $description .= static::ITEMS_SEPARATOR;
-        }
-
-        $description .= $this->getDescriptionValue($items);
 
         return $description;
     }

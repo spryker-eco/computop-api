@@ -44,7 +44,7 @@ trait AuthorizeMapperTrait
         ComputopApiServiceInterface $computopApiService,
         OrderTransfer $orderTransfer
     ): string {
-        return $computopApiService->getTestModeDescriptionValue(
+        return $computopApiService->getDescriptionValue(
             $orderTransfer->getItems()->getArrayCopy()
         );
     }

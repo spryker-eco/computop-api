@@ -43,13 +43,6 @@ interface ComputopApiMapperInterface
     public function getDescriptionValue(array $items);
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
-     *
-     * @return string
-     */
-    public function getTestModeDescriptionValue(array $items);
-
-    /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string

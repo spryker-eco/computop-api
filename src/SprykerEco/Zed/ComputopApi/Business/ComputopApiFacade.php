@@ -54,6 +54,26 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
      *
      * @return \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer
      */
+    public function performEasyCreditAuthorizeRequest(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): ComputopApiAuthorizeResponseTransfer {
+        return $this
+            ->getFactory()
+            ->createEasyCreditAuthorizeRequest()
+            ->request($orderTransfer, $computopApiHeaderPayment);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+     *
+     * @return \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer
+     */
     public function performAuthorizationRequest(
         OrderTransfer $orderTransfer,
         ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment

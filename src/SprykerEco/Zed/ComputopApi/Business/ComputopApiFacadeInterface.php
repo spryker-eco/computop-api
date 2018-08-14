@@ -31,6 +31,22 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
+     * - Perform EasyCredit Authorization call to Computop
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+     *
+     * @return \Generated\Shared\Transfer\ComputopApiAuthorizeResponseTransfer
+     */
+    public function performEasyCreditAuthorizeRequest(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    );
+
+    /**
+     * Specification:
      * - Perform Authorization call to Computop
      *
      * @api

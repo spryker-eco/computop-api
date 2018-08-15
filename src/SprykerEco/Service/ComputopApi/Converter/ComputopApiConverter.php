@@ -50,7 +50,8 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         $header->setIsSuccess(
             $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
-            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS
+            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS ||
+            (int)$header->getCode() === 0
         );
         $header->setMethod($method);
 

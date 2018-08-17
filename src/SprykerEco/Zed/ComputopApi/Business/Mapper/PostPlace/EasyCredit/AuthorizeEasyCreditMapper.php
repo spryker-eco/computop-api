@@ -21,6 +21,7 @@ class AuthorizeEasyCreditMapper extends AbstractEasyCreditMapper
     {
         $dataSubArray = parent::getDataSubArray($computopApiRequestTransfer);
         $dataSubArray[ComputopApiConfig::EVENT_TOKEN] = ComputopApiConfig::EVENT_TOKEN_AUTHORIZE;
+        $dataSubArray[ComputopApiConfig::CAPTURE] = ComputopApiConfig::CAPTURE_MANUAL;
 
         return $dataSubArray;
     }

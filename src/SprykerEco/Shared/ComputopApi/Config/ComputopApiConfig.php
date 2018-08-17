@@ -123,6 +123,7 @@ interface ComputopApiConfig
     public const EVENT_TOKEN_INIT = 'INT';
     public const EVENT_TOKEN_GET = 'GET';
     public const EVENT_TOKEN_AUTHORIZE = 'CON';
+    public const CAPTURE_MANUAL = 'MANUAL';
     public const DATE = 'Date';
     public const REASON = 'Reason';
     public const REASON_FULL_CANCELL = 'WIDERRUF_VOLLSTAENDIG';

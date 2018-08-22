@@ -7,7 +7,7 @@
     "spryker/kernel": "^3.0.0",
     "spryker/transfer": "^3.0.0",
     "spryker/util-text": "^1.0.0",
-    "guzzlehttp/guzzle": "~6.3.0"
+    "spryker/guzzle": "^2.2.0"
   },
   "autoload": {
     "psr-4": {

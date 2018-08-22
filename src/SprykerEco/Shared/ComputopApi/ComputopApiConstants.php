@@ -7,6 +7,9 @@
 
 namespace SprykerEco\Shared\ComputopApi;
 
+/**
+ * Declares global environment configuration keys. Do not use it for other class constants.
+ */
 interface ComputopApiConstants
 {
     public const MERCHANT_ID = 'COMPUTOPAPI:MERCHANT_ID';

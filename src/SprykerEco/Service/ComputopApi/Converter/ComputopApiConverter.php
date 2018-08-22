@@ -48,10 +48,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
         $header->setMac($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::MAC));
         $header->setXId($this->getResponseValue($plaintextResponseHeader, ComputopApiConstants::X_ID));
 
-        $header->setIsSuccess(
-            $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
-            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS
-        );
+        $header->setIsSuccess($this->isStatusSuccess($header));
         $header->setMethod($method);
 
         return $header;
@@ -194,5 +191,17 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected function formatKey($key): string
     {
         return mb_strtolower($key);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header
+     *
+     * @return bool
+     */
+    protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header)
+    {
+        return $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
+            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS ||
+            (int)$header->getCode() === 0;
     }
 }

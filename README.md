@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/spryker-eco/computop-api.svg?branch=master)](https://travis-ci.org/spryker-eco/computop-api)
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-eco/computop-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/computop-api/?branch=master
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-eco/computop-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/computop-api/?branch=master)
 
 ## Installation
 

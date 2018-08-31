@@ -49,6 +49,7 @@ class FacadeTestHelper extends Test
                 'getStoreFacade',
                 'getConfig',
                 'createEasyCreditStatusRequest',
+                'createEasyCreditAuthorizeRequest',
                 'createAuthorizationPaymentRequest',
                 'createInquirePaymentRequest',
                 'createReversePaymentRequest',
@@ -67,6 +68,8 @@ class FacadeTestHelper extends Test
             ->willReturn($this->createConfig());
         $stub->method('createEasyCreditStatusRequest')
             ->willReturn($this->createEasyCreditStatusRequest());
+        $stub->method('createEasyCreditAuthorizeRequest')
+            ->willReturn($this->createEasyCreditAuthorizeRequest());
         $stub->method('createAuthorizationPaymentRequest')
             ->willReturn($this->createAuthorizationPaymentRequest());
         $stub->method('createInquirePaymentRequest')
@@ -199,6 +202,21 @@ class FacadeTestHelper extends Test
             ->setHeader($this->createComputopApiResponseHeaderTransfer());
 
         $stub = $this->createMock(EasyCreditStatusRequest::class);
+        $stub->method('request')
+            ->willReturn($response);
+
+        return $stub;
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest
+     */
+    protected function createEasyCreditAuthorizeRequest()
+    {
+        $response = (new ComputopApiAuthorizeResponseTransfer())
+            ->setHeader($this->createComputopApiResponseHeaderTransfer());
+
+        $stub = $this->createMock(AuthorizationRequest::class);
         $stub->method('request')
             ->willReturn($response);
 

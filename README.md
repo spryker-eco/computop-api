@@ -1,4 +1,4 @@
-# ComputopAPI Module
+# ComputopApi Module
 
 [![Build Status](https://travis-ci.org/spryker-eco/computop-api.svg?branch=master)](https://travis-ci.org/spryker-eco/computop-api)
 [![License](https://img.shields.io/github/license/spryker-eco/computop-api.svg?b=master)](https://github.com/spryker-eco/computop-api)

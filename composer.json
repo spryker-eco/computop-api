@@ -1,6 +1,6 @@
 {
   "name": "spryker-eco/computop-api",
-  "description": "Computop API Module",
+  "description": "ComputopApi module",
   "license": "MIT",
   "require": {
     "php": ">=7.1",

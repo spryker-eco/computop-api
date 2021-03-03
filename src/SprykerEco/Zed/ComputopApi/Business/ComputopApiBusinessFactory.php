@@ -103,6 +103,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquireDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePayNowMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createInquirePayuCeeSingleMapper());
 
         return $paymentRequest;
     }
@@ -122,6 +123,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createReverseDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayNowMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayuCeeSingleMapper());
 
         return $paymentRequest;
     }
@@ -143,6 +145,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureEasyCreditMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureIdealMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePayNowMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePayuCeeSingleMapper());
 
         return $paymentRequest;
     }
@@ -165,6 +168,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundEasyCreditMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundIdealMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPayNowMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPayuCeeSingleMapper());
 
         return $paymentRequest;
     }

@@ -163,4 +163,24 @@ interface ComputopApiBusinessMapperFactoryInterface
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
      */
     public function createCrifMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createInquirePayuCeeSingleMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createReversePayuCeeSingleMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createCapturePayuCeeSingleMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createRefundPayuCeeSingleMapper();
 }

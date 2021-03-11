@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+
 interface ComputopApiBusinessMapperFactoryInterface
 {
     /**
@@ -167,20 +169,20 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquirePayuCeeSingleMapper();
+    public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    public function createReversePayuCeeSingleMapper();
+    public function createReversePayuCeeSingleMapper(): PostPlaceMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    public function createCapturePayuCeeSingleMapper();
+    public function createCapturePayuCeeSingleMapper(): PostPlaceMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    public function createRefundPayuCeeSingleMapper();
+    public function createRefundPayuCeeSingleMapper(): PostPlaceMapperInterface;
 }

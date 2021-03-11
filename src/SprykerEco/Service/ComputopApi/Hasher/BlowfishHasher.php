@@ -75,6 +75,7 @@ class BlowfishHasher implements BlowfishHasherInterface
             throw new BlowfishException('Length mismatch. The parameter len is too large.');
         }
         $this->bfSetKey($password);
+
         return mb_substr($this->decrypt($cipherText), 0, $length);
     }
 
@@ -88,6 +89,7 @@ class BlowfishHasher implements BlowfishHasherInterface
         while (strlen($text) % 8 != 0) {
             $text .= chr(0);
         }
+
         return $text;
     }
 
@@ -119,12 +121,12 @@ class BlowfishHasher implements BlowfishHasherInterface
             ));
         }
         for ($iteration = 0; $iteration < 18; $iteration += 2) {
-            list($lBlock, $rBlock) = $this->bfEncrypt($lBlock, $rBlock);
+            [$lBlock, $rBlock] = $this->bfEncrypt($lBlock, $rBlock);
             $this->pModifiedKeys[$iteration] = $lBlock;
             $this->pModifiedKeys[$iteration + 1] = $rBlock;
         }
         for ($iteration = 0; $iteration < 1024; $iteration += 2) {
-            list($lBlock, $rBlock) = $this->bfEncrypt($lBlock, $rBlock);
+            [$lBlock, $rBlock] = $this->bfEncrypt($lBlock, $rBlock);
             $this->sModifiedKeys[$iteration] = $lBlock;
             $this->sModifiedKeys[$iteration + 1] = $rBlock;
         }
@@ -142,9 +144,10 @@ class BlowfishHasher implements BlowfishHasherInterface
         for ($iteration = 0; $iteration < $length; $iteration += 8) {
             $lBlock = $this->asc2int(substr($text, $iteration, 4));
             $rBlock = $this->asc2int(substr($text, $iteration + 4, 4));
-            list($lBlock, $rBlock) = $this->bfEncrypt($lBlock, $rBlock);
+            [$lBlock, $rBlock] = $this->bfEncrypt($lBlock, $rBlock);
             $plain .= $this->int2asc($lBlock) . $this->int2asc($rBlock);
         }
+
         return $plain;
     }
 
@@ -160,9 +163,10 @@ class BlowfishHasher implements BlowfishHasherInterface
         for ($iteration = 0; $iteration < $length; $iteration += 8) {
             $aBlock = $this->asc2int(substr($text, $iteration, 4));
             $bBlock = $this->asc2int(substr($text, $iteration + 4, 4));
-            list($aBlock, $bBlock) = $this->bfDecrypt($aBlock, $bBlock);
+            [$aBlock, $bBlock] = $this->bfDecrypt($aBlock, $bBlock);
             $plain .= $this->int2asc($aBlock) . $this->int2asc($bBlock);
         }
+
         return $plain;
     }
 
@@ -191,6 +195,7 @@ class BlowfishHasher implements BlowfishHasherInterface
             $lBlock = $this->bfEnc($lBlock, $rBlock, $iteration + 1);
         }
         $rBlock ^= $this->pModifiedKeys[17];
+
         return [$rBlock, $lBlock];
     }
 
@@ -234,6 +239,7 @@ class BlowfishHasher implements BlowfishHasherInterface
 
         $highsum &= 0xffff;
         $lowsum &= 0xffff;
+
         return ($highsum << 16) | $lowsum;
     }
 
@@ -262,6 +268,7 @@ class BlowfishHasher implements BlowfishHasherInterface
             $lBlock = $this->bfEnc($lBlock, $rBlock, $iteration - 1);
         }
         $rBlock ^= $this->pModifiedKeys[0];
+
         return [$rBlock, $lBlock];
     }
 }

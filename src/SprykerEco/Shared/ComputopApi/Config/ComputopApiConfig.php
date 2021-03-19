@@ -135,5 +135,4 @@ interface ComputopApiConfig
     public const PRODUCT_NAME = 'ProductName';
     public const CUSTOMER_ID = 'CustomerID';
     public const LEGAL_FORM = 'LegalForm';
-    public const PAYU_CEE_DEFAULT_PAY_TYPE = 'c';
 }

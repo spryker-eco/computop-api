@@ -82,7 +82,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      * @param string[] $responseArray
      * @param string $key
      *
-     * @return string|null
+     * @return string|null|bool
      */
     public function getResponseValue(array $responseArray, $key): ?string
     {

@@ -59,7 +59,7 @@ interface ComputopApiServiceInterface
      * @param string[] $responseArray
      * @param string $key
      *
-     * @return null|string
+     * @return string|null|bool
      */
     public function getResponseValue(array $responseArray, $key);
 

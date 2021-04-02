@@ -19,6 +19,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     public const PAYMENT_METHOD_PAY_PAL = 'computopPayPal';
     public const PAYMENT_METHOD_SOFORT = 'computopSofort';
     public const PAYMENT_METHOD_EASY_CREDIT = 'computopEasyCredit';
+    public const PAYMENT_METHOD_PAYU_CEE_SINGLE = 'computopPayuCeeSingle';
 
     //Computop provider constants
     public const CAPTURE_TYPE_MANUAL = 'MANUAL';

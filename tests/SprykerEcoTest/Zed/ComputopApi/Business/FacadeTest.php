@@ -168,6 +168,9 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertSame(FacadeTestConstants::STATUS_VALUE_SUCCESS, $response->getDescription());
     }
 
+    /**
+     * @return void
+     */
     public function testPerformEasyCreditAuthorizeRequest()
     {
         $facade = new ComputopApiFacade();

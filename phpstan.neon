@@ -1,0 +1,4 @@
+parameters:
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Call to method (store|computopApi)\(\) on an unknown class .+AutoCompletion#'

@@ -36,6 +36,10 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\CapturePayPalMap
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\InquirePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\RefundPayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\ReversePayPalMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\CapturePayuCeeSingleMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\InquirePayuCeeSingleMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\RefundPayuCeeSingleMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\ReversePayuCeeSingleMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Sofort\RefundSofortMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit\StatusEasyCreditMapper;
@@ -416,6 +420,54 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
         return new CrifMapper(
             $this->getComputopApiService(),
             $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface
+    {
+        return new InquirePayuCeeSingleMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createReversePayuCeeSingleMapper(): PostPlaceMapperInterface
+    {
+        return new ReversePayuCeeSingleMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createCapturePayuCeeSingleMapper(): PostPlaceMapperInterface
+    {
+        return new CapturePayuCeeSingleMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createRefundPayuCeeSingleMapper(): PostPlaceMapperInterface
+    {
+        return new RefundPayuCeeSingleMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
         );
     }
 }

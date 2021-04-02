@@ -22,6 +22,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected const REQ_ID_LENGTH = 32;
 
     protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
+    protected const DESCRIPTION_VALUE_FORMAT = 'Name:%s-Sku:%s-Quantity:%s';
 
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
@@ -103,16 +104,12 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      */
     public function getDescriptionValue(array $items): string
     {
-        $description = '';
-
+        $description = [];
         foreach ($items as $item) {
-            $description .= 'Name:' . $item->getName();
-            $description .= static::ATTRIBUTES_SEPARATOR . 'Sku:' . $item->getSku();
-            $description .= static::ATTRIBUTES_SEPARATOR . 'Quantity:' . $item->getQuantity();
-            $description .= static::ITEMS_SEPARATOR;
+            $description[] = sprintf(self::DESCRIPTION_VALUE_FORMAT, $item->getName(), $item->getSku(), $item->getQuantity());
         }
 
-        return $description;
+        return implode(static::ITEMS_SEPARATOR, $description);
     }
 
     /**

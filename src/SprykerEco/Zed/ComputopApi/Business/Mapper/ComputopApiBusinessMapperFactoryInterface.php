@@ -163,4 +163,14 @@ interface ComputopApiBusinessMapperFactoryInterface
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
      */
     public function createCrifMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+     */
+    public function createPayPalExpressPrepareMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+     */
+    public function createPayPalExpressCompleteMapper();
 }

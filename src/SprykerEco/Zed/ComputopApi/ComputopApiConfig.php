@@ -101,6 +101,22 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @return string
      */
+    public function getPayPalExpressPrepareActionUrl(): string
+    {
+        return $this->get(ComputopApiConstants::PAYPAL_EXPRESS_PREPARE_ACTION);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPayPalExpressCompleteActionUrl(): string
+    {
+        return $this->get(ComputopApiConstants::PAYPAL_EXPRESS_COMPLETE_ACTION);
+    }
+
+    /**
+     * @return string
+     */
     public function getAuthorizeMethodName(): string
     {
         return static::AUTHORIZE_METHOD;

@@ -8,6 +8,9 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
 use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\AbstractPayPalExpressMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressCompleteMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressPrepareMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\AuthorizeCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\CaptureCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\InquireCreditCardMapper;
@@ -414,6 +417,28 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     public function createCrifMapper(): ApiRiskCheckMapperInterface
     {
         return new CrifMapper(
+            $this->getComputopApiService(),
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return AbstractPayPalExpressMapper
+     */
+    public function createPayPalExpressPrepareMapper(): AbstractPayPalExpressMapper
+    {
+        return new PayPalExpressPrepareMapper(
+            $this->getComputopApiService(),
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return AbstractPayPalExpressMapper
+     */
+    public function createPayPalExpressCompleteMapper(): AbstractPayPalExpressMapper
+    {
+        return new PayPalExpressCompleteMapper(
             $this->getComputopApiService(),
             $this->getConfig()
         );

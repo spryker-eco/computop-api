@@ -31,7 +31,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * @return string
      */
-    abstract protected function getUrl();
+    abstract protected function getUrl(): string;
 
     /**
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config

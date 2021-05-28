@@ -8,6 +8,8 @@
 namespace SprykerEco\Zed\ComputopApi\Business;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
@@ -136,4 +138,29 @@ interface ComputopApiFacadeInterface
      * @return \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer
      */
     public function performCrifApiCall(QuoteTransfer $quoteTransfer);
+
+    /**
+     * Specification:
+     * - Perform PayPal Express Prepare API call
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressPrepareApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer;
+
+    /**
+     * Specification:
+     * - Perform PayPal Express Complete API call
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressCompleteApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer;
+
 }

@@ -14,6 +14,8 @@ use SprykerEco\Zed\ComputopApi\Business\Adapter\AuthorizeAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\CaptureAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditAuthorizeAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\EasyCredit\EasyCreditStatusAdapter;
+use SprykerEco\Zed\ComputopApi\Business\Adapter\ExpressCheckout\PayPalExpressCompleteAdapter;
+use SprykerEco\Zed\ComputopApi\Business\Adapter\ExpressCheckout\PayPalExpressPrepareAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\InquireAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\RefundAdapter;
 use SprykerEco\Zed\ComputopApi\Business\Adapter\ReverseAdapter;
@@ -22,12 +24,18 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\AuthorizeConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\CaptureConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\EasyCredit\EasyCreditStatusConverter;
+use SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter;
+use SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressPrepareConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\InquireConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\RefundConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ReverseConverter;
 use SprykerEco\Zed\ComputopApi\Business\Converter\RiskCheck\CrifConverter;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ComputopApiBusinessMapperFactory;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ComputopApiBusinessMapperFactoryInterface;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressCompleteRequest;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressCompleteRequestInterface;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressPrepareRequest;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressPrepareRequestInterface;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\CaptureRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest;
@@ -211,6 +219,30 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
+     * @return PayPalExpressPrepareRequestInterface
+     */
+    public function createPayPalExpressPrepareRequest(): PayPalExpressPrepareRequestInterface
+    {
+        return new PayPalExpressPrepareRequest(
+            $this->createPayPalExpressPrepareAdapter(),
+            $this->createPayPalExpressPrepareConverter(),
+            $this->createMapperFactory()->createPayPalExpressPrepareMapper()
+        );
+    }
+
+    /**
+     * @return PayPalExpressCompleteRequestInterface
+     */
+    public function createPayPalExpressCompleteRequest(): PayPalExpressCompleteRequestInterface
+    {
+        return new PayPalExpressCompleteRequest(
+            $this->createPayPalExpressCompleteAdapter(),
+            $this->createPayPalExpressCompleteConverter(),
+            $this->createMapperFactory()->createPayPalExpressCompleteMapper()
+        );
+    }
+
+    /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
      */
     public function createAuthorizeConverter(): ConverterInterface
@@ -264,6 +296,22 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     public function createCrifConverter(): ConverterInterface
     {
         return new CrifConverter($this->getComputopApiService(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
+     */
+    public function createPayPalExpressPrepareConverter(): ConverterInterface
+    {
+        return new PayPalExpressPrepareConverter($this->getComputopApiService(), $this->getConfig());
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
+     */
+    public function createPayPalExpressCompleteConverter(): ConverterInterface
+    {
+        return new PayPalExpressCompleteConverter($this->getComputopApiService(), $this->getConfig());
     }
 
     /**
@@ -328,5 +376,21 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     protected function createCrifAdapter(): AdapterInterface
     {
         return new CrifApiAdapter($this->getConfig());
+    }
+
+    /**
+     * @return AdapterInterface
+     */
+    protected function createPayPalExpressPrepareAdapter(): AdapterInterface
+    {
+        return new PayPalExpressPrepareAdapter($this->getConfig());
+    }
+
+    /**
+     * @return AdapterInterface
+     */
+    protected function createPayPalExpressCompleteAdapter(): AdapterInterface
+    {
+        return new PayPalExpressCompleteAdapter($this->getConfig());
     }
 }

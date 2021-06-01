@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Client\ComputopApi;
 
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -14,7 +19,6 @@ class ComputopApiClient extends AbstractClient implements ComputopApiClientInter
      * {@inheritDoc}
      *
      * @api
-     *
      */
     public function sendPayPalExpressPrepareRequest(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
@@ -22,7 +26,7 @@ class ComputopApiClient extends AbstractClient implements ComputopApiClientInter
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      *
      * @api
      */

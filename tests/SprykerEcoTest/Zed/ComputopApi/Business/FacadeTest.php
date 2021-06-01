@@ -170,6 +170,9 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertSame(FacadeTestConstants::STATUS_VALUE_SUCCESS, $response->getDescription());
     }
 
+    /**
+     * @return void
+     */
     public function testPerformEasyCreditAuthorizeRequest()
     {
         $facade = new ComputopApiFacade();
@@ -187,6 +190,9 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertNotEmpty($response->getHeader()->getPayId());
     }
 
+    /**
+     * @return void
+     */
     public function testPerformPayPalExpressPrepareApiCall()
     {
         $facade = new ComputopApiFacade();
@@ -205,6 +211,9 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertNotEmpty($response->getHeader()->getPayId());
     }
 
+    /**
+     * @return void
+     */
     public function testPerformPayPalExpressCompleteApiCall()
     {
         $facade = new ComputopApiFacade();

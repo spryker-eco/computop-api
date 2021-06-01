@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Codeception\TestCase\Test;
@@ -15,7 +20,7 @@ use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTe
 class PayPalExpressMapperTestHelper extends Test
 {
     /**
-     * @return QuoteTransfer
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function createQuoteTransfer()
     {

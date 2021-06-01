@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout;
 
 use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer;
@@ -10,7 +15,7 @@ class PayPalExpressCompleteConverter extends AbstractConverter
     /**
      * @param array $decryptedResponse
      *
-     * @return ComputopApiPayPalExpressCompleteResponseTransfer
+     * @return \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer
      */
     protected function getResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressCompleteResponseTransfer
     {

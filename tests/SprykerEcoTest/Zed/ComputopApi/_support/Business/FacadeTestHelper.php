@@ -25,7 +25,6 @@ use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig as ComputopApiServiceConfig;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceFactory;
@@ -360,7 +359,6 @@ class FacadeTestHelper extends Test
      */
     protected function createPayPalExpressPrepareRequest()
     {
-
         $response = (new ComputopApiPayPalExpressPrepareResponseTransfer())
             ->setHeader($this->createComputopApiResponseHeaderTransfer())
             ->setToken(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN)

@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout;
 
-use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
 class PayPalExpressCompleteRequest extends AbstractPayPalExpressRequest implements PayPalExpressCompleteRequestInterface
@@ -15,7 +19,7 @@ class PayPalExpressCompleteRequest extends AbstractPayPalExpressRequest implemen
     public function request(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $requestData = $this->mapper->buildRequest($quoteTransfer);
-        /** @var ComputopApiPayPalExpressCompleteResponseTransfer $computopApiPayPalExpressCompleteResponseTransfer */
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $computopApiPayPalExpressCompleteResponseTransfer */
         $computopApiPayPalExpressCompleteResponseTransfer = $this->sendRequest($requestData);
         $quoteTransfer
             ->getPayment()

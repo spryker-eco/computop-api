@@ -1,6 +1,12 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter\ExpressCheckout;
+
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter;
@@ -9,6 +15,9 @@ use SprykerEcoTest\Zed\ComputopApi\Business\Converter\ConverterTestConstants;
 
 class PayPalExpressCompleteConverterTest extends AbstractConverterTest
 {
+    /**
+     * @return void
+     */
     public function testGetResponseTransfer()
     {
         $response = $this->helper->prepareResponse();

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout;
 
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
@@ -10,17 +15,17 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapp
 abstract class AbstractPayPalExpressRequest
 {
     /**
-     * @var AdapterInterface
+     * @var \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
     protected $adapter;
 
     /**
-     * @var ConverterInterface
+     * @var \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
      */
     protected $converter;
 
     /**
-     * @var PayPalExpressMapperInterface
+     * @var \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
     protected $mapper;
 
@@ -33,8 +38,7 @@ abstract class AbstractPayPalExpressRequest
         AdapterInterface $adapter,
         ConverterInterface $converter,
         PayPalExpressMapperInterface $mapper
-    )
-    {
+    ) {
         $this->adapter = $adapter;
         $this->converter = $converter;
         $this->mapper = $mapper;

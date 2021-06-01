@@ -219,7 +219,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return PayPalExpressPrepareRequestInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressPrepareRequestInterface
      */
     public function createPayPalExpressPrepareRequest(): PayPalExpressPrepareRequestInterface
     {
@@ -231,7 +231,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return PayPalExpressCompleteRequestInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressCompleteRequestInterface
      */
     public function createPayPalExpressCompleteRequest(): PayPalExpressCompleteRequestInterface
     {
@@ -379,7 +379,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return AdapterInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
     protected function createPayPalExpressPrepareAdapter(): AdapterInterface
     {
@@ -387,7 +387,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return AdapterInterface
+     * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
     protected function createPayPalExpressCompleteAdapter(): AdapterInterface
     {

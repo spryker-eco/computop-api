@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
@@ -21,7 +26,8 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     protected $config;
 
     /**
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
      * @return array
      */
     abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
@@ -29,8 +35,7 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $config
-    )
-    {
+    ) {
         $this->computopApiService = $computopApiService;
         $this->config = $config;
     }
@@ -44,9 +49,9 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     }
 
     /**
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array|string[]
+     * @return string[]
      */
     public function buildRequest(QuoteTransfer $quoteTransfer): array
     {
@@ -58,7 +63,6 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
 
         return $this->buildRequestData($data, $length, $merchantId);
     }
-
 
     /**
      * @param string $data

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteTransfer;
@@ -10,7 +15,7 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstan
 class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
 {
     /**
-     * @param QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return array
      */

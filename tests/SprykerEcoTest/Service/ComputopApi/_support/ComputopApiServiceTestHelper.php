@@ -15,7 +15,7 @@ use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
 
 class ComputopApiServiceTestHelper extends Test
 {
-    const PASSWORD = 'password';
+    public const PASSWORD = 'password';
 
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiConfig

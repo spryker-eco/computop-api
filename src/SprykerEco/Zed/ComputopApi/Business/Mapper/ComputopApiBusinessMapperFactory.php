@@ -423,7 +423,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return AbstractPayPalExpressMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\AbstractPayPalExpressMapper
      */
     public function createPayPalExpressPrepareMapper(): AbstractPayPalExpressMapper
     {
@@ -434,7 +434,7 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return AbstractPayPalExpressMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\AbstractPayPalExpressMapper
      */
     public function createPayPalExpressCompleteMapper(): AbstractPayPalExpressMapper
     {

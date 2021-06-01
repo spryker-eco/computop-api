@@ -22,4 +22,5 @@ interface FacadeTestConstants
     public const CODE_VALUE = '00000000';
     public const DESCRIPTION_VALUE = 'DESCRIPTION_VALUE';
     public const CRIF_GREEN_RESULT = 'GREEN';
+    public const PAYPAL_EXPRESS_PREPARE_TOKEN = 'token';
 }

@@ -24,15 +24,7 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
      * @param QuoteTransfer $quoteTransfer
      * @return array
      */
-    abstract public function encryptRequestData(QuoteTransfer $quoteTransfer): array;
-
-    /**
-     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
-     */
-    protected function createPaymentTransfer(): ComputopApiRequestTransfer
-    {
-        return new ComputopApiRequestTransfer();
-    }
+    abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
 
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
@@ -41,6 +33,14 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     {
         $this->computopApiService = $computopApiService;
         $this->config = $config;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
+     */
+    protected function createPaymentTransfer(): ComputopApiRequestTransfer
+    {
+        return new ComputopApiRequestTransfer();
     }
 
     /**

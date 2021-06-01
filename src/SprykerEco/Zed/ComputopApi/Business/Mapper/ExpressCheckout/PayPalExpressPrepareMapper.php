@@ -12,7 +12,7 @@ class PayPalExpressPrepareMapper extends AbstractPayPalExpressMapper
      *
      * @return array
      */
-    public function encryptRequestData(QuoteTransfer $quoteTransfer): array
+    protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
         $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPayment()->getComputopPayPalExpress();
 

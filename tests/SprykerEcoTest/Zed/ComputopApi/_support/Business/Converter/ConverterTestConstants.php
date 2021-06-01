@@ -16,4 +16,5 @@ interface ConverterTestConstants
     const AMOUNT_VALUE_NOT_ZERO = '1';
     const CODE_EXT_VALUE = 'CodeExt';
     const ERROR_TEXT_VALUE = 'ErrorText';
+    const ORDER_ID_VALUE = 'token';
 }

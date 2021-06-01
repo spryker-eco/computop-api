@@ -12,6 +12,8 @@ use Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiCrifResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiRefundResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiReverseResponseTransfer;
 use SprykerEco\Zed\ComputopApi\Business\ComputopApiFacade;
@@ -178,6 +180,42 @@ class FacadeTest extends AbstractSetUpTest
         );
 
         $this->assertInstanceOf(ComputopApiAuthorizeResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    public function testPerformPayPalExpressPrepareApiCall()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $quote = $facade->performPayPalExpressPrepareApiCall(
+            $this->helper->getPayPalExpressQuoteTrasfer()
+        );
+
+        $response = $quote->getPayment()->getComputopPayPalExpress()->getPayPalExpressPrepareResponse();
+
+        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $response);
+        $this->assertTrue($response->getHeader()->getIsSuccess());
+        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
+        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
+        $this->assertNotEmpty($response->getHeader()->getTransId());
+        $this->assertNotEmpty($response->getHeader()->getPayId());
+    }
+
+    public function testPerformPayPalExpressCompleteApiCall()
+    {
+        $facade = new ComputopApiFacade();
+        $facade->setFactory($this->helper->createFactory());
+        $quote = $facade->performPayPalExpressCompleteApiCall(
+            $this->helper->getPayPalExpressQuoteTrasfer()
+        );
+
+        $response = $quote->getPayment()->getComputopPayPalExpress()->getPayPalExpressCompleteResponse();
+
+        $this->assertInstanceOf(ComputopApiPayPalExpressCompleteResponseTransfer::class, $response);
         $this->assertTrue($response->getHeader()->getIsSuccess());
         $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
         $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());

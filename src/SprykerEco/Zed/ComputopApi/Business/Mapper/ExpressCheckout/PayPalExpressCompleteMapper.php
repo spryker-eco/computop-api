@@ -14,7 +14,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
      *
      * @return array
      */
-    public function encryptRequestData(QuoteTransfer $quoteTransfer): array
+    protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
         $computopApiPayPalExpressCompleteTransfer = $this->createTransferWithUnencryptedValues($quoteTransfer);
 

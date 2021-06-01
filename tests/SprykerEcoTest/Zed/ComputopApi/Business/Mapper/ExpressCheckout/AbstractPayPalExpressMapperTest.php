@@ -26,11 +26,11 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     protected $helper;
 
     /**
-     * @param PayPalExpressMapperTestHelper $helper
+     * @param \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperTestHelper $helper
      *
      * @return void
      */
-    protected function _inject(PayPalExpressMapperTestHelper $helper)
+    protected function _inject(PayPalExpressMapperTestHelper $helper): void
     {
         $this->helper = $helper;
     }

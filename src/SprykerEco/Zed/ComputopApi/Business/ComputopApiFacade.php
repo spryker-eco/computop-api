@@ -185,6 +185,10 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
      * {@inheritDoc}
      *
      * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function performPayPalExpressPrepareApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
@@ -198,6 +202,10 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
      * {@inheritDoc}
      *
      * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function performPayPalExpressCompleteApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
     {

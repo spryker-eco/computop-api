@@ -32,6 +32,10 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
      */
     abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
 
+    /**
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
+     * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
+     */
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $config

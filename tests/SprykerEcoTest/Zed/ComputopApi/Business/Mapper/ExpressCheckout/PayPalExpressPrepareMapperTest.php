@@ -11,7 +11,10 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressPrep
 
 class PayPalExpressPrepareMapperTest extends AbstractPayPalExpressMapperTest
 {
-    protected function createMapper()
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressPrepareMapper
+     */
+    protected function createMapper(): PayPalExpressPrepareMapper
     {
         return new PayPalExpressPrepareMapper(
             $this->helper->createComputopApiServiceMock(),

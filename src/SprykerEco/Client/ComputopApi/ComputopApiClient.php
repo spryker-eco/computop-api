@@ -19,6 +19,10 @@ class ComputopApiClient extends AbstractClient implements ComputopApiClientInter
      * {@inheritDoc}
      *
      * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function sendPayPalExpressPrepareRequest(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
@@ -29,6 +33,10 @@ class ComputopApiClient extends AbstractClient implements ComputopApiClientInter
      * {@inheritDoc}
      *
      * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function sendPayPalExpressCompleteRequest(QuoteTransfer $quoteTransfer): QuoteTransfer
     {

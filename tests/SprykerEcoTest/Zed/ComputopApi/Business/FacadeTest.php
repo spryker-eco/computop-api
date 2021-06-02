@@ -193,16 +193,19 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformPayPalExpressPrepareApiCall()
+    public function testPerformPayPalExpressPrepareApiCall(): void
     {
+        //Arrange
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $quote = $facade->performPayPalExpressPrepareApiCall(
             $this->helper->getPayPalExpressQuoteTrasfer()
         );
 
+        //Act
         $response = $quote->getPayment()->getComputopPayPalExpress()->getPayPalExpressPrepareResponse();
 
+        //Assert
         $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $response);
         $this->assertTrue($response->getHeader()->getIsSuccess());
         $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
@@ -214,16 +217,19 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformPayPalExpressCompleteApiCall()
+    public function testPerformPayPalExpressCompleteApiCall(): void
     {
+        //Arrange
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $quote = $facade->performPayPalExpressCompleteApiCall(
             $this->helper->getPayPalExpressQuoteTrasfer()
         );
 
+        //Act
         $response = $quote->getPayment()->getComputopPayPalExpress()->getPayPalExpressCompleteResponse();
 
+        //Assert
         $this->assertInstanceOf(ComputopApiPayPalExpressCompleteResponseTransfer::class, $response);
         $this->assertTrue($response->getHeader()->getIsSuccess());
         $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());

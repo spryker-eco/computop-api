@@ -19,12 +19,15 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
      */
     public function testGetResponseTransfer()
     {
+        //Arrange
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
 
+        //Act
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $responseTransfer */
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
+        //Assert
         $this->assertEquals(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderId());
     }
 
@@ -35,7 +38,6 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
         $configMock = $this->helper->createComputopApiConfigMock();
-
         $converter = new PayPalExpressPrepareConverter($computopServiceMock, $configMock);
 
         return $converter;

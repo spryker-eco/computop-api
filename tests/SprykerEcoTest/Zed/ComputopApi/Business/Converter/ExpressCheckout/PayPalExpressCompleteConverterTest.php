@@ -20,12 +20,15 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
      */
     public function testGetResponseTransfer()
     {
+        //Arrange
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
 
+        //Act
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $responseTransfer */
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
+        //Assert
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
         $this->assertEquals(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
     }
@@ -49,7 +52,6 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     protected function getDecryptedArray()
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
-
         $decryptedArray[ComputopApiConfig::REF_NR] = ConverterTestConstants::REF_NR_VALUE;
 
         return $decryptedArray;

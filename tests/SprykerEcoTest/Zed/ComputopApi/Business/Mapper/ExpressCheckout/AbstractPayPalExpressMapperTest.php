@@ -40,11 +40,14 @@ abstract class AbstractPayPalExpressMapperTest extends Test
      */
     public function testBuildRequest()
     {
+        //Arrange
         $quoteTransfer = $this->helper->createQuoteTransfer();
-
         $mapper = $this->createMapper();
+
+        //Act
         $mappedData = $mapper->buildRequest($quoteTransfer);
 
+        //Assert
         $this->assertEquals(CreditCardMapperTestConstants::DATA_VALUE, $mappedData[ComputopApiConfig::DATA]);
         $this->assertEquals(CreditCardMapperTestConstants::LENGTH_VALUE, $mappedData[ComputopApiConfig::LENGTH]);
     }

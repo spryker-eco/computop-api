@@ -2,7 +2,6 @@ parameters:
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Call to an undefined method Generated\\Zed\\Ide\\AutoCompletion.+#'
         - '#.+Transfer.+#'
     excludePaths:
         - src/SprykerEco/Client/ComputopApi/Zed/*.php

@@ -25,7 +25,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
 
         $encryptedValues = $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($computopApiPayPalExpressCompleteTransfer),
-            $this->config->getBlowfishPass()
+            $this->computopApiConfig->getBlowfishPass()
         );
 
         return [
@@ -44,7 +44,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
         $paymentTransfer = $quoteTransfer->getPayment()->getComputopPayPalExpress();
 
         $computopPayPalExpressCompleteTransfer = new ComputopApiPayPalExpressCompleteTransfer();
-        $computopPayPalExpressCompleteTransfer->setMerchantId($this->config->getMerchantId());
+        $computopPayPalExpressCompleteTransfer->setMerchantId($this->computopApiConfig->getMerchantId());
         $computopPayPalExpressCompleteTransfer->setPayId($paymentTransfer->getPayId());
         $computopPayPalExpressCompleteTransfer->setTransactionId($paymentTransfer->getTransId());
         $computopPayPalExpressCompleteTransfer->setRefNr($paymentTransfer->getRefNr());

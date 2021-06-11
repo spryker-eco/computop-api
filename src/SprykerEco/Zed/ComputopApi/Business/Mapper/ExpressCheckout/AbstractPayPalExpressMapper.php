@@ -23,7 +23,7 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     /**
      * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    protected $config;
+    protected $computopApiConfig;
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -34,22 +34,14 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
-     * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $config
+     * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $computopApiConfig
      */
     public function __construct(
         ComputopApiServiceInterface $computopApiService,
-        ComputopApiConfig $config
+        ComputopApiConfig $computopApiConfig
     ) {
         $this->computopApiService = $computopApiService;
-        $this->config = $config;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
-     */
-    protected function createPaymentTransfer(): ComputopApiRequestTransfer
-    {
-        return new ComputopApiRequestTransfer();
+        $this->computopApiConfig = $computopApiConfig;
     }
 
     /**
@@ -63,12 +55,20 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
 
         $data = $encryptedRequestData[ComputopApiConstants::DATA];
         $length = $encryptedRequestData[ComputopApiConstants::LENGTH];
-        $merchantId = $this->config->getMerchantId();
+        $merchantId = $this->computopApiConfig->getMerchantId();
 
         return [
             ComputopApiConstants::DATA => $data,
             ComputopApiConstants::LENGTH => $length,
             ComputopApiConstants::MERCHANT_ID => $merchantId,
         ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
+     */
+    protected function createPaymentTransfer(): ComputopApiRequestTransfer
+    {
+        return new ComputopApiRequestTransfer();
     }
 }

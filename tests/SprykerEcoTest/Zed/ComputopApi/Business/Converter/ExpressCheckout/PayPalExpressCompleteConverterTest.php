@@ -18,7 +18,7 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     /**
      * @return void
      */
-    public function testGetResponseTransfer()
+    public function testGetResponseTransfer(): void
     {
         //Arrange
         $response = $this->helper->prepareResponse();
@@ -30,13 +30,13 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
 
         //Assert
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
-        $this->assertEquals(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
+        $this->assertSame(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
     }
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter
      */
-    protected function createConverter()
+    protected function createConverter(): PayPalExpressCompleteConverter
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
         $configMock = $this->helper->createComputopApiConfigMock();
@@ -49,7 +49,7 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    protected function getDecryptedArray()
+    protected function getDecryptedArray(): array
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
         $decryptedArray[ComputopApiConfig::REF_NR] = ConverterTestConstants::REF_NR_VALUE;

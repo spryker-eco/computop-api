@@ -17,7 +17,7 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
-    abstract protected function createMapper(): PayPalExpressMapperInterface;
+    abstract protected function createMapper();
 
     /**
      * @var \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperTestHelper

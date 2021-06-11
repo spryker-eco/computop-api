@@ -16,5 +16,5 @@ interface PayPalExpressPrepareRequestInterface
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function request(QuoteTransfer $quoteTransfer): QuoteTransfer;
+    public function sendRequest(QuoteTransfer $quoteTransfer): QuoteTransfer;
 }

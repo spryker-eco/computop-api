@@ -195,7 +195,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
         return $this
            ->getFactory()
            ->createPayPalExpressPrepareRequest()
-           ->request($quoteTransfer);
+           ->sendRequest($quoteTransfer);
     }
 
     /**
@@ -212,6 +212,6 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
         return $this
             ->getFactory()
             ->createPayPalExpressCompleteRequest()
-            ->request($quoteTransfer);
+            ->sendRequest($quoteTransfer);
     }
 }

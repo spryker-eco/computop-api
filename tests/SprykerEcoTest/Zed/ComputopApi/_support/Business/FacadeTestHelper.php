@@ -176,7 +176,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getPayPalExpressQuoteTrasfer()
+    public function getPayPalExpressQuoteTransfer(): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setTotals(
@@ -201,7 +201,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function getOrderTrasfer()
+    public function getOrderTransfer(): OrderTransfer
     {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(
@@ -222,7 +222,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopApiHeaderPaymentTransfer()
+    public function createComputopApiHeaderPaymentTransfer(): ComputopApiHeaderPaymentTransfer
     {
         return (new ComputopApiHeaderPaymentTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)
@@ -364,7 +364,7 @@ class FacadeTestHelper extends Test
             ->setToken(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN)
             ->setOrderId(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
 
-        $quoteTransfer = $this->getPayPalExpressQuoteTrasfer();
+        $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressPrepareResponse($response);
 
         $stub = $this->createMock(PayPalExpressPrepareRequest::class);
@@ -385,7 +385,7 @@ class FacadeTestHelper extends Test
             ->setStatus(FacadeTestConstants::STATUS_VALUE)
             ->setDescription(FacadeTestConstants::STATUS_VALUE_SUCCESS);
 
-        $quoteTransfer = $this->getPayPalExpressQuoteTrasfer();
+        $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressCompleteResponse($response);
 
         $stub = $this->createMock(PayPalExpressCompleteRequest::class);

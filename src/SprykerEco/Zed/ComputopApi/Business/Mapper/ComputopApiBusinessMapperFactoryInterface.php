@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+
 interface ComputopApiBusinessMapperFactoryInterface
 {
     /**
@@ -167,10 +169,10 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
      */
-    public function createPayPalExpressPrepareMapper();
+    public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
      */
-    public function createPayPalExpressCompleteMapper();
+    public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface;
 }

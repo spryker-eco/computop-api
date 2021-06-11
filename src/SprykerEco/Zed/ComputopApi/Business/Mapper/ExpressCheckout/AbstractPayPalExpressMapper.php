@@ -65,24 +65,10 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
         $length = $encryptedRequestData[ComputopApiConstants::LENGTH];
         $merchantId = $this->config->getMerchantId();
 
-        return $this->buildRequestData($data, $length, $merchantId);
-    }
-
-    /**
-     * @param string $data
-     * @param string $length
-     * @param string $merchantId
-     *
-     * @return array
-     */
-    protected function buildRequestData(string $data, string $length, string $merchantId): array
-    {
-        $requestData = [
+        return [
             ComputopApiConstants::DATA => $data,
             ComputopApiConstants::LENGTH => $length,
             ComputopApiConstants::MERCHANT_ID => $merchantId,
         ];
-
-        return $requestData;
     }
 }

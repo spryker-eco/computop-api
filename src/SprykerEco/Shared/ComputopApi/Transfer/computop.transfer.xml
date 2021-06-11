@@ -125,15 +125,12 @@
     </transfer>
 
     <transfer name="ComputopApiPayPalExpressPrepareResponse">
-        <property name="header" type="ComputopApiResponseHeader"/>
-        <property name="merchantId" type="string"/>
-        <property name="payId" type="string"/>
-        <property name="xId" type="string"/>
-        <property name="transactionId" type="string"/>
-        <property name="refNr" type="string"/>
-        <property name="orderId" type="string"/>
-        <property name="payPalUrl" type="string"/>
-        <property name="token" type="string"/>
+        <property name="mid" type="string"/>
+        <property name="PayID" type="string"/>
+        <property name="XID" type="string"/>
+        <property name="TransID" type="string"/>
+        <property name="orderid" type="string"/>
+        <property name="paypalurl" type="string"/>
     </transfer>
 
     <transfer name="ComputopApiPayPalExpressComplete">

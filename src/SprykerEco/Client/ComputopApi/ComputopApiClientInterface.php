@@ -16,7 +16,7 @@ interface ComputopApiClientInterface
 {
     /**
      * Specification:
-     *  - Send `PayPal Express prepare` request to `Computop API`.
+     *  - Sends a PayPal Express prepare request to Computop API.
      *
      * @api
      *
@@ -28,7 +28,7 @@ interface ComputopApiClientInterface
 
     /**
      * Specification:
-     *  - Send `PayPal Express complete` request to `Computop API`.
+     *  - Sends PayPal Express complete request to Computop API.
      *
      * @api
      *

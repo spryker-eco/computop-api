@@ -8,7 +8,7 @@
 namespace SprykerEco\Client\ComputopApi;
 
 use Spryker\Client\Kernel\AbstractFactory;
-use Spryker\Client\ZedRequest\ZedRequestClientInterface;
+use SprykerEco\Client\ComputopApi\Dependency\Client\ComputopApiToZedRequestClientInterface;
 use SprykerEco\Client\ComputopApi\Zed\ComputopApiStub;
 use SprykerEco\Client\ComputopApi\Zed\ComputopApiStubInterface;
 
@@ -23,9 +23,9 @@ class ComputopApiFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
+     * @return \SprykerEco\Client\ComputopApi\Dependency\Client\ComputopApiToZedRequestClientInterface
      */
-    protected function getZedRequestClient(): ZedRequestClientInterface
+    public function getZedRequestClient(): ComputopApiToZedRequestClientInterface
     {
         return $this->getProvidedDependency(ComputopApiDependencyProvider::CLIENT_ZED_REQUEST);
     }

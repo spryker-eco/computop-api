@@ -27,7 +27,7 @@ abstract class AbstractPayPalExpressRequest
     /**
      * @var \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
-    protected $mapper;
+    protected $payPalExpressMapper;
 
     /**
      * @param \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface $adapter
@@ -41,7 +41,7 @@ abstract class AbstractPayPalExpressRequest
     ) {
         $this->adapter = $adapter;
         $this->converter = $converter;
-        $this->mapper = $mapper;
+        $this->payPalExpressMapper = $mapper;
     }
 
     /**
@@ -49,7 +49,7 @@ abstract class AbstractPayPalExpressRequest
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    protected function sendRequest(array $requestData): TransferInterface
+    protected function send(array $requestData): TransferInterface
     {
         $response = $this->adapter->sendRequest($requestData);
 

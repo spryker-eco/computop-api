@@ -16,11 +16,11 @@ class PayPalExpressPrepareRequest extends AbstractPayPalExpressRequest implement
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function request(QuoteTransfer $quoteTransfer): QuoteTransfer
+    public function sendRequest(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
-        $requestData = $this->mapper->buildRequest($quoteTransfer);
+        $requestData = $this->payPalExpressMapper->buildRequest($quoteTransfer);
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $computopApiPayPalExpressPrepareResponseTransfer */
-        $computopApiPayPalExpressPrepareResponseTransfer = $this->sendRequest($requestData);
+        $computopApiPayPalExpressPrepareResponseTransfer = $this->send($requestData);
         $quoteTransfer
             ->getPayment()
             ->getComputopPayPalExpress()

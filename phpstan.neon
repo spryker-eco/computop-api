@@ -3,5 +3,6 @@ parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
         - '#.+Transfer.+#'
+        - '#Call to method.+on an unknown class Generated.+Ide\\AutoCompletion.#'
     excludePaths:
         - src/SprykerEco/Client/ComputopApi/Zed/*.php

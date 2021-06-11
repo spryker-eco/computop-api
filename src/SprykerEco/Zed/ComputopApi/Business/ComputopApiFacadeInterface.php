@@ -15,7 +15,7 @@ interface ComputopApiFacadeInterface
 {
     /**
      * Specification:
-     * - Perform EasyCredit status call to Computop
+     * - Performs EasyCredit status call to Computop.
      *
      * @api
      *
@@ -31,7 +31,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform EasyCredit Authorization call to Computop
+     * - Performs EasyCredit Authorization call to Computop.
      *
      * @api
      *
@@ -47,7 +47,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform Authorization call to Computop
+     * - Performs Authorization call to Computop.
      *
      * @api
      *
@@ -63,7 +63,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform Capture call to Computop
+     * - Performs Capture call to Computop.
      *
      * @api
      *
@@ -79,7 +79,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform Inquire call to Computop
+     * - Performs Inquire call to Computop.
      *
      * @api
      *
@@ -95,7 +95,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform Refund call to Computop
+     * - Performs Refund call to Computop.
      *
      * @api
      *
@@ -111,7 +111,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform Reverse call to Computop
+     * - Performs Reverse call to Computop.
      *
      * @api
      *
@@ -127,7 +127,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform CRIF risk check call to Computop
+     * - Performs CRIF risk check call to Computop.
      *
      * @api
      *
@@ -139,7 +139,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform PayPal Express Prepare API call
+     * - Performs PayPal Express Prepare API call.
      *
      * @api
      *
@@ -151,7 +151,7 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
-     * - Perform PayPal Express Complete API call
+     * - Performs PayPal Express Complete API call.
      *
      * @api
      *

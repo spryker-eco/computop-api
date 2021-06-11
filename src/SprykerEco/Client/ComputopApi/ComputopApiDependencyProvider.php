@@ -9,6 +9,7 @@ namespace SprykerEco\Client\ComputopApi;
 
 use Spryker\Client\Kernel\AbstractDependencyProvider;
 use Spryker\Client\Kernel\Container;
+use SprykerEco\Client\ComputopApi\Dependency\Client\ComputopApiToZedRequestClientBridge;
 
 class ComputopApiDependencyProvider extends AbstractDependencyProvider
 {
@@ -21,6 +22,7 @@ class ComputopApiDependencyProvider extends AbstractDependencyProvider
      */
     public function provideServiceLayerDependencies(Container $container): Container
     {
+        $container = parent::provideServiceLayerDependencies($container);
         $container = $this->addZedRequestClient($container);
 
         return $container;
@@ -34,7 +36,7 @@ class ComputopApiDependencyProvider extends AbstractDependencyProvider
     protected function addZedRequestClient(Container $container): Container
     {
         $container->set(static::CLIENT_ZED_REQUEST, function (Container $container) {
-            return $container->getLocator()->zedRequest()->client();
+            return new ComputopApiToZedRequestClientBridge($container->getLocator()->zedRequest()->client());
         });
 
         return $container;

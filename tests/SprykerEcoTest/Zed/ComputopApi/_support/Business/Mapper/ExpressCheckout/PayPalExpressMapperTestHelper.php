@@ -22,7 +22,7 @@ class PayPalExpressMapperTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function createQuoteTransfer()
+    public function createQuoteTransfer(): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
 

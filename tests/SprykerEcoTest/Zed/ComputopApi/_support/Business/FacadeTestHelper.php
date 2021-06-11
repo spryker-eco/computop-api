@@ -360,15 +360,13 @@ class FacadeTestHelper extends Test
     protected function createPayPalExpressPrepareRequest()
     {
         $response = (new ComputopApiPayPalExpressPrepareResponseTransfer())
-            ->setHeader($this->createComputopApiResponseHeaderTransfer())
-            ->setToken(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN)
             ->setOrderId(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
 
         $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressPrepareResponse($response);
 
         $stub = $this->createMock(PayPalExpressPrepareRequest::class);
-        $stub->method('request')
+        $stub->method('sendRequest')
             ->willReturn($quoteTransfer);
 
         return $stub;
@@ -389,7 +387,7 @@ class FacadeTestHelper extends Test
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressCompleteResponse($response);
 
         $stub = $this->createMock(PayPalExpressCompleteRequest::class);
-        $stub->method('request')
+        $stub->method('sendRequest')
             ->willReturn($quoteTransfer);
 
         return $stub;

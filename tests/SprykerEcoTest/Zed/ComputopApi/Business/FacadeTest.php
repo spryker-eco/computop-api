@@ -207,11 +207,7 @@ class FacadeTest extends AbstractSetUpTest
 
         //Assert
         $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $response);
-        $this->assertTrue($response->getHeader()->getIsSuccess());
-        $this->assertSame(FacadeTestConstants::STATUS_VALUE, $response->getHeader()->getStatus());
-        $this->assertSame(FacadeTestConstants::CODE_VALUE, $response->getHeader()->getCode());
-        $this->assertNotEmpty($response->getHeader()->getTransId());
-        $this->assertNotEmpty($response->getHeader()->getPayId());
+        $this->assertNotEmpty($response->getOrderid());
     }
 
     /**

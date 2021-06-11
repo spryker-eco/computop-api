@@ -7,6 +7,7 @@
 
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter\ExpressCheckout;
 
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressPrepareConverter;
 use SprykerEcoTest\Zed\ComputopApi\Business\Converter\AbstractConverterTest;
@@ -28,7 +29,7 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
         //Assert
-        $this->assertSame(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderId());
+        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $responseTransfer);
     }
 
     /**

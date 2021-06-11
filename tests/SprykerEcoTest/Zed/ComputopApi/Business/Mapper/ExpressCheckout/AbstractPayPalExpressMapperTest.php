@@ -9,7 +9,6 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Codeception\TestCase\Test;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
-use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
 use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTestConstants;
 
 abstract class AbstractPayPalExpressMapperTest extends Test

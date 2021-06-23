@@ -7,7 +7,6 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
-use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
@@ -62,13 +61,5 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
             ComputopApiConstants::LENGTH => $length,
             ComputopApiConstants::MERCHANT_ID => $merchantId,
         ];
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
-     */
-    protected function createPaymentTransfer(): ComputopApiRequestTransfer
-    {
-        return new ComputopApiRequestTransfer();
     }
 }

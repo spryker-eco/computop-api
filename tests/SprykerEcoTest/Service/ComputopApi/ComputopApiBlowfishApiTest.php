@@ -20,12 +20,12 @@ use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
  */
 class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
 {
-    protected const PLAINTEXT_VALUE = 'plaintext';
-    protected const LENGTH_VALUE = 9;
-    protected const PASSWORD_VALUE = 'password';
+    public const PLAINTEXT_VALUE = 'plaintext';
+    public const LENGTH_VALUE = 9;
+    public const PASSWORD_VALUE = 'password';
 
-    protected const CIPHER_VALUE = '14ec7a6da0fbb3e50a84b47302443328';
-    protected const CIPHER_LENGTH_VALUE = 16;
+    public const CIPHER_VALUE = '14ec7a6da0fbb3e50a84b47302443328';
+    public const CIPHER_LENGTH_VALUE = 16;
 
     /**
      * @return void

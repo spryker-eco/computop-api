@@ -22,7 +22,7 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     {
         //Arrange
         $response = $this->helper->prepareResponse();
-        $service = $this->createConverter();
+        $service = $this->createConverter($this->getDecryptedArray());
 
         //Act
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $responseTransfer */
@@ -34,11 +34,31 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     }
 
     /**
+     * @return void
+     */
+    public function testNegativeGetResponseTransfer(): void
+    {
+        //Arrange
+        $response = $this->helper->prepareResponse();
+        $service = $this->createConverter($this->getNegativeDecryptedArray());
+
+        //Act
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $responseTransfer */
+        $responseTransfer = $service->toTransactionResponseTransfer($response);
+
+        //Assert
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
+        $this->assertNotSame(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
+    }
+
+    /**
+     * @param array $decryptedArrayExample
+     *
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter
      */
-    protected function createConverter(): PayPalExpressCompleteConverter
+    protected function createConverter(array $decryptedArrayExample): PayPalExpressCompleteConverter
     {
-        $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
+        $computopServiceMock = $this->helper->createComputopApiServiceMock($decryptedArrayExample);
         $configMock = $this->helper->createComputopApiConfigMock();
 
         $converter = new PayPalExpressCompleteConverter($computopServiceMock, $configMock);
@@ -53,6 +73,17 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
         $decryptedArray[ComputopApiConfig::REF_NR] = ConverterTestConstants::REF_NR_VALUE;
+
+        return $decryptedArray;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getNegativeDecryptedArray(): array
+    {
+        $decryptedArray = $this->helper->getMainDecryptedArray();
+        $decryptedArray[ComputopApiConfig::REF_NR] = ConverterTestConstants::A_ID_VALUE;
 
         return $decryptedArray;
     }

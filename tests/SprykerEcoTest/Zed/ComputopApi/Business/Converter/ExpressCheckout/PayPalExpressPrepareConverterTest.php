@@ -21,8 +21,9 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
     public function testGetResponseTransfer(): void
     {
         //Arrange
-        $response = $this->helper->prepareResponse();
-        $service = $this->createConverter();
+        $expectedResponseBody = ComputopApiConfig::ORDER_ID . '=' . ConverterTestConstants::ORDER_ID_VALUE;
+        $response = $this->helper->prepareUnencryptedResponse($expectedResponseBody);
+        $service = $this->createConverter($this->getDecryptedArray());
 
         //Act
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $responseTransfer */
@@ -30,14 +31,36 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
 
         //Assert
         $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $responseTransfer);
+        $this->assertSame(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderid());
     }
 
     /**
+     * @return void
+     */
+    public function testNegativeGetResponseTransfer(): void
+    {
+        //Arrange
+        $expectedResponseBody = 'error';
+        $response = $this->helper->prepareUnencryptedResponse($expectedResponseBody);
+        $service = $this->createConverter($this->getDecryptedArray());
+
+        //Act
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $responseTransfer */
+        $responseTransfer = $service->toTransactionResponseTransfer($response);
+
+        //Assert
+        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $responseTransfer);
+        $this->assertNotSame(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderid());
+    }
+
+    /**
+     * @param array $decryptedArrayExample
+     *
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressPrepareConverter
      */
-    protected function createConverter(): PayPalExpressPrepareConverter
+    protected function createConverter(array $decryptedArrayExample): PayPalExpressPrepareConverter
     {
-        $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
+        $computopServiceMock = $this->helper->createComputopApiServiceMock($decryptedArrayExample);
         $configMock = $this->helper->createComputopApiConfigMock();
         $converter = new PayPalExpressPrepareConverter($computopServiceMock, $configMock);
 
@@ -51,6 +74,17 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
         $decryptedArray[ComputopApiConfig::ORDER_ID] = ConverterTestConstants::ORDER_ID_VALUE;
+
+        return $decryptedArray;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getNegativeDecryptedArray(): array
+    {
+        $decryptedArray = $this->helper->getMainDecryptedArray();
+        $decryptedArray[ComputopApiConfig::ORDER_ID] = 'anotherValue';
 
         return $decryptedArray;
     }

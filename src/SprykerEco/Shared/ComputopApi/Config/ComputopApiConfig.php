@@ -135,5 +135,5 @@ interface ComputopApiConfig
     public const PRODUCT_NAME = 'ProductName';
     public const CUSTOMER_ID = 'CustomerID';
     public const LEGAL_FORM = 'LegalForm';
-    public const ORDER_ID = 'OrderId';
+    public const ORDER_ID = 'orderid';
 }

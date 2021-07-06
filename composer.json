@@ -3,7 +3,7 @@
     "description": "ComputopApi module",
     "license": "MIT",
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.3",
         "psr/http-message": "*",
         "spryker/guzzle": "^2.2.0",
         "spryker/kernel": "^3.0.0",

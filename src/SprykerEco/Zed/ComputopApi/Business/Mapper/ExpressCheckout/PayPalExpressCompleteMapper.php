@@ -17,7 +17,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return string[]
      */
     protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
@@ -57,7 +57,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteTransfer $computopApiPayPalExpressCompleteTransfer
      *
-     * @return array
+     * @return string[]
      */
     protected function getDataSubArray(ComputopApiPayPalExpressCompleteTransfer $computopApiPayPalExpressCompleteTransfer): array
     {

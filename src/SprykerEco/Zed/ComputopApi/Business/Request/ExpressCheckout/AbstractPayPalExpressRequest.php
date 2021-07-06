@@ -32,16 +32,16 @@ abstract class AbstractPayPalExpressRequest
     /**
      * @param \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface $adapter
      * @param \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface $converter
-     * @param \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface $mapper
+     * @param \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface $payPalExpressMapper
      */
     public function __construct(
         AdapterInterface $adapter,
         ConverterInterface $converter,
-        PayPalExpressMapperInterface $mapper
+        PayPalExpressMapperInterface $payPalExpressMapper
     ) {
         $this->adapter = $adapter;
         $this->converter = $converter;
-        $this->payPalExpressMapper = $mapper;
+        $this->payPalExpressMapper = $payPalExpressMapper;
     }
 
     /**

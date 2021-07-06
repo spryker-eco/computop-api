@@ -15,7 +15,7 @@ class PayPalExpressPrepareMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return string[]
      */
     protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {

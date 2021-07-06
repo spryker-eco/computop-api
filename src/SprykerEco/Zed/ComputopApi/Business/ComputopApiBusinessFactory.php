@@ -303,7 +303,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
      */
     public function createPayPalExpressPrepareConverter(): ConverterInterface
     {
-        return new PayPalExpressPrepareConverter($this->getComputopApiService(), $this->getConfig());
+        return new PayPalExpressPrepareConverter();
     }
 
     /**

@@ -10,9 +10,9 @@ namespace SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout;
 use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use Psr\Http\Message\StreamInterface;
 use Spryker\Shared\Kernel\Transfer\TransferInterface;
-use SprykerEco\Zed\ComputopApi\Business\Converter\AbstractConverter;
+use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 
-class PayPalExpressPrepareConverter extends AbstractConverter
+class PayPalExpressPrepareConverter implements ConverterInterface
 {
     /**
      * @param \Psr\Http\Message\StreamInterface $response
@@ -23,7 +23,7 @@ class PayPalExpressPrepareConverter extends AbstractConverter
     {
         parse_str($response->getContents(), $responseHeader);
 
-        return $this->getResponseTransfer($responseHeader);
+        return $this->createComputopApiPayPalExpressPrepareResponseTransfer($responseHeader);
     }
 
     /**
@@ -31,7 +31,7 @@ class PayPalExpressPrepareConverter extends AbstractConverter
      *
      * @return \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressPrepareResponseTransfer
+    protected function createComputopApiPayPalExpressPrepareResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressPrepareResponseTransfer
     {
         $computopResponseTransfer = new ComputopApiPayPalExpressPrepareResponseTransfer();
         $computopResponseTransfer->fromArray($decryptedResponse, true);

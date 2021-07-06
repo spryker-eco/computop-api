@@ -27,7 +27,7 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return string[]
      */
     abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
 

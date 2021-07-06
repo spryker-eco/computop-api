@@ -25,13 +25,13 @@ class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
-        $container[static::SERVICE_COMPUTOP_API] = function () use ($container) {
+        $container->set(static::SERVICE_COMPUTOP_API, function (Container $container) {
             return $container->getLocator()->computopApi()->service();
-        };
+        });
 
-        $container[static::FACADE_STORE] = function () use ($container) {
+        $container->set(static::FACADE_STORE, function (Container $container) {
             return new ComputopApiToStoreFacadeBridge($container->getLocator()->store()->facade());
-        };
+        });
 
         return $container;
     }

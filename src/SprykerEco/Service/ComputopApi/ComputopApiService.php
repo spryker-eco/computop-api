@@ -20,7 +20,7 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 class ComputopApiService extends AbstractService implements ComputopApiServiceInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -34,7 +34,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -50,7 +50,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -75,14 +75,14 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
      * @param string[] $responseArray
      * @param string $key
      *
-     * @return null|string
+     * @return string|null
      */
     public function getResponseValue(array $responseArray, $key): ?string
     {
@@ -90,7 +90,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -120,7 +120,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -146,7 +146,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -160,7 +160,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -176,7 +176,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -192,7 +192,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -206,7 +206,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -220,7 +220,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -234,7 +234,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *

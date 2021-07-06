@@ -8,9 +8,9 @@
 namespace SprykerEco\Service\ComputopApi\Converter;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
-use Spryker\Service\Kernel\AbstractBundleConfig;
+use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
-use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
+use SprykerEco\Shared\ComputopApi\ComputopApiConfig as SharedComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 
 class ComputopApiConverter implements ComputopApiConverterInterface
@@ -18,14 +18,14 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    protected $config;
+    protected $computopApiConfig;
 
     /**
-     * @param \Spryker\Service\Kernel\AbstractBundleConfig $config
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
      */
-    public function __construct(AbstractBundleConfig $config)
+    public function __construct(ComputopApiConfig $computopApiConfig)
     {
-        $this->config = $config;
+        $this->computopApiConfig = $computopApiConfig;
     }
 
     /**
@@ -58,7 +58,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      * @param array $plaintextResponseHeader
      * @param string $key
      *
-     * @return null|string
+     * @return string|null
      */
     public function getResponseValue(array $plaintextResponseHeader, $key): ?string
     {
@@ -77,9 +77,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
-        $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString);
+        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString) ?: [];
         foreach ($decryptedSubArray as $value) {
-            $data = explode($this->config->getDataSubSeparator(), $value);
+            $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value) ?: [];
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 
@@ -118,7 +118,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      */
     public function checkMacResponse($responseMac, $expectedMac, $method): void
     {
-        if ($this->config->isMacRequired($method) && $responseMac !== $expectedMac) {
+        if ($this->computopApiConfig->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
         }
     }
@@ -200,8 +200,8 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      */
     protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header)
     {
-        return $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
-            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS ||
+        return $header->getStatus() === SharedComputopApiConfig::SUCCESS_STATUS ||
+            $header->getStatus() === SharedComputopApiConfig::SUCCESS_OK_STATUS ||
             (int)$header->getCode() === 0;
     }
 }

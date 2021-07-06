@@ -9,16 +9,16 @@ namespace SprykerEcoTest\Service\ComputopApi\Mapper;
 
 interface ComputopApiMapperTestConstants
 {
-    const PAY_ID_VALUE = 'PAY_ID_VALUE';
-    const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
-    const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
-    const AMOUNT_VALUE = 1;
-    const CURRENCY_VALUE = 'USD';
+    public const PAY_ID_VALUE = 'PAY_ID_VALUE';
+    public const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
+    public const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
+    public const AMOUNT_VALUE = 1;
+    public const CURRENCY_VALUE = 'USD';
 
-    const STATUS_VALUE = 'OK';
-    const CODE_VALUE = '000000';
+    public const STATUS_VALUE = 'OK';
+    public const CODE_VALUE = '000000';
 
-    const EXPECTED_MAC = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*1*USD';
-    const EXPECTED_MAC_RESPONSE = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*OK*000000';
-    const EXPECTED_PLAINTEXT = 'test_key=test_value';
+    public const EXPECTED_MAC = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*1*USD';
+    public const EXPECTED_MAC_RESPONSE = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*OK*000000';
+    public const EXPECTED_PLAINTEXT = 'test_key=test_value';
 }

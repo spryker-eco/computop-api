@@ -7,9 +7,9 @@
         "psr/http-message": "*",
         "spryker/guzzle": "^2.2.0",
         "spryker/kernel": "^3.0.0",
-        "spryker/store": "*",
+        "spryker/store": "^1.0.0",
         "spryker/util-text": "^1.0.0",
-        "spryker/zed-request": "*"
+        "spryker/zed-request": "^3.0.0"
     },
     "autoload": {
         "psr-4": {

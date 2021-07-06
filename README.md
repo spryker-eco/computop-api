@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/github/license/spryker-eco/computop-api.svg?b=master)](https://github.com/spryker-eco/computop-api)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-eco/computop-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/computop-api/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/spryker-eco/computop-api/badges/build.png?b=master)](https://scrutinizer-ci.com/g/spryker-eco/computop-api/build-status/master)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 
 ## Installation
 

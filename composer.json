@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.3",
         "psr/http-message": "*",
-        "spryker/store": "*",
+        "spryker/store": "^1.1.0",
         "spryker/kernel": "^3.30.0",
         "spryker/transfer": "^3.0.0",
         "spryker/util-text": "^1.0.0",

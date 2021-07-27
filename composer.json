@@ -5,10 +5,11 @@
     "require": {
         "php": ">=7.3",
         "psr/http-message": "*",
-        "spryker/guzzle": "^2.2.0",
-        "spryker/kernel": "^3.30.0",
         "spryker/store": "*",
-        "spryker/util-text": "^1.0.0"
+        "spryker/kernel": "^3.30.0",
+        "spryker/transfer": "^3.0.0",
+        "spryker/util-text": "^1.0.0",
+        "spryker/guzzle": "^2.2.0"
     },
     "autoload": {
         "psr-4": {
@@ -40,7 +41,7 @@
     },
     "require-dev": {
         "phpstan/phpstan": "*",
-        "spryker/code-sniffer": "dev-master",
-        "spryker/testify": "*"
+        "spryker/testify": "*",
+        "spryker/code-sniffer": "dev-master"
     }
 }

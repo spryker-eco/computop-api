@@ -21,7 +21,7 @@ abstract class AbstractConverterTest extends Test
      *
      * @return void
      */
-    protected function _inject(ConverterTestHelper $helper)
+    protected function _inject(ConverterTestHelper $helper): void
     {
         $this->helper = $helper;
     }

@@ -16,5 +16,5 @@ interface ApiRiskCheckMapperInterface
      *
      * @return string[]
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer);
+    public function buildRequest(QuoteTransfer $quoteTransfer): array;
 }

@@ -31,7 +31,7 @@ class HmacHasher implements HmacHasherInterface
      *
      * @return string
      */
-    public function getEncryptedValue($value): string
+    public function getEncryptedValue(string $value): string
     {
         return strtoupper(
             hash_hmac(static::HASH_TYPE, $value, $this->config->getHmacPassword())

@@ -9,6 +9,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard;
 
 use Codeception\TestCase\Test;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 abstract class AbstractCreditCardMapperTest extends Test
 {
@@ -17,7 +18,7 @@ abstract class AbstractCreditCardMapperTest extends Test
      *
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    abstract protected function createMapper();
+    abstract protected function createMapper(): PostPlaceMapperInterface;
 
     /**
      * @var \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTestHelper
@@ -29,7 +30,7 @@ abstract class AbstractCreditCardMapperTest extends Test
      *
      * @return void
      */
-    protected function _inject(CreditCardMapperTestHelper $helper)
+    protected function _inject(CreditCardMapperTestHelper $helper): void
     {
         $this->helper = $helper;
     }
@@ -37,7 +38,7 @@ abstract class AbstractCreditCardMapperTest extends Test
     /**
      * @return void
      */
-    public function testBuildRequest()
+    public function testBuildRequest(): void
     {
         $orderTransferMock = $this->helper->createOrderTransferMock();
         $computopApiHeaderPaymentTransfer = $this->helper->createComputopApiHeaderPaymentTransfer();

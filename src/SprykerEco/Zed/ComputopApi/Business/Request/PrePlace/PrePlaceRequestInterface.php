@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\ComputopApi\Business\Request\PrePlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface PrePlaceRequestInterface
 {
@@ -18,5 +19,8 @@ interface PrePlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment);
+    public function request(
+        QuoteTransfer $quoteTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): TransferInterface;
 }

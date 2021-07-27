@@ -8,6 +8,7 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 
@@ -23,7 +24,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function getDescriptionValue(array $items);
+    public function getDescriptionValue(array $items): string;
 
     /**
      * Specification:
@@ -35,7 +36,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function generateEncryptedMac(ComputopApiRequestTransfer $requestTransfer);
+    public function generateEncryptedMac(ComputopApiRequestTransfer $requestTransfer): string;
 
     /**
      * Specification:
@@ -48,7 +49,7 @@ interface ComputopApiServiceInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractResponseHeader(array $plaintextResponseHeader, $method);
+    public function extractResponseHeader(array $plaintextResponseHeader, string $method): ComputopApiResponseHeaderTransfer;
 
     /**
      * Specification:
@@ -59,9 +60,9 @@ interface ComputopApiServiceInterface
      * @param string[] $responseArray
      * @param string $key
      *
-     * @return string|null|bool
+     * @return string|null
      */
-    public function getResponseValue(array $responseArray, $key);
+    public function getResponseValue(array $responseArray, string $key): ?string;
 
     /**
      * Specification:
@@ -76,7 +77,7 @@ interface ComputopApiServiceInterface
      *
      * @return array
      */
-    public function decryptResponseHeader(array $responseHeader, $password);
+    public function decryptResponseHeader(array $responseHeader, string $password): array;
 
     /**
      * Specification:
@@ -89,7 +90,7 @@ interface ComputopApiServiceInterface
      *
      * @return array
      */
-    public function getEncryptedArray(array $dataSubArray, $password);
+    public function getEncryptedArray(array $dataSubArray, string $password): array;
 
     /**
      * Specification:
@@ -101,7 +102,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function getHashValue($value);
+    public function getHashValue(string $value): string;
 
     /**
      * Specification:
@@ -115,7 +116,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function getBlowfishEncryptedValue($plaintext, $length, $password);
+    public function getBlowfishEncryptedValue(string $plaintext, int $length, string $password): string;
 
     /**
      * Specification:
@@ -129,7 +130,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue($cipherText, $length, $password);
+    public function getBlowfishDecryptedValue(string $cipherText, int $length, string $password): string;
 
     /**
      * Specification:
@@ -141,7 +142,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer);
+    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string;
 
     /**
      * Specification:
@@ -153,7 +154,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer);
+    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string;
 
     /**
      * Specification:
@@ -165,7 +166,7 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function generateTransId(QuoteTransfer $quoteTransfer);
+    public function generateTransId(QuoteTransfer $quoteTransfer): string;
 
     /**
      * Specification:
@@ -178,5 +179,5 @@ interface ComputopApiServiceInterface
      *
      * @return string
      */
-    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit);
+    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit): string;
 }

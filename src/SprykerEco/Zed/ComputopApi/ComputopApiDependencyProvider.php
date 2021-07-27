@@ -24,11 +24,33 @@ class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addComputopApiService($container);
+        $container = $this->addStoreFacade($container);
 
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addComputopApiService(Container $container): Container
+    {
         $container->set(static::SERVICE_COMPUTOP_API, function () use ($container) {
             return $container->getLocator()->computopApi()->service();
         });
 
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addStoreFacade(Container $container): Container
+    {
         $container->set(static::FACADE_STORE, function () use ($container) {
             return new ComputopApiToStoreFacadeBridge($container->getLocator()->store()->facade());
         });

@@ -119,8 +119,10 @@ class CreditCardMapperTestHelper extends Test
      *
      * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopApiHeaderPaymentTransfer($payId = '', $transId = '')
-    {
+    public function createComputopApiHeaderPaymentTransfer(
+        string $payId = '',
+        string $transId = ''
+    ): ComputopApiHeaderPaymentTransfer {
         $headerPayment = new ComputopApiHeaderPaymentTransfer();
         $headerPayment->setAmount(100);
         $headerPayment->setPayId($payId);

@@ -57,7 +57,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface
      */
-    protected function getComputopApiService(): ComputopApiServiceInterface
+    public function getComputopApiService(): ComputopApiServiceInterface
     {
         return $this->getProvidedDependency(ComputopApiDependencyProvider::SERVICE_COMPUTOP_API);
     }
@@ -65,7 +65,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ComputopApiBusinessMapperFactoryInterface
      */
-    protected function createMapperFactory(): ComputopApiBusinessMapperFactoryInterface
+    public function createMapperFactory(): ComputopApiBusinessMapperFactoryInterface
     {
         return new ComputopApiBusinessMapperFactory();
     }
@@ -273,7 +273,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createAuthorizeAdapter(): AdapterInterface
+    public function createAuthorizeAdapter(): AdapterInterface
     {
         return new AuthorizeAdapter($this->getConfig());
     }
@@ -281,7 +281,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createReverseAdapter(): AdapterInterface
+    public function createReverseAdapter(): AdapterInterface
     {
         return new ReverseAdapter($this->getConfig());
     }
@@ -289,7 +289,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createInquireAdapter(): AdapterInterface
+    public function createInquireAdapter(): AdapterInterface
     {
         return new InquireAdapter($this->getConfig());
     }
@@ -297,7 +297,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createCaptureAdapter(): AdapterInterface
+    public function createCaptureAdapter(): AdapterInterface
     {
         return new CaptureAdapter($this->getConfig());
     }
@@ -305,7 +305,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createRefundAdapter(): AdapterInterface
+    public function createRefundAdapter(): AdapterInterface
     {
         return new RefundAdapter($this->getConfig());
     }
@@ -313,7 +313,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createEasyCreditStatusAdapter(): AdapterInterface
+    public function createEasyCreditStatusAdapter(): AdapterInterface
     {
         return new EasyCreditStatusAdapter($this->getConfig());
     }
@@ -321,7 +321,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createEasyCreditAuthorizeAdapter(): AdapterInterface
+    public function createEasyCreditAuthorizeAdapter(): AdapterInterface
     {
         return new EasyCreditAuthorizeAdapter($this->getConfig());
     }
@@ -329,7 +329,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Adapter\AdapterInterface
      */
-    protected function createCrifAdapter(): AdapterInterface
+    public function createCrifAdapter(): AdapterInterface
     {
         return new CrifApiAdapter($this->getConfig());
     }

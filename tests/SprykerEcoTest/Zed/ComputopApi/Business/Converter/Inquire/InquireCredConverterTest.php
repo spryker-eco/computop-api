@@ -25,7 +25,7 @@ class InquireCredConverterTest extends AbstractInquireConverterTest
     /**
      * @return void
      */
-    public function testToTransactionResponseTransfer()
+    public function testToTransactionResponseTransfer(): void
     {
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
@@ -34,13 +34,12 @@ class InquireCredConverterTest extends AbstractInquireConverterTest
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
-//        $this->assertTrue($responseTransfer->getIsCredLast());//ToDo:add if need
     }
 
     /**
      * @return array
      */
-    protected function getDecryptedArray()
+    protected function getDecryptedArray(): array
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
 

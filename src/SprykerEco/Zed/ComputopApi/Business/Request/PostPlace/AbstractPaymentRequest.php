@@ -97,7 +97,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      *
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    protected function getMethodMapper($methodName): PostPlaceMapperInterface
+    protected function getMethodMapper(string $methodName): PostPlaceMapperInterface
     {
         if (isset($this->methodMappers[$methodName]) === false) {
             throw new ComputopApiMethodMapperException('The method mapper is not registered.');

@@ -89,7 +89,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    protected function createConfig()
+    protected function createConfig(): ComputopApiConfig
     {
         return new ComputopApiConfig();
     }
@@ -105,7 +105,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    protected function createComputopApiService()
+    protected function createComputopApiService(): ComputopApiService
     {
         $service = new ComputopApiService();
         $service->setFactory($this->createServiceFactory());
@@ -135,7 +135,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    protected function createServiceConfig()
+    protected function createServiceConfig(): ComputopApiServiceConfig
     {
         return new ComputopApiServiceConfig();
     }
@@ -143,7 +143,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getQuoteTrasfer()
+    public function getQuoteTrasfer(): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setTotals(
@@ -164,7 +164,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function getOrderTrasfer()
+    public function getOrderTrasfer(): OrderTransfer
     {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(
@@ -185,7 +185,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopApiHeaderPaymentTransfer()
+    public function createComputopApiHeaderPaymentTransfer(): ComputopApiHeaderPaymentTransfer
     {
         return (new ComputopApiHeaderPaymentTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)
@@ -320,7 +320,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    protected function createComputopApiResponseHeaderTransfer()
+    protected function createComputopApiResponseHeaderTransfer(): ComputopApiResponseHeaderTransfer
     {
         return (new ComputopApiResponseHeaderTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)

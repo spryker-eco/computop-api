@@ -8,6 +8,7 @@
 namespace SprykerEcoTest\Service\ComputopApi;
 
 use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface;
 
 /**
  * @group Unit
@@ -25,7 +26,7 @@ class ComputopApiHashApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testHashCrypt()
+    public function testHashCrypt(): void
     {
         $service = $this->createService();
         $encryptedValue = $service->getEncryptedValue(self::VALUE);
@@ -36,7 +37,7 @@ class ComputopApiHashApiTest extends AbstractComputopApiTest
     /**
      * @return \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
      */
-    public function createService()
+    public function createService(): HmacHasherInterface
     {
         return new HmacHasher($this->helper->createComputopConfigMock());
     }

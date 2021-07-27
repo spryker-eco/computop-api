@@ -9,6 +9,7 @@ namespace SprykerEco\Zed\ComputopApi\Business\Request\PostPlace;
 
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface PostPlaceRequestInterface
 {
@@ -18,5 +19,8 @@ interface PostPlaceRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment);
+    public function request(
+        OrderTransfer $orderTransfer,
+        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
+    ): TransferInterface;
 }

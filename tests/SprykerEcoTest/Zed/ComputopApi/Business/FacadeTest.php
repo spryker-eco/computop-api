@@ -28,7 +28,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformEasyCreditStatusRequest()
+    public function testPerformEasyCreditStatusRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -48,7 +48,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformAuthorizationRequest()
+    public function testPerformAuthorizationRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -68,7 +68,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformCaptureRequest()
+    public function testPerformCaptureRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -88,7 +88,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformInquireRequest()
+    public function testPerformInquireRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -108,7 +108,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformRefundRequest()
+    public function testPerformRefundRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -128,7 +128,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformReverseRequest()
+    public function testPerformReverseRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -148,7 +148,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformCrifApiCall()
+    public function testPerformCrifApiCall(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -171,7 +171,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformEasyCreditAuthorizeRequest()
+    public function testPerformEasyCreditAuthorizeRequest(): void
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());

@@ -10,6 +10,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Psr7\Stream;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
@@ -22,7 +23,7 @@ class ConverterTestHelper extends Test
     /**
      * @return \GuzzleHttp\Psr7\Stream
      */
-    public function prepareResponse()
+    public function prepareResponse(): Stream
     {
         $expectedResponse = '';
         $stream = Psr7\stream_for($expectedResponse);
@@ -46,7 +47,7 @@ class ConverterTestHelper extends Test
     /**
      * @return array
      */
-    public function getMainDecryptedArray()
+    public function getMainDecryptedArray(): array
     {
         $decryptedArray = [
             ComputopApiConfig::MERCHANT_ID_SHORT => 'mid',
@@ -89,7 +90,7 @@ class ConverterTestHelper extends Test
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    protected function getHeaderResponseTransfer(array $decryptedArray)
+    protected function getHeaderResponseTransfer(array $decryptedArray): ComputopApiResponseHeaderTransfer
     {
         $method = self::AUTHORIZE_METHOD;
 

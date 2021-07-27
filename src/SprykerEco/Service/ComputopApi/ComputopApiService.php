@@ -82,9 +82,9 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      * @param string[] $responseArray
      * @param string $key
      *
-     * @return string|null|bool
+     * @return string|null
      */
-    public function getResponseValue(array $responseArray, $key): ?string
+    public function getResponseValue(array $responseArray, string $key): ?string
     {
         return $this->getFactory()->createComputopApiConverter()->getResponseValue($responseArray, $key);
     }

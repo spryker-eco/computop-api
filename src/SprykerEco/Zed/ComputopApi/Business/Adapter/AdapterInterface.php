@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Adapter;
 
+use Psr\Http\Message\StreamInterface;
+
 interface AdapterInterface
 {
     /**
@@ -14,5 +16,5 @@ interface AdapterInterface
      *
      * @return \Psr\Http\Message\StreamInterface
      */
-    public function sendRequest(array $data);
+    public function sendRequest(array $data): StreamInterface;
 }

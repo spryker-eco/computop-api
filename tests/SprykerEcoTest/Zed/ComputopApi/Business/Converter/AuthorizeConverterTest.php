@@ -25,7 +25,7 @@ class AuthorizeConverterTest extends AbstractConverterTest
     /**
      * @return void
      */
-    public function testToTransactionResponseTransfer()
+    public function testToTransactionResponseTransfer(): void
     {
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
@@ -40,7 +40,7 @@ class AuthorizeConverterTest extends AbstractConverterTest
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\AuthorizeConverter
      */
-    protected function createConverter()
+    protected function createConverter(): AuthorizeConverter
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
         $configMock = $this->helper->createComputopApiConfigMock();
@@ -53,7 +53,7 @@ class AuthorizeConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    protected function getDecryptedArray()
+    protected function getDecryptedArray(): array
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
 

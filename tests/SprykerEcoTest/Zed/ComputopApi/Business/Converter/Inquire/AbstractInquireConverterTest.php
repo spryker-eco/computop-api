@@ -15,12 +15,12 @@ abstract class AbstractInquireConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    abstract protected function getDecryptedArray();
+    abstract protected function getDecryptedArray(): array;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\InquireConverter
      */
-    protected function createConverter()
+    protected function createConverter(): InquireConverter
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
         $configMock = $this->helper->createComputopApiConfigMock();

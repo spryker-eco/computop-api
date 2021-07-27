@@ -8,6 +8,7 @@
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard;
 
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\AuthorizeCreditCardMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 /**
  * @group Unit
@@ -23,7 +24,7 @@ class AuthorizeCreditCardMapperTest extends AbstractCreditCardMapperTest
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    protected function createMapper()
+    protected function createMapper(): PostPlaceMapperInterface
     {
         return new AuthorizeCreditCardMapper(
             $this->helper->createComputopApiServiceMock(),

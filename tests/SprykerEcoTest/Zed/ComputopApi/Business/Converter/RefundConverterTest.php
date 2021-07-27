@@ -25,7 +25,7 @@ class RefundConverterTest extends AbstractConverterTest
     /**
      * @return void
      */
-    public function testToTransactionResponseTransfer()
+    public function testToTransactionResponseTransfer(): void
     {
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
@@ -45,7 +45,7 @@ class RefundConverterTest extends AbstractConverterTest
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Converter\RefundConverter
      */
-    protected function createConverter()
+    protected function createConverter(): RefundConverter
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($this->getDecryptedArray());
         $configMock = $this->helper->createComputopApiConfigMock();
@@ -58,7 +58,7 @@ class RefundConverterTest extends AbstractConverterTest
     /**
      * @return array
      */
-    protected function getDecryptedArray()
+    protected function getDecryptedArray(): array
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
 

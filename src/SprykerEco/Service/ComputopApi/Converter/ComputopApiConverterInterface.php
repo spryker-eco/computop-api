@@ -7,6 +7,8 @@
 
 namespace SprykerEco\Service\ComputopApi\Converter;
 
+use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+
 interface ComputopApiConverterInterface
 {
     /**
@@ -15,7 +17,7 @@ interface ComputopApiConverterInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractResponseHeader(array $plaintextResponseHeader, $method);
+    public function extractResponseHeader(array $plaintextResponseHeader, string $method): ComputopApiResponseHeaderTransfer;
 
     /**
      * @param array $responseArray
@@ -23,14 +25,14 @@ interface ComputopApiConverterInterface
      *
      * @return string|null
      */
-    public function getResponseValue(array $responseArray, $key);
+    public function getResponseValue(array $responseArray, string $key): ?string;
 
     /**
      * @param string $decryptedString
      *
      * @return array
      */
-    public function getResponseDecryptedArray($decryptedString);
+    public function getResponseDecryptedArray(string $decryptedString): array;
 
     /**
      * @param array $responseArray
@@ -39,10 +41,10 @@ interface ComputopApiConverterInterface
      *
      * @return void
      */
-    public function checkEncryptedResponse(array $responseArray);
+    public function checkEncryptedResponse(array $responseArray): void;
 
     /**
-     * @param string $responseMac
+     * @param string|null $responseMac
      * @param string $expectedMac
      * @param string $method
      *
@@ -50,5 +52,5 @@ interface ComputopApiConverterInterface
      *
      * @return void
      */
-    public function checkMacResponse($responseMac, $expectedMac, $method);
+    public function checkMacResponse(?string $responseMac, string $expectedMac, string $method): void;
 }

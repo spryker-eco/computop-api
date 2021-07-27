@@ -33,7 +33,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
      *
      * @return array
      */
-    abstract public function getDataSubArray(QuoteTransfer $quoteTransfer, ComputopApiRequestTransfer $requestTransfer);
+    abstract public function getDataSubArray(QuoteTransfer $quoteTransfer, ComputopApiRequestTransfer $requestTransfer): array;
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
@@ -87,7 +87,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
      *
      * @return string[]
      */
-    protected function buildRequestData($data, $length, $merchantId): array
+    protected function buildRequestData(string $data, string $length, string $merchantId): array
     {
         return [
             SharedComputopApiConfig::DATA => $data,

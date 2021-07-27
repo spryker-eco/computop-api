@@ -8,9 +8,9 @@
 namespace SprykerEco\Service\ComputopApi\Converter;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
-use Spryker\Service\Kernel\AbstractBundleConfig;
+use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
-use SprykerEco\Shared\ComputopApi\ComputopApiConfig;
+use SprykerEco\Shared\ComputopApi\ComputopApiConfig as SharedComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 
 class ComputopApiConverter implements ComputopApiConverterInterface
@@ -21,9 +21,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected $config;
 
     /**
-     * @param \Spryker\Service\Kernel\AbstractBundleConfig $config
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
      */
-    public function __construct(AbstractBundleConfig $config)
+    public function __construct(ComputopApiConfig $config)
     {
         $this->config = $config;
     }
@@ -34,7 +34,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
+    public function extractResponseHeader(array $plaintextResponseHeader, string $method): ComputopApiResponseHeaderTransfer
     {
         $plaintextResponseHeader = $this->formatResponseArray($plaintextResponseHeader);
         $this->checkDecryptedResponse($plaintextResponseHeader);
@@ -60,7 +60,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return string|null
      */
-    public function getResponseValue(array $plaintextResponseHeader, $key): ?string
+    public function getResponseValue(array $plaintextResponseHeader, string $key): ?string
     {
         if (isset($plaintextResponseHeader[$this->formatKey($key)])) {
             return $plaintextResponseHeader[$this->formatKey($key)];
@@ -74,13 +74,19 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return array
      */
-    public function getResponseDecryptedArray($decryptedString): array
+    public function getResponseDecryptedArray(string $decryptedString): array
     {
         $decryptedArray = [];
         $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString);
+        if (!$decryptedSubArray) {
+            return $decryptedArray;
+        }
+
         foreach ($decryptedSubArray as $value) {
             $data = explode($this->config->getDataSubSeparator(), $value);
-            $decryptedArray[array_shift($data)] = array_shift($data);
+            if ($data) {
+                $decryptedArray[array_shift($data)] = array_shift($data);
+            }
         }
 
         return $this->formatResponseArray($decryptedArray);
@@ -108,7 +114,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param string $responseMac
+     * @param string|null $responseMac
      * @param string $expectedMac
      * @param string $method
      *
@@ -116,7 +122,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return void
      */
-    public function checkMacResponse($responseMac, $expectedMac, $method): void
+    public function checkMacResponse(?string $responseMac, string $expectedMac, string $method): void
     {
         if ($this->config->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
@@ -188,7 +194,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return string
      */
-    protected function formatKey($key): string
+    protected function formatKey(string $key): string
     {
         return mb_strtolower($key);
     }
@@ -198,10 +204,10 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return bool
      */
-    protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header)
+    protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header): bool
     {
-        return $header->getStatus() === ComputopApiConfig::SUCCESS_STATUS ||
-            $header->getStatus() === ComputopApiConfig::SUCCESS_OK_STATUS ||
+        return $header->getStatus() === SharedComputopApiConfig::SUCCESS_STATUS ||
+            $header->getStatus() === SharedComputopApiConfig::SUCCESS_OK_STATUS ||
             (int)$header->getCode() === 0;
     }
 }

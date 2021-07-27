@@ -37,7 +37,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testExtractIsSuccessHeader()
+    public function testExtractIsSuccessHeader(): void
     {
         $converter = $this->helper->createConverter();
         $decryptedArray = $this->getDecryptedArray(ComputopApiConfig::SUCCESS_STATUS);
@@ -59,7 +59,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testExtractIsErrorHeader()
+    public function testExtractIsErrorHeader(): void
     {
         $converter = $this->helper->createConverter();
         $decryptedArray = $this->getDecryptedArray(self::STATUS_ERROR_VALUE);
@@ -82,7 +82,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testCheckEncryptedResponse()
+    public function testCheckEncryptedResponse(): void
     {
         $converter = $this->helper->createConverter();
 
@@ -97,7 +97,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testCheckEncryptedResponseError()
+    public function testCheckEncryptedResponseError(): void
     {
         $this->expectException(ComputopApiConverterException::class);
 
@@ -110,7 +110,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
      *
      * @return array
      */
-    protected function getDecryptedArray($status)
+    protected function getDecryptedArray(string $status): array
     {
         $decryptedArray = [
             ApiConfig::MERCHANT_ID_SHORT => ApiConfig::MERCHANT_ID_SHORT,

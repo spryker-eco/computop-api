@@ -44,7 +44,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    abstract protected function createPaymentTransfer(OrderTransfer $orderTransfer);
+    abstract protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer;
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
@@ -105,7 +105,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
      *
      * @return array
      */
-    protected function buildRequestData($data, $length, $merchantId): array
+    protected function buildRequestData(string $data, string $length, string $merchantId): array
     {
         $requestData = [
             ComputopApiConstants::DATA => $data,

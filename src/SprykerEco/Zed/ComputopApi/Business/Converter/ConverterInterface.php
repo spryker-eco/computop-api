@@ -8,6 +8,7 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
 use Psr\Http\Message\StreamInterface;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface ConverterInterface
 {
@@ -16,5 +17,5 @@ interface ConverterInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function toTransactionResponseTransfer(StreamInterface $response);
+    public function toTransactionResponseTransfer(StreamInterface $response): TransferInterface;
 }

@@ -46,11 +46,11 @@ interface ComputopApiConverterInterface
     /**
      * @param string|null $responseMac
      * @param string $expectedMac
-     * @param string $method
+     * @param string|null $method
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
      * @return void
      */
-    public function checkMacResponse(?string $responseMac, string $expectedMac, string $method): void;
+    public function checkMacResponse(?string $responseMac, string $expectedMac, ?string $method): void;
 }

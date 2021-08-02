@@ -40,7 +40,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory
      */
-    public function createFactory()
+    public function createFactory(): ComputopApiBusinessFactory
     {
         $builder = $this->getMockBuilder(ComputopApiBusinessFactory::class);
         $builder->setMethods(

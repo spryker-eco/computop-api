@@ -34,7 +34,6 @@ use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\RefundRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\ReverseRequest;
-use SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\AbstractPaymentRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\EasyCreditStatusRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\PrePlaceRequestInterface;
 use SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck\CrifRequest;

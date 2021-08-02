@@ -7,8 +7,6 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck;
 
-use Generated\Shared\Transfer\QuoteTransfer;
-
 /**
  * @method \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer request(QuoteTransfer $quoteTransfer)
  */

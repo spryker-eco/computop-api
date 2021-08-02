@@ -10,7 +10,6 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\Stream;
 use Psr\Http\Message\StreamInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
@@ -32,7 +31,7 @@ class ConverterTestHelper extends Test
     /**
      * @return \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    public function createComputopApiConfigMock()
+    public function createComputopApiConfigMock(): ComputopApiZedConfig
     {
         return $this->createPartialMock(
             ComputopApiZedConfig::class,
@@ -61,7 +60,7 @@ class ConverterTestHelper extends Test
      *
      * @return \SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    public function createComputopApiServiceMock(array $decryptedArray)
+    public function createComputopApiServiceMock(array $decryptedArray): ComputopApiService
     {
         $computopServiceMock = $this->createPartialMock(
             ComputopApiService::class,

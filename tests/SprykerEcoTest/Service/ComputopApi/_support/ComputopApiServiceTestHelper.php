@@ -23,7 +23,7 @@ class ComputopApiServiceTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    public function createComputopConfigMock()
+    public function createComputopConfigMock(): ComputopApiConfig
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,

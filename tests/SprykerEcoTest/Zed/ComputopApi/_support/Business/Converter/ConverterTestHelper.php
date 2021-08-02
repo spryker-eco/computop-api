@@ -11,6 +11,7 @@ use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Stream;
+use Psr\Http\Message\StreamInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
@@ -23,25 +24,20 @@ class ConverterTestHelper extends Test
     /**
      * @return \GuzzleHttp\Psr7\Stream
      */
-    public function prepareResponse(): Stream
+    public function prepareResponse(): StreamInterface
     {
-        $expectedResponse = '';
-        $stream = Psr7\stream_for($expectedResponse);
-
-        return $stream;
+        return Psr7\stream_for('');
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
+     * @return \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
     public function createComputopApiConfigMock()
     {
-        $configMock = $this->createPartialMock(
+        return $this->createPartialMock(
             ComputopApiZedConfig::class,
             ['getBlowfishPass']
         );
-
-        return $configMock;
     }
 
     /**
@@ -49,7 +45,7 @@ class ConverterTestHelper extends Test
      */
     public function getMainDecryptedArray(): array
     {
-        $decryptedArray = [
+        return [
             ComputopApiConfig::MERCHANT_ID_SHORT => 'mid',
             ComputopApiConfig::PAY_ID => 'PayID',
             ComputopApiConfig::X_ID => 'XID',
@@ -58,14 +54,12 @@ class ConverterTestHelper extends Test
             ComputopApiConfig::CODE => '00000000',
             ComputopApiConfig::DESCRIPTION => 'Description',
         ];
-
-        return $decryptedArray;
     }
 
     /**
      * @param array $decryptedArray
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
+     * @return \SprykerEco\Service\ComputopApi\ComputopApiService
      */
     public function createComputopApiServiceMock(array $decryptedArray)
     {
@@ -97,7 +91,7 @@ class ConverterTestHelper extends Test
         $header = new ComputopApiResponseHeaderTransfer();
         $header->fromArray($decryptedArray, true);
 
-        //different naming style
+        // Different naming style
         $header->setMId($decryptedArray[ComputopApiConfig::MERCHANT_ID_SHORT]);
         $header->setTransId($decryptedArray[ComputopApiConfig::TRANS_ID]);
         $header->setPayId($decryptedArray[ComputopApiConfig::PAY_ID]);

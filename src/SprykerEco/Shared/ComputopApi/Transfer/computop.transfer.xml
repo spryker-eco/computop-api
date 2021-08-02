@@ -103,7 +103,7 @@
         <property name="refNr" type="string"/>
         <property name="status" type="string"/>
         <property name="description" type="string"/>
-        <property name="code" type="int"/>
+        <property name="code" type="string"/>
         <property name="mac" type="string"/>
         <property name="result" type="string"/>
         <property name="partialResults" type="string"/>

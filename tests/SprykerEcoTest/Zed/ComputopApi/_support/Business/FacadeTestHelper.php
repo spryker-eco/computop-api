@@ -38,7 +38,7 @@ use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 class FacadeTestHelper extends Test
 {
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory
+     * @return \SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory
      */
     public function createFactory()
     {

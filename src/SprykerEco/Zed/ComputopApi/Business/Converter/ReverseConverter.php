@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Converter;
 
 use Generated\Shared\Transfer\ComputopApiReverseResponseTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class ReverseConverter extends AbstractConverter implements ConverterInterface
@@ -16,15 +15,15 @@ class ReverseConverter extends AbstractConverter implements ConverterInterface
     /**
      * @param array $response
      *
-     * @return \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer|\Spryker\Shared\Kernel\Transfer\TransferInterface
+     * @return \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer
      */
-    protected function getResponseTransfer(array $response): TransferInterface
+    protected function getResponseTransfer(array $response): ComputopApiReverseResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiReverseResponseTransfer();
         $computopApiResponseTransfer->setHeader(
             $this->computopApiService->extractResponseHeader($response, $this->config->getReverseMethodName())
         );
-
+        //optional fields
         $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));
         $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($response, ComputopApiConfig::TRANSACTION_ID));
         $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($response, ComputopApiConfig::CODE_EXT));

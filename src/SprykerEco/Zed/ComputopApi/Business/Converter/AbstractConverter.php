@@ -25,11 +25,13 @@ abstract class AbstractConverter implements ConverterInterface
     protected $config;
 
     /**
-     * @param array $response
+     * @param array $decryptedResponse
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
+     *
+     * @codingStandardsIgnoreStart
      */
-    abstract protected function getResponseTransfer(array $response): TransferInterface;
+    abstract protected function getResponseTransfer(array $decryptedResponse);
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService

@@ -4,3 +4,4 @@ parameters:
 
     ignoreErrors:
         - '#.+Transfer.+#'
+        - '#Call to method .+ on an unknown class Generated\\.+\\Ide\\AutoCompletion\.#'

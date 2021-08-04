@@ -20,7 +20,7 @@ class GatewayController extends AbstractGatewayController
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function performPayPalExpressPrepareApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    public function performPayPalExpressPrepareApiCallAction(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         return $this->getFacade()->performPayPalExpressPrepareApiCall($quoteTransfer);
     }
@@ -30,7 +30,7 @@ class GatewayController extends AbstractGatewayController
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function performPayPalExpressCompleteApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    public function performPayPalExpressCompleteApiCallAction(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         return $this->getFacade()->performPayPalExpressCompleteApiCall($quoteTransfer);
     }

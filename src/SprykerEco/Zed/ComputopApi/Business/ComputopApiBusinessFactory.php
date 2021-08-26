@@ -71,7 +71,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createAuthorizationPaymentRequest(): PostPlaceRequestInterface
     {

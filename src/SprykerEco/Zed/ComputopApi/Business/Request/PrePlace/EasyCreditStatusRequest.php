@@ -7,6 +7,9 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Request\PrePlace;
 
+use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
+
 /**
  * @method \Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer request(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
  */

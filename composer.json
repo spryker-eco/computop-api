@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.3",
-        "psr/http-message": "*",
+        "psr/http-message": "^1.0.0",
         "spryker/store": "^1.1.0",
         "spryker/kernel": "^3.30.0",
         "spryker/transfer": "^3.0.0",

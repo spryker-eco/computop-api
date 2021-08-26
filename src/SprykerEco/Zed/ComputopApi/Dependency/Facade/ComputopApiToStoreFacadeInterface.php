@@ -14,5 +14,5 @@ interface ComputopApiToStoreFacadeInterface
     /**
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function getCurrentStore(): StoreTransfer;
+    public function getCurrentStore();
 }

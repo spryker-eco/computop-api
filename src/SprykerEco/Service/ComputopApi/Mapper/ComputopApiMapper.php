@@ -9,6 +9,7 @@ namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
@@ -22,7 +23,6 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected const REQ_ID_LENGTH = 32;
 
     protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
-    protected const DESCRIPTION_VALUE_FORMAT = 'Name:%s-Sku:%s-Quantity:%s';
 
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
@@ -106,7 +106,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         $description = [];
         foreach ($items as $item) {
-            $description[] = sprintf(self::DESCRIPTION_VALUE_FORMAT, $item->getName(), $item->getSku(), $item->getQuantity());
+            $description[] = $this->getItemDescription($item);
         }
 
         return implode(static::ITEMS_SEPARATOR, $description);
@@ -193,5 +193,15 @@ class ComputopApiMapper implements ComputopApiMapperInterface
         ];
 
         return implode(static::ATTRIBUTES_SEPARATOR, $params);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $item
+     *
+     * @return string
+     */
+    protected function getItemDescription(ItemTransfer $item): string
+    {
+        return sprintf('Name:%s-Sku:%s-Quantity:%s', $item->getName(), $item->getSku(), $item->getQuantity());
     }
 }

@@ -14,5 +14,5 @@ interface HmacHasherInterface
      *
      * @return string
      */
-    public function getEncryptedValue(string $value): string;
+    public function getEncryptedValue($value);
 }

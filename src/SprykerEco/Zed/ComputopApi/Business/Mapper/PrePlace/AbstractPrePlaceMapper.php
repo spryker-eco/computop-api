@@ -37,7 +37,7 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      *
      * @return array
      */
-    abstract public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array;
+    abstract public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer);
 
     /**
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
@@ -106,7 +106,7 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      *
      * @return array
      */
-    protected function buildRequestData(string $data, string $length, string $merchantId): array
+    protected function buildRequestData($data, $length, $merchantId)
     {
         $requestData = [
             ComputopApiConstants::DATA => $data,
@@ -123,10 +123,8 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    protected function getComputopPaymentTransfer(
-        QuoteTransfer $quoteTransfer,
-        ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment
-    ): ComputopApiRequestTransfer {
+    protected function getComputopPaymentTransfer(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
+    {
         $computopApiPaymentTransfer = $this->createPaymentTransfer();
         $computopApiPaymentTransfer->fromArray($computopApiHeaderPayment->toArray(), true);
         $computopApiPaymentTransfer->setMerchantId($this->config->getMerchantId());

@@ -19,11 +19,11 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @api
      *
-     * @param string|null $method
+     * @param string $method
      *
      * @return bool
      */
-    public function isMacRequired(?string $method): bool
+    public function isMacRequired($method): bool
     {
         return $method && in_array($method, (array)$this->get(ComputopApiConstants::RESPONSE_MAC_REQUIRED, []), true);
     }

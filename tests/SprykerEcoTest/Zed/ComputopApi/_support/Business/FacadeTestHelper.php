@@ -38,9 +38,9 @@ use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 class FacadeTestHelper extends Test
 {
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory
      */
-    public function createFactory(): ComputopApiBusinessFactory
+    public function createFactory()
     {
         $builder = $this->getMockBuilder(ComputopApiBusinessFactory::class);
         $builder->setMethods(
@@ -89,7 +89,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    protected function createConfig(): ComputopApiConfig
+    protected function createConfig()
     {
         return new ComputopApiConfig();
     }
@@ -105,7 +105,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    protected function createComputopApiService(): ComputopApiService
+    protected function createComputopApiService()
     {
         $service = new ComputopApiService();
         $service->setFactory($this->createServiceFactory());
@@ -135,7 +135,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    protected function createServiceConfig(): ComputopApiServiceConfig
+    protected function createServiceConfig()
     {
         return new ComputopApiServiceConfig();
     }
@@ -143,7 +143,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getQuoteTrasfer(): QuoteTransfer
+    public function getQuoteTrasfer()
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setTotals(
@@ -164,7 +164,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function getOrderTrasfer(): OrderTransfer
+    public function getOrderTransfer()
     {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(
@@ -185,7 +185,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopApiHeaderPaymentTransfer(): ComputopApiHeaderPaymentTransfer
+    public function createComputopApiHeaderPaymentTransfer()
     {
         return (new ComputopApiHeaderPaymentTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)
@@ -320,7 +320,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    protected function createComputopApiResponseHeaderTransfer(): ComputopApiResponseHeaderTransfer
+    protected function createComputopApiResponseHeaderTransfer()
     {
         return (new ComputopApiResponseHeaderTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)

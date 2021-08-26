@@ -10,7 +10,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
-use Psr\Http\Message\StreamInterface;
+use GuzzleHttp\Psr7\Stream;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
@@ -23,28 +23,46 @@ class ConverterTestHelper extends Test
     /**
      * @return \GuzzleHttp\Psr7\Stream
      */
-    public function prepareResponse(): StreamInterface
+    public function prepareResponse()
     {
-        return Psr7\stream_for('');
+        $expectedResponse = '';
+        $stream = Psr7\stream_for($expectedResponse);
+
+        return $stream;
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\ComputopApiConfig
+     * @param string $expectedResponseBody
+    /**
+     *
+     * @return \GuzzleHttp\Psr7\Stream
      */
-    public function createComputopApiConfigMock(): ComputopApiZedConfig
+    public function prepareUnencryptedResponse(string $expectedResponseBody): Stream
     {
-        return $this->createPartialMock(
+        $stream = Psr7\stream_for($expectedResponseBody);
+
+        return $stream;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
+     */
+    public function createComputopApiConfigMock()
+    {
+        $configMock = $this->createPartialMock(
             ComputopApiZedConfig::class,
             ['getBlowfishPass']
         );
+
+        return $configMock;
     }
 
     /**
      * @return array
      */
-    public function getMainDecryptedArray(): array
+    public function getMainDecryptedArray()
     {
-        return [
+        $decryptedArray = [
             ComputopApiConfig::MERCHANT_ID_SHORT => 'mid',
             ComputopApiConfig::PAY_ID => 'PayID',
             ComputopApiConfig::X_ID => 'XID',
@@ -53,14 +71,16 @@ class ConverterTestHelper extends Test
             ComputopApiConfig::CODE => '00000000',
             ComputopApiConfig::DESCRIPTION => 'Description',
         ];
+
+        return $decryptedArray;
     }
 
     /**
      * @param array $decryptedArray
      *
-     * @return \SprykerEco\Service\ComputopApi\ComputopApiService
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    public function createComputopApiServiceMock(array $decryptedArray): ComputopApiService
+    public function createComputopApiServiceMock(array $decryptedArray)
     {
         $computopServiceMock = $this->createPartialMock(
             ComputopApiService::class,
@@ -83,14 +103,14 @@ class ConverterTestHelper extends Test
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    protected function getHeaderResponseTransfer(array $decryptedArray): ComputopApiResponseHeaderTransfer
+    protected function getHeaderResponseTransfer(array $decryptedArray)
     {
         $method = self::AUTHORIZE_METHOD;
 
         $header = new ComputopApiResponseHeaderTransfer();
         $header->fromArray($decryptedArray, true);
 
-        // Different naming style
+        //different naming style
         $header->setMId($decryptedArray[ComputopApiConfig::MERCHANT_ID_SHORT]);
         $header->setTransId($decryptedArray[ComputopApiConfig::TRANS_ID]);
         $header->setPayId($decryptedArray[ComputopApiConfig::PAY_ID]);

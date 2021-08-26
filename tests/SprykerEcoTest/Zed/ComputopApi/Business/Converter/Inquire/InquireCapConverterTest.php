@@ -25,7 +25,7 @@ class InquireCapConverterTest extends AbstractInquireConverterTest
     /**
      * @return void
      */
-    public function testToTransactionResponseTransfer(): void
+    public function testToTransactionResponseTransfer()
     {
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
@@ -34,12 +34,13 @@ class InquireCapConverterTest extends AbstractInquireConverterTest
         $responseTransfer = $service->toTransactionResponseTransfer($response);
 
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
+//        $this->assertTrue($responseTransfer->getIsCapLast());//ToDo:add if need
     }
 
     /**
      * @return array
      */
-    protected function getDecryptedArray(): array
+    protected function getDecryptedArray()
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
 

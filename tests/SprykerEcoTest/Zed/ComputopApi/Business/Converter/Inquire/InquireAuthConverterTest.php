@@ -25,7 +25,7 @@ class InquireAuthConverterTest extends AbstractInquireConverterTest
     /**
      * @return void
      */
-    public function testToTransactionResponseTransfer(): void
+    public function testToTransactionResponseTransfer()
     {
         $response = $this->helper->prepareResponse();
         $service = $this->createConverter();
@@ -40,7 +40,7 @@ class InquireAuthConverterTest extends AbstractInquireConverterTest
     /**
      * @return array
      */
-    protected function getDecryptedArray(): array
+    protected function getDecryptedArray()
     {
         $decryptedArray = $this->helper->getMainDecryptedArray();
 

@@ -9,21 +9,18 @@ namespace SprykerEcoTest\Service\ComputopApi;
 
 use Codeception\TestCase\Test;
 use Spryker\Service\UtilText\UtilTextService;
-use Spryker\Service\UtilText\UtilTextServiceInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
-use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface;
 use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
-use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface;
 
 class ComputopApiServiceTestHelper extends Test
 {
     public const PASSWORD = 'password';
 
     /**
-     * @return \SprykerEco\Service\ComputopApi\ComputopApiConfig
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    public function createComputopConfigMock(): ComputopApiConfig
+    public function createComputopConfigMock()
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,
@@ -39,7 +36,7 @@ class ComputopApiServiceTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
-    public function createMapper(): ComputopApiMapperInterface
+    public function createMapper()
     {
         return new ComputopApiMapper(
             $this->createComputopConfigMock(),
@@ -50,7 +47,7 @@ class ComputopApiServiceTestHelper extends Test
     /**
      * @return \SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface
      */
-    public function createConverter(): ComputopApiConverterInterface
+    public function createConverter()
     {
         return new ComputopApiConverter($this->createComputopConfigMock());
     }
@@ -58,7 +55,7 @@ class ComputopApiServiceTestHelper extends Test
     /**
      * @return \Spryker\Service\UtilText\UtilTextServiceInterface
      */
-    protected function createTextService(): UtilTextServiceInterface
+    protected function createTextService()
     {
         return new UtilTextService();
     }

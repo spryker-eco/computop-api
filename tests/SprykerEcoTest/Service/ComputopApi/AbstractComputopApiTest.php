@@ -28,7 +28,7 @@ abstract class AbstractComputopApiTest extends Test
      *
      * @return void
      */
-    protected function _inject(ComputopApiServiceTestHelper $helper, ComputopApiMapperTestHelper $mapperHelper): void
+    protected function _inject(ComputopApiServiceTestHelper $helper, ComputopApiMapperTestHelper $mapperHelper)
     {
         $this->helper = $helper;
         $this->mapperHelper = $mapperHelper;

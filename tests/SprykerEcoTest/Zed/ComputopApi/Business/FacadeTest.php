@@ -28,7 +28,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformEasyCreditStatusRequest(): void
+    public function testPerformEasyCreditStatusRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -48,12 +48,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformAuthorizationRequest(): void
+    public function testPerformAuthorizationRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performAuthorizationRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -68,12 +68,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformCaptureRequest(): void
+    public function testPerformCaptureRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performCaptureRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -88,12 +88,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformInquireRequest(): void
+    public function testPerformInquireRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performInquireRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -108,12 +108,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformRefundRequest(): void
+    public function testPerformRefundRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performRefundRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -128,12 +128,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformReverseRequest(): void
+    public function testPerformReverseRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performReverseRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -148,7 +148,7 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformCrifApiCall(): void
+    public function testPerformCrifApiCall()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
@@ -171,12 +171,12 @@ class FacadeTest extends AbstractSetUpTest
     /**
      * @return void
      */
-    public function testPerformEasyCreditAuthorizeRequest(): void
+    public function testPerformEasyCreditAuthorizeRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performEasyCreditAuthorizeRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 

@@ -25,7 +25,7 @@ class ComputopApiMapperTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiRequestTransfer
      */
-    public function createComputopApiRequestTransfer(): ComputopApiRequestTransfer
+    public function createComputopApiRequestTransfer()
     {
         $cardPaymentTransfer = new ComputopApiRequestTransfer();
 
@@ -42,7 +42,7 @@ class ComputopApiMapperTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function createComputopApiResponseHeaderTransfer(): ComputopApiResponseHeaderTransfer
+    public function createComputopApiResponseHeaderTransfer()
     {
         $compuropHeaderTransfer = new ComputopApiResponseHeaderTransfer();
 

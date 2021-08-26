@@ -19,49 +19,49 @@ interface ComputopApiMapperInterface
      *
      * @return string
      */
-    public function getPlaintextMac(ComputopApiRequestTransfer $requestTransfer): string;
+    public function getPlaintextMac(ComputopApiRequestTransfer $requestTransfer);
 
     /**
      * @param \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header
      *
      * @return string
      */
-    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header): string;
+    public function getMacResponseEncryptedValue(ComputopApiResponseHeaderTransfer $header);
 
     /**
      * @param array $dataSubArray
      *
      * @return string
      */
-    public function getDataPlainText(array $dataSubArray): string;
+    public function getDataPlainText(array $dataSubArray);
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer[] $items
      *
      * @return string
      */
-    public function getDescriptionValue(array $items): string;
+    public function getDescriptionValue(array $items);
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
-    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string;
+    public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer);
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
      *
      * @return string
      */
-    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string;
+    public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer);
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return string
      */
-    public function generateTransId(QuoteTransfer $quoteTransfer): string;
+    public function generateTransId(QuoteTransfer $quoteTransfer);
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -69,5 +69,5 @@ interface ComputopApiMapperInterface
      *
      * @return string
      */
-    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit): string;
+    public function generateLimitedTransId(QuoteTransfer $quoteTransfer, int $limit);
 }

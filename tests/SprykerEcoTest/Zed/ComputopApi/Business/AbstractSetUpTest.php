@@ -21,7 +21,7 @@ abstract class AbstractSetUpTest extends Test
      *
      * @return void
      */
-    protected function _inject(FacadeTestHelper $helper): void
+    protected function _inject(FacadeTestHelper $helper)
     {
         $this->helper = $helper;
     }

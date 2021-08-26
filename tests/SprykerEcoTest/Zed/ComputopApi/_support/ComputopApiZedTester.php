@@ -44,7 +44,7 @@ class ComputopApiZedTester extends Actor
      *
      * @return void
      */
-    public function setUpConfig(): void
+    public function setUpConfig()
     {
         $this->setConfig('COMPUTOPAPI:MERCHANT_ID', 'COMPUTOPAPI:MERCHANT_ID');
         $this->setConfig('COMPUTOPAPI:HMAC_PASSWORD', 'COMPUTOPAPI:HMAC_PASSWORD');

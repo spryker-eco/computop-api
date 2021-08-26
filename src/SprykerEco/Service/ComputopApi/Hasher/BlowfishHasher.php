@@ -40,7 +40,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishEncryptedValue(string $plaintext, int $length, string $password): string
+    public function getBlowfishEncryptedValue($plaintext, $length, $password): string
     {
         if (mb_strlen($password) <= 0) {
             $password = ' ';
@@ -64,7 +64,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue(string $cipherText, int $length, string $password): string
+    public function getBlowfishDecryptedValue($cipherText, $length, $password): string
     {
         if (mb_strlen($password) <= 0) {
             $password = ' ';
@@ -84,7 +84,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    protected function expand(string $text): string
+    protected function expand($text): string
     {
         while (strlen($text) % 8 != 0) {
             $text .= chr(0);
@@ -98,7 +98,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return void
      */
-    protected function bfSetKey(string $key): void
+    protected function bfSetKey($key): void
     {
         if (strlen($key) <= 0) {
             $key = ' ';
@@ -137,7 +137,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    protected function encrypt(string $text): string
+    protected function encrypt($text): string
     {
         $length = strlen($text);
         $plain = '';
@@ -156,7 +156,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    public function decrypt(string $text): string
+    public function decrypt($text): string
     {
         $length = strlen($text);
         $plain = '';
@@ -175,7 +175,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return int
      */
-    protected function asc2int(string $asc): int
+    protected function asc2int($asc): int
     {
         return (ord($asc[0]) << 24) | (ord($asc[1]) << 16) |
             (ord($asc[2]) << 8) | (ord($asc[3]));
@@ -187,7 +187,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return array
      */
-    protected function bfEncrypt(int $lBlock, int $rBlock): array
+    protected function bfEncrypt($lBlock, $rBlock): array
     {
         $lBlock ^= $this->pModifiedKeys[0];
         for ($iteration = 1; $iteration < 17; $iteration += 2) {
@@ -206,7 +206,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return int
      */
-    protected function bfEnc(int $lBlock, int $rBlock, int $iteration): int
+    protected function bfEnc($lBlock, $rBlock, $iteration): int
     {
         $lBlock ^= $this->pModifiedKeys[$iteration];
 
@@ -225,7 +225,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return int
      */
-    protected function secAdd(int $aBlock, int $bBlock): int
+    protected function secAdd($aBlock, $bBlock): int
     {
         $higha = ($aBlock >> 16) & 0xffff;
         $lowa = $aBlock & 0xffff;
@@ -248,7 +248,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return string
      */
-    protected function int2asc(int $int): string
+    protected function int2asc($int): string
     {
         return chr($int >> 24) . chr(($int >> 16) & 0xff) .
             chr(($int >> 8) & 0xff) . chr($int & 0xff);
@@ -260,7 +260,7 @@ class BlowfishHasher implements BlowfishHasherInterface
      *
      * @return array
      */
-    protected function bfDecrypt(int $lBlock, int $rBlock): array
+    protected function bfDecrypt($lBlock, $rBlock): array
     {
         $lBlock ^= $this->pModifiedKeys[17];
         for ($iteration = 16; $iteration > 0; $iteration -= 2) {

@@ -34,7 +34,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer
      */
-    public function extractResponseHeader(array $plaintextResponseHeader, string $method): ComputopApiResponseHeaderTransfer
+    public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
     {
         $plaintextResponseHeader = $this->formatResponseArray($plaintextResponseHeader);
         $this->checkDecryptedResponse($plaintextResponseHeader);
@@ -58,9 +58,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      * @param array $plaintextResponseHeader
      * @param string $key
      *
-     * @return string|null
+     * @return null|string
      */
-    public function getResponseValue(array $plaintextResponseHeader, string $key): ?string
+    public function getResponseValue(array $plaintextResponseHeader, $key): ?string
     {
         if (isset($plaintextResponseHeader[$this->formatKey($key)])) {
             return $plaintextResponseHeader[$this->formatKey($key)];
@@ -74,7 +74,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return array
      */
-    public function getResponseDecryptedArray(string $decryptedString): array
+    public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
         $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString) ?: [];
@@ -108,15 +108,15 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param string|null $responseMac
+     * @param string $responseMac
      * @param string $expectedMac
-     * @param string|null $method
+     * @param string $method
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
      * @return void
      */
-    public function checkMacResponse(?string $responseMac, string $expectedMac, ?string $method): void
+    public function checkMacResponse($responseMac, $expectedMac, $method): void
     {
         if ($this->computopApiConfig->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
@@ -188,7 +188,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return string
      */
-    protected function formatKey(string $key): string
+    protected function formatKey($key): string
     {
         return mb_strtolower($key);
     }
@@ -198,7 +198,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return bool
      */
-    protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header): bool
+    protected function isStatusSuccess(ComputopApiResponseHeaderTransfer $header)
     {
         return $header->getStatus() === SharedComputopApiConfig::SUCCESS_STATUS ||
             $header->getStatus() === SharedComputopApiConfig::SUCCESS_OK_STATUS ||

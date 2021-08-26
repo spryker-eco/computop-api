@@ -18,7 +18,7 @@ interface BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishEncryptedValue(string $plaintext, int $length, string $password): string;
+    public function getBlowfishEncryptedValue($plaintext, $length, $password);
 
     /**
      * @param string $cipherText
@@ -29,5 +29,5 @@ interface BlowfishHasherInterface
      *
      * @return string
      */
-    public function getBlowfishDecryptedValue(string $cipherText, int $length, string $password): string;
+    public function getBlowfishDecryptedValue($cipherText, $length, $password);
 }

@@ -9,7 +9,6 @@ namespace SprykerEcoTest\Service\ComputopApi;
 
 use SprykerEco\Service\ComputopApi\Exception\BlowfishException;
 use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
-use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
 
 /**
  * @group Unit
@@ -31,7 +30,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testBlowfishCrypt(): void
+    public function testBlowfishCrypt()
     {
         $service = $this->createService();
         $encryptedValue = $service->getBlowfishEncryptedValue(
@@ -46,7 +45,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testBlowfishCryptError(): void
+    public function testBlowfishCryptError()
     {
         $this->expectException(BlowfishException::class);
 
@@ -61,7 +60,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testBlowfishDecrypt(): void
+    public function testBlowfishDecrypt()
     {
         $service = $this->createService();
         $decryptedValue = $service->getBlowfishDecryptedValue(
@@ -76,7 +75,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testBlowfishDecryptError(): void
+    public function testBlowfishDecryptError()
     {
         $this->expectException(BlowfishException::class);
 
@@ -91,7 +90,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     /**
      * @return \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
      */
-    public function createService(): BlowfishHasherInterface
+    public function createService()
     {
         return new BlowfishHasher();
     }

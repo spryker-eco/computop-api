@@ -8,7 +8,6 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck;
 
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 interface RiskCheckRequestInterface
 {
@@ -17,5 +16,5 @@ interface RiskCheckRequestInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
-    public function request(QuoteTransfer $quoteTransfer): TransferInterface;
+    public function request(QuoteTransfer $quoteTransfer);
 }

@@ -18,5 +18,5 @@ interface PrePlaceMapperInterface
      *
      * @return array
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment): array;
+    public function buildRequest(QuoteTransfer $quoteTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment);
 }

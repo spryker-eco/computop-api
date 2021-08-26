@@ -23,7 +23,7 @@ class ComputopApiMapperApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testMacValueMapper(): void
+    public function testMacValueMapper()
     {
         $mapper = $this->helper->createMapper();
         $requestTransfer = $this->mapperHelper->createComputopApiRequestTransfer();
@@ -35,7 +35,7 @@ class ComputopApiMapperApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testMacResponseValueMapper(): void
+    public function testMacResponseValueMapper()
     {
         $mapper = $this->helper->createMapper();
         $cardPaymentResponseTransfer = $this->mapperHelper->createComputopApiResponseHeaderTransfer();
@@ -47,7 +47,7 @@ class ComputopApiMapperApiTest extends AbstractComputopApiTest
     /**
      * @return void
      */
-    public function testPlaintextMapper(): void
+    public function testPlaintextMapper()
     {
         $mapper = $this->helper->createMapper();
         $arrayForPlaintext = ['test_key' => 'test_value'];

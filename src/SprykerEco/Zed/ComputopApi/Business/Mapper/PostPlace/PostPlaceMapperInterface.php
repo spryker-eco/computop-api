@@ -15,7 +15,7 @@ interface PostPlaceMapperInterface
     /**
      * @return string
      */
-    public function getMethodName(): string;
+    public function getMethodName();
 
     /**
      * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
@@ -23,5 +23,5 @@ interface PostPlaceMapperInterface
      *
      * @return array
      */
-    public function buildRequest(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment): array;
+    public function buildRequest(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment);
 }

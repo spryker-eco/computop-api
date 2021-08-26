@@ -7,8 +7,6 @@
 
 namespace SprykerEco\Zed\ComputopApi\Dependency\Facade;
 
-use Generated\Shared\Transfer\StoreTransfer;
-
 interface ComputopApiToStoreFacadeInterface
 {
     /**

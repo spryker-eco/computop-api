@@ -104,12 +104,12 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      */
     public function getDescriptionValue(array $items): string
     {
-        $description = [];
+        $descriptionParts = [];
         foreach ($items as $item) {
-            $description[] = $this->getItemDescription($item);
+            $descriptionParts[] = $this->getItemDescription($item);
         }
 
-        return implode(static::ITEMS_SEPARATOR, $description);
+        return implode(static::ITEMS_SEPARATOR, $descriptionParts);
     }
 
     /**
@@ -196,12 +196,12 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $item
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
      * @return string
      */
-    protected function getItemDescription(ItemTransfer $item): string
+    protected function getItemDescription(ItemTransfer $itemTransfer): string
     {
-        return sprintf('Name:%s-Sku:%s-Quantity:%s', $item->getName(), $item->getSku(), $item->getQuantity());
+        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());
     }
 }

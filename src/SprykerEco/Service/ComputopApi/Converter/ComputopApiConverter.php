@@ -18,14 +18,14 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     /**
      * @var \SprykerEco\Service\ComputopApi\ComputopApiConfig
      */
-    protected $computopApiConfig;
+    protected $config;
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
      */
     public function __construct(ComputopApiConfig $computopApiConfig)
     {
-        $this->computopApiConfig = $computopApiConfig;
+        $this->config = $computopApiConfig;
     }
 
     /**
@@ -77,9 +77,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
-        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString) ?: [];
+        $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString);
         foreach ($decryptedSubArray as $value) {
-            $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value) ?: [];
+            $data = explode($this->config->getDataSubSeparator(), $value);
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 
@@ -118,7 +118,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      */
     public function checkMacResponse($responseMac, $expectedMac, $method): void
     {
-        if ($this->computopApiConfig->isMacRequired($method) && $responseMac !== $expectedMac) {
+        if ($this->config->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
         }
     }

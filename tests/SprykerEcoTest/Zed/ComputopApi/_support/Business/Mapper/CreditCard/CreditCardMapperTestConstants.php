@@ -9,6 +9,6 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard;
 
 interface CreditCardMapperTestConstants
 {
-    public const DATA_VALUE = 'Data';
-    public const LENGTH_VALUE = 10;
+    const DATA_VALUE = 'Data';
+    const LENGTH_VALUE = 10;
 }

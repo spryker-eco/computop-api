@@ -9,11 +9,11 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 
 interface ConverterTestConstants
 {
-    public const REF_NR_VALUE = 'RefNr';
-    public const A_ID_VALUE = 'AID';
-    public const TRANSACTION_ID_VALUE = 'TransactionID';
-    public const AMOUNT_VALUE_ZERO = '0';
-    public const AMOUNT_VALUE_NOT_ZERO = '1';
-    public const CODE_EXT_VALUE = 'CodeExt';
-    public const ERROR_TEXT_VALUE = 'ErrorText';
+    const REF_NR_VALUE = 'RefNr';
+    const A_ID_VALUE = 'AID';
+    const TRANSACTION_ID_VALUE = 'TransactionID';
+    const AMOUNT_VALUE_ZERO = '0';
+    const AMOUNT_VALUE_NOT_ZERO = '1';
+    const CODE_EXT_VALUE = 'CodeExt';
+    const ERROR_TEXT_VALUE = 'ErrorText';
 }

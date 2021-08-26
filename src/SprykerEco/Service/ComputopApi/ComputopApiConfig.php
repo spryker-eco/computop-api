@@ -17,8 +17,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     protected const DATA_SUB_SEPARATOR = '=';
 
     /**
-     * @api
-     *
      * @param string $method
      *
      * @return bool
@@ -29,8 +27,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
-     * @api
-     *
      * @return string
      */
     public function getHmacPassword(): string
@@ -39,8 +35,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
-     * @api
-     *
      * @return string
      */
     public function getMacSeparator(): string
@@ -49,8 +43,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
-     * @api
-     *
      * @return string
      */
     public function getDataSeparator(): string
@@ -59,8 +51,6 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
-     * @api
-     *
      * @return string
      */
     public function getDataSubSeparator(): string

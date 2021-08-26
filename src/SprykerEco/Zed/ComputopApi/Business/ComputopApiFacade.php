@@ -25,7 +25,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -45,7 +45,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -65,7 +65,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -85,7 +85,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -105,7 +105,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -125,7 +125,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -145,7 +145,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *
@@ -165,7 +165,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @api
      *

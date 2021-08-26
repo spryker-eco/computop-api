@@ -21,7 +21,7 @@ interface ComputopApiConverterInterface
      * @param array $responseArray
      * @param string $key
      *
-     * @return null|string
+     * @return string|null
      */
     public function getResponseValue(array $responseArray, $key);
 

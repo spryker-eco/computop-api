@@ -7,11 +7,8 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Request\PostPlace;
 
-use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
-use Generated\Shared\Transfer\OrderTransfer;
-
 /**
- * @method \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer request(OrderTransfer $orderTransfer, ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
+ * @method \Generated\Shared\Transfer\ComputopApiReverseResponseTransfer request(\Generated\Shared\Transfer\OrderTransfer $orderTransfer, \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer $computopApiHeaderPayment)
  */
 class ReverseRequest extends AbstractPaymentRequest
 {

@@ -45,7 +45,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
 
         $computopPayPalExpressCompleteTransfer = new ComputopApiPayPalExpressCompleteTransfer();
         $computopPayPalExpressCompleteTransfer->setMerchantId($this->computopApiConfig->getMerchantId());
-        $computopPayPalExpressCompleteTransfer->setPayId($paymentTransfer->getPayId());
+        $computopPayPalExpressCompleteTransfer->setPayId($paymentTransfer->getPayPalExpressPrepareResponse()->getPayID());
         $computopPayPalExpressCompleteTransfer->setTransactionId($paymentTransfer->getTransId());
         $computopPayPalExpressCompleteTransfer->setRefNr($paymentTransfer->getRefNr());
         $computopPayPalExpressCompleteTransfer->setAmount($quoteTransfer->getTotals()->getGrandTotal());

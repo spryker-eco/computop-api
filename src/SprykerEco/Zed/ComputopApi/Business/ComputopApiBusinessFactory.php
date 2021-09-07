@@ -127,6 +127,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createReverseCreditCardMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayPalMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayPalExpressMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReverseDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createReversePayNowMapper());
@@ -146,6 +147,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureCreditCardMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePayPalMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePayPalExpressMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCapturePaydirektMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureEasyCreditMapper());
@@ -167,6 +169,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundCreditCardMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPayPalMapper());
+        $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPayPalExpressMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundDirectDebitMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundSofortMapper());
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundPaydirektMapper());

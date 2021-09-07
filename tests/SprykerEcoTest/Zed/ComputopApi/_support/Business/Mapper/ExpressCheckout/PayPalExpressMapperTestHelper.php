@@ -8,6 +8,7 @@
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Codeception\TestCase\Test;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use Generated\Shared\Transfer\ComputopPayPalExpressPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -30,6 +31,9 @@ class PayPalExpressMapperTestHelper extends Test
         $computopPayPalExpressPaymentTransfer = new ComputopPayPalExpressPaymentTransfer();
         $computopPayPalExpressPaymentTransfer->setData(PayPalExpressMapperTestConstants::DATA_VALUE);
         $computopPayPalExpressPaymentTransfer->setLen(PayPalExpressMapperTestConstants::LENGTH_VALUE);
+        $payPalExpressPrepareResponse = new ComputopApiPayPalExpressPrepareResponseTransfer();
+        $payPalExpressPrepareResponse->setTransID('');
+        $computopPayPalExpressPaymentTransfer->setPayPalExpressPrepareResponse($payPalExpressPrepareResponse);
         $paymentTransfer->setComputopPayPalExpress($computopPayPalExpressPaymentTransfer);
         $quoteTransfer->setPayment($paymentTransfer);
 

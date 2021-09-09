@@ -25,13 +25,6 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
     protected $computopApiConfig;
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return string[]
-     */
-    abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
-
-    /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $computopApiConfig
      */
@@ -42,6 +35,13 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
         $this->computopApiService = $computopApiService;
         $this->computopApiConfig = $computopApiConfig;
     }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return string[]
+     */
+    abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

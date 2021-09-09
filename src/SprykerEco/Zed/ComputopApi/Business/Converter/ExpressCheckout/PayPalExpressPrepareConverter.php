@@ -27,7 +27,7 @@ class PayPalExpressPrepareConverter implements ConverterInterface
     }
 
     /**
-     * @param array $decryptedResponse
+     * @param string[] $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer
      */

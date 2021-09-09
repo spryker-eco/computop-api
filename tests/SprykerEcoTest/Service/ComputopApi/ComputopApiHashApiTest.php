@@ -19,8 +19,8 @@ use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;
  */
 class ComputopApiHashApiTest extends AbstractComputopApiTest
 {
-    public const VALUE = 'value';
-    public const EXPECTED_VALUE = '18B40402BBF3FEED824E9F762B412F1108C4D678B2A067425B99963CD68B1D6A';
+    protected const VALUE = 'value';
+    protected const EXPECTED_VALUE = '18B40402BBF3FEED824E9F762B412F1108C4D678B2A067425B99963CD68B1D6A';
 
     /**
      * @return void

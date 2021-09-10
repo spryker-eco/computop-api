@@ -9,6 +9,5 @@ parameters:
         - '#Instantiated class .+Transfer not found#'
         - '#Method SprykerEco\\Zed\\ComputopApi\\Business\\ComputopApiFacade.+ but returns Spryker\\Shared\\Kernel\\Transfer\\TransferInterface.#'
         - '#PHPDoc tag @var for variable .+ contains unknown class Generated\\Shared\\Transfer\\.+#'
-        - '#Method SprykerEco\\Zed\\ComputopApi\\Business\\Converter\\ExpressCheckout\\PayPalExpressPrepareConverter::toTransactionResponseTransfer.+#'
     excludePaths:
         - src/SprykerEco/Client/ComputopApi/Zed/*.php

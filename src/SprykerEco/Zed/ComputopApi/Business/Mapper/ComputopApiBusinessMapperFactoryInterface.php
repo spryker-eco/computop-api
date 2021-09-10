@@ -75,7 +75,7 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    public function createReversePayPalExpressMapper();
+    public function createReversePayPalExpressMapper(): PostPlaceMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface

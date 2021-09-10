@@ -24,15 +24,15 @@ use SprykerEcoTest\Service\ComputopApi\AbstractComputopApiTest;
  */
 class ComputopApiConverterTest extends AbstractComputopApiTest
 {
-    protected const METHOD = 'AUTHORIZE';
+    public const METHOD = 'AUTHORIZE';
 
-    protected const PAY_ID_VALUE = 'PAY_ID_VALUE';
-    protected const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
-    protected const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
-    protected const X_ID_VALUE = 'X_ID_VALUE';
-    protected const CODE_VALUE = '0';
-    protected const STATUS_ERROR_VALUE = 'STATUS_ERROR_VALUE';
-    protected const FAILED_CODE = '2150050';
+    public const PAY_ID_VALUE = 'PAY_ID_VALUE';
+    public const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
+    public const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
+    public const X_ID_VALUE = 'X_ID_VALUE';
+    public const CODE_VALUE = '0';
+    public const STATUS_ERROR_VALUE = 'STATUS_ERROR_VALUE';
+    public const FAILED_CODE = '2150050';
 
     /**
      * @return void

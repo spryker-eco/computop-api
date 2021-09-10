@@ -23,19 +23,6 @@ class PayPalExpressPrepareConverter implements ConverterInterface
     {
         parse_str($response->getContents(), $responseHeader);
 
-        return $this->createComputopApiPayPalExpressPrepareResponseTransfer($responseHeader);
-    }
-
-    /**
-     * @param string[] $decryptedResponse
-     *
-     * @return \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer
-     */
-    protected function createComputopApiPayPalExpressPrepareResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressPrepareResponseTransfer
-    {
-        $computopResponseTransfer = new ComputopApiPayPalExpressPrepareResponseTransfer();
-        $computopResponseTransfer->fromArray($decryptedResponse, true);
-
-        return $computopResponseTransfer;
+        return (new ComputopApiPayPalExpressPrepareResponseTransfer())->fromArray($responseHeader, true);
     }
 }

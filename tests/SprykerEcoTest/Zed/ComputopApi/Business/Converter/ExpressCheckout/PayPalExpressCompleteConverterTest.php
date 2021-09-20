@@ -9,6 +9,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter\ExpressCheckout;
 
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 use SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter;
 use SprykerEcoTest\Zed\ComputopApi\Business\Converter\AbstractConverterTest;
 use SprykerEcoTest\Zed\ComputopApi\Business\Converter\ConverterTestConstants;
@@ -18,52 +19,50 @@ class PayPalExpressCompleteConverterTest extends AbstractConverterTest
     /**
      * @return void
      */
-    public function testGetResponseTransfer(): void
+    public function testConvertDecryptedArrayResponseToTransactionResponseTransfer(): void
     {
         //Arrange
         $response = $this->helper->prepareResponse();
-        $service = $this->createConverter($this->getDecryptedArray());
+        $payPalExpressCompleteConverter = $this->createConverter($this->getDecryptedArray());
 
         //Act
-        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $responseTransfer */
-        $responseTransfer = $service->toTransactionResponseTransfer($response);
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $computopApiPayPalExpressCompleteResponseTransfer */
+        $computopApiPayPalExpressCompleteResponseTransfer = $payPalExpressCompleteConverter->toTransactionResponseTransfer($response);
 
         //Assert
-        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
-        $this->assertSame(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $computopApiPayPalExpressCompleteResponseTransfer->getHeader());
+        $this->assertSame(ConverterTestConstants::REF_NR_VALUE, $computopApiPayPalExpressCompleteResponseTransfer->getRefNr());
     }
 
     /**
      * @return void
      */
-    public function testNegativeGetResponseTransfer(): void
+    public function testNegativeConvertDecryptedArrayResponseToTransactionResponseTransfer(): void
     {
         //Arrange
         $response = $this->helper->prepareResponse();
-        $service = $this->createConverter($this->getNegativeDecryptedArray());
+        $payPalExpressCompleteConverter = $this->createConverter($this->getNegativeDecryptedArray());
 
         //Act
-        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $responseTransfer */
-        $responseTransfer = $service->toTransactionResponseTransfer($response);
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer $computopApiPayPalExpressCompleteResponseTransfer */
+        $computopApiPayPalExpressCompleteResponseTransfer = $payPalExpressCompleteConverter->toTransactionResponseTransfer($response);
 
         //Assert
-        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $responseTransfer->getHeader());
-        $this->assertNotSame(ConverterTestConstants::REF_NR_VALUE, $responseTransfer->getRefNr());
+        $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $computopApiPayPalExpressCompleteResponseTransfer->getHeader());
+        $this->assertNotSame(ConverterTestConstants::REF_NR_VALUE, $computopApiPayPalExpressCompleteResponseTransfer->getRefNr());
     }
 
     /**
      * @param array $decryptedArrayExample
      *
-     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ExpressCheckout\PayPalExpressCompleteConverter
+     * @return \SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface
      */
-    protected function createConverter(array $decryptedArrayExample): PayPalExpressCompleteConverter
+    protected function createConverter(array $decryptedArrayExample): ConverterInterface
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($decryptedArrayExample);
         $configMock = $this->helper->createComputopApiConfigMock();
 
-        $converter = new PayPalExpressCompleteConverter($computopServiceMock, $configMock);
-
-        return $converter;
+        return new PayPalExpressCompleteConverter($computopServiceMock, $configMock);
     }
 
     /**

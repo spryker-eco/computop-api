@@ -19,14 +19,14 @@ class PayPalExpressCompleteConverter extends AbstractConverter
      */
     protected function getResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressCompleteResponseTransfer
     {
-        $computopResponseTransfer = new ComputopApiPayPalExpressCompleteResponseTransfer();
-        $computopResponseTransfer->fromArray($decryptedResponse, true);
+        $computopApiPayPalExpressCompleteResponseTransfer = new ComputopApiPayPalExpressCompleteResponseTransfer();
+        $computopApiPayPalExpressCompleteResponseTransfer->fromArray($decryptedResponse, true);
         $computopApiResponseHeaderTransfer = $this
             ->computopApiService
             ->extractResponseHeader($decryptedResponse, '');
 
-        $computopResponseTransfer->setHeader($computopApiResponseHeaderTransfer);
+        $computopApiPayPalExpressCompleteResponseTransfer->setHeader($computopApiResponseHeaderTransfer);
 
-        return $computopResponseTransfer;
+        return $computopApiPayPalExpressCompleteResponseTransfer;
     }
 }

@@ -18,39 +18,39 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
     /**
      * @return void
      */
-    public function testGetResponseTransfer(): void
+    public function testConvertDecryptedArrayResponseToTransactionResponseTransfer(): void
     {
         //Arrange
         $expectedResponseBody = ComputopApiConfig::ORDER_ID . '=' . ConverterTestConstants::ORDER_ID_VALUE;
         $response = $this->helper->prepareUnencryptedResponse($expectedResponseBody);
-        $service = $this->createConverter($this->getDecryptedArray());
+        $payPalExpressPrepareConverter = $this->createConverter($this->getDecryptedArray());
 
         //Act
-        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $responseTransfer */
-        $responseTransfer = $service->toTransactionResponseTransfer($response);
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $computopApiPayPalExpressPrepareResponseTransfer */
+        $computopApiPayPalExpressPrepareResponseTransfer = $payPalExpressPrepareConverter->toTransactionResponseTransfer($response);
 
         //Assert
-        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $responseTransfer);
-        $this->assertSame(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderid());
+        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $computopApiPayPalExpressPrepareResponseTransfer);
+        $this->assertSame(ConverterTestConstants::ORDER_ID_VALUE, $computopApiPayPalExpressPrepareResponseTransfer->getOrderid());
     }
 
     /**
      * @return void
      */
-    public function testNegativeGetResponseTransfer(): void
+    public function testNegativeConvertDecryptedArrayResponseToTransactionResponseTransfer(): void
     {
         //Arrange
         $expectedResponseBody = 'error';
         $response = $this->helper->prepareUnencryptedResponse($expectedResponseBody);
-        $service = $this->createConverter($this->getDecryptedArray());
+        $payPalExpressPrepareConverter = $this->createConverter($this->getDecryptedArray());
 
         //Act
-        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $responseTransfer */
-        $responseTransfer = $service->toTransactionResponseTransfer($response);
+        /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $computopApiPayPalExpressPrepareResponseTransfer */
+        $computopApiPayPalExpressPrepareResponseTransfer = $payPalExpressPrepareConverter->toTransactionResponseTransfer($response);
 
         //Assert
-        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $responseTransfer);
-        $this->assertNotSame(ConverterTestConstants::ORDER_ID_VALUE, $responseTransfer->getOrderid());
+        $this->assertInstanceOf(ComputopApiPayPalExpressPrepareResponseTransfer::class, $computopApiPayPalExpressPrepareResponseTransfer);
+        $this->assertNotSame(ConverterTestConstants::ORDER_ID_VALUE, $computopApiPayPalExpressPrepareResponseTransfer->getOrderid());
     }
 
     /**
@@ -62,9 +62,8 @@ class PayPalExpressPrepareConverterTest extends AbstractConverterTest
     {
         $computopServiceMock = $this->helper->createComputopApiServiceMock($decryptedArrayExample);
         $configMock = $this->helper->createComputopApiConfigMock();
-        $converter = new PayPalExpressPrepareConverter($computopServiceMock, $configMock);
 
-        return $converter;
+        return new PayPalExpressPrepareConverter($computopServiceMock, $configMock);
     }
 
     /**

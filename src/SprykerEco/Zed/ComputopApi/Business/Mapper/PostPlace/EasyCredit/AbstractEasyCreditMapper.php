@@ -16,6 +16,9 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\AbstractPostPlaceMapper
 
 abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
 {
+    /**
+     * @var string
+     */
     protected const DATE_TIME_FORMAT = 'Y-m-d';
 
     /**

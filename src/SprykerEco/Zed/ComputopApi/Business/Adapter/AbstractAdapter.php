@@ -16,6 +16,9 @@ use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
 abstract class AbstractAdapter implements AdapterInterface
 {
+    /**
+     * @var int
+     */
     protected const DEFAULT_TIMEOUT = 45;
 
     /**

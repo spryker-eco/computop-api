@@ -48,7 +48,7 @@ abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterfa
      *
      * @return string[]
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer): array
+    public function mapQuoteTransferToRequestArray(QuoteTransfer $quoteTransfer): array
     {
         $encryptedRequestData = $this->encryptRequestData($quoteTransfer);
 

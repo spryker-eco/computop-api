@@ -11,10 +11,14 @@ use Codeception\TestCase\Test;
 use Spryker\Service\UtilText\UtilTextService;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
+use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceBridge;
 use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
 
 class ComputopApiServiceTestHelper extends Test
 {
+    /**
+     * @var string
+     */
     public const PASSWORD = 'password';
 
     /**
@@ -53,10 +57,10 @@ class ComputopApiServiceTestHelper extends Test
     }
 
     /**
-     * @return \Spryker\Service\UtilText\UtilTextServiceInterface
+     * @return \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceBridge
      */
-    protected function createTextService()
+    protected function createTextService(): ComputopApiToUtilTextServiceBridge
     {
-        return new UtilTextService();
+        return new ComputopApiToUtilTextServiceBridge(new UtilTextService());
     }
 }

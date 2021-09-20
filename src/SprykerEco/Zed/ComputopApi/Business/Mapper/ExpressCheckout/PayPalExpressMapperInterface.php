@@ -16,5 +16,5 @@ interface PayPalExpressMapperInterface
      *
      * @return string[]
      */
-    public function buildRequest(QuoteTransfer $quoteTransfer): array;
+    public function mapQuoteTransferToRequestArray(QuoteTransfer $quoteTransfer): array;
 }

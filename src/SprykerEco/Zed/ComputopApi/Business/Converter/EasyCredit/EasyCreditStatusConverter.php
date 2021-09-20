@@ -13,6 +13,9 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 
 class EasyCreditStatusConverter extends AbstractConverter implements ConverterInterface
 {
+    /**
+     * @var string
+     */
     protected const DECISION_INDEX = 'desicion';
 
     /**

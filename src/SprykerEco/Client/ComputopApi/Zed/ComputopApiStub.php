@@ -15,7 +15,7 @@ class ComputopApiStub implements ComputopApiStubInterface
     /**
      * @var \SprykerEco\Client\ComputopApi\Dependency\Client\ComputopApiToZedRequestClientInterface
      */
-    private $zedRequestClient;
+    protected $zedRequestClient;
 
     /**
      * @param \SprykerEco\Client\ComputopApi\Dependency\Client\ComputopApiToZedRequestClientInterface $zedRequestClient
@@ -26,6 +26,8 @@ class ComputopApiStub implements ComputopApiStubInterface
     }
 
     /**
+     * @uses \SprykerEco\Zed\ComputopApi\Communication\Controller\GatewayController::performPayPalExpressPrepareApiCallAction()
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
@@ -41,6 +43,8 @@ class ComputopApiStub implements ComputopApiStubInterface
     }
 
     /**
+     * @uses \SprykerEco\Zed\ComputopApi\Communication\Controller\GatewayController::performPayPalExpressCompleteApiCallAction()
+     *
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer

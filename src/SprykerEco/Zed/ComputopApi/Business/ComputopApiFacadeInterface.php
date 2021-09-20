@@ -139,7 +139,9 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
+     * - Builds request data from QuoteTransfer.
      * - Performs PayPal Express Prepare API call.
+     * - Parses response and sets it to QuoteTransfer.
      *
      * @api
      *
@@ -151,7 +153,9 @@ interface ComputopApiFacadeInterface
 
     /**
      * Specification:
+     * - Builds request data from QuoteTransfer.
      * - Performs PayPal Express Complete API call.
+     * - Parses response and sets it to QuoteTransfer.
      *
      * @api
      *

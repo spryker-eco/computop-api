@@ -15,14 +15,14 @@ use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTe
 abstract class AbstractPayPalExpressMapperTest extends Test
 {
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
-     */
-    abstract protected function createMapper(): PayPalExpressMapperInterface;
-
-    /**
      * @var \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperTestHelper
      */
     protected $helper;
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
+     */
+    abstract protected function createMapper(): PayPalExpressMapperInterface;
 
     /**
      * @return void
@@ -34,11 +34,11 @@ abstract class AbstractPayPalExpressMapperTest extends Test
         $mapper = $this->createMapper();
 
         //Act
-        $mappedData = $mapper->buildRequest($quoteTransfer);
+        $mappedData = $mapper->mapQuoteTransferToRequestArray($quoteTransfer);
 
         //Assert
-        $this->assertEquals(CreditCardMapperTestConstants::DATA_VALUE, $mappedData[ComputopApiConfig::DATA]);
-        $this->assertEquals(CreditCardMapperTestConstants::LENGTH_VALUE, $mappedData[ComputopApiConfig::LENGTH]);
+        $this->assertSame(CreditCardMapperTestConstants::DATA_VALUE, $mappedData[ComputopApiConfig::DATA]);
+        $this->assertSame(CreditCardMapperTestConstants::LENGTH_VALUE, $mappedData[ComputopApiConfig::LENGTH]);
     }
 
     /**

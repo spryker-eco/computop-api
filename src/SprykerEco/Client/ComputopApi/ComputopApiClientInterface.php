@@ -16,8 +16,8 @@ interface ComputopApiClientInterface
 {
     /**
      * Specification:
-     *  - Sends a PayPal Express prepare request to Computop API.
      *  - Makes Zed request.
+     *  - Sends a PayPal Express prepare request to Computop API.
      *
      * @api
      *
@@ -29,8 +29,8 @@ interface ComputopApiClientInterface
 
     /**
      * Specification:
-     *  - Sends PayPal Express complete request to Computop API.
      *  - Makes Zed request.
+     *  - Sends PayPal Express complete request to Computop API.
      *
      * @api
      *

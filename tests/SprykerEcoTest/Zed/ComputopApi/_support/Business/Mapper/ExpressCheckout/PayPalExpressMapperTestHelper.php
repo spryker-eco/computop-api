@@ -21,6 +21,15 @@ use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTe
 class PayPalExpressMapperTestHelper extends Test
 {
     /**
+     * @var string
+     */
+    protected const DATA_VALUE = 'Data';
+    /**
+     * @var int
+     */
+    protected const LENGTH_VALUE = 10;
+
+    /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
     public function createQuoteTransfer(): QuoteTransfer
@@ -29,8 +38,8 @@ class PayPalExpressMapperTestHelper extends Test
 
         $paymentTransfer = new PaymentTransfer();
         $computopPayPalExpressPaymentTransfer = new ComputopPayPalExpressPaymentTransfer();
-        $computopPayPalExpressPaymentTransfer->setData(PayPalExpressMapperTestConstants::DATA_VALUE);
-        $computopPayPalExpressPaymentTransfer->setLen(PayPalExpressMapperTestConstants::LENGTH_VALUE);
+        $computopPayPalExpressPaymentTransfer->setData(static::DATA_VALUE);
+        $computopPayPalExpressPaymentTransfer->setLen(static::LENGTH_VALUE);
         $payPalExpressPrepareResponse = new ComputopApiPayPalExpressPrepareResponseTransfer();
         $payPalExpressPrepareResponse->setTransID('');
         $computopPayPalExpressPaymentTransfer->setPayPalExpressPrepareResponse($payPalExpressPrepareResponse);

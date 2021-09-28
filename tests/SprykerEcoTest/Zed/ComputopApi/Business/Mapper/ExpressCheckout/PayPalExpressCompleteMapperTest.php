@@ -13,13 +13,18 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapp
 class PayPalExpressCompleteMapperTest extends AbstractPayPalExpressMapperTest
 {
     /**
+     * @var \SprykerEcoTest\Zed\ComputopApi\ComputopApiZedTester
+     */
+    protected $tester;
+
+    /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
     protected function createMapper(): PayPalExpressMapperInterface
     {
         return new PayPalExpressCompleteMapper(
-            $this->helper->createComputopApiServiceMock(),
-            $this->helper->createComputopApiConfigMock()
+            $this->createComputopApiServiceMock(),
+            $this->createComputopApiConfigMock()
         );
     }
 }

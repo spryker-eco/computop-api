@@ -8,16 +8,18 @@
 namespace SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 
 use Codeception\TestCase\Test;
+use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
 use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTestConstants;
 
 abstract class AbstractPayPalExpressMapperTest extends Test
 {
     /**
-     * @var \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperTestHelper
+     * @var \SprykerEcoTest\Zed\ComputopApi\ComputopApiZedTester
      */
-    protected $helper;
+    protected $tester;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
@@ -30,7 +32,7 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     public function testBuildRequestWithQuoteTransferReturnsArray(): void
     {
         //Arrange
-        $quoteTransfer = $this->helper->createQuoteTransfer();
+        $quoteTransfer = $this->tester->createQuoteTransfer();
         $mapper = $this->createMapper();
 
         //Act
@@ -42,12 +44,38 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     }
 
     /**
-     * @param \SprykerEcoTest\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperTestHelper $helper
-     *
-     * @return void
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    protected function _inject(PayPalExpressMapperTestHelper $helper): void
+    protected function createComputopApiConfigMock()
     {
-        $this->helper = $helper;
+        $configMock = $this->createPartialMock(
+            \SprykerEco\Zed\ComputopApi\ComputopApiConfig::class,
+            ['getBlowfishPass']
+        );
+
+        return $configMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
+     */
+    protected function createComputopApiServiceMock()
+    {
+        $encryptedArray = [
+            ComputopApiSharedConfig::LENGTH => CreditCardMapperTestConstants::LENGTH_VALUE,
+            ComputopApiSharedConfig::DATA => CreditCardMapperTestConstants::DATA_VALUE,
+        ];
+
+        $computopServiceMock = $this->createPartialMock(
+            ComputopApiService::class,
+            [
+                'getEncryptedArray',
+            ]
+        );
+
+        $computopServiceMock->method('getEncryptedArray')
+            ->willReturn($encryptedArray);
+
+        return $computopServiceMock;
     }
 }

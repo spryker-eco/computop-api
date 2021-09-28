@@ -14,11 +14,6 @@ use Generated\Shared\Transfer\ComputopPayPalExpressPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use SprykerEco\Service\ComputopApi\ComputopApiService;
-use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
-use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
-use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTestConstants;
 
 /**
  * Inherited Methods
@@ -71,7 +66,6 @@ class ComputopApiZedTester extends Actor
         $this->setConfig('COMPUTOPAPI:RESPONSE_MAC_REQUIRED', ['INIT']);
         $this->setConfig('COMPUTOPAPI:PAYMENT_METHODS_CAPTURE_TYPES', ['computopCreditCard' => 'MANUAL']);
     }
-
 
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer

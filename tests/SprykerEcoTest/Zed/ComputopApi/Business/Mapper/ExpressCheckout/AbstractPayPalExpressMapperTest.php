@@ -12,6 +12,7 @@ use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+use SprykerEco\Zed\ComputopApi\ComputopApiConfig as SprykerEcoComputopApiConfig;
 use SprykerEcoTest\Zed\ComputopApi\Business\Mapper\CreditCard\CreditCardMapperTestConstants;
 
 abstract class AbstractPayPalExpressMapperTest extends Test
@@ -46,10 +47,10 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    protected function createComputopApiConfigMock()
+    protected function createComputopApiConfigMock(): SprykerEcoComputopApiConfig
     {
         $configMock = $this->createPartialMock(
-            \SprykerEco\Zed\ComputopApi\ComputopApiConfig::class,
+            SprykerEcoComputopApiConfig::class,
             ['getBlowfishPass']
         );
 
@@ -59,7 +60,7 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    protected function createComputopApiServiceMock()
+    protected function createComputopApiServiceMock(): ComputopApiService
     {
         $encryptedArray = [
             ComputopApiSharedConfig::LENGTH => CreditCardMapperTestConstants::LENGTH_VALUE,

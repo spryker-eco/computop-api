@@ -47,14 +47,14 @@ class ComputopApiMapper implements ComputopApiMapperInterface
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
-     * @param \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $textService
+     * @param \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService
      */
     public function __construct(
         ComputopApiConfig $config,
-        ComputopApiToUtilTextServiceInterface $textService
+        ComputopApiToUtilTextServiceInterface $utilTextService
     ) {
         $this->config = $config;
-        $this->textService = $textService;
+        $this->textService = $utilTextService;
     }
 
     /**

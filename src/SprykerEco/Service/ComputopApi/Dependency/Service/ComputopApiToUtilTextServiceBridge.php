@@ -15,11 +15,11 @@ class ComputopApiToUtilTextServiceBridge implements ComputopApiToUtilTextService
     protected $textService;
 
     /**
-     * @param \Spryker\Service\UtilText\UtilTextServiceInterface $textService
+     * @param \Spryker\Service\UtilText\UtilTextServiceInterface $utilTextService
      */
-    public function __construct($textService)
+    public function __construct($utilTextService)
     {
-        $this->textService = $textService;
+        $this->textService = $utilTextService;
     }
 
     /**

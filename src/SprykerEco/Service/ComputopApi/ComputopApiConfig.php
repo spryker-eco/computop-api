@@ -12,8 +12,19 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
+    /**
+     * @var string
+     */
     protected const MAC_SEPARATOR = '*';
+
+    /**
+     * @var string
+     */
     protected const DATA_SEPARATOR = '&';
+
+    /**
+     * @var string
+     */
     protected const DATA_SUB_SEPARATOR = '=';
 
     /**

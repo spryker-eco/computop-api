@@ -12,10 +12,29 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
+    /**
+     * @var string
+     */
     protected const AUTHORIZE_METHOD = 'AUTHORIZE';
+
+    /**
+     * @var string
+     */
     protected const CAPTURE_METHOD = 'CAPTURE';
+
+    /**
+     * @var string
+     */
     protected const REVERSE_METHOD = 'REVERSE';
+
+    /**
+     * @var string
+     */
     protected const INQUIRE_METHOD = 'INQUIRE';
+
+    /**
+     * @var string
+     */
     protected const REFUND_METHOD = 'REFUND';
 
     /**

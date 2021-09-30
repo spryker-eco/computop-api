@@ -1,5 +1,6 @@
 {
     "name": "spryker-eco/computop-api",
+    "type": "library",
     "description": "ComputopApi module",
     "license": "MIT",
     "require": {
@@ -10,6 +11,11 @@
         "spryker/store": "^1.1.0",
         "spryker/transfer": "^3.0.0",
         "spryker/util-text": "^1.0.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "*",
+        "spryker/code-sniffer": "*",
+        "spryker/testify": "*"
     },
     "autoload": {
         "psr-4": {
@@ -23,25 +29,20 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "process-timeout": 600
+    "scripts": {
+        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml src/ tests/",
+        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/SprykerStrict/ruleset.xml src/ tests/",
+        "stan": "phpstan analyse -c phpstan.neon -l 8 src/",
+        "stan-setup": "cp composer.json composer.backup && COMPOSER_MEMORY_LIMIT=-1 composer require --dev phpstan/phpstan:^0.12 && mv composer.backup composer.json"
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
     },
-    "require-dev": {
-        "phpstan/phpstan": "*",
-        "spryker/code-sniffer": "*",
-        "spryker/testify": "*"
-    },
-    "scripts": {
-        "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
-        "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/ tests/",
-        "stan": "phpstan analyse -c phpstan.neon -l 8 src/",
-        "stan-setup": "cp composer.json composer.backup && COMPOSER_MEMORY_LIMIT=-1 composer require --dev phpstan/phpstan:^0.12 && mv composer.backup composer.json"
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "process-timeout": 600
     }
 }

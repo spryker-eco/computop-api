@@ -12,6 +12,9 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 class InquireConverter extends AbstractConverter implements ConverterInterface
 {
+    /**
+     * @var string
+     */
     protected const EMPTY_AMOUNT = '0';
 
     /**

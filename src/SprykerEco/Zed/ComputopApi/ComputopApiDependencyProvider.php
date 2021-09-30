@@ -13,7 +13,14 @@ use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 
 class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
 {
+    /**
+     * @var string
+     */
     public const FACADE_STORE = 'FACADE_STORE';
+
+    /**
+     * @var string
+     */
     public const SERVICE_COMPUTOP_API = 'SERVICE_COMPUTOP_API';
 
     /**

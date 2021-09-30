@@ -18,10 +18,24 @@ use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 
 class ComputopApiMapper implements ComputopApiMapperInterface
 {
+    /**
+     * @var string
+     */
     protected const ITEMS_SEPARATOR = '|';
+
+    /**
+     * @var string
+     */
     protected const ATTRIBUTES_SEPARATOR = '-';
+
+    /**
+     * @var int
+     */
     protected const REQ_ID_LENGTH = 32;
 
+    /**
+     * @var string
+     */
     protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
 
     /**

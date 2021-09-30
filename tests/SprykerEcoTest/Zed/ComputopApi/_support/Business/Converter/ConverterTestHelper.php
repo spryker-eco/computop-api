@@ -17,6 +17,9 @@ use SprykerEco\Zed\ComputopApi\ComputopApiConfig as ComputopApiZedConfig;
 
 class ConverterTestHelper extends Test
 {
+    /**
+     * @var string
+     */
     public const AUTHORIZE_METHOD = 'AUTHORIZE';
 
     /**

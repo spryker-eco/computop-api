@@ -15,6 +15,9 @@ use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapper;
 
 class ComputopApiServiceTestHelper extends Test
 {
+    /**
+     * @var string
+     */
     public const PASSWORD = 'password';
 
     /**

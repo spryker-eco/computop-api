@@ -71,7 +71,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createAuthorizationPaymentRequest(): PostPlaceRequestInterface
     {
@@ -89,7 +89,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createInquirePaymentRequest(): PostPlaceRequestInterface
     {
@@ -109,7 +109,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\ReverseRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createReversePaymentRequest(): PostPlaceRequestInterface
     {
@@ -129,7 +129,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\CaptureRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createCapturePaymentRequest(): PostPlaceRequestInterface
     {
@@ -151,7 +151,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\RefundRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createRefundPaymentRequest(): PostPlaceRequestInterface
     {
@@ -174,7 +174,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\EasyCreditStatusRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PrePlace\PrePlaceRequestInterface
      */
     public function createEasyCreditStatusRequest(): PrePlaceRequestInterface
     {
@@ -188,7 +188,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\PostPlaceRequestInterface
      */
     public function createEasyCreditAuthorizeRequest(): PostPlaceRequestInterface
     {
@@ -203,7 +203,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck\CrifRequest
+     * @return \SprykerEco\Zed\ComputopApi\Business\Request\RiskCheck\RiskCheckRequestInterface
      */
     public function createCrifRequest(): RiskCheckRequestInterface
     {

@@ -77,9 +77,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     public function getResponseDecryptedArray($decryptedString): array
     {
         $decryptedArray = [];
-        $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString) ?: [];
+        $decryptedSubArray = explode($this->config->getDataSeparator(), $decryptedString);
         foreach ($decryptedSubArray as $value) {
-            $data = explode($this->config->getDataSubSeparator(), $value) ?: [];
+            $data = explode($this->config->getDataSubSeparator(), $value);
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 

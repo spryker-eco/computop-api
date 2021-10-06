@@ -162,7 +162,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         $parameters = [
             $this->createUniqueSalt(),
-            uniqid('', true),
+            $quoteTransfer->getCustomer()->getCustomerReference(),
         ];
 
         return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);

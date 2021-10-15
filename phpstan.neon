@@ -1,0 +1,13 @@
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Call to method.+on an unknown class Generated.+Ide\\AutoCompletion.#'
+        - '#Parameter .+ of method .+ has invalid typehint type .+Transfer#'
+        - '#Call to method .+ on an unknown class .+Transfer#'
+        - '#Return typehint of method .+ has invalid type .+Transfer#'
+        - '#Instantiated class .+Transfer not found#'
+        - '#Method SprykerEco\\Zed\\ComputopApi\\Business\\ComputopApiFacade.+ but returns Spryker\\Shared\\Kernel\\Transfer\\TransferInterface.#'
+        - '#PHPDoc tag @var for variable .+ contains unknown class Generated\\Shared\\Transfer\\.+#'
+        - '#.+Generated\\Shared\\Transfer\\QuoteTransfer given.#'
+    excludePaths:

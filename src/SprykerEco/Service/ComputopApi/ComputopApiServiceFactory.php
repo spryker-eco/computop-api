@@ -8,10 +8,9 @@
 namespace SprykerEco\Service\ComputopApi;
 
 use Spryker\Service\Kernel\AbstractServiceFactory;
-use Spryker\Service\UtilText\UtilTextService;
-use Spryker\Service\UtilText\UtilTextServiceInterface;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface;
+use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface;
 use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
 use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
 use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;
@@ -52,11 +51,14 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     }
 
     /**
-     * @return \Spryker\Service\UtilText\UtilTextServiceInterface
+     * @return \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface
      */
-    public function createTextService(): UtilTextServiceInterface
+    public function createTextService(): ComputopApiToUtilTextServiceInterface
     {
-        return new UtilTextService();
+        /** @var \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService */
+        $utilTextService = $this->getProvidedDependency(ComputopApiDependencyProvider::SERVICE_UTIL_TEXT);
+
+        return $utilTextService;
     }
 
     /**

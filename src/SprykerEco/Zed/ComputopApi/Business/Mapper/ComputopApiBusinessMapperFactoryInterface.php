@@ -7,6 +7,9 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+
 interface ComputopApiBusinessMapperFactoryInterface
 {
     /**
@@ -72,6 +75,11 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
+    public function createReversePayPalExpressMapper(): PostPlaceMapperInterface;
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
     public function createInquirePayPalMapper();
 
     /**
@@ -82,7 +90,17 @@ interface ComputopApiBusinessMapperFactoryInterface
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
+    public function createCapturePayPalExpressMapper(): PostPlaceMapperInterface;
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
     public function createRefundPayPalMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
+     */
+    public function createRefundPayPalExpressMapper(): PostPlaceMapperInterface;
 
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
@@ -163,4 +181,14 @@ interface ComputopApiBusinessMapperFactoryInterface
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
      */
     public function createCrifMapper();
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+     */
+    public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface;
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+     */
+    public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface;
 }

@@ -12,11 +12,22 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
+    /**
+     * @var string
+     */
     protected const MAC_SEPARATOR = '*';
+    /**
+     * @var string
+     */
     protected const DATA_SEPARATOR = '&';
+    /**
+     * @var string
+     */
     protected const DATA_SUB_SEPARATOR = '=';
 
     /**
+     * @api
+     *
      * @param string $method
      *
      * @return bool
@@ -27,6 +38,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getHmacPassword(): string
@@ -35,6 +48,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getMacSeparator(): string
@@ -43,6 +58,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getDataSeparator(): string
@@ -51,6 +68,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getDataSubSeparator(): string

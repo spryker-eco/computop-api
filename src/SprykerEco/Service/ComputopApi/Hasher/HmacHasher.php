@@ -11,6 +11,9 @@ use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 
 class HmacHasher implements HmacHasherInterface
 {
+    /**
+     * @var string
+     */
     protected const HASH_TYPE = 'sha256';
 
     /**

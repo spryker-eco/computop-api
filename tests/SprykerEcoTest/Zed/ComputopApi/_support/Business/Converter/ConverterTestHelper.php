@@ -10,6 +10,7 @@ namespace SprykerEcoTest\Zed\ComputopApi\Business\Converter;
 use Codeception\TestCase\Test;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Psr7\Stream;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as ComputopApiSharedConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
@@ -17,7 +18,10 @@ use SprykerEco\Zed\ComputopApi\ComputopApiConfig as ComputopApiZedConfig;
 
 class ConverterTestHelper extends Test
 {
-    const AUTHORIZE_METHOD = 'AUTHORIZE';
+    /**
+     * @var string
+     */
+    public const AUTHORIZE_METHOD = 'AUTHORIZE';
 
     /**
      * @return \GuzzleHttp\Psr7\Stream
@@ -26,6 +30,19 @@ class ConverterTestHelper extends Test
     {
         $expectedResponse = '';
         $stream = Psr7\stream_for($expectedResponse);
+
+        return $stream;
+    }
+
+    /**
+     * @param string $expectedResponseBody
+    /**
+     *
+     * @return \GuzzleHttp\Psr7\Stream
+     */
+    public function prepareUnencryptedResponse(string $expectedResponseBody): Stream
+    {
+        $stream = Psr7\stream_for($expectedResponseBody);
 
         return $stream;
     }

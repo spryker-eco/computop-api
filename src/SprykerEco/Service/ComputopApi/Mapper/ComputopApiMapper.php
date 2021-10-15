@@ -12,15 +12,27 @@ use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
-use Spryker\Service\UtilText\UtilTextServiceInterface;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
+use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface;
 
 class ComputopApiMapper implements ComputopApiMapperInterface
 {
+    /**
+     * @var string
+     */
     protected const ITEMS_SEPARATOR = '|';
+    /**
+     * @var string
+     */
     protected const ATTRIBUTES_SEPARATOR = '-';
+    /**
+     * @var int
+     */
     protected const REQ_ID_LENGTH = 32;
 
+    /**
+     * @var string
+     */
     protected const GUEST_CUSTOMER_REFERENCE = 'guest-user-1';
 
     /**
@@ -29,20 +41,20 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected $config;
 
     /**
-     * @var \Spryker\Service\UtilText\UtilTextServiceInterface
+     * @var \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface
      */
     protected $textService;
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
-     * @param \Spryker\Service\UtilText\UtilTextServiceInterface $textService
+     * @param \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService
      */
     public function __construct(
         ComputopApiConfig $config,
-        UtilTextServiceInterface $textService
+        ComputopApiToUtilTextServiceInterface $utilTextService
     ) {
         $this->config = $config;
-        $this->textService = $textService;
+        $this->textService = $utilTextService;
     }
 
     /**
@@ -150,7 +162,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         $parameters = [
             $this->createUniqueSalt(),
-            $quoteTransfer->getCustomer()->getCustomerReference(),
+            $quoteTransfer->getCustomer()->getCustomerReference() ?? uniqid('', true),
         ];
 
         return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);

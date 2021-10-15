@@ -25,7 +25,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -45,7 +45,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -65,7 +65,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -85,7 +85,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -105,7 +105,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -125,7 +125,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -145,7 +145,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -165,7 +165,7 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -179,5 +179,39 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
             ->getFactory()
             ->createCrifRequest()
             ->request($quoteTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressPrepareApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    {
+        return $this
+           ->getFactory()
+           ->createPayPalExpressPrepareRequest()
+           ->sendRequest($quoteTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressCompleteApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    {
+        return $this
+            ->getFactory()
+            ->createPayPalExpressCompleteRequest()
+            ->sendRequest($quoteTransfer);
     }
 }

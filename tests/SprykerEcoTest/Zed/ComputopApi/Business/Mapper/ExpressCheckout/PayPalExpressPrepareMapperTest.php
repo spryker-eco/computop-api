@@ -23,7 +23,6 @@ class PayPalExpressPrepareMapperTest extends AbstractPayPalExpressMapperTest
     protected function createMapper(): PayPalExpressMapperInterface
     {
         return new PayPalExpressPrepareMapper(
-            $this->createComputopApiServiceMock(),
             $this->createComputopApiConfigMock()
         );
     }

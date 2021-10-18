@@ -55,7 +55,7 @@ class PayPalExpressMapperTestHelper extends Test
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Zed\ComputopApi\ComputopApiConfig
      */
-    public function createComputopApiConfigMock()
+    public function createComputopApiConfigMock(): ComputopApiConfig
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,
@@ -68,7 +68,7 @@ class PayPalExpressMapperTestHelper extends Test
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerEco\Service\ComputopApi\ComputopApiService
      */
-    public function createComputopApiServiceMock()
+    public function createComputopApiServiceMock(): ComputopApiService
     {
         $encryptedArray = [
             ComputopApiSharedConfig::LENGTH => CreditCardMapperTestConstants::LENGTH_VALUE,

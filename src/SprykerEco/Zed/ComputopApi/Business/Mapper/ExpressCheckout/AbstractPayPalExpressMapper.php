@@ -15,38 +15,16 @@ use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 abstract class AbstractPayPalExpressMapper implements PayPalExpressMapperInterface
 {
     /**
-     * @var \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface
-     */
-    protected $computopApiService;
-
-    /**
-     * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
-     */
-    protected $computopApiConfig;
-
-    /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
-     * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $computopApiConfig
-     */
-    public function __construct(
-        ComputopApiServiceInterface $computopApiService,
-        ComputopApiConfig $computopApiConfig
-    ) {
-        $this->computopApiService = $computopApiService;
-        $this->computopApiConfig = $computopApiConfig;
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     abstract protected function encryptRequestData(QuoteTransfer $quoteTransfer): array;
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return string[]
+     * @return array<string,string>
      */
     public function mapQuoteTransferToRequestArray(QuoteTransfer $quoteTransfer): array
     {

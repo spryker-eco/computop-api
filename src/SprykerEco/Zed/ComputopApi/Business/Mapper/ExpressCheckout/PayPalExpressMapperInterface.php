@@ -14,7 +14,7 @@ interface PayPalExpressMapperInterface
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return string[]
+     * @return array<string,string>
      */
     public function mapQuoteTransferToRequestArray(QuoteTransfer $quoteTransfer): array;
 }

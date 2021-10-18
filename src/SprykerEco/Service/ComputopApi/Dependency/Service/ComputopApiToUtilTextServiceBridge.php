@@ -12,14 +12,14 @@ class ComputopApiToUtilTextServiceBridge implements ComputopApiToUtilTextService
     /**
      * @var \Spryker\Service\UtilText\UtilTextServiceInterface
      */
-    protected $textService;
+    protected $utilTextService;
 
     /**
      * @param \Spryker\Service\UtilText\UtilTextServiceInterface $utilTextService
      */
     public function __construct($utilTextService)
     {
-        $this->textService = $utilTextService;
+        $this->utilTextService = $utilTextService;
     }
 
     /**
@@ -30,6 +30,6 @@ class ComputopApiToUtilTextServiceBridge implements ComputopApiToUtilTextService
      */
     public function hashValue($value, $algorithm)
     {
-        return $this->textService->hashValue($value, $algorithm);
+        return $this->utilTextService->hashValue($value, $algorithm);
     }
 }

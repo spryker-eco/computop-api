@@ -10,8 +10,8 @@ namespace SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceInterface;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
-use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as SharedComputopApiConfig;
+use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
 class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
 {
@@ -21,11 +21,6 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     protected $computopApiService;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\ComputopApiConfig
-     */
-    protected $computopApiConfig;
-
-    /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiServiceInterface $computopApiService
      * @param \SprykerEco\Zed\ComputopApi\ComputopApiConfig $computopApiConfig
      */
@@ -33,14 +28,14 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
         ComputopApiServiceInterface $computopApiService,
         ComputopApiConfig $computopApiConfig
     ) {
+        parent::__construct($computopApiConfig);
         $this->computopApiService = $computopApiService;
-        $this->computopApiConfig = $computopApiConfig;
     }
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string,string>
+     * @return array<string, string>
      */
     protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
@@ -58,7 +53,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string,string>
+     * @return array<string, string>
      */
     protected function getDataSubArray(QuoteTransfer $quoteTransfer): array
     {

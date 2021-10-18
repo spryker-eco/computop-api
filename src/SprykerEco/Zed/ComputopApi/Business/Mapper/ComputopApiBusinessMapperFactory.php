@@ -467,7 +467,6 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface
     {
         return new PayPalExpressPrepareMapper(
-            $this->getComputopApiService(),
             $this->getConfig()
         );
     }

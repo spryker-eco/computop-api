@@ -9,6 +9,7 @@ namespace SprykerEco\Service\ComputopApi\Mapper;
 
 use Generated\Shared\Transfer\ComputopApiRequestTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
@@ -21,10 +22,12 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      * @var string
      */
     protected const ITEMS_SEPARATOR = '|';
+
     /**
      * @var string
      */
     protected const ATTRIBUTES_SEPARATOR = '-';
+
     /**
      * @var int
      */
@@ -115,16 +118,12 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      */
     public function getDescriptionValue(array $items): string
     {
-        $description = '';
-
+        $descriptionParts = [];
         foreach ($items as $item) {
-            $description .= 'Name:' . $item->getName();
-            $description .= static::ATTRIBUTES_SEPARATOR . 'Sku:' . $item->getSku();
-            $description .= static::ATTRIBUTES_SEPARATOR . 'Quantity:' . $item->getQuantity();
-            $description .= static::ITEMS_SEPARATOR;
+            $descriptionParts[] = $this->getItemDescription($item);
         }
 
-        return $description;
+        return implode(static::ITEMS_SEPARATOR, $descriptionParts);
     }
 
     /**
@@ -208,5 +207,15 @@ class ComputopApiMapper implements ComputopApiMapperInterface
         ];
 
         return implode(static::ATTRIBUTES_SEPARATOR, $params);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return string
+     */
+    protected function getItemDescription(ItemTransfer $itemTransfer): string
+    {
+        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());
     }
 }

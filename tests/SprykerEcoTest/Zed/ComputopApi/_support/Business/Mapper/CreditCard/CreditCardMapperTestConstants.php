@@ -13,6 +13,7 @@ interface CreditCardMapperTestConstants
      * @var string
      */
     public const DATA_VALUE = 'Data';
+
     /**
      * @var int
      */

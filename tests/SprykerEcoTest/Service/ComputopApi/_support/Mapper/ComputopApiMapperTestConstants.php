@@ -13,18 +13,22 @@ interface ComputopApiMapperTestConstants
      * @var string
      */
     public const PAY_ID_VALUE = 'PAY_ID_VALUE';
+
     /**
      * @var string
      */
     public const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
+
     /**
      * @var string
      */
     public const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
+
     /**
      * @var int
      */
     public const AMOUNT_VALUE = 1;
+
     /**
      * @var string
      */
@@ -34,6 +38,7 @@ interface ComputopApiMapperTestConstants
      * @var string
      */
     public const STATUS_VALUE = 'OK';
+
     /**
      * @var string
      */
@@ -43,10 +48,12 @@ interface ComputopApiMapperTestConstants
      * @var string
      */
     public const EXPECTED_MAC = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*1*USD';
+
     /**
      * @var string
      */
     public const EXPECTED_MAC_RESPONSE = 'PAY_ID_VALUE*TRANS_ID_VALUE*MERCHANT_ID_VALUE*OK*000000';
+
     /**
      * @var string
      */

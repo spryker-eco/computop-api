@@ -33,26 +33,32 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
      * @var string
      */
     public const PAY_ID_VALUE = 'PAY_ID_VALUE';
+
     /**
      * @var string
      */
     public const TRANS_ID_VALUE = 'TRANS_ID_VALUE';
+
     /**
      * @var string
      */
     public const MERCHANT_ID_VALUE = 'MERCHANT_ID_VALUE';
+
     /**
      * @var string
      */
     public const X_ID_VALUE = 'X_ID_VALUE';
+
     /**
      * @var string
      */
     public const CODE_VALUE = '0';
+
     /**
      * @var string
      */
     public const STATUS_ERROR_VALUE = 'STATUS_ERROR_VALUE';
+
     /**
      * @var string
      */

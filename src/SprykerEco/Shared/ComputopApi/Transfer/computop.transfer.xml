@@ -34,6 +34,9 @@
         <property name="mId" type="string"/>
         <property name="mac" type="string"/>
         <property name="method" type="string"/>
+        <property name="amountauth" type="int"/>
+        <property name="amountcap" type="int"/>
+        <property name="amountcred" type="int"/>
     </transfer>
 
     <transfer name="ComputopApiEasyCreditStatusResponse">

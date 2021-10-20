@@ -24,10 +24,12 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
      * @var string
      */
     public const PLAINTEXT_VALUE = 'plaintext';
+
     /**
      * @var int
      */
     public const LENGTH_VALUE = 9;
+
     /**
      * @var string
      */
@@ -37,6 +39,7 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
      * @var string
      */
     public const CIPHER_VALUE = '14ec7a6da0fbb3e50a84b47302443328';
+
     /**
      * @var int
      */

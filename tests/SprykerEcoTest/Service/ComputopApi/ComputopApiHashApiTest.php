@@ -23,6 +23,7 @@ class ComputopApiHashApiTest extends AbstractComputopApiTest
      * @var string
      */
     public const VALUE = 'value';
+
     /**
      * @var string
      */

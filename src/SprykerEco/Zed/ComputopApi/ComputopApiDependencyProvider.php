@@ -17,6 +17,7 @@ class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
      * @var string
      */
     public const FACADE_STORE = 'FACADE_STORE';
+
     /**
      * @var string
      */
@@ -30,6 +31,8 @@ class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addComputopApiService($container);
+        $container = $this->addStoreFacade($container);
 
         $container = $this->addComputopApiService($container);
         $container = $this->addStoreFacade($container);

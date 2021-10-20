@@ -638,4 +638,9 @@ interface ComputopApiConfig
      * @var string
      */
     public const LEGAL_FORM = 'LegalForm';
+
+    /**
+     * @var string
+     */
+    public const ORDER_ID = 'orderid';
 }

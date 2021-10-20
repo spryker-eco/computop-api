@@ -7,8 +7,8 @@
 
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
-use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
 
 interface ComputopApiBusinessMapperFactoryInterface
 {

@@ -164,7 +164,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function getOrderTrasfer()
+    public function getOrderTransfer()
     {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(

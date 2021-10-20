@@ -1,0 +1,11 @@
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+
+    ignoreErrors:
+        - '#Parameter .+ of method .+ has invalid typehint type .+Transfer#'
+        - '#Call to method .+ on an unknown class .+Transfer#'
+        - '#Return typehint of method .+ has invalid type .+Transfer#'
+        - '#Instantiated class .+Transfer not found#'
+        - '#Call to method .+ on an unknown class Generated\\.+\\Ide\\AutoCompletion\.#'
+        - '#Method SprykerEco\\Zed\\ComputopApi\\Business\\ComputopApiFacade.+ should return Generated\\Shared\\Transfer\\.+ but returns Spryker\\Shared\\Kernel\\Transfer\\TransferInterface.#'

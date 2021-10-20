@@ -12,13 +12,34 @@ use SprykerEco\Shared\ComputopApi\ComputopApiConstants;
 
 class ComputopApiConfig extends AbstractBundleConfig
 {
+    /**
+     * @var string
+     */
     protected const AUTHORIZE_METHOD = 'AUTHORIZE';
+
+    /**
+     * @var string
+     */
     protected const CAPTURE_METHOD = 'CAPTURE';
+
+    /**
+     * @var string
+     */
     protected const REVERSE_METHOD = 'REVERSE';
+
+    /**
+     * @var string
+     */
     protected const INQUIRE_METHOD = 'INQUIRE';
+
+    /**
+     * @var string
+     */
     protected const REFUND_METHOD = 'REFUND';
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getMerchantId(): string
@@ -27,6 +48,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getBlowfishPass(): string
@@ -35,6 +58,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAuthorizeAction(): string
@@ -43,6 +68,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCaptureAction(): string
@@ -51,6 +78,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getRefundAction(): string
@@ -59,6 +88,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getInquireAction(): string
@@ -67,6 +98,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getReverseAction(): string
@@ -75,6 +108,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getEasyCreditStatusUrl(): string
@@ -83,6 +118,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getEasyCreditAuthorizeUrl(): string
@@ -91,6 +128,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCrifActionUrl(): string
@@ -99,6 +138,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getAuthorizeMethodName(): string
@@ -107,6 +148,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCaptureMethodName(): string
@@ -115,6 +158,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getRefundMethodName(): string
@@ -123,6 +168,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getReverseMethodName(): string
@@ -131,6 +178,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getInquireMethodName(): string
@@ -139,6 +188,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string[]
      */
     public function getPaymentMethodsCaptureTypes(): array
@@ -147,6 +198,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCrifProductName(): string
@@ -155,6 +208,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     }
 
     /**
+     * @api
+     *
      * @return string
      */
     public function getCrifLegalForm(): string

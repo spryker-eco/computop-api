@@ -15,6 +15,9 @@ use SprykerEco\Zed\ComputopApi\ComputopApiConfig;
 
 abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
 {
+    /**
+     * @var int
+     */
     protected const TRANS_ID_LIMIT = 64;
 
     /**

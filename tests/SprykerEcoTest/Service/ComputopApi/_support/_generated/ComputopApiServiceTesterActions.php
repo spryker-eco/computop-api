@@ -12,5 +12,5 @@ trait ComputopApiServiceTesterActions
      */
     abstract protected function getScenario();
 
-    
+
 }

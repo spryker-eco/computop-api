@@ -53,7 +53,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performAuthorizationRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -73,7 +73,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performCaptureRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -93,7 +93,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performInquireRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -113,7 +113,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performRefundRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -133,7 +133,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performReverseRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 
@@ -168,12 +168,15 @@ class FacadeTest extends AbstractSetUpTest
         $this->assertSame(FacadeTestConstants::STATUS_VALUE_SUCCESS, $response->getDescription());
     }
 
+    /**
+     * @return void
+     */
     public function testPerformEasyCreditAuthorizeRequest()
     {
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performEasyCreditAuthorizeRequest(
-            $this->helper->getOrderTrasfer(),
+            $this->helper->getOrderTransfer(),
             $this->helper->createComputopApiHeaderPaymentTransfer()
         );
 

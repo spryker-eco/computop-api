@@ -34,9 +34,6 @@ class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addComputopApiService($container);
         $container = $this->addStoreFacade($container);
 
-        $container = $this->addComputopApiService($container);
-        $container = $this->addStoreFacade($container);
-
         return $container;
     }
 

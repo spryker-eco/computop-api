@@ -80,6 +80,16 @@ interface ComputopApiConstants
     /**
      * @var string
      */
+    public const PAYPAL_EXPRESS_PREPARE_ACTION = 'COMPUTOPAPI:PAYPAL_EXPRESS_PREPARE_ACTION';
+
+    /**
+     * @var string
+     */
+    public const PAYPAL_EXPRESS_COMPLETE_ACTION = 'COMPUTOPAPI:PAYPAL_EXPRESS_COMPLETE_ACTION';
+
+    /**
+     * @var string
+     */
     public const RESPONSE_MAC_REQUIRED = 'COMPUTOPAPI:RESPONSE_MAC_REQUIRED';
 
     /**

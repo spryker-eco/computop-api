@@ -43,4 +43,9 @@ interface ConverterTestConstants
      * @var string
      */
     public const ERROR_TEXT_VALUE = 'ErrorText';
+
+    /**
+     * @var string
+     */
+    public const ORDER_ID_VALUE = 'token';
 }

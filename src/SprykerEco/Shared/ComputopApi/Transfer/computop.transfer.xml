@@ -122,4 +122,50 @@
         <property name="instruction" type="string"/>
     </transfer>
 
+    <transfer name="ComputopPayPalExpressPayment">
+        <property name="payPalExpressPrepareResponse" type="ComputopApiPayPalExpressPrepareResponse"/>
+        <property name="payPalExpressCompleteResponse" type="ComputopApiPayPalExpressCompleteResponse"/>
+    </transfer>
+
+    <transfer name="ComputopApiPayPalExpressPrepareResponse">
+        <property name="mid" type="string"/>
+        <property name="payID" type="string"/>
+        <property name="xID" type="string"/>
+        <property name="transID" type="string"/>
+        <property name="orderid" type="string"/>
+        <property name="paypalurl" type="string"/>
+    </transfer>
+
+    <transfer name="ComputopApiPayPalExpressComplete">
+        <property name="merchantId" type="string"/>
+        <property name="payId" type="string"/>
+        <property name="transactionId" type="string"/>
+        <property name="refNr" type="string"/>
+        <property name="amount" type="int"/>
+        <property name="currency" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="addressStreet" type="string"/>
+        <property name="addressStreet2" type="string"/>
+        <property name="addressCity" type="string"/>
+        <property name="addressState" type="string"/>
+        <property name="addressZip" type="string"/>
+        <property name="addressCountryCode" type="string"/>
+        <property name="phone" type="string"/>
+        <property name="data" type="string"/>
+        <property name="len" type="int"/>
+    </transfer>
+
+    <transfer name="ComputopApiPayPalExpressCompleteResponse">
+        <property name="header" type="ComputopApiResponseHeader"/>
+        <property name="merchantId" type="string"/>
+        <property name="payId" type="string"/>
+        <property name="transId" type="string"/>
+        <property name="status" type="string"/>
+        <property name="description" type="string"/>
+        <property name="code" type="string"/>
+        <property name="refNr" type="string"/>
+        <property name="codeExt" type="string"/>
+    </transfer>
+
 </transfers>

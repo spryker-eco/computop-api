@@ -53,7 +53,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     public function buildRequest(QuoteTransfer $quoteTransfer): array
     {
@@ -71,7 +71,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\ComputopApiRequestTransfer $requestTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function encryptRequestData(
         QuoteTransfer $quoteTransfer,
@@ -79,7 +79,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
     ): array {
         return $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($quoteTransfer, $requestTransfer),
-            $this->config->getBlowfishPass()
+            $this->config->getBlowfishPass(),
         );
     }
 
@@ -88,7 +88,7 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
      * @param string $length
      * @param string $merchantId
      *
-     * @return string[]
+     * @return array<string>
      */
     protected function buildRequestData($data, $length, $merchantId): array
     {

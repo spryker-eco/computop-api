@@ -28,7 +28,7 @@ class ReverseCreditCardMapperTest extends AbstractCreditCardMapperTest
         return new ReverseCreditCardMapper(
             $this->helper->createComputopApiServiceMock(),
             $this->helper->createComputopApiConfigMock(),
-            $this->helper->createStoreMock()
+            $this->helper->createStoreMock(),
         );
     }
 }

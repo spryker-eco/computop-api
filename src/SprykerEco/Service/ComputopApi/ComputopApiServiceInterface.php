@@ -19,7 +19,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -56,7 +56,7 @@ interface ComputopApiServiceInterface
      *
      * @api
      *
-     * @param string[] $responseArray
+     * @param array<string> $responseArray
      * @param string $key
      *
      * @return string|null

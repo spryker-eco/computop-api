@@ -22,7 +22,7 @@ class CaptureConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiCaptureResponseTransfer();
         $computopApiResponseTransfer->fromArray($response, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($response, $this->config->getCaptureMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getCaptureMethodName()),
         );
         //optional fields
         $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));

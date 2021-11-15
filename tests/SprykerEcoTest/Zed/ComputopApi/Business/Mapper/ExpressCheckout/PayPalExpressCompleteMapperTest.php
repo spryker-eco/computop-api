@@ -24,7 +24,7 @@ class PayPalExpressCompleteMapperTest extends AbstractPayPalExpressMapperTest
     {
         return new PayPalExpressCompleteMapper(
             $this->createComputopApiServiceMock(),
-            $this->createComputopApiConfigMock()
+            $this->createComputopApiConfigMock(),
         );
     }
 }

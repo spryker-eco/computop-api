@@ -22,7 +22,7 @@ class RefundConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiRefundResponseTransfer();
         $computopApiResponseTransfer->fromArray($response, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($response, $this->config->getRefundMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getRefundMethodName()),
         );
         //optional fields
         $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));

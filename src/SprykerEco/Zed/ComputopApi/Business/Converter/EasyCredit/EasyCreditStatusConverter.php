@@ -27,7 +27,7 @@ class EasyCreditStatusConverter extends AbstractConverter implements ConverterIn
     {
         $computopApiResponseTransfer = new ComputopApiEasyCreditStatusResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getReverseMethodName())
+            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getReverseMethodName()),
         );
         $computopApiResponseTransfer->fromArray($decryptedArray, true);
 

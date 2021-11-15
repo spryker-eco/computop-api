@@ -51,7 +51,7 @@ abstract class AbstractPayPalExpressMapperTest extends Test
     {
         $configMock = $this->createPartialMock(
             SprykerEcoComputopApiConfig::class,
-            ['getBlowfishPass']
+            ['getBlowfishPass'],
         );
 
         return $configMock;
@@ -71,7 +71,7 @@ abstract class AbstractPayPalExpressMapperTest extends Test
             ComputopApiService::class,
             [
                 'getEncryptedArray',
-            ]
+            ],
         );
 
         $computopServiceMock->method('getEncryptedArray')

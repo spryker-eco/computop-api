@@ -39,6 +39,7 @@ class ComputopApiZedTester extends Actor
      * @var string
      */
     protected const DATA_VALUE = 'Data';
+
     /**
      * @var int
      */

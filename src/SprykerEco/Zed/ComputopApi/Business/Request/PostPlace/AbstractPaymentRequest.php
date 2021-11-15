@@ -131,6 +131,6 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
      */
     protected function getPaymentMethodFromPayment(PaymentTransfer $paymentTransfer): string
     {
-        return $paymentTransfer->getPaymentMethod();
+        return $paymentTransfer->getPaymentMethodOrFail();
     }
 }

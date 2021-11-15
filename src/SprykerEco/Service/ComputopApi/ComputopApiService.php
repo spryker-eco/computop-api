@@ -66,10 +66,10 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
         $expectedMac = $this->getHashValue(
             $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header),
         );
-        $this
-            ->getFactory()
+
+        $this->getFactory()
             ->createComputopApiConverter()
-            ->checkMacResponse($header->getMac(), $expectedMac, $header->getMethod());
+            ->checkMacResponse($header->getMacOrFail(), $expectedMac, $header->getMethodOrFail());
 
         return $header;
     }

@@ -110,8 +110,8 @@ abstract class AbstractRiskCheckMapper implements ApiRiskCheckMapperInterface
             ->setPayId('')
             ->setMerchantId($this->config->getMerchantId())
             ->setTransId($this->computopApiService->generateLimitedTransId($quoteTransfer, static::TRANS_ID_LIMIT))
-            ->setAmount($quoteTransfer->getTotals()->getPriceToPay())
-            ->setCurrency($quoteTransfer->getCurrency()->getCode())
+            ->setAmount($quoteTransfer->getTotalsOrFail()->getPriceToPay())
+            ->setCurrency($quoteTransfer->getCurrencyOrFail()->getCode())
             ->setOrderDesc($this->computopApiService->getDescriptionValue($quoteTransfer->getItems()->getArrayCopy()));
     }
 }

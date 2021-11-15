@@ -53,18 +53,18 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string, string>
+     * @return array<string, int|string|null>
      */
     protected function getDataSubArray(QuoteTransfer $quoteTransfer): array
     {
-        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpress();
+        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();
 
         return [
             SharedComputopApiConfig::TRANS_ID => $computopPayPalExpressPaymentTransfer->getTransId(),
             SharedComputopApiConfig::MERCHANT_ID => $this->computopApiConfig->getMerchantId(),
-            SharedComputopApiConfig::PAY_ID => $computopPayPalExpressPaymentTransfer->getPayPalExpressPrepareResponse()->getPayID(),
+            SharedComputopApiConfig::PAY_ID => $computopPayPalExpressPaymentTransfer->getPayPalExpressPrepareResponseOrFail()->getPayID(),
             SharedComputopApiConfig::REF_NR => $computopPayPalExpressPaymentTransfer->getRefNr(),
-            SharedComputopApiConfig::AMOUNT => $quoteTransfer->getTotals()->getGrandTotal(),
+            SharedComputopApiConfig::AMOUNT => $quoteTransfer->getTotalsOrFail()->getGrandTotal(),
             SharedComputopApiConfig::CURRENCY => $computopPayPalExpressPaymentTransfer->getCurrency(),
         ];
     }

@@ -134,8 +134,8 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
         return $this->generateReqId(
-            $quoteTransfer->getTotals()->getHash(),
-            $quoteTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
+            $quoteTransfer->getTotalsOrFail()->getHashOrFail(),
+            $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 
@@ -147,8 +147,8 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
     {
         return $this->generateReqId(
-            $orderTransfer->getTotals()->getHash(),
-            $orderTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
+            $orderTransfer->getTotalsOrFail()->getHashOrFail(),
+            $orderTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 
@@ -161,7 +161,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         $parameters = [
             $this->createUniqueSalt(),
-            $quoteTransfer->getCustomer()->getCustomerReference() ?? uniqid('', true),
+            $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? uniqid('', true),
         ];
 
         return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);

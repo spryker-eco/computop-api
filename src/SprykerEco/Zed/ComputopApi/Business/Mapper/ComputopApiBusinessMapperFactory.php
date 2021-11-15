@@ -8,6 +8,9 @@
 namespace SprykerEco\Zed\ComputopApi\Business\Mapper;
 
 use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressCompleteMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressPrepareMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\AuthorizeCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\CaptureCreditCardMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\InquireCreditCardMapper;
@@ -36,6 +39,9 @@ use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\CapturePayPalMap
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\InquirePayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\RefundPayPalMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\ReversePayPalMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\CapturePayPalExpressMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\RefundPayPalExpressMapper;
+use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\ReversePayPalExpressMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\CapturePayuCeeSingleMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\InquirePayuCeeSingleMapper;
 use SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\RefundPayuCeeSingleMapper;
@@ -199,6 +205,18 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
+    public function createReversePayPalExpressMapper(): PostPlaceMapperInterface
+    {
+        return new ReversePayPalExpressMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
     public function createInquirePayPalMapper(): PostPlaceMapperInterface
     {
         return new InquirePayPalMapper(
@@ -223,9 +241,33 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     /**
      * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
+    public function createCapturePayPalExpressMapper(): PostPlaceMapperInterface
+    {
+        return new CapturePayPalExpressMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
     public function createRefundPayPalMapper(): PostPlaceMapperInterface
     {
         return new RefundPayPalMapper(
+            $this->getComputopApiService(),
+            $this->getConfig(),
+            $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     */
+    public function createRefundPayPalExpressMapper(): PostPlaceMapperInterface
+    {
+        return new RefundPayPalExpressMapper(
             $this->getComputopApiService(),
             $this->getConfig(),
             $this->getStoreFacade()
@@ -468,6 +510,27 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
             $this->getComputopApiService(),
             $this->getConfig(),
             $this->getStoreFacade()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
+     */
+    public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface
+    {
+        return new PayPalExpressPrepareMapper(
+            $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
+     */
+    public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface
+    {
+        return new PayPalExpressCompleteMapper(
+            $this->getComputopApiService(),
+            $this->getConfig()
         );
     }
 }

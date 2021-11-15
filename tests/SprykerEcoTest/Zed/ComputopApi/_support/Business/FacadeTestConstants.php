@@ -73,4 +73,8 @@ interface FacadeTestConstants
      * @var string
      */
     public const CRIF_GREEN_RESULT = 'GREEN';
+    /**
+     * @var string
+     */
+    public const PAYPAL_EXPRESS_PREPARE_TOKEN = 'token';
 }

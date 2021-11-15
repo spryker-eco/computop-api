@@ -14,17 +14,23 @@ use Generated\Shared\Transfer\ComputopApiCrifResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer;
 use Generated\Shared\Transfer\ComputopApiInquireResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiRefundResponseTransfer;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\ComputopApiReverseResponseTransfer;
+use Generated\Shared\Transfer\ComputopPayPalExpressPaymentTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig as ComputopApiServiceConfig;
 use SprykerEco\Service\ComputopApi\ComputopApiService;
 use SprykerEco\Service\ComputopApi\ComputopApiServiceFactory;
 use SprykerEco\Zed\ComputopApi\Business\ComputopApiBusinessFactory;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressCompleteRequest;
+use SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressPrepareRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\AuthorizationRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\CaptureRequest;
 use SprykerEco\Zed\ComputopApi\Business\Request\PostPlace\InquireRequest;
@@ -56,6 +62,8 @@ class FacadeTestHelper extends Test
                 'createCapturePaymentRequest',
                 'createRefundPaymentRequest',
                 'createCrifRequest',
+                'createPayPalExpressPrepareRequest',
+                'createPayPalExpressCompleteRequest',
             ]
         );
 
@@ -82,6 +90,10 @@ class FacadeTestHelper extends Test
             ->willReturn($this->createRefundPaymentRequest());
         $stub->method('createCrifRequest')
             ->willReturn($this->createCrifRequest());
+        $stub->method('createPayPalExpressPrepareRequest')
+            ->willReturn($this->createPayPalExpressPrepareRequest());
+        $stub->method('createPayPalExpressCompleteRequest')
+            ->willReturn($this->createPayPalExpressCompleteRequest());
 
         return $stub;
     }
@@ -162,9 +174,34 @@ class FacadeTestHelper extends Test
     }
 
     /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function getPayPalExpressQuoteTransfer(): QuoteTransfer
+    {
+        $quoteTransfer = new QuoteTransfer();
+        $quoteTransfer->setTotals(
+            (new TotalsTransfer())
+                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE)
+        );
+
+        $quoteTransfer->setCustomer(
+            (new CustomerTransfer())
+                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE)
+        );
+
+        $quoteTransfer->setOrderReference(FacadeTestConstants::ORDER_REFERENCE_VALUE);
+
+        $paymentTransfer = new PaymentTransfer();
+        $paymentTransfer->setComputopPayPalExpress(new ComputopPayPalExpressPaymentTransfer());
+        $quoteTransfer->setPayment($paymentTransfer);
+
+        return $quoteTransfer;
+    }
+
+    /**
      * @return \Generated\Shared\Transfer\OrderTransfer
      */
-    public function getOrderTransfer()
+    public function getOrderTransfer(): OrderTransfer
     {
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(
@@ -185,7 +222,7 @@ class FacadeTestHelper extends Test
     /**
      * @return \Generated\Shared\Transfer\ComputopApiHeaderPaymentTransfer
      */
-    public function createComputopApiHeaderPaymentTransfer()
+    public function createComputopApiHeaderPaymentTransfer(): ComputopApiHeaderPaymentTransfer
     {
         return (new ComputopApiHeaderPaymentTransfer())
             ->setTransId(FacadeTestConstants::TRANS_ID_VALUE)
@@ -313,6 +350,45 @@ class FacadeTestHelper extends Test
         $stub = $this->createMock(CrifRequest::class);
         $stub->method('request')
             ->willReturn($response);
+
+        return $stub;
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressPrepareRequest
+     */
+    protected function createPayPalExpressPrepareRequest()
+    {
+        $response = (new ComputopApiPayPalExpressPrepareResponseTransfer())
+            ->setOrderId(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
+
+        $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
+        $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressPrepareResponse($response);
+
+        $stub = $this->createMock(PayPalExpressPrepareRequest::class);
+        $stub->method('sendRequest')
+            ->willReturn($quoteTransfer);
+
+        return $stub;
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerEco\Zed\ComputopApi\Business\Request\ExpressCheckout\PayPalExpressCompleteRequest
+     */
+    protected function createPayPalExpressCompleteRequest()
+    {
+        $response = (new ComputopApiPayPalExpressCompleteResponseTransfer())
+            ->setHeader($this->createComputopApiResponseHeaderTransfer())
+            ->setCode(FacadeTestConstants::CODE_VALUE)
+            ->setStatus(FacadeTestConstants::STATUS_VALUE)
+            ->setDescription(FacadeTestConstants::STATUS_VALUE_SUCCESS);
+
+        $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
+        $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressCompleteResponse($response);
+
+        $stub = $this->createMock(PayPalExpressCompleteRequest::class);
+        $stub->method('sendRequest')
+            ->willReturn($quoteTransfer);
 
         return $stub;
     }

@@ -44,6 +44,11 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @var string
      */
+    public const PAYMENT_METHOD_PAY_PAL_EXPRESS = 'computopPayPalExpress';
+
+    /**
+     * @var string
+     */
     public const PAYMENT_METHOD_SOFORT = 'computopSofort';
 
     /**

@@ -9,6 +9,11 @@ namespace SprykerEcoTest\Zed\ComputopApi;
 
 use Codeception\Actor;
 use Codeception\Scenario;
+use Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer;
+use Generated\Shared\Transfer\ComputopPayPalExpressPaymentTransfer;
+use Generated\Shared\Transfer\PaymentTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
 
 /**
  * Inherited Methods
@@ -31,6 +36,15 @@ class ComputopApiZedTester extends Actor
     use _generated\ComputopApiZedTesterActions;
 
     /**
+     * @var string
+     */
+    protected const DATA_VALUE = 'Data';
+    /**
+     * @var int
+     */
+    protected const LENGTH_VALUE = 10;
+
+    /**
      * @param \Codeception\Scenario $scenario
      */
     public function __construct(Scenario $scenario)
@@ -51,5 +65,28 @@ class ComputopApiZedTester extends Actor
         $this->setConfig('COMPUTOPAPI:BLOWFISH_PASSWORD', 'COMPUTOPAPI:BLOWFISH_PASSWORD');
         $this->setConfig('COMPUTOPAPI:RESPONSE_MAC_REQUIRED', ['INIT']);
         $this->setConfig('COMPUTOPAPI:PAYMENT_METHODS_CAPTURE_TYPES', ['computopCreditCard' => 'MANUAL']);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function createQuoteTransfer(): QuoteTransfer
+    {
+        $quoteTransfer = new QuoteTransfer();
+
+        $paymentTransfer = new PaymentTransfer();
+        $computopPayPalExpressPaymentTransfer = new ComputopPayPalExpressPaymentTransfer();
+        $computopPayPalExpressPaymentTransfer->setData(static::DATA_VALUE);
+        $computopPayPalExpressPaymentTransfer->setLen(static::LENGTH_VALUE);
+        $payPalExpressPrepareResponse = new ComputopApiPayPalExpressPrepareResponseTransfer();
+        $payPalExpressPrepareResponse->setTransID('');
+        $computopPayPalExpressPaymentTransfer->setPayPalExpressPrepareResponse($payPalExpressPrepareResponse);
+        $paymentTransfer->setComputopPayPalExpress($computopPayPalExpressPaymentTransfer);
+        $quoteTransfer->setPayment($paymentTransfer);
+
+        $totalsTransfer = new TotalsTransfer();
+        $quoteTransfer->setTotals($totalsTransfer);
+
+        return $quoteTransfer;
     }
 }

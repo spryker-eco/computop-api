@@ -180,4 +180,38 @@ class ComputopApiFacade extends AbstractFacade implements ComputopApiFacadeInter
             ->createCrifRequest()
             ->request($quoteTransfer);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressPrepareApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    {
+        return $this
+           ->getFactory()
+           ->createPayPalExpressPrepareRequest()
+           ->sendRequest($quoteTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \Generated\Shared\Transfer\QuoteTransfer
+     */
+    public function performPayPalExpressCompleteApiCall(QuoteTransfer $quoteTransfer): QuoteTransfer
+    {
+        return $this
+            ->getFactory()
+            ->createPayPalExpressCompleteRequest()
+            ->sendRequest($quoteTransfer);
+    }
 }

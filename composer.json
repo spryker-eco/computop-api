@@ -10,12 +10,13 @@
         "spryker/kernel": "^3.30.0",
         "spryker/store": "^1.1.0",
         "spryker/transfer": "^3.0.0",
-        "spryker/util-text": "^1.0.0"
+        "spryker/util-text": "^1.0.0",
+        "spryker/zed-request": "^3.0.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "*",
-        "spryker/code-sniffer": "*",
-        "spryker/testify": "*"
+        "phpstan/phpstan": "^0.12",
+        "spryker/code-sniffer": "^0.16",
+        "spryker/testify": "^3.0.0"
     },
     "autoload": {
         "psr-4": {

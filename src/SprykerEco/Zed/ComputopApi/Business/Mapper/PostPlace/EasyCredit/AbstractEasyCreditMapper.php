@@ -50,14 +50,14 @@ abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
      */
     public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
-        $dataSubArray[ComputopApiConstants::PAY_ID] = $computopApiRequestTransfer->getPayId();
-        $dataSubArray[ComputopApiConstants::TRANS_ID] = $computopApiRequestTransfer->getTransId();
-        $dataSubArray[ComputopApiConstants::REQ_ID] = $computopApiRequestTransfer->getReqId();
-        $dataSubArray[ComputopApiConstants::REF_NR] = $computopApiRequestTransfer->getRefNr();
-        $dataSubArray[ComputopApiConstants::AMOUNT] = $computopApiRequestTransfer->getAmount();
-        $dataSubArray[ComputopApiConstants::CURRENCY] = $computopApiRequestTransfer->getCurrency();
-        $dataSubArray[ComputopApiConstants::MAC] = $computopApiRequestTransfer->getMac();
-
-        return $dataSubArray;
+        return [
+            ComputopApiConstants::PAY_ID => $computopApiRequestTransfer->getPayId(),
+            ComputopApiConstants::TRANS_ID => $computopApiRequestTransfer->getTransId(),
+            ComputopApiConstants::REQ_ID => $computopApiRequestTransfer->getReqId(),
+            ComputopApiConstants::REF_NR => $computopApiRequestTransfer->getRefNr(),
+            ComputopApiConstants::AMOUNT => $computopApiRequestTransfer->getAmount(),
+            ComputopApiConstants::CURRENCY => $computopApiRequestTransfer->getCurrency(),
+            ComputopApiConstants::MAC => $computopApiRequestTransfer->getMac(),
+        ];
     }
 }

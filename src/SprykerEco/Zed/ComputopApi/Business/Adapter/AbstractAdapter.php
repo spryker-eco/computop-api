@@ -55,7 +55,9 @@ abstract class AbstractAdapter implements AdapterInterface
      */
     public function sendRequest(array $data): StreamInterface
     {
-        $options[RequestOptions::FORM_PARAMS] = $data;
+        $options = [
+            RequestOptions::FORM_PARAMS => $data,
+        ];
 
         return $this->send($options);
     }

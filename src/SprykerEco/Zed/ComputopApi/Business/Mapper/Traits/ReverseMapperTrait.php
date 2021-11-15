@@ -19,14 +19,14 @@ trait ReverseMapperTrait
      */
     public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
-        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopApiRequestTransfer->getReqId();
-        $dataSubArray[ComputopApiConfig::REF_NR] = $computopApiRequestTransfer->getRefNr();
-        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopApiRequestTransfer->getAmount();
-        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopApiRequestTransfer->getCurrency();
-        $dataSubArray[ComputopApiConfig::MAC] = $computopApiRequestTransfer->getMac();
-
-        return $dataSubArray;
+        return [
+            ComputopApiConfig::PAY_ID => $computopApiRequestTransfer->getPayId(),
+            ComputopApiConfig::TRANS_ID => $computopApiRequestTransfer->getTransId(),
+            ComputopApiConfig::REQ_ID => $computopApiRequestTransfer->getReqId(),
+            ComputopApiConfig::REF_NR => $computopApiRequestTransfer->getRefNr(),
+            ComputopApiConfig::AMOUNT => $computopApiRequestTransfer->getAmount(),
+            ComputopApiConfig::CURRENCY => $computopApiRequestTransfer->getCurrency(),
+            ComputopApiConfig::MAC => $computopApiRequestTransfer->getMac(),
+        ];
     }
 }

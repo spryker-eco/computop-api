@@ -134,15 +134,10 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
         $plainText = $this->getFactory()->createComputopApiMapper()->getDataPlainText($dataSubArray);
         $length = mb_strlen($plainText);
 
-        $encryptedArray[ComputopApiConfig::DATA] = $this->getBlowfishEncryptedValue(
-            $plainText,
-            $length,
-            $password,
-        );
-
-        $encryptedArray[ComputopApiConfig::LENGTH] = $length;
-
-        return $encryptedArray;
+        return [
+            ComputopApiConfig::DATA => $this->getBlowfishEncryptedValue($plainText, $length, $password),
+            ComputopApiConfig::LENGTH => $length,
+        ];
     }
 
     /**

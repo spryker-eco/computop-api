@@ -23,7 +23,7 @@ class CrifConverter extends AbstractConverter implements ConverterInterface
         $computopResponseTransfer = new ComputopApiCrifResponseTransfer();
         $computopResponseTransfer->fromArray($decryptedArray, true);
         $computopResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getAuthorizeMethodName())
+            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getAuthorizeMethodName()),
         );
 
         return $computopResponseTransfer;

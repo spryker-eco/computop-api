@@ -102,7 +102,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         if (!$this->existArrayKeys($keys, $responseArray)) {
             throw new ComputopApiConverterException(
-                'Response does not have expected values. Please check Computop documentation.'
+                'Response does not have expected values. Please check Computop documentation.',
             );
         }
     }
@@ -140,7 +140,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         if (!$this->existArrayKeys($keys, $plaintextResponseHeader)) {
             throw new ComputopApiConverterException(
-                'Response does not have expected values. Please check Computop documentation.'
+                'Response does not have expected values. Please check Computop documentation.',
             );
         }
     }

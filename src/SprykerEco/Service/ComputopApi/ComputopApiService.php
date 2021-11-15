@@ -24,7 +24,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
         $header = $this->getFactory()->createComputopApiConverter()->extractResponseHeader($plaintextResponseHeader, $method);
 
         $expectedMac = $this->getHashValue(
-            $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header)
+            $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header),
         );
         $this
             ->getFactory()
@@ -79,7 +79,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param string[] $responseArray
+     * @param array<string> $responseArray
      * @param string $key
      *
      * @return string|null
@@ -108,7 +108,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
         $responseDecryptedString = $this->getBlowfishDecryptedValue(
             $responseHeader[ComputopApiConfig::DATA],
             $responseHeader[ComputopApiConfig::LENGTH],
-            $password
+            $password,
         );
 
         $responseDecryptedArray = $this
@@ -137,7 +137,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
         $encryptedArray[ComputopApiConfig::DATA] = $this->getBlowfishEncryptedValue(
             $plainText,
             $length,
-            $password
+            $password,
         );
 
         $encryptedArray[ComputopApiConfig::LENGTH] = $length;

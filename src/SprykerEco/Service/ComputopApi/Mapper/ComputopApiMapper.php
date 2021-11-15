@@ -112,7 +112,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -135,7 +135,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         return $this->generateReqId(
             $quoteTransfer->getTotals()->getHash(),
-            $quoteTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
+            $quoteTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 
@@ -148,7 +148,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         return $this->generateReqId(
             $orderTransfer->getTotals()->getHash(),
-            $orderTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
+            $orderTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 

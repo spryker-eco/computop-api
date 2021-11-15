@@ -41,7 +41,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     {
         $encryptedValues = $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($quoteTransfer),
-            $this->computopApiConfig->getBlowfishPass()
+            $this->computopApiConfig->getBlowfishPass(),
         );
 
         return [

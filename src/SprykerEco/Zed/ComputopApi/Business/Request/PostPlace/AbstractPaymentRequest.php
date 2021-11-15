@@ -35,7 +35,7 @@ abstract class AbstractPaymentRequest implements PostPlaceRequestInterface
     protected $paymentMethod;
 
     /**
-     * @var \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface[]
+     * @var array<\SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface>
      */
     protected $methodMappers = [];
 

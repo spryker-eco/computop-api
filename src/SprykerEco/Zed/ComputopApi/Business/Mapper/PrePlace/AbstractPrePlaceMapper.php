@@ -95,7 +95,7 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
 
         return $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($computopApiPaymentTransfer),
-            $this->config->getBlowfishPass()
+            $this->config->getBlowfishPass(),
         );
     }
 
@@ -131,7 +131,7 @@ abstract class AbstractPrePlaceMapper implements PrePlaceMapperInterface
         $computopApiPaymentTransfer->setCurrency($this->storeFacade->getCurrentStore()->getSelectedCurrencyIsoCode());
 
         $computopApiPaymentTransfer->setMac(
-            $this->computopApiService->generateEncryptedMac($computopApiPaymentTransfer)
+            $this->computopApiService->generateEncryptedMac($computopApiPaymentTransfer),
         );
 
         $computopApiPaymentTransfer->setReqId($this->computopApiService->generateReqIdFromQuoteTransfer($quoteTransfer));

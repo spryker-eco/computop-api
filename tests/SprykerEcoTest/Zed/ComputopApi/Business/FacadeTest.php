@@ -36,7 +36,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performEasyCreditStatusRequest(
             $this->helper->getQuoteTrasfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiEasyCreditStatusResponseTransfer::class, $response);
@@ -56,7 +56,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performAuthorizationRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiAuthorizeResponseTransfer::class, $response);
@@ -76,7 +76,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performCaptureRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiCaptureResponseTransfer::class, $response);
@@ -96,7 +96,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performInquireRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiInquireResponseTransfer::class, $response);
@@ -116,7 +116,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performRefundRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiRefundResponseTransfer::class, $response);
@@ -136,7 +136,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performReverseRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiReverseResponseTransfer::class, $response);
@@ -155,7 +155,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performCrifApiCall(
-            $this->helper->getQuoteTrasfer()
+            $this->helper->getQuoteTrasfer(),
         );
 
         $this->assertInstanceOf(ComputopApiCrifResponseTransfer::class, $response);
@@ -179,7 +179,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade->setFactory($this->helper->createFactory());
         $response = $facade->performEasyCreditAuthorizeRequest(
             $this->helper->getOrderTransfer(),
-            $this->helper->createComputopApiHeaderPaymentTransfer()
+            $this->helper->createComputopApiHeaderPaymentTransfer(),
         );
 
         $this->assertInstanceOf(ComputopApiAuthorizeResponseTransfer::class, $response);
@@ -199,7 +199,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $quote = $facade->performPayPalExpressPrepareApiCall(
-            $this->helper->getPayPalExpressQuoteTransfer()
+            $this->helper->getPayPalExpressQuoteTransfer(),
         );
 
         //Act
@@ -219,7 +219,7 @@ class FacadeTest extends AbstractSetUpTest
         $facade = new ComputopApiFacade();
         $facade->setFactory($this->helper->createFactory());
         $quote = $facade->performPayPalExpressCompleteApiCall(
-            $this->helper->getPayPalExpressQuoteTransfer()
+            $this->helper->getPayPalExpressQuoteTransfer(),
         );
 
         //Act

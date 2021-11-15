@@ -54,7 +54,7 @@ class ConverterTestHelper extends Test
     {
         $configMock = $this->createPartialMock(
             ComputopApiZedConfig::class,
-            ['getBlowfishPass']
+            ['getBlowfishPass'],
         );
 
         return $configMock;
@@ -87,7 +87,7 @@ class ConverterTestHelper extends Test
     {
         $computopServiceMock = $this->createPartialMock(
             ComputopApiService::class,
-            ['decryptResponseHeader', 'extractResponseHeader', 'getResponseValue']
+            ['decryptResponseHeader', 'extractResponseHeader', 'getResponseValue'],
         );
         $computopServiceMock->method('decryptResponseHeader')
             ->willReturn($decryptedArray);

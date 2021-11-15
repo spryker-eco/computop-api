@@ -25,7 +25,7 @@ class AuthorizePayPalMapper extends AbstractPayPalMapper
     {
         $computopApiRequestTransfer = parent::createPaymentTransfer($orderTransfer);
         $computopApiRequestTransfer->setCapture(
-            $this->getCaptureType(ComputopApiConfig::PAYMENT_METHOD_PAY_PAL)
+            $this->getCaptureType(ComputopApiConfig::PAYMENT_METHOD_PAY_PAL),
         );
         $computopApiRequestTransfer->setOrderDesc($this->getOrderDesc($this->computopApiService, $orderTransfer));
 

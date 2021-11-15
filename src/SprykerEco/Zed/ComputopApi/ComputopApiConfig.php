@@ -210,7 +210,7 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getPaymentMethodsCaptureTypes(): array
     {

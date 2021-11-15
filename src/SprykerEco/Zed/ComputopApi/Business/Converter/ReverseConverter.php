@@ -21,7 +21,7 @@ class ReverseConverter extends AbstractConverter implements ConverterInterface
     {
         $computopApiResponseTransfer = new ComputopApiReverseResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($response, $this->config->getReverseMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getReverseMethodName()),
         );
         //optional fields
         $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($response, ComputopApiConfig::A_ID));

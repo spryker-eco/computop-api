@@ -46,7 +46,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     {
         return new ComputopApiMapper(
             $this->getConfig(),
-            $this->createTextService()
+            $this->createTextService(),
         );
     }
 

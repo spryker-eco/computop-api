@@ -72,13 +72,13 @@ abstract class AbstractAdapter implements AdapterInterface
         try {
             $response = $this->client->post(
                 $this->getUrl(),
-                $options
+                $options,
             );
         } catch (RequestException $requestException) {
             throw new ComputopApiHttpRequestException(
                 $requestException->getMessage(),
                 $requestException->getCode(),
-                $requestException
+                $requestException,
             );
         }
 

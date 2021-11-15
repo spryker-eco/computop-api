@@ -94,7 +94,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
 
         return $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($computopApiRequestTransfer),
-            $this->config->getBlowfishPass()
+            $this->config->getBlowfishPass(),
         );
     }
 
@@ -132,7 +132,7 @@ abstract class AbstractPostPlaceMapper implements PostPlaceMapperInterface
         $computopApiRequestTransfer->setCurrency($this->storeFacade->getCurrentStore()->getSelectedCurrencyIsoCode());
 
         $computopApiRequestTransfer->setMac(
-            $this->computopApiService->generateEncryptedMac($computopApiRequestTransfer)
+            $this->computopApiService->generateEncryptedMac($computopApiRequestTransfer),
         );
         $computopApiRequestTransfer->setReqId($this->computopApiService->generateReqIdFromOrderTransfer($orderTransfer));
         $computopApiRequestTransfer->setRefNr($orderTransfer->getOrderReference());

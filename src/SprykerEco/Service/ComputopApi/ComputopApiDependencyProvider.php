@@ -11,6 +11,9 @@ use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Service\Kernel\Container;
 use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceBridge;
 
+/**
+ * @method \SprykerEco\Service\ComputopApi\ComputopApiConfig getConfig()
+ */
 class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**

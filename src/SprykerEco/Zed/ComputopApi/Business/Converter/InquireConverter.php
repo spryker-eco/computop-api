@@ -27,7 +27,7 @@ class InquireConverter extends AbstractConverter implements ConverterInterface
         $computopApiResponseTransfer = new ComputopApiInquireResponseTransfer();
         $computopApiResponseTransfer->fromArray($response, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($response, $this->config->getInquireMethodName())
+            $this->computopApiService->extractResponseHeader($response, $this->config->getInquireMethodName()),
         );
         $computopApiResponseTransfer->setAmountAuth($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT_AUTH));
         $computopApiResponseTransfer->setAmountCap($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT_CAP));

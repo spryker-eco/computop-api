@@ -45,7 +45,7 @@ trait AuthorizeMapperTrait
         OrderTransfer $orderTransfer
     ): string {
         return $computopApiService->getDescriptionValue(
-            $orderTransfer->getItems()->getArrayCopy()
+            $orderTransfer->getItems()->getArrayCopy(),
         );
     }
 }

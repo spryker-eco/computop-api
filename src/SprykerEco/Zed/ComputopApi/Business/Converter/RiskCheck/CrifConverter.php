@@ -14,16 +14,16 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 class CrifConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedArray
+     * @param array $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray): ComputopApiCrifResponseTransfer
+    protected function getResponseTransfer(array $decryptedResponse): ComputopApiCrifResponseTransfer
     {
         $computopResponseTransfer = new ComputopApiCrifResponseTransfer();
-        $computopResponseTransfer->fromArray($decryptedArray, true);
+        $computopResponseTransfer->fromArray($decryptedResponse, true);
         $computopResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getAuthorizeMethodName()),
+            $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getAuthorizeMethodName()),
         );
 
         return $computopResponseTransfer;

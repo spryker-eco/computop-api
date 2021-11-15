@@ -55,15 +55,15 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param array $plaintextResponseHeader
+     * @param array $responseArray
      * @param string $key
      *
      * @return string|null
      */
-    public function getResponseValue(array $plaintextResponseHeader, $key): ?string
+    public function getResponseValue(array $responseArray, $key): ?string
     {
-        if (isset($plaintextResponseHeader[$this->formatKey($key)])) {
-            return $plaintextResponseHeader[$this->formatKey($key)];
+        if (isset($responseArray[$this->formatKey($key)])) {
+            return $responseArray[$this->formatKey($key)];
         }
 
         return null;

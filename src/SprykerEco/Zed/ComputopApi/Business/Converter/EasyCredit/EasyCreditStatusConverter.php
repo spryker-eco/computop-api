@@ -19,21 +19,21 @@ class EasyCreditStatusConverter extends AbstractConverter implements ConverterIn
     protected const DECISION_INDEX = 'desicion';
 
     /**
-     * @param array $decryptedArray
+     * @param array $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer
      */
-    protected function getResponseTransfer(array $decryptedArray): ComputopApiEasyCreditStatusResponseTransfer
+    protected function getResponseTransfer(array $decryptedResponse): ComputopApiEasyCreditStatusResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiEasyCreditStatusResponseTransfer();
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($decryptedArray, $this->config->getReverseMethodName()),
+            $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getReverseMethodName()),
         );
-        $computopApiResponseTransfer->fromArray($decryptedArray, true);
+        $computopApiResponseTransfer->fromArray($decryptedResponse, true);
 
         //easy credit index mistake will be fixed in future
-        if (isset($decryptedArray[static::DECISION_INDEX])) {
-            $computopApiResponseTransfer->setDecision($decryptedArray[static::DECISION_INDEX]);
+        if (isset($decryptedResponse[static::DECISION_INDEX])) {
+            $computopApiResponseTransfer->setDecision($decryptedResponse[static::DECISION_INDEX]);
         }
 
         return $computopApiResponseTransfer;

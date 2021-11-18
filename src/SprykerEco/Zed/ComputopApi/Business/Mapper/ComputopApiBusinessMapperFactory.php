@@ -71,9 +71,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\ReverseCreditCardMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReverseCreditCardMapper(): ReverseCreditCardMapper
+    public function createReverseCreditCardMapper(): PostPlaceMapperInterface
     {
         return new ReverseCreditCardMapper(
             $this->getComputopApiService(),
@@ -83,9 +83,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\InquireCreditCardMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquireCreditCardMapper(): InquireCreditCardMapper
+    public function createInquireCreditCardMapper(): PostPlaceMapperInterface
     {
         return new InquireCreditCardMapper(
             $this->getComputopApiService(),
@@ -95,9 +95,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\CaptureCreditCardMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCaptureCreditCardMapper(): CaptureCreditCardMapper
+    public function createCaptureCreditCardMapper(): PostPlaceMapperInterface
     {
         return new CaptureCreditCardMapper(
             $this->getComputopApiService(),
@@ -107,9 +107,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\RefundCreditCardMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundCreditCardMapper(): RefundCreditCardMapper
+    public function createRefundCreditCardMapper(): PostPlaceMapperInterface
     {
         return new RefundCreditCardMapper(
             $this->getComputopApiService(),
@@ -119,9 +119,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\AuthorizePayNowMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface
      */
-    public function createAuthorizePayNowMapper(): AuthorizePayNowMapper
+    public function createAuthorizePayNowMapper(): PostPlaceMapperInterface
     {
         return new AuthorizePayNowMapper(
             $this->getComputopApiService(),
@@ -131,9 +131,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\ReversePayNowMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReversePayNowMapper(): ReversePayNowMapper
+    public function createReversePayNowMapper(): PostPlaceMapperInterface
     {
         return new ReversePayNowMapper(
             $this->getComputopApiService(),
@@ -143,9 +143,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\InquirePayNowMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquirePayNowMapper(): InquirePayNowMapper
+    public function createInquirePayNowMapper(): PostPlaceMapperInterface
     {
         return new InquirePayNowMapper(
             $this->getComputopApiService(),
@@ -155,9 +155,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\CapturePayNowMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCapturePayNowMapper(): CapturePayNowMapper
+    public function createCapturePayNowMapper(): PostPlaceMapperInterface
     {
         return new CapturePayNowMapper(
             $this->getComputopApiService(),
@@ -167,9 +167,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayNow\RefundPayNowMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundPayNowMapper(): RefundPayNowMapper
+    public function createRefundPayNowMapper(): PostPlaceMapperInterface
     {
         return new RefundPayNowMapper(
             $this->getComputopApiService(),
@@ -179,9 +179,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\AuthorizePayPalMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createAuthorizePayPalMapper(): AuthorizePayPalMapper
+    public function createAuthorizePayPalMapper(): PostPlaceMapperInterface
     {
         return new AuthorizePayPalMapper(
             $this->getComputopApiService(),
@@ -191,9 +191,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\ReversePayPalMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReversePayPalMapper(): ReversePayPalMapper
+    public function createReversePayPalMapper(): PostPlaceMapperInterface
     {
         return new ReversePayPalMapper(
             $this->getComputopApiService(),
@@ -203,9 +203,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\ReversePayPalExpressMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReversePayPalExpressMapper(): ReversePayPalExpressMapper
+    public function createReversePayPalExpressMapper(): PostPlaceMapperInterface
     {
         return new ReversePayPalExpressMapper(
             $this->getComputopApiService(),
@@ -215,9 +215,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\InquirePayPalMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquirePayPalMapper(): InquirePayPalMapper
+    public function createInquirePayPalMapper(): PostPlaceMapperInterface
     {
         return new InquirePayPalMapper(
             $this->getComputopApiService(),
@@ -227,9 +227,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\CapturePayPalMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCapturePayPalMapper(): CapturePayPalMapper
+    public function createCapturePayPalMapper(): PostPlaceMapperInterface
     {
         return new CapturePayPalMapper(
             $this->getComputopApiService(),
@@ -239,9 +239,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\CapturePayPalExpressMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCapturePayPalExpressMapper(): CapturePayPalExpressMapper
+    public function createCapturePayPalExpressMapper(): PostPlaceMapperInterface
     {
         return new CapturePayPalExpressMapper(
             $this->getComputopApiService(),
@@ -251,9 +251,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPal\RefundPayPalMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundPayPalMapper(): RefundPayPalMapper
+    public function createRefundPayPalMapper(): PostPlaceMapperInterface
     {
         return new RefundPayPalMapper(
             $this->getComputopApiService(),
@@ -263,9 +263,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayPalExpress\RefundPayPalExpressMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundPayPalExpressMapper(): RefundPayPalExpressMapper
+    public function createRefundPayPalExpressMapper(): PostPlaceMapperInterface
     {
         return new RefundPayPalExpressMapper(
             $this->getComputopApiService(),
@@ -275,9 +275,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\DirectDebit\ReverseDirectDebitMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReverseDirectDebitMapper(): ReverseDirectDebitMapper
+    public function createReverseDirectDebitMapper(): PostPlaceMapperInterface
     {
         return new ReverseDirectDebitMapper(
             $this->getComputopApiService(),
@@ -287,9 +287,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\DirectDebit\InquireDirectDebitMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquireDirectDebitMapper(): InquireDirectDebitMapper
+    public function createInquireDirectDebitMapper(): PostPlaceMapperInterface
     {
         return new InquireDirectDebitMapper(
             $this->getComputopApiService(),
@@ -299,9 +299,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\DirectDebit\CaptureDirectDebitMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCaptureDirectDebitMapper(): CaptureDirectDebitMapper
+    public function createCaptureDirectDebitMapper(): PostPlaceMapperInterface
     {
         return new CaptureDirectDebitMapper(
             $this->getComputopApiService(),
@@ -311,9 +311,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\DirectDebit\RefundDirectDebitMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundDirectDebitMapper(): RefundDirectDebitMapper
+    public function createRefundDirectDebitMapper(): PostPlaceMapperInterface
     {
         return new RefundDirectDebitMapper(
             $this->getComputopApiService(),
@@ -323,9 +323,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Sofort\RefundSofortMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundSofortMapper(): RefundSofortMapper
+    public function createRefundSofortMapper(): PostPlaceMapperInterface
     {
         return new RefundSofortMapper(
             $this->getComputopApiService(),
@@ -335,9 +335,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\ReversePaydirektMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReversePaydirektMapper(): ReversePaydirektMapper
+    public function createReversePaydirektMapper(): PostPlaceMapperInterface
     {
         return new ReversePaydirektMapper(
             $this->getComputopApiService(),
@@ -347,9 +347,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\InquirePaydirektMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquirePaydirektMapper(): InquirePaydirektMapper
+    public function createInquirePaydirektMapper(): PostPlaceMapperInterface
     {
         return new InquirePaydirektMapper(
             $this->getComputopApiService(),
@@ -359,9 +359,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\CapturePaydirektMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCapturePaydirektMapper(): CapturePaydirektMapper
+    public function createCapturePaydirektMapper(): PostPlaceMapperInterface
     {
         return new CapturePaydirektMapper(
             $this->getComputopApiService(),
@@ -371,9 +371,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Paydirekt\RefundPaydirektMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundPaydirektMapper(): RefundPaydirektMapper
+    public function createRefundPaydirektMapper(): PostPlaceMapperInterface
     {
         return new RefundPaydirektMapper(
             $this->getComputopApiService(),
@@ -383,9 +383,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit\AuthorizeEasyCreditMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createAuthorizeEasyCreditMapper(): AuthorizeEasyCreditMapper
+    public function createAuthorizeEasyCreditMapper(): PostPlaceMapperInterface
     {
         return new AuthorizeEasyCreditMapper(
             $this->getComputopApiService(),
@@ -395,9 +395,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit\CaptureEasyCreditMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCaptureEasyCreditMapper(): CaptureEasyCreditMapper
+    public function createCaptureEasyCreditMapper(): PostPlaceMapperInterface
     {
         return new CaptureEasyCreditMapper(
             $this->getComputopApiService(),
@@ -407,9 +407,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\EasyCredit\RefundEasyCreditMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundEasyCreditMapper(): RefundEasyCreditMapper
+    public function createRefundEasyCreditMapper(): PostPlaceMapperInterface
     {
         return new RefundEasyCreditMapper(
             $this->getComputopApiService(),
@@ -419,9 +419,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Ideal\CaptureIdealMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCaptureIdealMapper(): CaptureIdealMapper
+    public function createCaptureIdealMapper(): PostPlaceMapperInterface
     {
         return new CaptureIdealMapper(
             $this->getComputopApiService(),
@@ -431,9 +431,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\Ideal\RefundIdealMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundIdealMapper(): RefundIdealMapper
+    public function createRefundIdealMapper(): PostPlaceMapperInterface
     {
         return new RefundIdealMapper(
             $this->getComputopApiService(),
@@ -443,9 +443,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\EasyCredit\StatusEasyCreditMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PrePlace\PrePlaceMapperInterface;
      */
-    public function createStatusEasyCreditMapper(): StatusEasyCreditMapper
+    public function createStatusEasyCreditMapper(): PrePlaceMapperInterface
     {
         return new StatusEasyCreditMapper(
             $this->getComputopApiService(),
@@ -455,9 +455,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\CrifMapper;
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\RiskCheck\ApiRiskCheckMapperInterface;
      */
-    public function createCrifMapper(): CrifMapper
+    public function createCrifMapper(): ApiRiskCheckMapperInterface
     {
         return new CrifMapper(
             $this->getComputopApiService(),
@@ -466,9 +466,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\InquirePayuCeeSingleMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createInquirePayuCeeSingleMapper(): InquirePayuCeeSingleMapper
+    public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface
     {
         return new InquirePayuCeeSingleMapper(
             $this->getComputopApiService(),
@@ -478,9 +478,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\ReversePayuCeeSingleMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createReversePayuCeeSingleMapper(): ReversePayuCeeSingleMapper
+    public function createReversePayuCeeSingleMapper(): PostPlaceMapperInterface
     {
         return new ReversePayuCeeSingleMapper(
             $this->getComputopApiService(),
@@ -490,9 +490,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\CapturePayuCeeSingleMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createCapturePayuCeeSingleMapper(): CapturePayuCeeSingleMapper
+    public function createCapturePayuCeeSingleMapper(): PostPlaceMapperInterface
     {
         return new CapturePayuCeeSingleMapper(
             $this->getComputopApiService(),
@@ -502,9 +502,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PayuCeeSingle\RefundPayuCeeSingleMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
      */
-    public function createRefundPayuCeeSingleMapper(): RefundPayuCeeSingleMapper
+    public function createRefundPayuCeeSingleMapper(): PostPlaceMapperInterface
     {
         return new RefundPayuCeeSingleMapper(
             $this->getComputopApiService(),
@@ -514,9 +514,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressPrepareMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
-    public function createPayPalExpressPrepareMapper(): PayPalExpressPrepareMapper
+    public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface
     {
         return new PayPalExpressPrepareMapper(
             $this->getConfig(),
@@ -524,9 +524,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressCompleteMapper
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\ExpressCheckout\PayPalExpressMapperInterface
      */
-    public function createPayPalExpressCompleteMapper(): PayPalExpressCompleteMapper
+    public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface
     {
         return new PayPalExpressCompleteMapper(
             $this->getComputopApiService(),

@@ -148,6 +148,7 @@ interface ComputopApiServiceInterface
     /**
      * Specification:
      * - Generate ReqId from OrderTransfer for Computop calls
+     * - Requires `QuoteTransfer.TotalsTransfer.hash` and `QuoteTransfer.CustomerTransfer`
      *
      * @api
      *
@@ -160,6 +161,7 @@ interface ComputopApiServiceInterface
     /**
      * Specification:
      * - Generate TransId for Computop calls
+     * - Requires `QuoteTransfer.CustomerTransfer`
      *
      * @api
      *

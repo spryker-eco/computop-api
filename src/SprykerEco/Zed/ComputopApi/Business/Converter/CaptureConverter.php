@@ -19,19 +19,16 @@ class CaptureConverter extends AbstractConverter implements ConverterInterface
      */
     protected function getResponseTransfer(array $decryptedResponse): ComputopApiCaptureResponseTransfer
     {
-        $computopApiResponseTransfer = new ComputopApiCaptureResponseTransfer();
-        $computopApiResponseTransfer->fromArray($decryptedResponse, true);
-        $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getCaptureMethodName()),
-        );
-        //optional fields
-        $computopApiResponseTransfer->setAId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::A_ID));
-        $computopApiResponseTransfer->setTransactionId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::TRANSACTION_ID));
-        $computopApiResponseTransfer->setAmount($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT));
-        $computopApiResponseTransfer->setCodeExt($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::CODE_EXT));
-        $computopApiResponseTransfer->setErrorText($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::ERROR_TEXT));
-        $computopApiResponseTransfer->setRefNr($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::REF_NR));
-
-        return $computopApiResponseTransfer;
+        return (new ComputopApiCaptureResponseTransfer())
+            ->fromArray($decryptedResponse, true)
+            ->setHeader(
+                $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getCaptureMethodName()),
+            )
+            ->setAId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::A_ID))
+            ->setTransactionId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::TRANSACTION_ID))
+            ->setAmount($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT))
+            ->setCodeExt($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::CODE_EXT))
+            ->setErrorText($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::ERROR_TEXT))
+            ->setRefNr($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::REF_NR));
     }
 }

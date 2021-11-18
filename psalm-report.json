@@ -1,98 +1,6 @@
 {
-    "error": [
-        {
-            "severity": "error",
-            "line_from": 20,
-            "line_to": 20,
-            "type": "UndefinedClass",
-            "message": "Class, interface or enum named Generated\\Shared\\Transfer\\ComputopApiPayPalExpressCompleteResponseTransfer does not exist",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Zed/ComputopApi/Business/Converter/ExpressCheckout/PayPalExpressCompleteConverter.php",
-            "snippet": "    protected function getResponseTransfer(array $decryptedResponse): ComputopApiPayPalExpressCompleteResponseTransfer",
-            "selected_text": "ComputopApiPayPalExpressCompleteResponseTransfer",
-            "error_level": -1,
-            "shortcode": 19,
-            "other_references": null
-        },
-        {
-            "severity": "error",
-            "line_from": 26,
-            "line_to": 26,
-            "type": "UndefinedClass",
-            "message": "Class, interface or enum named Generated\\Shared\\Transfer\\ComputopApiPayPalExpressPrepareResponseTransfer does not exist",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Zed/ComputopApi/Business/Converter/ExpressCheckout/PayPalExpressPrepareConverter.php",
-            "snippet": "        return (new ComputopApiPayPalExpressPrepareResponseTransfer())->fromArray($responseHeader, true);",
-            "selected_text": "ComputopApiPayPalExpressPrepareResponseTransfer",
-            "error_level": -1,
-            "shortcode": 19,
-            "other_references": null
-        }
-    ],
+    "error": [],
     "warning": [
-        {
-            "severity": "info",
-            "line_from": 82,
-            "line_to": 82,
-            "type": "RedundantCast",
-            "message": "Redundant cast to string",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Converter/ComputopApiConverter.php",
-            "snippet": "            $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value) ?: [];",
-            "selected_text": "(string)$value",
-            "error_level": 4,
-            "shortcode": 262,
-            "other_references": null
-        },
-        {
-            "severity": "info",
-            "line_from": 219,
-            "line_to": 219,
-            "type": "PossiblyNullArgument",
-            "message": "Argument 2 of sprintf cannot be null, possibly null value provided",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
-            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
-            "selected_text": "$itemTransfer->getName()",
-            "error_level": 3,
-            "shortcode": 78,
-            "other_references": null
-        },
-        {
-            "severity": "info",
-            "line_from": 219,
-            "line_to": 219,
-            "type": "PossiblyNullArgument",
-            "message": "Argument 3 of sprintf cannot be null, possibly null value provided",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
-            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
-            "selected_text": "$itemTransfer->getSku()",
-            "error_level": 3,
-            "shortcode": 78,
-            "other_references": null
-        },
-        {
-            "severity": "info",
-            "line_from": 219,
-            "line_to": 219,
-            "type": "PossiblyNullArgument",
-            "message": "Argument 4 of sprintf cannot be null, possibly null value provided",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
-            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
-            "selected_text": "$itemTransfer->getQuantity()",
-            "error_level": 3,
-            "shortcode": 78,
-            "other_references": null
-        },
-        {
-            "severity": "info",
-            "line_from": 82,
-            "line_to": 82,
-            "type": "InvalidScalarArgument",
-            "message": "Argument 2 of SprykerEco\\Zed\\ComputopApi\\Business\\Exception\\ComputopApiHttpRequestException::__construct expects int, int|string provided",
-            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Zed/ComputopApi/Business/Adapter/AbstractAdapter.php",
-            "snippet": "                $requestException->getCode(),",
-            "selected_text": "$requestException->getCode()",
-            "error_level": 4,
-            "shortcode": 12,
-            "other_references": null
-        },
         {
             "severity": "info",
             "line_from": 35,
@@ -103,8 +11,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiEasyCreditStatusResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiEasyCreditStatusResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -116,8 +23,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createEasyCreditStatusRequest()\n            ->request($quoteTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createEasyCreditStatusRequest()\n            ->request($quoteTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -129,8 +35,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiAuthorizeResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiAuthorizeResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -142,8 +47,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createEasyCreditAuthorizeRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createEasyCreditAuthorizeRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -155,8 +59,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiAuthorizeResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiAuthorizeResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -168,8 +71,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createAuthorizationPaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createAuthorizationPaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -181,8 +83,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiCaptureResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiCaptureResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -194,8 +95,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createCapturePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createCapturePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -207,8 +107,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiInquireResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiInquireResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -220,8 +119,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createInquirePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createInquirePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -233,8 +131,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiRefundResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiRefundResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -246,8 +143,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createRefundPaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createRefundPaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -259,8 +155,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiReverseResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiReverseResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -272,8 +167,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createReversePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment);",
             "selected_text": "$this\n            ->getFactory()\n            ->createReversePaymentRequest()\n            ->request($orderTransfer, $computopApiHeaderPayment)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -285,8 +179,7 @@
             "snippet": "     * @return \\Generated\\Shared\\Transfer\\ComputopApiCrifResponseTransfer",
             "selected_text": "\\Generated\\Shared\\Transfer\\ComputopApiCrifResponseTransfer",
             "error_level": 3,
-            "shortcode": 70,
-            "other_references": null
+            "shortcode": 70
         },
         {
             "severity": "info",
@@ -298,8 +191,7 @@
             "snippet": "        return $this\n            ->getFactory()\n            ->createCrifRequest()\n            ->request($quoteTransfer);",
             "selected_text": "$this\n            ->getFactory()\n            ->createCrifRequest()\n            ->request($quoteTransfer)",
             "error_level": 3,
-            "shortcode": 129,
-            "other_references": null
+            "shortcode": 129
         },
         {
             "severity": "info",
@@ -311,8 +203,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReverseCreditCardMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReverseCreditCardMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -324,8 +215,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquireCreditCardMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquireCreditCardMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -337,8 +227,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCaptureCreditCardMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCaptureCreditCardMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -350,8 +239,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundCreditCardMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundCreditCardMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -363,8 +251,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReversePayNowMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReversePayNowMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -376,8 +263,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquirePayNowMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquirePayNowMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -389,8 +275,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCapturePayNowMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCapturePayNowMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -402,8 +287,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundPayNowMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundPayNowMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -415,8 +299,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createAuthorizePayPalMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createAuthorizePayPalMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -428,8 +311,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReversePayPalMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReversePayPalMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -441,8 +323,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReversePayPalExpressMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReversePayPalExpressMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -454,8 +335,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquirePayPalMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquirePayPalMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -467,8 +347,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCapturePayPalMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCapturePayPalMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -480,8 +359,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCapturePayPalExpressMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCapturePayPalExpressMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -493,8 +371,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundPayPalMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundPayPalMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -506,8 +383,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundPayPalExpressMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundPayPalExpressMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -519,8 +395,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReverseDirectDebitMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReverseDirectDebitMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -532,8 +407,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquireDirectDebitMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquireDirectDebitMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -545,8 +419,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCaptureDirectDebitMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCaptureDirectDebitMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -558,8 +431,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundDirectDebitMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundDirectDebitMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -571,8 +443,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundSofortMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundSofortMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -584,8 +455,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReversePaydirektMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReversePaydirektMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -597,8 +467,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquirePaydirektMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquirePaydirektMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -610,8 +479,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCapturePaydirektMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCapturePaydirektMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -623,8 +491,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundPaydirektMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundPaydirektMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -636,8 +503,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createAuthorizeEasyCreditMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createAuthorizeEasyCreditMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -649,8 +515,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCaptureEasyCreditMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCaptureEasyCreditMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -662,8 +527,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundEasyCreditMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundEasyCreditMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -675,8 +539,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCaptureIdealMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCaptureIdealMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -688,8 +551,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundIdealMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundIdealMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -701,8 +563,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PrePlace\\PrePlaceMapperInterface;\n     */\n    public function createStatusEasyCreditMapper(): PrePlaceMapperInterface",
             "selected_text": "public function createStatusEasyCreditMapper(): PrePlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -714,8 +575,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\RiskCheck\\ApiRiskCheckMapperInterface;\n     */\n    public function createCrifMapper(): ApiRiskCheckMapperInterface",
             "selected_text": "public function createCrifMapper(): ApiRiskCheckMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -727,8 +587,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -740,8 +599,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createReversePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createReversePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -753,8 +611,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createCapturePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createCapturePayuCeeSingleMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -766,8 +623,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createRefundPayuCeeSingleMapper(): PostPlaceMapperInterface",
             "selected_text": "public function createRefundPayuCeeSingleMapper(): PostPlaceMapperInterface",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -779,8 +635,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\RiskCheck\\ApiRiskCheckMapperInterface;\n     */\n    public function createCrifMapper();",
             "selected_text": "public function createCrifMapper();",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -792,8 +647,7 @@
             "snippet": "    public function createCrifMapper();",
             "selected_text": "createCrifMapper",
             "error_level": 2,
-            "shortcode": 50,
-            "other_references": null
+            "shortcode": 50
         },
         {
             "severity": "info",
@@ -805,8 +659,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\PostPlace\\PostPlaceMapperInterface;\n     */\n    public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface;",
             "selected_text": "public function createInquirePayuCeeSingleMapper(): PostPlaceMapperInterface;",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -818,8 +671,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\ExpressCheckout\\PayPalExpressMapperInterface;\n     */\n    public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface;",
             "selected_text": "public function createPayPalExpressPrepareMapper(): PayPalExpressMapperInterface;",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -831,8 +683,7 @@
             "snippet": "    /**\n     * @return \\SprykerEco\\Zed\\ComputopApi\\Business\\Mapper\\ExpressCheckout\\PayPalExpressMapperInterface;\n     */\n    public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface;",
             "selected_text": "public function createPayPalExpressCompleteMapper(): PayPalExpressMapperInterface;",
             "error_level": 4,
-            "shortcode": 8,
-            "other_references": null
+            "shortcode": 8
         },
         {
             "severity": "info",
@@ -844,8 +695,7 @@
             "snippet": "            ->setOrderDesc($this->computopApiService->getDescriptionValue($quoteTransfer->getItems()->getArrayCopy()));",
             "selected_text": "getArrayCopy",
             "error_level": 3,
-            "shortcode": 113,
-            "other_references": null
+            "shortcode": 113
         },
         {
             "severity": "info",
@@ -857,8 +707,7 @@
             "snippet": "            $orderTransfer->getItems()->getArrayCopy(),",
             "selected_text": "getArrayCopy",
             "error_level": 3,
-            "shortcode": 113,
-            "other_references": null
+            "shortcode": 113
         },
         {
             "severity": "info",
@@ -870,8 +719,7 @@
             "snippet": "        $paymentsArray = $orderTransfer->getPayments()->getArrayCopy();",
             "selected_text": "getArrayCopy",
             "error_level": 3,
-            "shortcode": 113,
-            "other_references": null
+            "shortcode": 113
         }
     ],
     "deprecation": [
@@ -885,8 +733,7 @@
             "snippet": "        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();",
             "selected_text": "getPaymentOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -898,8 +745,7 @@
             "snippet": "        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();",
             "selected_text": "getPaymentOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -911,8 +757,7 @@
             "snippet": "            ComputopApiConfig::FIRST_NAME => $quoteTransfer->getShippingAddressOrFail()->getFirstName(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -924,8 +769,7 @@
             "snippet": "            ComputopApiConfig::LAST_NAME => $quoteTransfer->getShippingAddressOrFail()->getLastName(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -937,8 +781,7 @@
             "snippet": "            ComputopApiConfig::ADDRESS_STREET => $quoteTransfer->getShippingAddressOrFail()->getAddress1(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -950,8 +793,7 @@
             "snippet": "            ComputopApiConfig::ADDRESS_STREET_NR => $quoteTransfer->getShippingAddressOrFail()->getAddress2(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -963,8 +805,7 @@
             "snippet": "            ComputopApiConfig::ADDRESS_ADDITIONAL => $quoteTransfer->getShippingAddressOrFail()->getAddress3(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -976,8 +817,7 @@
             "snippet": "            ComputopApiConfig::ADDRESS_CITY => $quoteTransfer->getShippingAddressOrFail()->getCity(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -989,8 +829,7 @@
             "snippet": "            ComputopApiConfig::ADDR_ZIP => $quoteTransfer->getShippingAddressOrFail()->getZipCode(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -1002,8 +841,7 @@
             "snippet": "            ComputopApiConfig::PHONE => $quoteTransfer->getShippingAddressOrFail()->getPhone(),",
             "selected_text": "getShippingAddressOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -1015,8 +853,7 @@
             "snippet": "            ->getPaymentOrFail()",
             "selected_text": "getPaymentOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         },
         {
             "severity": "info",
@@ -1028,8 +865,7 @@
             "snippet": "            ->getPaymentOrFail()",
             "selected_text": "getPaymentOrFail",
             "error_level": 2,
-            "shortcode": 1,
-            "other_references": null
+            "shortcode": 1
         }
     ]
 }

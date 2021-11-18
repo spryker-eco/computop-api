@@ -71,9 +71,9 @@ class ComputopApiBusinessMapperFactory extends ComputopApiBusinessFactory implem
     }
 
     /**
-     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\PostPlaceMapperInterface;
+     * @return \SprykerEco\Zed\ComputopApi\Business\Mapper\PostPlace\CreditCard\ReverseCreditCardMapper;
      */
-    public function createReverseCreditCardMapper(): PostPlaceMapperInterface
+    public function createReverseCreditCardMapper(): ReverseCreditCardMapper
     {
         return new ReverseCreditCardMapper(
             $this->getComputopApiService(),

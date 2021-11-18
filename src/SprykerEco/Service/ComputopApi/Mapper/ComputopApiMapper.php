@@ -216,6 +216,6 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      */
     protected function getItemDescription(ItemTransfer $itemTransfer): string
     {
-        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());
+        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getNameOrFail(), $itemTransfer->getSkuOrFail(), $itemTransfer->getQuantityOrFail());
     }
 }

@@ -21,9 +21,7 @@ class CaptureConverter extends AbstractConverter implements ConverterInterface
     {
         return (new ComputopApiCaptureResponseTransfer())
             ->fromArray($decryptedResponse, true)
-            ->setHeader(
-                $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getCaptureMethodName()),
-            )
+            ->setHeader($this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getCaptureMethodName()))
             ->setAId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::A_ID))
             ->setTransactionId($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::TRANSACTION_ID))
             ->setAmount($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT))

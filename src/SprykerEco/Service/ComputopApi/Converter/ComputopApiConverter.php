@@ -62,11 +62,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      */
     public function getResponseValue(array $responseArray, $key): ?string
     {
-        if (isset($responseArray[$this->formatKey($key)])) {
-            return $responseArray[$this->formatKey($key)];
-        }
+        $formattedKey = $this->formatKey($key);
 
-        return null;
+        return $responseArray[$formattedKey] ?? null;
     }
 
     /**

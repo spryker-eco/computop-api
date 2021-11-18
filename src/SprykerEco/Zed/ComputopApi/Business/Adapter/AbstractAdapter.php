@@ -79,7 +79,7 @@ abstract class AbstractAdapter implements AdapterInterface
         } catch (RequestException $requestException) {
             throw new ComputopApiHttpRequestException(
                 $requestException->getMessage(),
-                $requestException->getCode(),
+                (int)$requestException->getCode(),
                 $requestException,
             );
         }

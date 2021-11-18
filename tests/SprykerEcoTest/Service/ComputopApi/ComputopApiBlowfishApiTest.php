@@ -52,12 +52,12 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     {
         $service = $this->createService();
         $encryptedValue = $service->getBlowfishEncryptedValue(
-            self::PLAINTEXT_VALUE,
-            self::LENGTH_VALUE,
-            self::PASSWORD_VALUE,
+            static::PLAINTEXT_VALUE,
+            static::LENGTH_VALUE,
+            static::PASSWORD_VALUE,
         );
 
-        $this->assertSame(self::CIPHER_VALUE, $encryptedValue);
+        $this->assertSame(static::CIPHER_VALUE, $encryptedValue);
     }
 
     /**
@@ -69,9 +69,9 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
 
         $service = $this->createService();
         $service->getBlowfishEncryptedValue(
-            self::PLAINTEXT_VALUE,
-            (self::LENGTH_VALUE - 1),
-            self::PASSWORD_VALUE,
+            static::PLAINTEXT_VALUE,
+            (static::LENGTH_VALUE - 1),
+            static::PASSWORD_VALUE,
         );
     }
 
@@ -82,12 +82,12 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
     {
         $service = $this->createService();
         $decryptedValue = $service->getBlowfishDecryptedValue(
-            self::CIPHER_VALUE,
-            self::CIPHER_LENGTH_VALUE,
-            self::PASSWORD_VALUE,
+            static::CIPHER_VALUE,
+            static::CIPHER_LENGTH_VALUE,
+            static::PASSWORD_VALUE,
         );
 
-        $this->assertSame(self::PLAINTEXT_VALUE, trim($decryptedValue));
+        $this->assertSame(static::PLAINTEXT_VALUE, trim($decryptedValue));
     }
 
     /**
@@ -99,9 +99,9 @@ class ComputopApiBlowfishApiTest extends AbstractComputopApiTest
 
         $service = $this->createService();
         $service->getBlowfishDecryptedValue(
-            self::CIPHER_VALUE,
-            self::CIPHER_LENGTH_VALUE + 1,
-            self::PASSWORD_VALUE,
+            static::CIPHER_VALUE,
+            static::CIPHER_LENGTH_VALUE + 1,
+            static::PASSWORD_VALUE,
         );
     }
 

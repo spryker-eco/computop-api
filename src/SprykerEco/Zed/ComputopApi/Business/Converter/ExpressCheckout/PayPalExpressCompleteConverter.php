@@ -13,7 +13,7 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\AbstractConverter;
 class PayPalExpressCompleteConverter extends AbstractConverter
 {
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiPayPalExpressCompleteResponseTransfer
      */

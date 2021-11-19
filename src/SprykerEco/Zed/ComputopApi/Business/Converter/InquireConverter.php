@@ -18,7 +18,7 @@ class InquireConverter extends AbstractConverter implements ConverterInterface
     protected const EMPTY_AMOUNT = '0';
 
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer
      */

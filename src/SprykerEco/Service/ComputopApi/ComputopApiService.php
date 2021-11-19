@@ -99,7 +99,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function decryptResponseHeader(array $responseHeader, $password): array
     {

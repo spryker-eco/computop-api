@@ -19,7 +19,7 @@ class EasyCreditStatusConverter extends AbstractConverter implements ConverterIn
     protected const DECISION_INDEX = 'desicion';
 
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiEasyCreditStatusResponseTransfer
      */

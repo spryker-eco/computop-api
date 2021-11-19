@@ -70,7 +70,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     /**
      * @param string $decryptedString
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getResponseDecryptedArray($decryptedString): array
     {
@@ -169,7 +169,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @param array $decryptedArray
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function formatResponseArray(array $decryptedArray): array
     {

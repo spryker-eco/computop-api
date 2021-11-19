@@ -14,7 +14,7 @@ use SprykerEco\Zed\ComputopApi\Business\Converter\ConverterInterface;
 class CrifConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiCrifResponseTransfer
      */

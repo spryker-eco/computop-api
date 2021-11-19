@@ -13,7 +13,7 @@ use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 class CaptureConverter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiCaptureResponseTransfer
      */

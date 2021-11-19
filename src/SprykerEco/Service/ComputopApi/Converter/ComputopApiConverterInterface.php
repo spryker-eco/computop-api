@@ -28,7 +28,7 @@ interface ComputopApiConverterInterface
     /**
      * @param string $decryptedString
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function getResponseDecryptedArray($decryptedString);
 

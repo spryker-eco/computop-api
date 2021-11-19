@@ -1,9 +1,1 @@
-[
-    {
-        "fileName": "/vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/ComputopApiServiceFactory.php",
-        "description": "\n      ComputopApiServiceFactory::createTextService() in SprykerEco\\Service\\ComputopApi\\ComputopApiServiceFactory::createTextService() contains 0 new statements which violates rule \"A create*() method in factories must contain exactly 1 `new` statement for instantiation.\"\n    ",
-        "rule": "FactoryCreateContainOneNewRule",
-        "ruleset": "Spryker",
-        "priority": "1"
-    }
-]
+[]

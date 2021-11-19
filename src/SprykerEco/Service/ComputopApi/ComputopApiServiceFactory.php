@@ -46,19 +46,8 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     {
         return new ComputopApiMapper(
             $this->getConfig(),
-            $this->createTextService(),
+            $this->getProvidedDependency(ComputopApiDependencyProvider::SERVICE_UTIL_TEXT),
         );
-    }
-
-    /**
-     * @return \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface
-     */
-    public function createTextService(): ComputopApiToUtilTextServiceInterface
-    {
-        /** @var \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService */
-        $utilTextService = $this->getProvidedDependency(ComputopApiDependencyProvider::SERVICE_UTIL_TEXT);
-
-        return $utilTextService;
     }
 
     /**

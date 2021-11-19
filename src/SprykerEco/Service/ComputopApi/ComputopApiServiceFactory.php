@@ -10,7 +10,6 @@ namespace SprykerEco\Service\ComputopApi;
 use Spryker\Service\Kernel\AbstractServiceFactory;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverter;
 use SprykerEco\Service\ComputopApi\Converter\ComputopApiConverterInterface;
-use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface;
 use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasher;
 use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
 use SprykerEco\Service\ComputopApi\Hasher\HmacHasher;

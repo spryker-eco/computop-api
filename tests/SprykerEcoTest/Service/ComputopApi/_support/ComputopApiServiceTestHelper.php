@@ -32,7 +32,7 @@ class ComputopApiServiceTestHelper extends Test
         );
 
         $configMock->method('getHmacPassword')
-            ->willReturn(self::PASSWORD);
+            ->willReturn(static::PASSWORD);
 
         return $configMock;
     }

@@ -108,7 +108,7 @@ class ConverterTestHelper extends Test
      */
     protected function getHeaderResponseTransfer(array $decryptedArray)
     {
-        $method = self::AUTHORIZE_METHOD;
+        $method = static::AUTHORIZE_METHOD;
 
         $header = new ComputopApiResponseHeaderTransfer();
         $header->fromArray($decryptedArray, true);

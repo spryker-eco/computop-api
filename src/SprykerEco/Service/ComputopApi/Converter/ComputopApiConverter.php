@@ -68,7 +68,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
         $header->setMethod($method);
 
         $macResponseEncryptedValue = $this->hmacHasher->getEncryptedValue(
-            $this->computopApiMapper->getMacResponseEncryptedValue($header)
+            $this->computopApiMapper->getMacResponseEncryptedValue($header),
         );
 
         $this->checkMacResponse(

@@ -15,11 +15,11 @@ class PayPalExpressPrepareMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string, int|string>
+     * @return array<string, int|string|null>
      */
     protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
-        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpress();
+        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();
 
         return [
             ComputopApiConstants::DATA => $computopPayPalExpressPaymentTransfer->getData(),

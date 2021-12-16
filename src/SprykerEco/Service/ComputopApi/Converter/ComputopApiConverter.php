@@ -72,9 +72,9 @@ class ComputopApiConverter implements ComputopApiConverterInterface
         );
 
         $this->checkMacResponse(
-            $header->getMac(),
+            (string)$header->getMac(),
             $macResponseEncryptedValue,
-            $header->getMethod(),
+            (string)$header->getMethod(),
         );
 
         return $header;

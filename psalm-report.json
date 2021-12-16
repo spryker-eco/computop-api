@@ -3,6 +3,42 @@
     "warning": [
         {
             "severity": "info",
+            "line_from": 219,
+            "line_to": 219,
+            "type": "PossiblyNullArgument",
+            "message": "Argument 2 of sprintf cannot be null, possibly null value provided",
+            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
+            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
+            "selected_text": "$itemTransfer->getName()",
+            "error_level": 3,
+            "shortcode": 78
+        },
+        {
+            "severity": "info",
+            "line_from": 219,
+            "line_to": 219,
+            "type": "PossiblyNullArgument",
+            "message": "Argument 3 of sprintf cannot be null, possibly null value provided",
+            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
+            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
+            "selected_text": "$itemTransfer->getSku()",
+            "error_level": 3,
+            "shortcode": 78
+        },
+        {
+            "severity": "info",
+            "line_from": 219,
+            "line_to": 219,
+            "type": "PossiblyNullArgument",
+            "message": "Argument 4 of sprintf cannot be null, possibly null value provided",
+            "file_name": "vendor/spryker-eco/computop-api/src/SprykerEco/Service/ComputopApi/Mapper/ComputopApiMapper.php",
+            "snippet": "        return sprintf('Name:%s-Sku:%s-Quantity:%s', $itemTransfer->getName(), $itemTransfer->getSku(), $itemTransfer->getQuantity());",
+            "selected_text": "$itemTransfer->getQuantity()",
+            "error_level": 3,
+            "shortcode": 78
+        },
+        {
+            "severity": "info",
             "line_from": 35,
             "line_to": 35,
             "type": "MoreSpecificReturnType",

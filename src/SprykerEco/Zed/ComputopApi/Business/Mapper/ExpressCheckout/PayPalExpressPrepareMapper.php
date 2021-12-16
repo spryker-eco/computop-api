@@ -19,11 +19,11 @@ class PayPalExpressPrepareMapper extends AbstractPayPalExpressMapper
      */
     protected function encryptRequestData(QuoteTransfer $quoteTransfer): array
     {
-        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();
+        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpress();
 
         return [
-            ComputopApiConstants::DATA => $computopPayPalExpressPaymentTransfer->getDataOrFail(),
-            ComputopApiConstants::LENGTH => $computopPayPalExpressPaymentTransfer->getLenOrFail(),
+            ComputopApiConstants::DATA => $computopPayPalExpressPaymentTransfer->getData(),
+            ComputopApiConstants::LENGTH => $computopPayPalExpressPaymentTransfer->getLen(),
         ];
     }
 }

@@ -40,7 +40,6 @@ interface ComputopApiServiceInterface
     /**
      * Specification:
      * - Generate header transfer by response array
-     * - Requires `ComputopApiResponseHeaderTransfer.mac` and `ComputopApiResponseHeaderTransfer.method` to bet set.
      *
      * @api
      *

@@ -61,17 +61,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      */
     public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
     {
-        $header = $this->getFactory()->createComputopApiConverter()->extractResponseHeader($plaintextResponseHeader, $method);
-
-        $expectedMac = $this->getHashValue(
-            $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header),
-        );
-
-        $this->getFactory()
-            ->createComputopApiConverter()
-            ->checkMacResponse($header->getMacOrFail(), $expectedMac, $header->getMethodOrFail());
-
-        return $header;
+        return $this->getFactory()->createComputopApiConverter()->extractResponseHeader($plaintextResponseHeader, $method);
     }
 
     /**

@@ -10,6 +10,8 @@ namespace SprykerEco\Service\ComputopApi\Converter;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface;
+use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as SharedComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 
@@ -21,11 +23,25 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected $computopApiConfig;
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
+     * @var \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
-    public function __construct(ComputopApiConfig $computopApiConfig)
+    protected ComputopApiMapperInterface $computopApiMapper;
+
+    /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
+     */
+    protected HmacHasherInterface $hmacHasher;
+
+    /**
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
+     * @param \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface $computopApiMapper
+     * @param \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface $hmacHasher
+     */
+    public function __construct(ComputopApiConfig $computopApiConfig, ComputopApiMapperInterface $computopApiMapper, HmacHasherInterface $hmacHasher)
     {
         $this->computopApiConfig = $computopApiConfig;
+        $this->computopApiMapper = $computopApiMapper;
+        $this->hmacHasher = $hmacHasher;
     }
 
     /**
@@ -50,6 +66,16 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         $header->setIsSuccess($this->isStatusSuccess($header));
         $header->setMethod($method);
+
+        $macResponseEncryptedValue = $this->hmacHasher->getEncryptedValue(
+            $this->computopApiMapper->getMacResponseEncryptedValue($header)
+        );
+
+        $this->checkMacResponse(
+            $header->getMac(),
+            $macResponseEncryptedValue,
+            $header->getMethod(),
+        );
 
         return $header;
     }

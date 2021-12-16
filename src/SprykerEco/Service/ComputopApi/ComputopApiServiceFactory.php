@@ -36,7 +36,11 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
      */
     public function createComputopApiConverter(): ComputopApiConverterInterface
     {
-        return new ComputopApiConverter($this->getConfig());
+        return new ComputopApiConverter(
+            $this->getConfig(),
+            $this->createComputopApiMapper(),
+            $this->createHmacHasher(),
+        );
     }
 
     /**

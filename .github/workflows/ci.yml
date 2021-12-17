@@ -11,6 +11,10 @@ jobs:
     validation:
         name: Validation
         runs-on: ubuntu-20.04
+        env:
+            APPLICATION_ENV: devtest
+            APPLICATION_STORE: DE
+            PROJECT: computop
 
         steps:
             -   uses: actions/checkout@v2

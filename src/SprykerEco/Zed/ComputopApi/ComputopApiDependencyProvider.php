@@ -11,6 +11,9 @@ use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use SprykerEco\Zed\ComputopApi\Dependency\Facade\ComputopApiToStoreFacadeBridge;
 
+/**
+ * @method \SprykerEco\Zed\ComputopApi\ComputopApiConfig getConfig()
+ */
 class ComputopApiDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**

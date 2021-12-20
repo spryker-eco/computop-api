@@ -18,11 +18,15 @@ class ComputopApiConfig extends AbstractBundleConfig
     protected const MAC_SEPARATOR = '*';
 
     /**
+     * @phpstan-var non-empty-string
+     *
      * @var string
      */
     protected const DATA_SEPARATOR = '&';
 
     /**
+     * @phpstan-var non-empty-string
+     *
      * @var string
      */
     protected const DATA_SUB_SEPARATOR = '=';
@@ -62,6 +66,8 @@ class ComputopApiConfig extends AbstractBundleConfig
     /**
      * @api
      *
+     * @phpstan-return non-empty-string
+     *
      * @return string
      */
     public function getDataSeparator(): string
@@ -71,6 +77,8 @@ class ComputopApiConfig extends AbstractBundleConfig
 
     /**
      * @api
+     *
+     * @phpstan-return non-empty-string
      *
      * @return string
      */

@@ -104,7 +104,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
         $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString) ?: [];
 
         foreach ($decryptedSubArray as $value) {
-            $data = explode($this->computopApiConfig->getDataSubSeparator(), $value) ?: [];
+            $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value) ?: [];
             $decryptedArray[array_shift($data)] = array_shift($data);
         }
 

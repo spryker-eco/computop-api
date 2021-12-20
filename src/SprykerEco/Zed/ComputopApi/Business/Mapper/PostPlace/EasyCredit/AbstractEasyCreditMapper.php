@@ -37,7 +37,7 @@ abstract class AbstractEasyCreditMapper extends AbstractPostPlaceMapper
     protected function createPaymentTransfer(OrderTransfer $orderTransfer): ComputopApiRequestTransfer
     {
         $computopApiRequestTransfer = new ComputopApiRequestTransfer();
-        $dateTime = new DateTime($orderTransfer->getCreatedAtOrFail());
+        $dateTime = new DateTime($orderTransfer->getCreatedAt());
         $computopApiRequestTransfer->setDate($dateTime->format(static::DATE_TIME_FORMAT));
 
         return $computopApiRequestTransfer;

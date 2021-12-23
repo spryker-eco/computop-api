@@ -15,6 +15,8 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as SharedComputopApiConfig;
 
 class ComputopApiMapper implements ComputopApiMapperInterface
 {
@@ -49,15 +51,23 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected $textService;
 
     /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
+     */
+    protected $blowfishHasher;
+
+    /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
      * @param \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService
+     * @param \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface $blowfishHasher
      */
     public function __construct(
         ComputopApiConfig $config,
-        ComputopApiToUtilTextServiceInterface $utilTextService
+        ComputopApiToUtilTextServiceInterface $utilTextService,
+        BlowfishHasherInterface $blowfishHasher
     ) {
         $this->config = $config;
         $this->textService = $utilTextService;
+        $this->blowfishHasher = $blowfishHasher;
     }
 
     /**
@@ -109,6 +119,24 @@ class ComputopApiMapper implements ComputopApiMapperInterface
         }
 
         return implode($this->config->getDataSeparator(), $dataArray);
+    }
+
+    /**
+     * @param array $dataSubArray
+     * @param string $password
+     *
+     * @return array
+     */
+    public function getEncryptedArray(array $dataSubArray, string $password): array
+    {
+        $plainText = $this->getDataPlainText($dataSubArray);
+        $length = mb_strlen($plainText);
+
+        return [
+            SharedComputopApiConfig::DATA => $this->blowfishHasher
+                ->getBlowfishEncryptedValue($plainText, $length, $password),
+            SharedComputopApiConfig::LENGTH => $length
+        ];
     }
 
     /**

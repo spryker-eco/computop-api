@@ -51,6 +51,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
         return new ComputopApiMapper(
             $this->getConfig(),
             $this->getUtilTextService(),
+            $this->createBlowfishHasher(),
         );
     }
 

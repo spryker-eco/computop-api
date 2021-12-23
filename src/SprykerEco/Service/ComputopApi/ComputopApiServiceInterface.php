@@ -40,6 +40,7 @@ interface ComputopApiServiceInterface
     /**
      * Specification:
      * - Generate header transfer by response array
+     * - Mac must be equal as soon as required otherwise exception will be thrown
      *
      * @api
      *

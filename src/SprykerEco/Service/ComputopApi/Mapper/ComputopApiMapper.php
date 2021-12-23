@@ -135,7 +135,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
         return [
             SharedComputopApiConfig::DATA => $this->blowfishHasher
                 ->getBlowfishEncryptedValue($plainText, $length, $password),
-            SharedComputopApiConfig::LENGTH => $length
+            SharedComputopApiConfig::LENGTH => $length,
         ];
     }
 
@@ -162,7 +162,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
         return $this->generateReqId(
-            (string) $quoteTransfer->getTotalsOrFail()->getHash(),
+            (string)$quoteTransfer->getTotalsOrFail()->getHash(),
             $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
@@ -175,7 +175,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
     {
         return $this->generateReqId(
-            (string) $orderTransfer->getTotalsOrFail()->getHash(),
+            (string)$orderTransfer->getTotalsOrFail()->getHash(),
             $orderTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }

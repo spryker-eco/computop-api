@@ -125,7 +125,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
      * @param array $dataSubArray
      * @param string $password
      *
-     * @return array
+     * @return array<string, string|int>
      */
     public function getEncryptedArray(array $dataSubArray, string $password): array
     {

@@ -138,6 +138,7 @@
         <property name="xID" type="string"/>
         <property name="transID" type="string"/>
         <property name="orderId" type="string"/>
+        <property name="paypalurl" type="string"/>
     </transfer>
 
     <transfer name="ComputopApiPayPalExpressComplete">

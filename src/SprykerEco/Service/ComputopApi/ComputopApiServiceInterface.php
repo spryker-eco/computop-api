@@ -133,7 +133,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.totals.hash` and `QuoteTransfer.customer` properties
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` properties
      * - Generate ReqId from QuoteTransfer for Computop calls
      *
      * @api
@@ -146,7 +146,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.totals.hash` and `QuoteTransfer.customer`
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer`
      * - Generate ReqId from OrderTransfer for Computop calls
      *
      * @api

@@ -134,7 +134,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
         return $this->generateReqId(
-            $quoteTransfer->getTotalsOrFail()->getHashOrFail(),
+            (string) $quoteTransfer->getTotalsOrFail()->getHash(),
             $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
@@ -147,7 +147,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
     {
         return $this->generateReqId(
-            $orderTransfer->getTotalsOrFail()->getHashOrFail(),
+            $orderTransfer->getTotalsOrFail()->getHash(),
             $orderTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }

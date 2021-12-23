@@ -40,15 +40,4 @@ interface ComputopApiConverterInterface
      * @return void
      */
     public function checkEncryptedResponse(array $responseArray);
-
-    /**
-     * @param string $responseMac
-     * @param string $expectedMac
-     * @param string $method
-     *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
-     * @return void
-     */
-    public function checkMacResponse($responseMac, $expectedMac, $method);
 }

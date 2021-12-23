@@ -25,12 +25,12 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     /**
      * @var \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
-    protected ComputopApiMapperInterface $computopApiMapper;
+    protected $computopApiMapper;
 
     /**
      * @var \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
      */
-    protected HmacHasherInterface $hmacHasher;
+    protected $hmacHasher;
 
     /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
@@ -141,7 +141,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return void
      */
-    public function checkMacResponse($responseMac, $expectedMac, $method): void
+    protected function checkMacResponse($responseMac, $expectedMac, $method): void
     {
         if ($this->computopApiConfig->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');

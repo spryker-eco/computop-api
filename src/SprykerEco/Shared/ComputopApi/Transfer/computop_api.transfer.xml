@@ -137,7 +137,7 @@
         <property name="payID" type="string"/>
         <property name="xID" type="string"/>
         <property name="transID" type="string"/>
-        <property name="orderId" type="string"/>
+        <property name="orderid" type="string"/>
         <property name="paypalurl" type="string"/>
     </transfer>
 

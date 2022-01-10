@@ -40,6 +40,7 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
             $this->getConfig(),
             $this->createComputopApiMapper(),
             $this->createHmacHasher(),
+            $this->createBlowfishHasher(),
         );
     }
 

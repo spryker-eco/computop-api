@@ -10,6 +10,7 @@ namespace SprykerEco\Service\ComputopApi\Converter;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
 use SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface;
 use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as SharedComputopApiConfig;
@@ -33,15 +34,26 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected $hmacHasher;
 
     /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
+     */
+    protected $blowfishHasher;
+
+    /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
      * @param \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface $computopApiMapper
      * @param \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface $hmacHasher
+     * @param \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface $blowfishHasher
      */
-    public function __construct(ComputopApiConfig $computopApiConfig, ComputopApiMapperInterface $computopApiMapper, HmacHasherInterface $hmacHasher)
-    {
+    public function __construct(
+        ComputopApiConfig $computopApiConfig,
+        ComputopApiMapperInterface $computopApiMapper,
+        HmacHasherInterface $hmacHasher,
+        BlowfishHasherInterface $blowfishHasher
+    ) {
         $this->computopApiConfig = $computopApiConfig;
         $this->computopApiMapper = $computopApiMapper;
         $this->hmacHasher = $hmacHasher;
+        $this->blowfishHasher = $blowfishHasher;
     }
 
     /**
@@ -94,14 +106,22 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     }
 
     /**
-     * @param string $decryptedString
+     * @param array $responseHeader
+     * @param string $password
      *
      * @return array<string, mixed>
      */
-    public function getResponseDecryptedArray($decryptedString): array
+    public function getResponseDecryptedArray(array $responseHeader, string $password): array
     {
+        $this->checkEncryptedResponse($responseHeader);
+
         $decryptedArray = [];
-        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString);
+        $responseDecryptedString = $this->blowfishHasher->getBlowfishDecryptedValue(
+            $responseHeader[ComputopApiConstants::DATA],
+            $responseHeader[ComputopApiConstants::LENGTH],
+            $password,
+        );
+        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $responseDecryptedString);
 
         foreach ($decryptedSubArray as $value) {
             $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value);

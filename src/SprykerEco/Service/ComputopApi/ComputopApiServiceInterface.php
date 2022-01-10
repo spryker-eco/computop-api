@@ -74,8 +74,6 @@ interface ComputopApiServiceInterface
      * @param array $responseHeader
      * @param string $password
      *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
      * @return array<string, mixed>
      */
     public function decryptResponseHeader(array $responseHeader, $password);

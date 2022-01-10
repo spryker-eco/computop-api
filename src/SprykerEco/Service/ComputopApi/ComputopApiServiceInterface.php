@@ -41,6 +41,7 @@ interface ComputopApiServiceInterface
      * Specification:
      * - Generate header transfer by response array
      * - Mac must be equal as soon as required otherwise exception will be thrown
+     * - Throws {@link \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException} if response does not have expected values.
      *
      * @api
      *
@@ -134,7 +135,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` properties
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` properties to be set.
      * - Generate ReqId from QuoteTransfer for Computop calls
      *
      * @api
@@ -147,7 +148,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer`
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` to be set.
      * - Generate ReqId from OrderTransfer for Computop calls
      *
      * @api
@@ -160,7 +161,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.customer`
+     * - Requires `QuoteTransfer.customer` to be set.
      * - Generate TransId for Computop calls
      *
      * @api

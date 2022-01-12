@@ -26,11 +26,12 @@ interface ComputopApiConverterInterface
     public function getResponseValue(array $responseArray, $key);
 
     /**
-     * @param string $decryptedString
+     * @param array $responseHeader
+     * @param string $password
      *
      * @return array<string, mixed>
      */
-    public function getResponseDecryptedArray($decryptedString);
+    public function getResponseDecryptedArray(array $responseHeader, string $password);
 
     /**
      * @param array $responseArray
@@ -40,15 +41,4 @@ interface ComputopApiConverterInterface
      * @return void
      */
     public function checkEncryptedResponse(array $responseArray);
-
-    /**
-     * @param string $responseMac
-     * @param string $expectedMac
-     * @param string $method
-     *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
-     * @return void
-     */
-    public function checkMacResponse($responseMac, $expectedMac, $method);
 }

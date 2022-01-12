@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\Kernel\AbstractService;
-use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 /**
  * @method \SprykerEco\Service\ComputopApi\ComputopApiServiceFactory getFactory()
@@ -87,26 +86,11 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      * @param array $responseHeader
      * @param string $password
      *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
      * @return array<string, mixed>
      */
     public function decryptResponseHeader(array $responseHeader, $password): array
     {
-        $this->getFactory()->createComputopApiConverter()->checkEncryptedResponse($responseHeader);
-
-        $responseDecryptedString = $this->getBlowfishDecryptedValue(
-            $responseHeader[ComputopApiConfig::DATA],
-            $responseHeader[ComputopApiConfig::LENGTH],
-            $password,
-        );
-
-        $responseDecryptedArray = $this
-            ->getFactory()
-            ->createComputopApiConverter()
-            ->getResponseDecryptedArray($responseDecryptedString);
-
-        return $responseDecryptedArray;
+        return $this->getFactory()->createComputopApiConverter()->getResponseDecryptedArray($responseHeader, $password);
     }
 
     /**
@@ -121,13 +105,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      */
     public function getEncryptedArray(array $dataSubArray, $password): array
     {
-        $plainText = $this->getFactory()->createComputopApiMapper()->getDataPlainText($dataSubArray);
-        $length = mb_strlen($plainText);
-
-        return [
-            ComputopApiConfig::DATA => $this->getBlowfishEncryptedValue($plainText, $length, $password),
-            ComputopApiConfig::LENGTH => $length,
-        ];
+        return $this->getFactory()->createComputopApiMapper()->getEncryptedArray($dataSubArray, $password);
     }
 
     /**

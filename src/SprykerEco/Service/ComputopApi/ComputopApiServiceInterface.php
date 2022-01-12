@@ -15,7 +15,7 @@ interface ComputopApiServiceInterface
 {
     /**
      * Specification:
-     * - Generate description based on items
+     * - Generate description based on items.
      *
      * @api
      *
@@ -27,7 +27,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate encrypted "Mac" value
+     * - Generate encrypted "Mac" value.
      *
      * @api
      *
@@ -39,7 +39,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate header transfer by response array
+     * - Generate header transfer by response array.
      *
      * @api
      *
@@ -52,7 +52,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Gets value from response array by key (discarding formatting)
+     * - Gets value from response array by key (discarding formatting).
      *
      * @api
      *
@@ -65,7 +65,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Decrypt response header
+     * - Decrypt response header.
      *
      * @api
      *
@@ -80,7 +80,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Encrypt response header
+     * - Encrypt response header.
      *
      * @api
      *
@@ -93,7 +93,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate hash value
+     * - Generate hash value.
      *
      * @api
      *
@@ -105,7 +105,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Encyrpt value using blowfish algorithm
+     * - Encyrpt value using blowfish algorithm.
      *
      * @api
      *
@@ -119,7 +119,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Decrypt value using blowfish algorithm
+     * - Decrypt value using blowfish algorithm.
      *
      * @api
      *
@@ -133,8 +133,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.TotalsTransfer.hash` and `QuoteTransfer.CustomerTransfer` properties
-     * - Generate ReqId from QuoteTransfer for Computop calls
+     * - Requires `QuoteTransfer.TotalsTransfer.hash` and `QuoteTransfer.CustomerTransfer` properties.
+     * - Generate ReqId from QuoteTransfer for Computop calls.
      *
      * @api
      *
@@ -146,8 +146,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.TotalsTransfer.hash` and `QuoteTransfer.CustomerTransfer`
-     * - Generate ReqId from OrderTransfer for Computop calls
+     * - Requires `QuoteTransfer.TotalsTransfer.hash` and `QuoteTransfer.CustomerTransfer`.
+     * - Generate ReqId from OrderTransfer for Computop calls.
      *
      * @api
      *
@@ -159,8 +159,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Requires `QuoteTransfer.CustomerTransfer`
-     * - Generate TransId for Computop calls
+     * - Requires `QuoteTransfer.CustomerTransfer`.
+     * - Generate TransId for Computop calls.
      *
      * @api
      *
@@ -172,7 +172,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate TransId for Computop calls with limited length
+     * - Generate TransId for Computop calls with limited length.
      *
      * @api
      *

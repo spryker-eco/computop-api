@@ -68,6 +68,7 @@ interface ComputopApiServiceInterface
     /**
      * Specification:
      * - Decrypt response header.
+     * - Throws {@link \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException} if response does not have expected values.
      *
      * @api
      *

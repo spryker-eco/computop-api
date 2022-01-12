@@ -360,7 +360,7 @@ class FacadeTestHelper extends Test
     protected function createPayPalExpressPrepareRequest()
     {
         $response = (new ComputopApiPayPalExpressPrepareResponseTransfer())
-            ->setOrderId(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
+            ->setOrderid(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
 
         $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressPrepareResponse($response);

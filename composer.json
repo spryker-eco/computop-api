@@ -14,8 +14,8 @@
         "spryker/zed-request": "^3.0.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.12",
-        "spryker/code-sniffer": "^0.16",
+        "phpstan/phpstan": "^1.2.0",
+        "spryker/code-sniffer": "*",
         "spryker/testify": "^3.0.0"
     },
     "autoload": {

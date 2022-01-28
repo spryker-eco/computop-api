@@ -1,4 +1,5 @@
 parameters:
+    level: 8
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
     ignoreErrors:
@@ -10,4 +11,4 @@ parameters:
         - '#Method SprykerEco\\Zed\\ComputopApi\\Business\\ComputopApiFacade.+ should return Generated\\Shared\\Transfer\\.+ but returns Spryker\\Shared\\Kernel\\Transfer\\TransferInterface.#'
         - '#PHPDoc tag @var for variable .+ contains unknown class Generated\\Shared\\Transfer\\.+#'
         - '#.+Generated\\Shared\\Transfer\\QuoteTransfer given.#'
-    excludePaths:
+    excludePaths: null

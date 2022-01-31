@@ -233,7 +233,4 @@
         <property name="phone" type="string"/>
         <property name="address3" type="string"/>
     </transfer>
-
-    <transfer name="ComputopPayPalExpressInitResponse">
-    </transfer>
 </transfers>

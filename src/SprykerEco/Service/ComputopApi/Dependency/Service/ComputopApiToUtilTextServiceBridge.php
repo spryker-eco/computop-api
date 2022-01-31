@@ -28,7 +28,7 @@ class ComputopApiToUtilTextServiceBridge implements ComputopApiToUtilTextService
      *
      * @return string
      */
-    public function hashValue($value, $algorithm)
+    public function hashValue($value, $algorithm): string
     {
         return $this->utilTextService->hashValue($value, $algorithm);
     }

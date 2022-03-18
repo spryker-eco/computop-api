@@ -35,9 +35,9 @@ class ComputopApiHashApiTest extends AbstractComputopApiTest
     public function testHashCrypt()
     {
         $service = $this->createService();
-        $encryptedValue = $service->getEncryptedValue(self::VALUE);
+        $encryptedValue = $service->getEncryptedValue(static::VALUE);
 
-        $this->assertSame(self::EXPECTED_VALUE, $encryptedValue);
+        $this->assertSame(static::EXPECTED_VALUE, $encryptedValue);
     }
 
     /**

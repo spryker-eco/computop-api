@@ -73,6 +73,7 @@ interface FacadeTestConstants
      * @var string
      */
     public const CRIF_GREEN_RESULT = 'GREEN';
+
     /**
      * @var string
      */

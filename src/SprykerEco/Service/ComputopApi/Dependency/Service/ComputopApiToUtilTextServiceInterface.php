@@ -15,5 +15,5 @@ interface ComputopApiToUtilTextServiceInterface
      *
      * @return string
      */
-    public function hashValue($value, $algorithm);
+    public function hashValue($value, $algorithm): string;
 }

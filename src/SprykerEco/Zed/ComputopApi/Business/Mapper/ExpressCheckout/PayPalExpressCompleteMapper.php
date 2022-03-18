@@ -41,7 +41,7 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     {
         $encryptedValues = $this->computopApiService->getEncryptedArray(
             $this->getDataSubArray($quoteTransfer),
-            $this->computopApiConfig->getBlowfishPass()
+            $this->computopApiConfig->getBlowfishPass(),
         );
 
         return [
@@ -53,19 +53,19 @@ class PayPalExpressCompleteMapper extends AbstractPayPalExpressMapper
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array<string, string>
+     * @return array<string, int|string|null>
      */
     protected function getDataSubArray(QuoteTransfer $quoteTransfer): array
     {
-        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPayment()->getComputopPayPalExpress();
+        $computopPayPalExpressPaymentTransfer = $quoteTransfer->getPaymentOrFail()->getComputopPayPalExpressOrFail();
 
-        $dataSubArray[SharedComputopApiConfig::TRANS_ID] = $computopPayPalExpressPaymentTransfer->getTransId();
-        $dataSubArray[SharedComputopApiConfig::MERCHANT_ID] = $this->computopApiConfig->getMerchantId();
-        $dataSubArray[SharedComputopApiConfig::PAY_ID] = $computopPayPalExpressPaymentTransfer->getPayPalExpressPrepareResponse()->getPayID();
-        $dataSubArray[SharedComputopApiConfig::REF_NR] = $computopPayPalExpressPaymentTransfer->getRefNr();
-        $dataSubArray[SharedComputopApiConfig::AMOUNT] = $quoteTransfer->getTotals()->getGrandTotal();
-        $dataSubArray[SharedComputopApiConfig::CURRENCY] = $computopPayPalExpressPaymentTransfer->getCurrency();
-
-        return $dataSubArray;
+        return [
+            SharedComputopApiConfig::TRANS_ID => $computopPayPalExpressPaymentTransfer->getTransId(),
+            SharedComputopApiConfig::MERCHANT_ID => $this->computopApiConfig->getMerchantId(),
+            SharedComputopApiConfig::PAY_ID => $computopPayPalExpressPaymentTransfer->getPayPalExpressPrepareResponseOrFail()->getPayID(),
+            SharedComputopApiConfig::REF_NR => $computopPayPalExpressPaymentTransfer->getRefNr(),
+            SharedComputopApiConfig::AMOUNT => $quoteTransfer->getTotalsOrFail()->getGrandTotal(),
+            SharedComputopApiConfig::CURRENCY => $computopPayPalExpressPaymentTransfer->getCurrency(),
+        ];
     }
 }

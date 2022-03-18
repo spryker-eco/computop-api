@@ -28,12 +28,12 @@ class CreditCardMapperTestHelper extends Test
     {
         $orderTransferMock = $this->createPartialMock(
             OrderTransfer::class,
-            ['getIdSalesOrder', 'getTotals', 'getItems']
+            ['getIdSalesOrder', 'getTotals', 'getItems'],
         );
 
         $totalsTransferMock = $this->createPartialMock(
             TotalsTransfer::class,
-            ['getGrandTotal']
+            ['getGrandTotal'],
         );
 
         $totalsTransferMock->method('getGrandTotal')
@@ -44,7 +44,7 @@ class CreditCardMapperTestHelper extends Test
 
         $itemsTransferMock = $this->createPartialMock(
             ItemTransfer::class,
-            ['getArrayCopy']
+            ['getArrayCopy'],
         );
 
         $itemsTransferMock->method('getArrayCopy')
@@ -63,7 +63,7 @@ class CreditCardMapperTestHelper extends Test
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,
-            ['getBlowfishPass']
+            ['getBlowfishPass'],
         );
 
         return $configMock;
@@ -89,7 +89,7 @@ class CreditCardMapperTestHelper extends Test
                 'generateReqIdFromOrderTransfer',
                 'generateTransId',
                 'getFactory',
-            ]
+            ],
         );
 
         $computopServiceMock->method('getEncryptedArray')
@@ -139,7 +139,7 @@ class CreditCardMapperTestHelper extends Test
 
         $storeMock = $this->createPartialMock(
             ComputopApiToStoreFacadeBridge::class,
-            ['getCurrentStore']
+            ['getCurrentStore'],
         );
 
         $storeMock->method('getCurrentStore')

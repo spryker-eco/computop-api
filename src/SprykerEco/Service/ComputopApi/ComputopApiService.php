@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use Generated\Shared\Transfer\OrderTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\Kernel\AbstractService;
-use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig;
 
 /**
  * @method \SprykerEco\Service\ComputopApi\ComputopApiServiceFactory getFactory()
@@ -24,7 +23,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -61,17 +60,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      */
     public function extractResponseHeader(array $plaintextResponseHeader, $method): ComputopApiResponseHeaderTransfer
     {
-        $header = $this->getFactory()->createComputopApiConverter()->extractResponseHeader($plaintextResponseHeader, $method);
-
-        $expectedMac = $this->getHashValue(
-            $this->getFactory()->createComputopApiMapper()->getMacResponseEncryptedValue($header)
-        );
-        $this
-            ->getFactory()
-            ->createComputopApiConverter()
-            ->checkMacResponse($header->getMac(), $expectedMac, $header->getMethod());
-
-        return $header;
+        return $this->getFactory()->createComputopApiConverter()->extractResponseHeader($plaintextResponseHeader, $method);
     }
 
     /**
@@ -79,7 +68,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      *
      * @api
      *
-     * @param string[] $responseArray
+     * @param array<string> $responseArray
      * @param string $key
      *
      * @return string|null
@@ -97,26 +86,11 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      * @param array $responseHeader
      * @param string $password
      *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
-     * @return array
+     * @return array<string, mixed>
      */
     public function decryptResponseHeader(array $responseHeader, $password): array
     {
-        $this->getFactory()->createComputopApiConverter()->checkEncryptedResponse($responseHeader);
-
-        $responseDecryptedString = $this->getBlowfishDecryptedValue(
-            $responseHeader[ComputopApiConfig::DATA],
-            $responseHeader[ComputopApiConfig::LENGTH],
-            $password
-        );
-
-        $responseDecryptedArray = $this
-            ->getFactory()
-            ->createComputopApiConverter()
-            ->getResponseDecryptedArray($responseDecryptedString);
-
-        return $responseDecryptedArray;
+        return $this->getFactory()->createComputopApiConverter()->getResponseDecryptedArray($responseHeader, $password);
     }
 
     /**
@@ -131,18 +105,7 @@ class ComputopApiService extends AbstractService implements ComputopApiServiceIn
      */
     public function getEncryptedArray(array $dataSubArray, $password): array
     {
-        $plainText = $this->getFactory()->createComputopApiMapper()->getDataPlainText($dataSubArray);
-        $length = mb_strlen($plainText);
-
-        $encryptedArray[ComputopApiConfig::DATA] = $this->getBlowfishEncryptedValue(
-            $plainText,
-            $length,
-            $password
-        );
-
-        $encryptedArray[ComputopApiConfig::LENGTH] = $length;
-
-        return $encryptedArray;
+        return $this->getFactory()->createComputopApiMapper()->getEncryptedArray($dataSubArray, $password);
     }
 
     /**

@@ -22,8 +22,8 @@ class PayPalExpressPrepareRequest extends AbstractPayPalExpressRequest implement
         /** @var \Generated\Shared\Transfer\ComputopApiPayPalExpressPrepareResponseTransfer $computopApiPayPalExpressPrepareResponseTransfer */
         $computopApiPayPalExpressPrepareResponseTransfer = $this->send($requestData);
         $quoteTransfer
-            ->getPayment()
-            ->getComputopPayPalExpress()
+            ->getPaymentOrFail()
+            ->getComputopPayPalExpressOrFail()
             ->setPayPalExpressPrepareResponse($computopApiPayPalExpressPrepareResponseTransfer);
 
         return $quoteTransfer;

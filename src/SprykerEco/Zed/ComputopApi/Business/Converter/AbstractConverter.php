@@ -25,7 +25,7 @@ abstract class AbstractConverter implements ConverterInterface
     protected $config;
 
     /**
-     * @param array $decryptedResponse
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Spryker\Shared\Kernel\Transfer\TransferInterface
      */
@@ -56,16 +56,13 @@ abstract class AbstractConverter implements ConverterInterface
     /**
      * @param \Psr\Http\Message\StreamInterface $response
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function decryptResponse(StreamInterface $response): array
     {
         parse_str($response->getContents(), $responseHeader);
 
-        $decryptedResponseHeader = $this
-            ->computopApiService
+        return $this->computopApiService
             ->decryptResponseHeader($responseHeader, $this->config->getBlowfishPass());
-
-        return $decryptedResponseHeader;
     }
 }

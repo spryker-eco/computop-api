@@ -21,17 +21,17 @@ trait AuthorizeMapperTrait
      */
     public function getDataSubArray(ComputopApiRequestTransfer $computopApiRequestTransfer): array
     {
-        $dataSubArray[ComputopApiConfig::PAY_ID] = $computopApiRequestTransfer->getPayId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $computopApiRequestTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::REQ_ID] = $computopApiRequestTransfer->getReqId();
-        $dataSubArray[ComputopApiConfig::REF_NR] = $computopApiRequestTransfer->getRefNr();
-        $dataSubArray[ComputopApiConfig::AMOUNT] = $computopApiRequestTransfer->getAmount();
-        $dataSubArray[ComputopApiConfig::CURRENCY] = $computopApiRequestTransfer->getCurrency();
-        $dataSubArray[ComputopApiConfig::CAPTURE] = $computopApiRequestTransfer->getCapture();
-        $dataSubArray[ComputopApiConfig::MAC] = $computopApiRequestTransfer->getMac();
-        $dataSubArray[ComputopApiConfig::ORDER_DESC] = $computopApiRequestTransfer->getOrderDesc();
-
-        return $dataSubArray;
+        return [
+            ComputopApiConfig::PAY_ID => $computopApiRequestTransfer->getPayId(),
+            ComputopApiConfig::TRANS_ID => $computopApiRequestTransfer->getTransId(),
+            ComputopApiConfig::REQ_ID => $computopApiRequestTransfer->getReqId(),
+            ComputopApiConfig::REF_NR => $computopApiRequestTransfer->getRefNr(),
+            ComputopApiConfig::AMOUNT => $computopApiRequestTransfer->getAmount(),
+            ComputopApiConfig::CURRENCY => $computopApiRequestTransfer->getCurrency(),
+            ComputopApiConfig::CAPTURE => $computopApiRequestTransfer->getCapture(),
+            ComputopApiConfig::MAC => $computopApiRequestTransfer->getMac(),
+            ComputopApiConfig::ORDER_DESC => $computopApiRequestTransfer->getOrderDesc(),
+        ];
     }
 
     /**
@@ -45,7 +45,7 @@ trait AuthorizeMapperTrait
         OrderTransfer $orderTransfer
     ): string {
         return $computopApiService->getDescriptionValue(
-            $orderTransfer->getItems()->getArrayCopy()
+            $orderTransfer->getItems()->getArrayCopy(),
         );
     }
 }

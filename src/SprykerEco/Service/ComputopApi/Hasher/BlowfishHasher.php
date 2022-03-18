@@ -117,7 +117,7 @@ class BlowfishHasher implements BlowfishHasherInterface
             $this->pModifiedKeys[$iteration] ^= $this->asc2int(substr(
                 $key,
                 $iteration * 4,
-                4
+                4,
             ));
         }
         for ($iteration = 0; $iteration < 18; $iteration += 2) {

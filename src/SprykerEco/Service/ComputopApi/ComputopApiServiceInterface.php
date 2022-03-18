@@ -15,11 +15,11 @@ interface ComputopApiServiceInterface
 {
     /**
      * Specification:
-     * - Generate description based on items
+     * - Generate description based on items.
      *
      * @api
      *
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -27,7 +27,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate encrypted "Mac" value
+     * - Generate encrypted "Mac" value.
      *
      * @api
      *
@@ -39,7 +39,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate header transfer by response array
+     * - Generate header transfer by response array.
+     * - Throws {@link \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException} if response does not have expected values or incorrect MAC.
      *
      * @api
      *
@@ -52,11 +53,11 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Gets value from response array by key (discarding formatting)
+     * - Gets value from response array by key (discarding formatting).
      *
      * @api
      *
-     * @param string[] $responseArray
+     * @param array<string> $responseArray
      * @param string $key
      *
      * @return string|null
@@ -65,22 +66,21 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Decrypt response header
+     * - Decrypt response header.
+     * - Throws {@link \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException} if response does not have expected values.
      *
      * @api
      *
      * @param array $responseHeader
      * @param string $password
      *
-     * @throws \SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException
-     *
-     * @return array
+     * @return array<string, mixed>
      */
     public function decryptResponseHeader(array $responseHeader, $password);
 
     /**
      * Specification:
-     * - Encrypt response header
+     * - Encrypt response header.
      *
      * @api
      *
@@ -93,7 +93,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate hash value
+     * - Generate hash value.
      *
      * @api
      *
@@ -105,7 +105,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Encyrpt value using blowfish algorithm
+     * - Encyrpt value using blowfish algorithm.
      *
      * @api
      *
@@ -119,7 +119,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Decrypt value using blowfish algorithm
+     * - Decrypt value using blowfish algorithm.
      *
      * @api
      *
@@ -133,7 +133,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate ReqId from QuoteTransfer for Computop calls
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` properties to be set.
+     * - Generate ReqId from QuoteTransfer for Computop calls.
      *
      * @api
      *
@@ -145,7 +146,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate ReqId from OrderTransfer for Computop calls
+     * - Requires `QuoteTransfer.totals` and `QuoteTransfer.customer` to be set.
+     * - Generate ReqId from OrderTransfer for Computop calls.
      *
      * @api
      *
@@ -157,7 +159,8 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate TransId for Computop calls
+     * - Requires `QuoteTransfer.customer` to be set.
+     * - Generate TransId for Computop calls.
      *
      * @api
      *
@@ -169,7 +172,7 @@ interface ComputopApiServiceInterface
 
     /**
      * Specification:
-     * - Generate TransId for Computop calls with limited length
+     * - Generate TransId for Computop calls with limited length.
      *
      * @api
      *

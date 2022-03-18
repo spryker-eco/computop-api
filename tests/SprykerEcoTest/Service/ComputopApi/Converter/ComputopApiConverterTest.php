@@ -82,7 +82,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
         $this->assertSame(ApiConfig::TRANS_ID, $header->getTransId());
         $this->assertSame(ApiConfig::PAY_ID, $header->getPayId());
         $this->assertSame(ComputopApiConfig::SUCCESS_STATUS, $header->getStatus());
-        $this->assertSame(self::CODE_VALUE, $header->getCode());
+        $this->assertSame(static::CODE_VALUE, $header->getCode());
         $this->assertSame(ApiConfig::X_ID, $header->getXId());
     }
 
@@ -92,11 +92,11 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
     public function testExtractIsErrorHeader()
     {
         $converter = $this->helper->createConverter();
-        $decryptedArray = $this->getDecryptedArray(self::STATUS_ERROR_VALUE);
-        $decryptedArray[ApiConfig::CODE] = self::FAILED_CODE;
+        $decryptedArray = $this->getDecryptedArray(static::STATUS_ERROR_VALUE);
+        $decryptedArray[ApiConfig::CODE] = static::FAILED_CODE;
 
         /** @var \Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer $header */
-        $header = $converter->extractResponseHeader($decryptedArray, self::METHOD);
+        $header = $converter->extractResponseHeader($decryptedArray, static::METHOD);
 
         $this->assertInstanceOf(ComputopApiResponseHeaderTransfer::class, $header);
         $this->assertFalse($header->getIsSuccess());
@@ -105,7 +105,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
         $this->assertSame(ApiConfig::TRANS_ID, $header->getTransId());
         $this->assertSame(ApiConfig::PAY_ID, $header->getPayId());
         $this->assertSame(static::STATUS_ERROR_VALUE, $header->getStatus());
-        $this->assertSame(self::FAILED_CODE, $header->getCode());
+        $this->assertSame(static::FAILED_CODE, $header->getCode());
         $this->assertSame(ApiConfig::X_ID, $header->getXId());
     }
 
@@ -147,7 +147,7 @@ class ComputopApiConverterTest extends AbstractComputopApiTest
             ApiConfig::TRANS_ID => ApiConfig::TRANS_ID,
             ApiConfig::PAY_ID => ApiConfig::PAY_ID,
             ApiConfig::STATUS => $status,
-            ApiConfig::CODE => self::CODE_VALUE,
+            ApiConfig::CODE => static::CODE_VALUE,
             ApiConfig::X_ID => ApiConfig::X_ID,
         ];
 

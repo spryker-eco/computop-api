@@ -28,11 +28,11 @@ class ComputopApiServiceTestHelper extends Test
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,
-            ['getHmacPassword']
+            ['getHmacPassword'],
         );
 
         $configMock->method('getHmacPassword')
-            ->willReturn(self::PASSWORD);
+            ->willReturn(static::PASSWORD);
 
         return $configMock;
     }
@@ -44,7 +44,7 @@ class ComputopApiServiceTestHelper extends Test
     {
         return new ComputopApiMapper(
             $this->createComputopConfigMock(),
-            $this->createTextService()
+            $this->createTextService(),
         );
     }
 

@@ -36,7 +36,15 @@ interface ComputopApiMapperInterface
     public function getDataPlainText(array $dataSubArray);
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array $dataSubArray
+     * @param string $password
+     *
+     * @return array<string, string|int>
+     */
+    public function getEncryptedArray(array $dataSubArray, string $password): array;
+
+    /**
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */

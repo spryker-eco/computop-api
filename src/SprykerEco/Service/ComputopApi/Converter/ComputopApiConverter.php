@@ -10,6 +10,9 @@ namespace SprykerEco\Service\ComputopApi\Converter;
 use Generated\Shared\Transfer\ComputopApiResponseHeaderTransfer;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Exception\ComputopApiConverterException;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
+use SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface;
+use SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface;
 use SprykerEco\Shared\ComputopApi\ComputopApiConfig as SharedComputopApiConfig;
 use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as ComputopApiConstants;
 
@@ -21,11 +24,36 @@ class ComputopApiConverter implements ComputopApiConverterInterface
     protected $computopApiConfig;
 
     /**
-     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
+     * @var \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface
      */
-    public function __construct(ComputopApiConfig $computopApiConfig)
-    {
+    protected $computopApiMapper;
+
+    /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface
+     */
+    protected $hmacHasher;
+
+    /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
+     */
+    protected $blowfishHasher;
+
+    /**
+     * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $computopApiConfig
+     * @param \SprykerEco\Service\ComputopApi\Mapper\ComputopApiMapperInterface $computopApiMapper
+     * @param \SprykerEco\Service\ComputopApi\Hasher\HmacHasherInterface $hmacHasher
+     * @param \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface $blowfishHasher
+     */
+    public function __construct(
+        ComputopApiConfig $computopApiConfig,
+        ComputopApiMapperInterface $computopApiMapper,
+        HmacHasherInterface $hmacHasher,
+        BlowfishHasherInterface $blowfishHasher
+    ) {
         $this->computopApiConfig = $computopApiConfig;
+        $this->computopApiMapper = $computopApiMapper;
+        $this->hmacHasher = $hmacHasher;
+        $this->blowfishHasher = $blowfishHasher;
     }
 
     /**
@@ -51,33 +79,50 @@ class ComputopApiConverter implements ComputopApiConverterInterface
         $header->setIsSuccess($this->isStatusSuccess($header));
         $header->setMethod($method);
 
+        $macResponseEncryptedValue = $this->hmacHasher->getEncryptedValue(
+            $this->computopApiMapper->getMacResponseEncryptedValue($header),
+        );
+
+        $this->checkMacResponse(
+            (string)$header->getMac(),
+            $macResponseEncryptedValue,
+            (string)$header->getMethod(),
+        );
+
         return $header;
     }
 
     /**
-     * @param array $plaintextResponseHeader
+     * @param array $responseArray
      * @param string $key
      *
      * @return string|null
      */
-    public function getResponseValue(array $plaintextResponseHeader, $key): ?string
+    public function getResponseValue(array $responseArray, $key): ?string
     {
-        if (isset($plaintextResponseHeader[$this->formatKey($key)])) {
-            return $plaintextResponseHeader[$this->formatKey($key)];
-        }
+        $formattedKey = $this->formatKey($key);
 
-        return null;
+        return $responseArray[$formattedKey] ?? null;
     }
 
     /**
-     * @param string $decryptedString
+     * @param array $responseHeader
+     * @param string $password
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function getResponseDecryptedArray($decryptedString): array
+    public function getResponseDecryptedArray(array $responseHeader, string $password): array
     {
+        $this->checkEncryptedResponse($responseHeader);
+
         $decryptedArray = [];
-        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $decryptedString);
+        $responseDecryptedString = $this->blowfishHasher->getBlowfishDecryptedValue(
+            $responseHeader[ComputopApiConstants::DATA],
+            $responseHeader[ComputopApiConstants::LENGTH],
+            $password,
+        );
+        $decryptedSubArray = explode($this->computopApiConfig->getDataSeparator(), $responseDecryptedString);
+
         foreach ($decryptedSubArray as $value) {
             $data = explode($this->computopApiConfig->getDataSubSeparator(), (string)$value);
             $decryptedArray[array_shift($data)] = array_shift($data);
@@ -102,7 +147,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         if (!$this->existArrayKeys($keys, $responseArray)) {
             throw new ComputopApiConverterException(
-                'Response does not have expected values. Please check Computop documentation.'
+                'Response does not have expected values. Please check Computop documentation.',
             );
         }
     }
@@ -116,7 +161,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @return void
      */
-    public function checkMacResponse($responseMac, $expectedMac, $method): void
+    protected function checkMacResponse($responseMac, $expectedMac, $method): void
     {
         if ($this->computopApiConfig->isMacRequired($method) && $responseMac !== $expectedMac) {
             throw new ComputopApiConverterException('MAC is incorrect');
@@ -140,7 +185,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
 
         if (!$this->existArrayKeys($keys, $plaintextResponseHeader)) {
             throw new ComputopApiConverterException(
-                'Response does not have expected values. Please check Computop documentation.'
+                'Response does not have expected values. Please check Computop documentation.',
             );
         }
     }
@@ -170,7 +215,7 @@ class ComputopApiConverter implements ComputopApiConverterInterface
      *
      * @param array $decryptedArray
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function formatResponseArray(array $decryptedArray): array
     {

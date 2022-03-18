@@ -64,7 +64,7 @@ class FacadeTestHelper extends Test
                 'createCrifRequest',
                 'createPayPalExpressPrepareRequest',
                 'createPayPalExpressCompleteRequest',
-            ]
+            ],
         );
 
         $stub = $builder->getMock();
@@ -134,7 +134,7 @@ class FacadeTestHelper extends Test
         $builder->setMethods(
             [
                 'getConfig',
-            ]
+            ],
         );
 
         $stub = $builder->getMock();
@@ -160,12 +160,12 @@ class FacadeTestHelper extends Test
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setTotals(
             (new TotalsTransfer())
-                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE)
+                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE),
         );
 
         $quoteTransfer->setCustomer(
             (new CustomerTransfer())
-                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE)
+                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE),
         );
 
         $quoteTransfer->setOrderReference(FacadeTestConstants::ORDER_REFERENCE_VALUE);
@@ -181,12 +181,12 @@ class FacadeTestHelper extends Test
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setTotals(
             (new TotalsTransfer())
-                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE)
+                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE),
         );
 
         $quoteTransfer->setCustomer(
             (new CustomerTransfer())
-                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE)
+                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE),
         );
 
         $quoteTransfer->setOrderReference(FacadeTestConstants::ORDER_REFERENCE_VALUE);
@@ -206,12 +206,12 @@ class FacadeTestHelper extends Test
         $orderTransfer = new OrderTransfer();
         $orderTransfer->setTotals(
             (new TotalsTransfer())
-                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE)
+                ->setHash(FacadeTestConstants::TOTAL_HASH_VALUE),
         );
 
         $orderTransfer->setCustomer(
             (new CustomerTransfer())
-                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE)
+                ->setCustomerReference(FacadeTestConstants::CUSTOMER_REFERENCE_VALUE),
         );
 
         $orderTransfer->setOrderReference(FacadeTestConstants::ORDER_REFERENCE_VALUE);
@@ -360,7 +360,7 @@ class FacadeTestHelper extends Test
     protected function createPayPalExpressPrepareRequest()
     {
         $response = (new ComputopApiPayPalExpressPrepareResponseTransfer())
-            ->setOrderId(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
+            ->setOrderid(FacadeTestConstants::PAYPAL_EXPRESS_PREPARE_TOKEN);
 
         $quoteTransfer = $this->getPayPalExpressQuoteTransfer();
         $quoteTransfer->getPayment()->getComputopPayPalExpress()->setPayPalExpressPrepareResponse($response);

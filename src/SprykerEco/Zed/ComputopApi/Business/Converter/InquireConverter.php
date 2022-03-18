@@ -18,21 +18,21 @@ class InquireConverter extends AbstractConverter implements ConverterInterface
     protected const EMPTY_AMOUNT = '0';
 
     /**
-     * @param array $response
+     * @param array<string, mixed> $decryptedResponse
      *
      * @return \Generated\Shared\Transfer\ComputopApiInquireResponseTransfer
      */
-    protected function getResponseTransfer(array $response): ComputopApiInquireResponseTransfer
+    protected function getResponseTransfer(array $decryptedResponse): ComputopApiInquireResponseTransfer
     {
         $computopApiResponseTransfer = new ComputopApiInquireResponseTransfer();
-        $computopApiResponseTransfer->fromArray($response, true);
+        $computopApiResponseTransfer->fromArray($decryptedResponse, true);
         $computopApiResponseTransfer->setHeader(
-            $this->computopApiService->extractResponseHeader($response, $this->config->getInquireMethodName())
+            $this->computopApiService->extractResponseHeader($decryptedResponse, $this->config->getInquireMethodName()),
         );
-        $computopApiResponseTransfer->setAmountAuth($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT_AUTH));
-        $computopApiResponseTransfer->setAmountCap($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT_CAP));
-        $computopApiResponseTransfer->setAmountCred($this->computopApiService->getResponseValue($response, ComputopApiConfig::AMOUNT_CRED));
-        $computopApiResponseTransfer->setLastStatus($this->computopApiService->getResponseValue($response, ComputopApiConfig::LAST_STATUS));
+        $computopApiResponseTransfer->setAmountAuth($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT_AUTH));
+        $computopApiResponseTransfer->setAmountCap($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT_CAP));
+        $computopApiResponseTransfer->setAmountCred($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::AMOUNT_CRED));
+        $computopApiResponseTransfer->setLastStatus($this->computopApiService->getResponseValue($decryptedResponse, ComputopApiConfig::LAST_STATUS));
         //set custom options
         $computopApiResponseTransfer->setIsAuthLast($this->isAuthLast($computopApiResponseTransfer));
         $computopApiResponseTransfer->setIsCapLast($this->isCapLast($computopApiResponseTransfer));

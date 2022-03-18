@@ -14,7 +14,7 @@ interface ApiRiskCheckMapperInterface
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return string[]
+     * @return array<string>
      */
     public function buildRequest(QuoteTransfer $quoteTransfer);
 }

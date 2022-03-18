@@ -85,7 +85,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new AuthorizationRequest(
             $this->createAuthorizeAdapter(),
-            $this->createAuthorizeConverter()
+            $this->createAuthorizeConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeCreditCardMapper());
@@ -103,7 +103,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new InquireRequest(
             $this->createInquireAdapter(),
-            $this->createInquireConverter()
+            $this->createInquireConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createInquireCreditCardMapper());
@@ -123,7 +123,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new ReverseRequest(
             $this->createReverseAdapter(),
-            $this->createReverseConverter()
+            $this->createReverseConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createReverseCreditCardMapper());
@@ -144,7 +144,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new CaptureRequest(
             $this->createCaptureAdapter(),
-            $this->createCaptureConverter()
+            $this->createCaptureConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createCaptureCreditCardMapper());
@@ -167,7 +167,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new RefundRequest(
             $this->createRefundAdapter(),
-            $this->createRefundConverter()
+            $this->createRefundConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createRefundCreditCardMapper());
@@ -192,7 +192,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         $paymentRequest = new EasyCreditStatusRequest(
             $this->createEasyCreditStatusAdapter(),
             $this->createEasyCreditStatusConverter(),
-            $this->createMapperFactory()->createStatusEasyCreditMapper()
+            $this->createMapperFactory()->createStatusEasyCreditMapper(),
         );
 
         return $paymentRequest;
@@ -205,7 +205,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
     {
         $paymentRequest = new AuthorizationRequest(
             $this->createEasyCreditAuthorizeAdapter(),
-            $this->createAuthorizeConverter()
+            $this->createAuthorizeConverter(),
         );
 
         $paymentRequest->registerMapper($this->createMapperFactory()->createAuthorizeEasyCreditMapper());
@@ -221,7 +221,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         return new CrifRequest(
             $this->createCrifAdapter(),
             $this->createCrifConverter(),
-            $this->createMapperFactory()->createCrifMapper()
+            $this->createMapperFactory()->createCrifMapper(),
         );
     }
 
@@ -233,7 +233,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         return new PayPalExpressPrepareRequest(
             $this->createPayPalExpressPrepareAdapter(),
             $this->createPayPalExpressPrepareConverter(),
-            $this->createMapperFactory()->createPayPalExpressPrepareMapper()
+            $this->createMapperFactory()->createPayPalExpressPrepareMapper(),
         );
     }
 
@@ -245,7 +245,7 @@ class ComputopApiBusinessFactory extends AbstractBusinessFactory
         return new PayPalExpressCompleteRequest(
             $this->createPayPalExpressCompleteAdapter(),
             $this->createPayPalExpressCompleteConverter(),
-            $this->createMapperFactory()->createPayPalExpressCompleteMapper()
+            $this->createMapperFactory()->createPayPalExpressCompleteMapper(),
         );
     }
 

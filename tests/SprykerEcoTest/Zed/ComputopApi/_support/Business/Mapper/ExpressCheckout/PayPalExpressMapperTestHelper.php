@@ -24,6 +24,7 @@ class PayPalExpressMapperTestHelper extends Test
      * @var string
      */
     protected const DATA_VALUE = 'Data';
+
     /**
      * @var int
      */
@@ -59,7 +60,7 @@ class PayPalExpressMapperTestHelper extends Test
     {
         $configMock = $this->createPartialMock(
             ComputopApiConfig::class,
-            ['getBlowfishPass']
+            ['getBlowfishPass'],
         );
 
         return $configMock;
@@ -79,7 +80,7 @@ class PayPalExpressMapperTestHelper extends Test
             ComputopApiService::class,
             [
                 'getEncryptedArray',
-            ]
+            ],
         );
 
         $computopServiceMock->method('getEncryptedArray')

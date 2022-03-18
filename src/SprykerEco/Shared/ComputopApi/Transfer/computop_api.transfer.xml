@@ -123,6 +123,11 @@
     </transfer>
 
     <transfer name="ComputopPayPalExpressPayment">
+        <property name="transId" type="string"/>
+        <property name="refNr" type="string"/>
+        <property name="currency" type="string"/>
+        <property name="data" type="string"/>
+        <property name="len" type="int"/>
         <property name="payPalExpressPrepareResponse" type="ComputopApiPayPalExpressPrepareResponse"/>
         <property name="payPalExpressCompleteResponse" type="ComputopApiPayPalExpressCompleteResponse"/>
     </transfer>
@@ -168,4 +173,64 @@
         <property name="codeExt" type="string"/>
     </transfer>
 
+    <transfer name="Quote">
+        <property name="totals" type="Totals"/>
+        <property name="customer" type="Customer"/>
+        <property name="payment" type="Payment" deprecated="Use payments property instead."/>
+        <property name="orderReference" type="string"/>
+        <property name="currency" type="Currency"/>
+        <property name="items" type="Item[]" singular="item"/>
+        <property name="shippingAddress" type="Address" deprecated="Use item level shipping addresses (item.shipment.shippingAddress) instead."/>
+    </transfer>
+
+    <transfer name="Order">
+        <property name="totals" type="Totals"/>
+        <property name="customer" type="Customer"/>
+        <property name="customerReference" type="string"/>
+        <property name="createdAt" type="string"/>
+        <property name="items" type="Item[]" singular="item"/>
+        <property name="payments" type="Payment[]" singular="payment"/>
+        <property name="orderReference" type="string"/>
+    </transfer>
+
+    <transfer name="Item">
+        <property name="name" type="string"/>
+        <property name="quantity" type="int"/>
+        <property name="sku" type="string"/>
+    </transfer>
+
+    <transfer name="Store">
+        <property name="selectedCurrencyIsoCode" type="string"/>
+    </transfer>
+
+    <transfer name="Payment">
+        <property name="paymentMethod" type="string"/>
+        <property name="computopPayPalExpress" type="ComputopPayPalExpressPayment"/>
+    </transfer>
+
+    <transfer name="Totals">
+        <property name="hash" type="string"/>
+        <property name="grandTotal" type="int"/>
+        <property name="priceToPay" type="int"/>
+    </transfer>
+
+    <transfer name="Customer">
+        <property name="customerReference" type="string"/>
+        <property name="email" type="string"/>
+    </transfer>
+
+    <transfer name="Currency">
+        <property name="code" type="string"/>
+    </transfer>
+
+    <transfer name="Address">
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="address1" type="string"/>
+        <property name="address2" type="string"/>
+        <property name="city" type="string"/>
+        <property name="zipCode" type="string"/>
+        <property name="phone" type="string"/>
+        <property name="address3" type="string"/>
+    </transfer>
 </transfers>

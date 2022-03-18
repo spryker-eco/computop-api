@@ -36,7 +36,12 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
      */
     public function createComputopApiConverter(): ComputopApiConverterInterface
     {
-        return new ComputopApiConverter($this->getConfig());
+        return new ComputopApiConverter(
+            $this->getConfig(),
+            $this->createComputopApiMapper(),
+            $this->createHmacHasher(),
+            $this->createBlowfishHasher(),
+        );
     }
 
     /**
@@ -46,14 +51,15 @@ class ComputopApiServiceFactory extends AbstractServiceFactory
     {
         return new ComputopApiMapper(
             $this->getConfig(),
-            $this->createTextService()
+            $this->getUtilTextService(),
+            $this->createBlowfishHasher(),
         );
     }
 
     /**
      * @return \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface
      */
-    public function createTextService(): ComputopApiToUtilTextServiceInterface
+    public function getUtilTextService(): ComputopApiToUtilTextServiceInterface
     {
         /** @var \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService */
         $utilTextService = $this->getProvidedDependency(ComputopApiDependencyProvider::SERVICE_UTIL_TEXT);

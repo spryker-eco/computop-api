@@ -55,7 +55,9 @@ abstract class AbstractAdapter implements AdapterInterface
      */
     public function sendRequest(array $data): StreamInterface
     {
-        $options[RequestOptions::FORM_PARAMS] = $data;
+        $options = [
+            RequestOptions::FORM_PARAMS => $data,
+        ];
 
         return $this->send($options);
     }
@@ -72,13 +74,13 @@ abstract class AbstractAdapter implements AdapterInterface
         try {
             $response = $this->client->post(
                 $this->getUrl(),
-                $options
+                $options,
             );
         } catch (RequestException $requestException) {
             throw new ComputopApiHttpRequestException(
                 $requestException->getMessage(),
-                $requestException->getCode(),
-                $requestException
+                (int)$requestException->getCode(),
+                $requestException,
             );
         }
 

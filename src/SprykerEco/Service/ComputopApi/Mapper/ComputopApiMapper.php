@@ -15,6 +15,8 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Service\UtilText\Model\Hash;
 use SprykerEco\Service\ComputopApi\ComputopApiConfig;
 use SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface;
+use SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface;
+use SprykerEco\Shared\ComputopApi\Config\ComputopApiConfig as SharedComputopApiConfig;
 
 class ComputopApiMapper implements ComputopApiMapperInterface
 {
@@ -49,15 +51,23 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     protected $textService;
 
     /**
+     * @var \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface
+     */
+    protected $blowfishHasher;
+
+    /**
      * @param \SprykerEco\Service\ComputopApi\ComputopApiConfig $config
      * @param \SprykerEco\Service\ComputopApi\Dependency\Service\ComputopApiToUtilTextServiceInterface $utilTextService
+     * @param \SprykerEco\Service\ComputopApi\Hasher\BlowfishHasherInterface $blowfishHasher
      */
     public function __construct(
         ComputopApiConfig $config,
-        ComputopApiToUtilTextServiceInterface $utilTextService
+        ComputopApiToUtilTextServiceInterface $utilTextService,
+        BlowfishHasherInterface $blowfishHasher
     ) {
         $this->config = $config;
         $this->textService = $utilTextService;
+        $this->blowfishHasher = $blowfishHasher;
     }
 
     /**
@@ -112,7 +122,25 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array $dataSubArray
+     * @param string $password
+     *
+     * @return array<string, string|int>
+     */
+    public function getEncryptedArray(array $dataSubArray, string $password): array
+    {
+        $plainText = $this->getDataPlainText($dataSubArray);
+        $length = mb_strlen($plainText);
+
+        return [
+            SharedComputopApiConfig::DATA => $this->blowfishHasher
+                ->getBlowfishEncryptedValue($plainText, $length, $password),
+            SharedComputopApiConfig::LENGTH => $length,
+        ];
+    }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      *
      * @return string
      */
@@ -134,8 +162,8 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromQuoteTransfer(QuoteTransfer $quoteTransfer): string
     {
         return $this->generateReqId(
-            $quoteTransfer->getTotals()->getHash(),
-            $quoteTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
+            (string)$quoteTransfer->getTotalsOrFail()->getHash(),
+            $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 
@@ -147,8 +175,8 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     public function generateReqIdFromOrderTransfer(OrderTransfer $orderTransfer): string
     {
         return $this->generateReqId(
-            $orderTransfer->getTotals()->getHash(),
-            $orderTransfer->getCustomer()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE
+            (string)$orderTransfer->getTotalsOrFail()->getHash(),
+            $orderTransfer->getCustomerOrFail()->getCustomerReference() ?? static::GUEST_CUSTOMER_REFERENCE,
         );
     }
 
@@ -161,7 +189,7 @@ class ComputopApiMapper implements ComputopApiMapperInterface
     {
         $parameters = [
             $this->createUniqueSalt(),
-            $quoteTransfer->getCustomer()->getCustomerReference() ?? uniqid('', true),
+            $quoteTransfer->getCustomerOrFail()->getCustomerReference() ?? uniqid('', true),
         ];
 
         return $this->textService->hashValue(implode(static::ATTRIBUTES_SEPARATOR, $parameters), Hash::MD5);

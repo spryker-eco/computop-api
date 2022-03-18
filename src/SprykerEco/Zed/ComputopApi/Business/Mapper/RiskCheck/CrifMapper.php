@@ -21,25 +21,25 @@ class CrifMapper extends AbstractRiskCheckMapper implements ApiRiskCheckMapperIn
      */
     public function getDataSubArray(QuoteTransfer $quoteTransfer, ComputopApiRequestTransfer $requestTransfer): array
     {
-        $dataSubArray[ComputopApiConfig::MERCHANT_ID] = $requestTransfer->getMerchantId();
-        $dataSubArray[ComputopApiConfig::TRANS_ID] = $requestTransfer->getTransId();
-        $dataSubArray[ComputopApiConfig::ORDER_DESC] = $requestTransfer->getOrderDesc();
-        $dataSubArray[ComputopApiConfig::AMOUNT] = $requestTransfer->getAmount();
-        $dataSubArray[ComputopApiConfig::CURRENCY] = $requestTransfer->getCurrency();
-        $dataSubArray[ComputopApiConfig::MAC] = $this->computopApiService->generateEncryptedMac($requestTransfer);
-        $dataSubArray[ComputopApiConfig::PRODUCT_NAME] = $this->config->getCrifProductName();
-        $dataSubArray[ComputopApiConfig::CUSTOMER_ID] = $quoteTransfer->getCustomer()->getCustomerReference();
-        $dataSubArray[ComputopApiConfig::LEGAL_FORM] = $this->config->getCrifLegalForm();
-        $dataSubArray[ComputopApiConfig::FIRST_NAME] = $quoteTransfer->getShippingAddress()->getFirstName();
-        $dataSubArray[ComputopApiConfig::LAST_NAME] = $quoteTransfer->getShippingAddress()->getLastName();
-        $dataSubArray[ComputopApiConfig::ADDRESS_STREET] = $quoteTransfer->getShippingAddress()->getAddress1();
-        $dataSubArray[ComputopApiConfig::ADDRESS_STREET_NR] = $quoteTransfer->getShippingAddress()->getAddress2();
-        $dataSubArray[ComputopApiConfig::ADDRESS_ADDITIONAL] = $quoteTransfer->getShippingAddress()->getAddress3();
-        $dataSubArray[ComputopApiConfig::ADDRESS_CITY] = $quoteTransfer->getShippingAddress()->getCity();
-        $dataSubArray[ComputopApiConfig::ADDR_ZIP] = $quoteTransfer->getShippingAddress()->getZipCode();
-        $dataSubArray[ComputopApiConfig::ADDR_EMAIL] = $quoteTransfer->getCustomer()->getEmail();
-        $dataSubArray[ComputopApiConfig::PHONE] = $quoteTransfer->getShippingAddress()->getPhone();
-
-        return $dataSubArray;
+        return [
+            ComputopApiConfig::MERCHANT_ID => $requestTransfer->getMerchantId(),
+            ComputopApiConfig::TRANS_ID => $requestTransfer->getTransId(),
+            ComputopApiConfig::ORDER_DESC => $requestTransfer->getOrderDesc(),
+            ComputopApiConfig::AMOUNT => $requestTransfer->getAmount(),
+            ComputopApiConfig::CURRENCY => $requestTransfer->getCurrency(),
+            ComputopApiConfig::MAC => $this->computopApiService->generateEncryptedMac($requestTransfer),
+            ComputopApiConfig::PRODUCT_NAME => $this->config->getCrifProductName(),
+            ComputopApiConfig::CUSTOMER_ID => $quoteTransfer->getCustomerOrFail()->getCustomerReference(),
+            ComputopApiConfig::LEGAL_FORM => $this->config->getCrifLegalForm(),
+            ComputopApiConfig::FIRST_NAME => $quoteTransfer->getShippingAddressOrFail()->getFirstName(),
+            ComputopApiConfig::LAST_NAME => $quoteTransfer->getShippingAddressOrFail()->getLastName(),
+            ComputopApiConfig::ADDRESS_STREET => $quoteTransfer->getShippingAddressOrFail()->getAddress1(),
+            ComputopApiConfig::ADDRESS_STREET_NR => $quoteTransfer->getShippingAddressOrFail()->getAddress2(),
+            ComputopApiConfig::ADDRESS_ADDITIONAL => $quoteTransfer->getShippingAddressOrFail()->getAddress3(),
+            ComputopApiConfig::ADDRESS_CITY => $quoteTransfer->getShippingAddressOrFail()->getCity(),
+            ComputopApiConfig::ADDR_ZIP => $quoteTransfer->getShippingAddressOrFail()->getZipCode(),
+            ComputopApiConfig::ADDR_EMAIL => $quoteTransfer->getCustomerOrFail()->getEmail(),
+            ComputopApiConfig::PHONE => $quoteTransfer->getShippingAddressOrFail()->getPhone(),
+        ];
     }
 }

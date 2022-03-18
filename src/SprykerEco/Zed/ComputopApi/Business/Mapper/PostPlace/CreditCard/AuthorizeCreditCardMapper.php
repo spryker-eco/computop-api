@@ -25,7 +25,7 @@ class AuthorizeCreditCardMapper extends AbstractCreditCardMapper
     {
         $computopApiRequestTransfer = parent::createPaymentTransfer($orderTransfer);
         $computopApiRequestTransfer->setCapture(
-            $this->getCaptureType(ComputopApiConfig::PAYMENT_METHOD_CREDIT_CARD)
+            $this->getCaptureType(ComputopApiConfig::PAYMENT_METHOD_CREDIT_CARD),
         );
         $computopApiRequestTransfer->setOrderDesc($this->getOrderDesc($this->computopApiService, $orderTransfer));
 
